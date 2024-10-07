@@ -68,7 +68,7 @@ export default function LandingPage() {
                 transition={{ duration: 0.5, delay: 0.2 }}
                 className="relative"
               >
-                <div className="absolute inset-0 bg-gradient-to-r from-primary to-primary-light opacity-20 blur-xl rounded-full" />
+                <div className="absolute inset-0 rounded-full" />
                 <img
                   src="/DashLandingPage/images/Dash1.png"
                   alt="Dash App Screenshot"
@@ -148,7 +148,7 @@ export default function LandingPage() {
                 transition={{ duration: 0.5 }}
                 className="relative"
               >
-                <div className="absolute inset-0 bg-gradient-to-r from-primary to-primary-light opacity-20 blur-xl rounded-full" />
+                <div className="absolute inset-0 rounded-full" />
                 <img
                   src="/DashLandingPage/images/Dash1.png"
                   alt="Dash app interface"
