@@ -21,11 +21,33 @@ export default function LandingPage() {
     const video = document.querySelector('video');
     if (video) {
       video.muted = true;
-      video.autoplay = true; // Explicitly setting autoplay in JavaScript
+      video.autoplay = true;
       video.setAttribute('playsinline', 'true');
-      video.setAttribute('disableRemotePlayback', 'true'); // Add disableRemotePlayback
+      video.setAttribute('disableRemotePlayback', 'true');
+      
+      // Add click event listener for Safari
+      video.addEventListener('click', () => {
+        if (video.paused) {
+          video.play().catch(error => {
+            console.error("Video playback failed:", error);
+          });
+        } else {
+          video.pause();
+        }
+      });
+
+      // Attempt to play the video
       video.play().catch(error => {
         console.error("Video playback failed:", error);
+        // If autoplay fails, show a custom play button
+        const playButton = document.createElement('button');
+        playButton.textContent = 'Play';
+        playButton.className = 'absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-primary text-white px-4 py-2 rounded-full';
+        playButton.onclick = () => {
+          video.play().catch(console.error);
+          playButton.remove();
+        };
+        video.parentElement?.appendChild(playButton);
       });
     }
   }, []);
@@ -85,7 +107,7 @@ export default function LandingPage() {
               >
                 <div className="absolute inset-0 rounded-full" />
                 <video 
-                  className="rounded-xl shadow-2xl border-6 border-gray-100 m-4 w-full"
+                  className="rounded-xl shadow-2xl border-6 border-gray-100 m-4 w-full cursor-pointer"
                   autoPlay 
                   muted 
                   playsInline 
