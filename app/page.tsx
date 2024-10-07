@@ -7,9 +7,14 @@ import { Button } from "./components/ui/button"
 import { Lock, Wifi, Laptop, ChevronRight, Play } from "lucide-react"
 import { motion } from "framer-motion"
 import Image from 'next/image'
+import videojs from 'video.js';
+import 'video.js/dist/video-js.css';
+import type Player from 'video.js/dist/types/player';
 
 export default function LandingPage() {
   const [scrollY, setScrollY] = useState(0)
+  const videoRef = useRef<HTMLVideoElement | null>(null);
+  const playerRef = useRef<Player | null>(null);
 
   useEffect(() => {
     const handleScroll = () => setScrollY(window.scrollY)
@@ -18,38 +23,22 @@ export default function LandingPage() {
   }, [])
 
   useEffect(() => {
-    const video = document.querySelector('video');
-    if (video) {
-      video.muted = true;
-      video.autoplay = true;
-      video.setAttribute('playsinline', '');
-      video.setAttribute('disableRemotePlayback', '');
-      
-      // Add click event listener for Safari
-      video.addEventListener('click', () => {
-        if (video.paused) {
-          video.play().catch(error => {
-            console.error("Video playback failed:", error);
-          });
-        } else {
-          video.pause();
-        }
-      });
-
-      // Attempt to play the video
-      video.play().catch(error => {
-        console.error("Video playback failed:", error);
-        // If autoplay fails, show a custom play button
-        const playButton = document.createElement('button');
-        playButton.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>';
-        playButton.className = 'absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-primary text-white p-4 rounded-full opacity-80 hover:opacity-100 transition-opacity';
-        playButton.onclick = () => {
-          video.play().catch(console.error);
-          playButton.remove();
-        };
-        video.parentElement?.appendChild(playButton);
+    if (videoRef.current) {
+      playerRef.current = videojs(videoRef.current, {
+        autoplay: true,
+        muted: true,
+        controls: true,
+        responsive: true,
+        fluid: true,
+        sources: [{ src: '/DashLandingPage/images/Dash.mp4', type: 'video/mp4' }],
       });
     }
+
+    return () => {
+      if (playerRef.current) {
+        playerRef.current.dispose();
+      }
+    };
   }, []);
 
   return (
@@ -105,18 +94,9 @@ export default function LandingPage() {
                 transition={{ duration: 0.5, delay: 0.2 }}
                 className="relative"
               >
-                <div className="absolute inset-0 rounded-full" />
-                <video 
-                  className="rounded-xl shadow-2xl border-6 border-gray-100 m-4 w-full cursor-pointer"
-                  autoPlay 
-                  muted 
-                  playsInline 
-                  preload="metadata"
-                  style={{ objectFit: 'cover' }}
-                >
-                  <source src="/DashLandingPage/images/Dash.mp4" type="video/mp4" />
-                  Your browser does not support the video tag.
-                </video>
+                <div data-vjs-player>
+                  <video ref={videoRef} className="video-js vjs-big-play-centered" />
+                </div>
               </motion.div>
             </div>
           </div>
