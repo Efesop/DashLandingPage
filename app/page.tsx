@@ -71,7 +71,7 @@ export default function LandingPage() {
               >
                 <div className="absolute inset-0 rounded-full" />
                 <img
-                  src="/DashLandingPage/images/Dash1.png"
+                  src="/DashLandingPage/images/Dashheader1.png"
                   alt="Dash App Screenshot"
                   className="rounded-xl shadow-2xl border border-gray-200 dark:border-gray-700"
                   width={800}
@@ -151,7 +151,7 @@ export default function LandingPage() {
               >
                 <div className="absolute inset-0 rounded-full" />
                 <img
-                  src="/DashLandingPage/images/Dash1.png"
+                  src="/DashLandingPage/images/Dashfeature1.png"
                   alt="Dash app interface"
                   className="rounded-xl shadow-2xl border border-gray-200 dark:border-gray-700"
                   width={600}
