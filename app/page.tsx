@@ -46,10 +46,10 @@ export default function LandingPage() {
                 className="space-y-4"
               >
                 <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl/none xl:text-8xl/none">
-                  Your Notes,<br />Your Privacy
+                  Own Your Notes<br />For Real
                 </h1>
                 <p className="max-w-[600px] text-gray-500 md:text-xl dark:text-gray-400">
-                  NoteSafe is the ultimate note-taking app for Mac users who value privacy and offline functionality.
+                  All of your notes securely saved onto your device, no cloud storage required. You don't even need an account.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4">
                   <Button size="lg" className="text-lg">
@@ -91,9 +91,10 @@ export default function LandingPage() {
             </motion.h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {[
-                { icon: Lock, title: "End-to-End Encryption", description: "Your notes are encrypted on your device, ensuring maximum privacy." },
+                { icon: Lock, title: "Completely Private", description: "Your notes are stored solely on your device, ensuring complete privacy." },
                 { icon: Wifi, title: "Offline Functionality", description: "Work on your notes anytime, anywhere, with or without an internet connection." },
-                { icon: Laptop, title: "Mac-Optimized", description: "Designed specifically for macOS, providing a seamless native experience." },
+                //{ icon: Laptop, title: "Mac-Optimized", description: "Designed specifically for macOS, providing a seamless native experience." },
+                { icon: Laptop, title: "Own Your Data", description: "No account needed as your notes are never shared with anyone, not even us." },
               ].map((feature, index) => (
                 <motion.div
                   key={index}
@@ -120,23 +121,23 @@ export default function LandingPage() {
                 className="flex flex-col justify-center space-y-4"
               >
                 <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
-                  Beautiful Interface, Powerful Features
+                  No Cloud, No Worries
                 </h2>
                 <p className="max-w-[600px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-gray-400">
-                  NoteSafe combines a clean, intuitive interface with robust features to make note-taking a breeze.
+                  Dash combines a clean, intuitive interface with secure, privacy-preserving features for optimal note-taking.
                 </p>
                 <ul className="space-y-2">
                   <li className="flex items-center space-x-2">
                     <ChevronRight className="h-5 w-5 text-primary" />
-                    <span>Customizable themes and layouts</span>
+                    <span>Pages, Folders, Tags... Nice</span>
                   </li>
                   <li className="flex items-center space-x-2">
                     <ChevronRight className="h-5 w-5 text-primary" />
-                    <span>Rich text formatting</span>
+                    <span>Rich text editing capabilities</span>
                   </li>
                   <li className="flex items-center space-x-2">
                     <ChevronRight className="h-5 w-5 text-primary" />
-                    <span>Tag and categorize notes</span>
+                    <span>Everything is stored locally on your device</span>
                   </li>
                 </ul>
               </motion.div>
@@ -148,7 +149,7 @@ export default function LandingPage() {
               >
                 <div className="absolute inset-0 bg-gradient-to-r from-primary to-primary-light opacity-20 blur-xl rounded-full" />
                 <img
-                  src="/placeholder.svg?height=400&width=600"
+                  src="/Users/ollie/DashLandingPage/assets/Dash1.png?height=400&width=600"
                   alt="NoteSafe app interface"
                   className="rounded-xl shadow-2xl border border-gray-200 dark:border-gray-700"
                   width={600}
@@ -166,22 +167,22 @@ export default function LandingPage() {
               transition={{ duration: 0.5 }}
               className="text-3xl font-bold tracking-tighter sm:text-5xl text-center mb-12"
             >
-              Simple Pricing
+              Download Now
             </motion.h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 justify-center max-w-4xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-1 gap-8 justify-center max-w-4xl mx-auto">
               {[
                 {
                   title: "Free",
                   price: "$0",
-                  features: ["Basic note-taking features", "End-to-end encryption", "Offline access"],
-                  cta: "Download Now",
+                  features: ["Rich note-taking features", "Secure local storage", "Pages, Folders, Tags", "Offline access", "Account-less", "Export Options"],
+                  cta: "Download",
                 },
-                {
+                /*{
                   title: "Pro",
                   price: "$4.99/mo",
                   features: ["All Free features", "Advanced formatting options", "Unlimited storage", "Priority support"],
                   cta: "Upgrade to Pro",
-                },
+                },*/
               ].map((plan, index) => (
                 <motion.div
                   key={index}
