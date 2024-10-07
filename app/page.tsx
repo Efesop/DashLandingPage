@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react"
 import Link from "next/link"
 import { Button } from "./components/ui/button"
-import { Input } from "./components/ui/input"
+//import { Input } from "./components/ui/input"
 import { PenLine, Lock, Wifi, Laptop, ChevronRight } from "lucide-react"
 import { motion } from "framer-motion"
 import Image from 'next/image'
