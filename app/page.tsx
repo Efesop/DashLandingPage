@@ -21,7 +21,9 @@ export default function LandingPage() {
     const video = document.querySelector('video');
     if (video) {
       video.muted = true;
-      video.play();
+      video.play().catch(error => {
+        console.error("Video playback failed:", error);
+      });
     }
   }, []);
 
@@ -84,7 +86,7 @@ export default function LandingPage() {
                   autoPlay 
                   muted 
                   playsInline 
-                  preload="auto"
+                  preload="metadata"
                 >
                   <source src="/DashLandingPage/images/Dash.mp4" type="video/mp4" />
                   Your browser does not support the video tag.
