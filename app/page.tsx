@@ -6,6 +6,7 @@ import { Button } from "./components/ui/button"
 import { Input } from "./components/ui/input"
 import { PenLine, Lock, Wifi, Laptop, ChevronRight } from "lucide-react"
 import { motion } from "framer-motion"
+import Image from 'next/image'
 
 export default function LandingPage() {
   const [scrollY, setScrollY] = useState(0)
@@ -68,7 +69,7 @@ export default function LandingPage() {
                 className="relative"
               >
                 <div className="absolute inset-0 bg-gradient-to-r from-primary to-primary-light opacity-20 blur-xl rounded-full" />
-                <img
+                <Image
                   src="/images/Dash1.png?height=600&width=800"
                   alt="Dash App Screenshot"
                   className="rounded-xl shadow-2xl border border-gray-200 dark:border-gray-700"
@@ -148,7 +149,7 @@ export default function LandingPage() {
                 className="relative"
               >
                 <div className="absolute inset-0 bg-gradient-to-r from-primary to-primary-light opacity-20 blur-xl rounded-full" />
-                <img
+                <Image
                   src="/images/Dash1.png?height=400&width=600"
                   alt="NoteSafe app interface"
                   className="rounded-xl shadow-2xl border border-gray-200 dark:border-gray-700"
