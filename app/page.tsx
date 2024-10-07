@@ -23,8 +23,12 @@ export default function LandingPage() {
   }, [])
 
   useEffect(() => {
-    if (videoRef.current) {
-      playerRef.current = videojs(videoRef.current, {
+    // Make sure Video.js player is only initialized once
+    if (!playerRef.current) {
+      const videoElement = videoRef.current;
+      if (!videoElement) return;
+
+      playerRef.current = videojs(videoElement, {
         autoplay: true,
         muted: true,
         controls: true,
@@ -34,9 +38,11 @@ export default function LandingPage() {
       });
     }
 
+    // Dispose the Video.js player when the component unmounts
     return () => {
       if (playerRef.current) {
         playerRef.current.dispose();
+        playerRef.current = null;
       }
     };
   }, []);
