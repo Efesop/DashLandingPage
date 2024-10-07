@@ -71,13 +71,16 @@ export default function LandingPage() {
                 className="relative"
               >
                 <div className="absolute inset-0 rounded-full" />
-                <img
-                  src="/DashLandingPage/images/Dashheader1.png"
-                  alt="Dash App Screenshot"
-                  className="rounded-xl shadow-2xl border-8 border-gray-100 m-4"
-                  width={800}
-                  height={600}
-                />
+                <video 
+                  className="rounded-xl shadow-2xl border-6 border-gray-100 m-4 w-full"
+                  autoPlay 
+                  loop 
+                  muted 
+                  playsInline
+                >
+                  <source src="/DashLandingPage/images/Dash.mp4" type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
               </motion.div>
             </div>
           </div>
@@ -154,7 +157,7 @@ export default function LandingPage() {
                 <img
                   src="/DashLandingPage/images/Dashfeature1.png"
                   alt="Dash app interface"
-                  className="rounded-xl shadow-2xl border-8 border-gray-100 m-4"
+                  className="rounded-xl shadow-2xl border-6 border-gray-100 m-4"
                   width={600}
                   height={400}
                 />
