@@ -21,7 +21,9 @@ export default function LandingPage() {
     const video = document.querySelector('video');
     if (video) {
       video.muted = true;
-      video.setAttribute('playsinline', 'true'); // Ensure playsInline is set
+      video.autoplay = true; // Explicitly setting autoplay in JavaScript
+      video.setAttribute('playsinline', 'true');
+      video.setAttribute('disableRemotePlayback', 'true'); // Add disableRemotePlayback
       video.play().catch(error => {
         console.error("Video playback failed:", error);
       });
