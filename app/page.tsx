@@ -23,7 +23,6 @@ export default function LandingPage() {
   }, [])
 
   useEffect(() => {
-    // Make sure Video.js player is only initialized once
     if (!playerRef.current) {
       const videoElement = videoRef.current;
       if (!videoElement) return;
@@ -31,14 +30,13 @@ export default function LandingPage() {
       playerRef.current = videojs(videoElement, {
         autoplay: true,
         muted: true,
-        controls: true,
+        controls: false,
         responsive: true,
         fluid: true,
         sources: [{ src: '/DashLandingPage/images/Dash.mp4', type: 'video/mp4' }],
       });
     }
 
-    // Dispose the Video.js player when the component unmounts
     return () => {
       if (playerRef.current) {
         playerRef.current.dispose();
@@ -101,7 +99,12 @@ export default function LandingPage() {
                 className="relative"
               >
                 <div data-vjs-player>
-                  <video ref={videoRef} className="video-js vjs-big-play-centered" />
+                  <video 
+                    ref={videoRef} 
+                    className="video-js" 
+                    playsInline 
+                    muted
+                  />
                 </div>
               </motion.div>
             </div>
