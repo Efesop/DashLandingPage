@@ -75,7 +75,7 @@ export default function LandingPage() {
               >
                 <div className="absolute inset-0 rounded-full" />
                 <ReactPlayer
-                  url="/@images/Dash.mp4"
+                  url="/images/Dash.mp4"
                   className="rounded-xl shadow-2xl border-6 border-gray-100 m-4 w-full"
                   width="100%"
                   height="auto"
