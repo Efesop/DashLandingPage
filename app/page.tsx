@@ -52,9 +52,10 @@ export default function LandingPage() {
                   All of your notes securely saved onto your device, no cloud storage required. You don't even need an account.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 mt-8">
-                  <Button
+                  <Button 
                     href="https://github.com/Efesop/rich-text-editor/releases/download/v1.2.62/Dash-1.2.62-arm64.dmg"
-                    className="bg-primary text-white"
+                    className="bg-primary text-white text-lg"
+                    size="lg"
                   >
                     Download for Mac
                   </Button>
@@ -73,7 +74,7 @@ export default function LandingPage() {
                 <img
                   src="/DashLandingPage/images/Dashheader1.png"
                   alt="Dash App Screenshot"
-                  className="rounded-xl shadow-2xl border-8 border-blue-500 dark:border-blue-700 m-4"
+                  className="rounded-xl shadow-2xl border-8 border-gray-100 m-4"
                   width={800}
                   height={600}
                 />
@@ -153,7 +154,7 @@ export default function LandingPage() {
                 <img
                   src="/DashLandingPage/images/Dashfeature1.png"
                   alt="Dash app interface"
-                  className="rounded-xl shadow-2xl border-8 border-blue-500 dark:border-blue-700 m-4"
+                  className="rounded-xl shadow-2xl border-8 border-gray-100 m-4"
                   width={600}
                   height={400}
                 />
@@ -207,7 +208,8 @@ export default function LandingPage() {
                   </ul>
                   <Button
                     href="https://github.com/Efesop/rich-text-editor/releases/download/v1.2.62/Dash-1.2.62-arm64.dmg"
-                    className="mt-auto w-full bg-primary text-white"
+                    className="mt-auto w-full bg-primary text-white text-lg"
+                    size="lg"
                   >
                     {plan.cta}
                   </Button>
