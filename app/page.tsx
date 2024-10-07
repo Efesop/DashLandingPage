@@ -4,7 +4,7 @@ import React, { useRef, useEffect, useState } from 'react';
 import Link from "next/link"
 import { Button } from "./components/ui/button"
 //import { Input } from "./components/ui/input"
-import { Lock, Wifi, Laptop, ChevronRight } from "lucide-react"
+import { Lock, Wifi, Laptop, ChevronRight, Play } from "lucide-react"
 import { motion } from "framer-motion"
 import Image from 'next/image'
 
@@ -41,8 +41,8 @@ export default function LandingPage() {
         console.error("Video playback failed:", error);
         // If autoplay fails, show a custom play button
         const playButton = document.createElement('button');
-        playButton.textContent = 'Play';
-        playButton.className = 'absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-primary text-white px-4 py-2 rounded-full';
+        playButton.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>';
+        playButton.className = 'absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-primary text-white p-4 rounded-full opacity-80 hover:opacity-100 transition-opacity';
         playButton.onclick = () => {
           video.play().catch(console.error);
           playButton.remove();
