@@ -7,6 +7,9 @@ import { Button } from "./components/ui/button"
 import { Lock, Wifi, Laptop, ChevronRight } from "lucide-react"
 import { motion } from "framer-motion"
 import Image from 'next/image'
+import dynamic from 'next/dynamic';
+
+const ReactPlayer = dynamic(() => import('react-player'), { ssr: false });
 
 export default function LandingPage() {
   const [scrollY, setScrollY] = useState(0)
@@ -71,16 +74,15 @@ export default function LandingPage() {
                 className="relative"
               >
                 <div className="absolute inset-0 rounded-full" />
-                <video 
+                <ReactPlayer
+                  url="/@images/Dash.mp4"
                   className="rounded-xl shadow-2xl border-6 border-gray-100 m-4 w-full"
-                  autoPlay 
-                  loop 
-                  muted 
-                  playsInline
-                >
-                  <source src="/DashLandingPage/images/Dash.mp4" type="video/mp4" />
-                  Your browser does not support the video tag.
-                </video>
+                  width="100%"
+                  height="auto"
+                  controls={true}
+                  playing={true}
+                  loop
+                />
               </motion.div>
             </div>
           </div>
