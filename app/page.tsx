@@ -69,7 +69,7 @@ export default function LandingPage() {
                 className="relative"
               >
                 <div className="absolute inset-0 bg-gradient-to-r from-primary to-primary-light opacity-20 blur-xl rounded-full" />
-                <Image
+                <img
                   src="/DashLandingPage/images/Dash1.png"
                   alt="Dash App Screenshot"
                   className="rounded-xl shadow-2xl border border-gray-200 dark:border-gray-700"
@@ -149,9 +149,9 @@ export default function LandingPage() {
                 className="relative"
               >
                 <div className="absolute inset-0 bg-gradient-to-r from-primary to-primary-light opacity-20 blur-xl rounded-full" />
-                <Image
+                <img
                   src="/DashLandingPage/images/Dash1.png"
-                  alt="NoteSafe app interface"
+                  alt="Dash app interface"
                   className="rounded-xl shadow-2xl border border-gray-200 dark:border-gray-700"
                   width={600}
                   height={400}
@@ -255,7 +255,7 @@ export default function LandingPage() {
           </div>
           <div className="mt-8 pt-8 border-t border-gray-200 dark:border-gray-700">
             <p className="text-center text-xs text-gray-600 dark:text-gray-400">
-              © 2024 NoteSafe. All rights reserved.
+              © 2024 Dash. All rights reserved.
             </p>
           </div>
         </div>
