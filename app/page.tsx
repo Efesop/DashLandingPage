@@ -4,7 +4,7 @@ import { useState, useEffect } from "react"
 import Link from "next/link"
 import { Button } from "./components/ui/button"
 //import { Input } from "./components/ui/input"
-import { PenLine, Lock, Wifi, Laptop, ChevronRight } from "lucide-react"
+import { Lock, Wifi, Laptop, ChevronRight } from "lucide-react"
 import { motion } from "framer-motion"
 import Image from 'next/image'
 
@@ -21,7 +21,6 @@ export default function LandingPage() {
     <div className="flex flex-col min-h-screen bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800">
       <header className="px-4 lg:px-6 h-14 flex items-center fixed w-full bg-white/80 backdrop-blur-md z-50 dark:bg-gray-800/80">
         <Link className="flex items-center justify-center" href="#">
-          <PenLine className="h-6 w-6 mr-2 text-primary" />
           <span className="font-bold text-xl">Dash</span>
         </Link>
         <nav className="ml-auto flex gap-4 sm:gap-6">
