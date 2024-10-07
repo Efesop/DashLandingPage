@@ -4,8 +4,8 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
-  assetPrefix: '/DashLandingPage/',
-  basePath: '/DashLandingPage',
+  assetPrefix: process.env.NODE_ENV === 'production' ? '/DashLandingPage/' : '',
+  basePath: process.env.NODE_ENV === 'production' ? '/DashLandingPage' : '',
 }
 
 module.exports = nextConfig

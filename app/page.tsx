@@ -52,12 +52,14 @@ export default function LandingPage() {
                 <p className="max-w-[600px] text-gray-500 md:text-xl dark:text-gray-400">
                   All of your notes securely saved onto your device, no cloud storage required. You don't even need an account.
                 </p>
-                <div className="flex flex-col sm:flex-row gap-4">
-                  <Button size="lg" className="text-lg">
+                <div className="flex flex-col sm:flex-row gap-4 mt-8">
+                  <Button
+                    href="https://github.com/Efesop/rich-text-editor/releases/download/v1.2.62/Dash-1.2.62-arm64.dmg"
+                    className="bg-primary text-white"
+                  >
                     Download for Mac
-                    <ChevronRight className="ml-2 h-4 w-4" />
                   </Button>
-                  <Button variant="outline" size="lg" className="text-lg">
+                  <Button href="#features" variant="outline" size="lg" className="text-lg">
                     Learn More
                   </Button>
                 </div>
@@ -178,12 +180,6 @@ export default function LandingPage() {
                   features: ["Rich note-taking features", "Secure local storage", "Pages, Folders, Tags", "Offline access", "Account-less", "Export Options"],
                   cta: "Download",
                 },
-                /*{
-                  title: "Pro",
-                  price: "$4.99/mo",
-                  features: ["All Free features", "Advanced formatting options", "Unlimited storage", "Priority support"],
-                  cta: "Upgrade to Pro",
-                },*/
               ].map((plan, index) => (
                 <motion.div
                   key={index}
@@ -210,7 +206,12 @@ export default function LandingPage() {
                       </li>
                     ))}
                   </ul>
-                  <Button className="mt-auto w-full">{plan.cta}</Button>
+                  <Button
+                    href="https://github.com/Efesop/rich-text-editor/releases/download/v1.2.62/Dash-1.2.62-arm64.dmg"
+                    className="mt-auto w-full bg-primary text-white"
+                  >
+                    {plan.cta}
+                  </Button>
                 </motion.div>
               ))}
             </div>
@@ -224,16 +225,12 @@ export default function LandingPage() {
               <h3 className="text-lg font-semibold mb-2">About</h3>
               <ul className="space-y-2">
                 <li><Link href="#" className="text-sm text-gray-600 dark:text-gray-400 hover:text-primary">Our Story</Link></li>
-                <li><Link href="#" className="text-sm text-gray-600 dark:text-gray-400 hover:text-primary">Team</Link></li>
-                <li><Link href="#" className="text-sm text-gray-600 dark:text-gray-400 hover:text-primary">Careers</Link></li>
               </ul>
             </div>
             <div>
               <h3 className="text-lg font-semibold mb-2">Support</h3>
               <ul className="space-y-2">
-                <li><Link href="#" className="text-sm text-gray-600 dark:text-gray-400 hover:text-primary">FAQ</Link></li>
                 <li><Link href="#" className="text-sm text-gray-600 dark:text-gray-400 hover:text-primary">Contact Us</Link></li>
-                <li><Link href="#" className="text-sm text-gray-600 dark:text-gray-400 hover:text-primary">Documentation</Link></li>
               </ul>
             </div>
             <div>
@@ -248,8 +245,6 @@ export default function LandingPage() {
               <h3 className="text-lg font-semibold mb-2">Connect</h3>
               <ul className="space-y-2">
                 <li><Link href="#" className="text-sm text-gray-600 dark:text-gray-400 hover:text-primary">Twitter</Link></li>
-                <li><Link href="#" className="text-sm text-gray-600 dark:text-gray-400 hover:text-primary">LinkedIn</Link></li>
-                <li><Link href="#" className="text-sm text-gray-600 dark:text-gray-400 hover:text-primary">GitHub</Link></li>
               </ul>
             </div>
           </div>
