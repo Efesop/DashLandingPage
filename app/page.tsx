@@ -22,8 +22,8 @@ export default function LandingPage() {
     if (video) {
       video.muted = true;
       video.autoplay = true;
-      video.setAttribute('playsinline', 'true');
-      video.setAttribute('disableRemotePlayback', 'true');
+      video.setAttribute('playsinline', '');
+      video.setAttribute('disableRemotePlayback', '');
       
       // Add click event listener for Safari
       video.addEventListener('click', () => {
@@ -112,6 +112,7 @@ export default function LandingPage() {
                   muted 
                   playsInline 
                   preload="metadata"
+                  style={{ objectFit: 'cover' }}
                 >
                   <source src="/DashLandingPage/images/Dash.mp4" type="video/mp4" />
                   Your browser does not support the video tag.
