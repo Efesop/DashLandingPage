@@ -46,7 +46,7 @@ export default function LandingPage() {
                 className="space-y-4"
               >
                 <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl/none xl:text-8xl/none">
-                  Own Your Notes<br />For Real
+                  Own Your Notes<br />For Real.
                 </h1>
                 <p className="max-w-[600px] text-gray-500 md:text-xl dark:text-gray-400">
                   All of your notes securely saved onto your device, no cloud storage required. You don't even need an account.
