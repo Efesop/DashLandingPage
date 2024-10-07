@@ -21,6 +21,7 @@ export default function LandingPage() {
     const video = document.querySelector('video');
     if (video) {
       video.muted = true;
+      video.setAttribute('playsinline', 'true'); // Ensure playsInline is set
       video.play().catch(error => {
         console.error("Video playback failed:", error);
       });
