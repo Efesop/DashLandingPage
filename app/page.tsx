@@ -1,7 +1,6 @@
 "use client"
 
-import React from 'react';
-import { useState, useEffect } from "react"
+import React, { useRef, useEffect, useState } from 'react';
 import Link from "next/link"
 import { Button } from "./components/ui/button"
 //import { Input } from "./components/ui/input"
@@ -14,9 +13,17 @@ export default function LandingPage() {
 
   useEffect(() => {
     const handleScroll = () => setScrollY(window.scrollY)
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
   }, [])
+
+  useEffect(() => {
+    const video = document.querySelector('video');
+    if (video) {
+      video.muted = true;
+      video.play();
+    }
+  }, []);
 
   return (
     <div className="flex flex-col min-h-screen bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800">
@@ -75,9 +82,8 @@ export default function LandingPage() {
                 <video 
                   className="rounded-xl shadow-2xl border-6 border-gray-100 m-4 w-full"
                   autoPlay 
-                  loop 
                   muted 
-                  playsInline
+                  playsInline 
                   preload="auto"
                 >
                   <source src="/DashLandingPage/images/Dash.mp4" type="video/mp4" />
