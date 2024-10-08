@@ -98,7 +98,10 @@ export default function LandingPage() {
                 transition={{ duration: 0.5, delay: 0.2 }}
                 className="relative"
               >
-                <div data-vjs-player>
+                <div 
+                  data-vjs-player 
+                  className="rounded-xl shadow-2xl overflow-hidden"
+                >
                   <video 
                     ref={videoRef} 
                     className="video-js" 
