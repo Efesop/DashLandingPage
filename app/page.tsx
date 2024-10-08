@@ -15,6 +15,7 @@ export default function LandingPage() {
   const [scrollY, setScrollY] = useState(0)
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const playerRef = useRef<Player | null>(null);
+  const [downloadUrl, setDownloadUrl] = useState('');
 
   useEffect(() => {
     const handleScroll = () => setScrollY(window.scrollY)
@@ -43,6 +44,18 @@ export default function LandingPage() {
         playerRef.current = null;
       }
     };
+  }, []);
+
+  useEffect(() => {
+    fetch('https://api.github.com/repos/Efesop/rich-text-editor/releases/latest')
+      .then(response => response.json())
+      .then(data => {
+        const macAsset = data.assets.find((asset: any) => asset.name.endsWith('-arm64.dmg'));
+        if (macAsset) {
+          setDownloadUrl(macAsset.browser_download_url);
+        }
+      })
+      .catch(error => console.error('Error fetching latest release:', error));
   }, []);
 
   return (
@@ -81,11 +94,12 @@ export default function LandingPage() {
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 mt-8">
                   <Button 
-                    href="https://github.com/Efesop/rich-text-editor/releases/download/v1.2.62/Dash-1.2.62-arm64.dmg"
+                    href={downloadUrl || "#"}
                     className="bg-primary text-white text-lg"
                     size="lg"
+                    disabled={!downloadUrl}
                   >
-                    Download for Mac
+                    {downloadUrl ? 'Download for Mac' : 'Loading...'}
                   </Button>
                   <Button href="#features" variant="outline" size="lg" className="text-lg">
                     Learn More
@@ -245,11 +259,12 @@ export default function LandingPage() {
                     ))}
                   </ul>
                   <Button
-                    href="https://github.com/Efesop/rich-text-editor/releases/download/v1.2.65/Dash-1.2.65-arm64.dmg"
+                    href={downloadUrl || "#"}
                     className="mt-auto w-full bg-primary text-white text-lg"
                     size="lg"
+                    disabled={!downloadUrl}
                   >
-                    {plan.cta}
+                    {downloadUrl ? 'Download' : 'Loading...'}
                   </Button>
                 </motion.div>
               ))}
