@@ -259,31 +259,17 @@ export default function LandingPage() {
       </main>
       <footer className="w-full py-6 bg-gray-100 dark:bg-gray-900">
         <div className="container mx-auto px-4 md:px-6">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div>
-              <h3 className="text-lg font-semibold mb-2">About</h3>
-              <ul className="space-y-2">
-                <li><Link href="#" className="text-sm text-gray-600 dark:text-gray-400 hover:text-primary">Our Story</Link></li>
-              </ul>
-            </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-8">
             <div>
               <h3 className="text-lg font-semibold mb-2">Support</h3>
               <ul className="space-y-2">
-                <li><Link href="#" className="text-sm text-gray-600 dark:text-gray-400 hover:text-primary">Contact Us</Link></li>
-              </ul>
-            </div>
-            <div>
-              <h3 className="text-lg font-semibold mb-2">Legal</h3>
-              <ul className="space-y-2">
-                <li><Link href="#" className="text-sm text-gray-600 dark:text-gray-400 hover:text-primary">Terms of Service</Link></li>
-                <li><Link href="#" className="text-sm text-gray-600 dark:text-gray-400 hover:text-primary">Privacy Policy</Link></li>
-                <li><Link href="#" className="text-sm text-gray-600 dark:text-gray-400 hover:text-primary">Cookie Policy</Link></li>
+                <li><Link href="https://twitter.com/efesopoulos%3Flang%3Den&ved=2ahUKEwiS0qCEkf6IAxVkXWwGHf3-DnoQFnoECBUQAQ&usg=AOvVaw34zZobDva8nZ2k6FWAkdPu" className="text-sm text-gray-600 dark:text-gray-400 hover:text-primary">Contact Me</Link></li>
               </ul>
             </div>
             <div>
               <h3 className="text-lg font-semibold mb-2">Connect</h3>
               <ul className="space-y-2">
-                <li><Link href="#" className="text-sm text-gray-600 dark:text-gray-400 hover:text-primary">Twitter</Link></li>
+                <li><Link href="https://twitter.com/efesopoulos%3Flang%3Den&ved=2ahUKEwiS0qCEkf6IAxVkXWwGHf3-DnoQFnoECBUQAQ&usg=AOvVaw34zZobDva8nZ2k6FWAkdPu" className="text-sm text-gray-600 dark:text-gray-400 hover:text-primary">Connect on X</Link></li>
               </ul>
             </div>
           </div>
