@@ -263,13 +263,13 @@ export default function LandingPage() {
             <div>
               <h3 className="text-lg font-semibold mb-2">Support</h3>
               <ul className="space-y-2">
-                <li><Link href="https://twitter.com/efesopoulos%3Flang%3Den&ved=2ahUKEwiS0qCEkf6IAxVkXWwGHf3-DnoQFnoECBUQAQ&usg=AOvVaw34zZobDva8nZ2k6FWAkdPu" className="text-sm text-gray-600 dark:text-gray-400 hover:text-primary">Contact Me</Link></li>
+                <li><Link href="https://twitter.com/efesopoulos" className="text-sm text-gray-600 dark:text-gray-400 hover:text-primary">Contact Me</Link></li>
               </ul>
             </div>
             <div>
               <h3 className="text-lg font-semibold mb-2">Connect</h3>
               <ul className="space-y-2">
-                <li><Link href="https://twitter.com/efesopoulos%3Flang%3Den&ved=2ahUKEwiS0qCEkf6IAxVkXWwGHf3-DnoQFnoECBUQAQ&usg=AOvVaw34zZobDva8nZ2k6FWAkdPu" className="text-sm text-gray-600 dark:text-gray-400 hover:text-primary">Connect on X</Link></li>
+                <li><Link href="https://twitter.com/efesopoulos" className="text-sm text-gray-600 dark:text-gray-400 hover:text-primary">Connect on X</Link></li>
               </ul>
             </div>
           </div>
