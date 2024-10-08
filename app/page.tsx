@@ -53,7 +53,7 @@ export default function LandingPage() {
         const macAsset = data.assets.find((asset: any) => asset.name.endsWith('-arm64.dmg'));
         if (macAsset) {
           setDownloadUrl(macAsset.browser_download_url);
-        }
+        } 
       })
       .catch(error => console.error('Error fetching latest release:', error));
   }, []);
