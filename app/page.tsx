@@ -101,10 +101,14 @@ export default function LandingPage() {
                 <div 
                   data-vjs-player 
                   className="rounded-xl shadow-2xl overflow-hidden"
+                  style={{
+                    boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
+                    borderRadius: '0.75rem',
+                  }}
                 >
                   <video 
                     ref={videoRef} 
-                    className="video-js" 
+                    className="video-js w-full h-full" 
                     playsInline 
                     muted
                   />
