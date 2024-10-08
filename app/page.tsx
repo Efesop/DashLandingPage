@@ -109,6 +109,9 @@ export default function LandingPage() {
                   <video 
                     ref={videoRef} 
                     className="video-js w-full h-full" 
+                    style={{
+                        borderRadius: '0.75rem',
+                    }}
                     playsInline 
                     muted
                   />
