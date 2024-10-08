@@ -76,8 +76,8 @@ export default function LandingPage() {
           </Link>
         </nav>
       </header>
-      <main className="flex-1">
-        <section className="w-full py-12 md:py-24 lg:py-32 xl:py-48 px-4 md:px-6">
+      <main className="flex-1 pt-14"> {/* Add pt-14 to account for the fixed header */}
+        <section className="w-full py-8 md:py-12 lg:py-20 xl:py-32 px-4 md:px-6"> {/* Adjust padding for better responsiveness */}
           <div className="container mx-auto">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
               <motion.div
