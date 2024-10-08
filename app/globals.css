@@ -65,11 +65,3 @@ video::-webkit-media-controls-start-playback-button {
 }
 
 /* Add this to your global CSS file or a styled component */
-.video-js {
-  width: 100%;
-  height: 100%;
-}
-
-.video-js .vjs-tech {
-  object-fit: cover;
-}
