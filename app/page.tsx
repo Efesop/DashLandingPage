@@ -245,7 +245,7 @@ export default function LandingPage() {
                     ))}
                   </ul>
                   <Button
-                    href="https://github.com/Efesop/rich-text-editor/releases/download/v1.2.62/Dash-1.2.62-arm64.dmg"
+                    href="https://github.com/Efesop/rich-text-editor/releases/download/v1.2.65/Dash-1.2.65-arm64.dmg"
                     className="mt-auto w-full bg-primary text-white text-lg"
                     size="lg"
                   >
