@@ -108,7 +108,7 @@ export default function LandingPage() {
                 >
                   <video 
                     ref={videoRef} 
-                    className="video-js w-full h-full" 
+                    className="video-js" 
                     playsInline 
                     muted
                   />
