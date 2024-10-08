@@ -230,7 +230,7 @@ export default function LandingPage() {
                   title: "Free",
                   price: "$0",
                   features: ["Rich note-taking features", "Secure local storage", "Pages, Folders, Tags", "Offline access", "Account-less", "Export Options"],
-                  cta: "Download",
+                  cta: "Download for Mac",
                 },
               ].map((plan, index) => (
                 <motion.div
@@ -264,7 +264,7 @@ export default function LandingPage() {
                     size="lg"
                     disabled={!downloadUrl}
                   >
-                    {downloadUrl ? 'Download' : 'Loading...'}
+                    {downloadUrl ? 'Download for Mac' : 'Loading...'}
                   </Button>
                 </motion.div>
               ))}
