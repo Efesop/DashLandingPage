@@ -4,8 +4,8 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
-  assetPrefix: process.env.NODE_ENV === 'production' ? '/DashLandingPage/' : '',
-  basePath: process.env.NODE_ENV === 'production' ? '/DashLandingPage' : '',
+  assetPrefix: process.env.NODE_ENV === 'production' ? 'https://dashnote.io' : '',
+  basePath: '',
 }
 
 module.exports = nextConfig
