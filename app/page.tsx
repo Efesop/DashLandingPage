@@ -72,7 +72,7 @@ export default function LandingPage() {
             Download
           </Link>
           <Link className="text-sm font-medium hover:text-primary transition-colors" href="#about">
-            About
+            About Dash
           </Link>
         </nav>
       </header>
