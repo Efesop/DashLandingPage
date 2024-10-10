@@ -34,7 +34,7 @@ export default function LandingPage() {
         controls: false,
         responsive: true,
         fluid: true,
-        sources: [{ src: '/DashLandingPage/images/Dash.mp4', type: 'video/mp4' }],
+        sources: [{ src: '/images/Dash.mp4', type: 'video/mp4' }],
       });
     }
 
@@ -204,7 +204,7 @@ export default function LandingPage() {
               >
                 <div className="absolute inset-0 rounded-full" />
                 <img
-                  src="/DashLandingPage/images/Dashfeature1.png"
+                  src="/images/Dashfeature1.png"
                   alt="Dash app interface"
                   className="rounded-xl shadow-2xl border-6 border-gray-100 m-4"
                   width={600}
