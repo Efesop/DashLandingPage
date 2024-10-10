@@ -65,13 +65,13 @@ export default function LandingPage() {
           <span className="font-bold text-xl">Dash</span>
         </Link>
         <nav className="ml-auto flex gap-4 sm:gap-6">
-          <Link className="text-sm font-medium hover:text-primary transition-colors" href="#features">
+          <Link className="text-sm font-medium hover:text-primary transition-colors" href="#Features">
             Features
           </Link>
-          <Link className="text-sm font-medium hover:text-primary transition-colors" href="#pricing">
+          <Link className="text-sm font-medium hover:text-primary transition-colors" href="#Download">
             Pricing
           </Link>
-          <Link className="text-sm font-medium hover:text-primary transition-colors" href="#about">
+          <Link className="text-sm font-medium hover:text-primary transition-colors" href="#About">
             About
           </Link>
         </nav>
