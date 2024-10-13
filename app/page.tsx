@@ -3,7 +3,7 @@
 import React, { useRef, useEffect, useState } from 'react';
 import Link from "next/link"
 import { Button } from "./components/ui/button"
-//import { Input } from "./components/ui/input"
+import { Input } from "./components/ui/input"
 import { Lock, Wifi, Laptop, ChevronRight, Play } from "lucide-react"
 import { motion } from "framer-motion"
 import Image from 'next/image'
@@ -16,6 +16,28 @@ export default function LandingPage() {
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const playerRef = useRef<Player | null>(null);
   const [downloadUrl, setDownloadUrl] = useState('');
+  const [email, setEmail] = useState('');
+  const [isEmailSubmitted, setIsEmailSubmitted] = useState(false);
+
+  const handleEmailSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    try {
+      const response = await fetch('https://formspree.io/f/mbljjdgo', {
+        method: 'POST',
+        body: JSON.stringify({ email }),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
+      if (response.ok) {
+        setIsEmailSubmitted(true);
+      } else {
+        console.error('Form submission failed');
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error);
+    }
+  };
 
   useEffect(() => {
     const handleScroll = () => setScrollY(window.scrollY)
@@ -47,16 +69,18 @@ export default function LandingPage() {
   }, []);
 
   useEffect(() => {
-    fetch('https://api.github.com/repos/Efesop/rich-text-editor/releases/latest')
-      .then(response => response.json())
-      .then(data => {
-        const macAsset = data.assets.find((asset: any) => asset.name.endsWith('-arm64.dmg'));
-        if (macAsset) {
-          setDownloadUrl(macAsset.browser_download_url);
-        } 
-      })
-      .catch(error => console.error('Error fetching latest release:', error));
-  }, []);
+    if (isEmailSubmitted) {
+      fetch('https://api.github.com/repos/Efesop/rich-text-editor/releases/latest')
+        .then(response => response.json())
+        .then(data => {
+          const macAsset = data.assets.find((asset: any) => asset.name.endsWith('-arm64.dmg'));
+          if (macAsset) {
+            setDownloadUrl(macAsset.browser_download_url);
+          } 
+        })
+        .catch(error => console.error('Error fetching latest release:', error));
+    }
+  }, [isEmailSubmitted]);
 
   return (
     <div className="flex flex-col min-h-screen bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800">
@@ -64,16 +88,39 @@ export default function LandingPage() {
         <Link className="flex items-center justify-center" href="#">
           <span className="font-bold text-xl">Dash</span>
         </Link>
-        <nav className="ml-auto flex gap-4 sm:gap-6">
+        <nav className="ml-auto flex gap-4 sm:gap-6 items-center">
           <Link className="text-sm font-medium hover:text-primary transition-colors" href="#features">
             Features
           </Link>
           <Link className="text-sm font-medium hover:text-primary transition-colors" href="#pricing">
-            Download
+            Free Download
           </Link>
           <Link className="text-sm font-medium hover:text-primary transition-colors" href="#about">
             About Dash
           </Link>
+          {!isEmailSubmitted ? (
+            <form onSubmit={handleEmailSubmit} className="flex items-center">
+              <Input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="Enter your email"
+                required
+                className="mr-2 w-40 sm:w-auto"
+              />
+              <Button type="submit" size="sm">
+                Download
+              </Button>
+            </form>
+          ) : (
+            <Button
+              href={downloadUrl || "#"}
+              size="sm"
+              disabled={!downloadUrl}
+            >
+              {downloadUrl ? 'Download' : 'Loading...'}
+            </Button>
+          )}
         </nav>
       </header>
       <main className="flex-1 pt-14"> {/* Add pt-14 to account for the fixed header */}
@@ -93,17 +140,35 @@ export default function LandingPage() {
                   All of your notes securely saved onto your device, no cloud storage required. You don't even need an account.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 mt-8">
-                  <Button 
-                    href={downloadUrl || "#"}
-                    className="bg-primary text-white text-lg"
-                    size="lg"
-                    disabled={!downloadUrl}
-                  >
-                    {downloadUrl ? 'Download for Mac' : 'Loading...'}
-                  </Button>
-                  <Button href="#features" variant="outline" size="lg" className="text-lg">
-                    Learn More
-                  </Button>
+                  {!isEmailSubmitted ? (
+                    <form onSubmit={handleEmailSubmit} className="flex flex-col sm:flex-row gap-4 w-full">
+                      <Input
+                        type="email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        placeholder="Enter your email"
+                        required
+                        className="flex-grow"
+                      />
+                      <Button 
+                        type="submit" 
+                        className="bg-primary text-white whitespace-nowrap" 
+                        size="lg"
+                      >
+                        Download for Mac
+                      </Button>
+                    </form>
+                  ) : (
+                    <Button 
+                      href={downloadUrl || "#"}
+                      className="bg-primary text-white text-lg"
+                      size="lg"
+                      disabled={!downloadUrl}
+                    >
+                      {downloadUrl ? 'Download for Mac' : 'Loading...'}
+                    </Button>
+                  )}
+                 
                 </div>
               </motion.div>
               <motion.div
@@ -258,14 +323,34 @@ export default function LandingPage() {
                       </li>
                     ))}
                   </ul>
-                  <Button
-                    href={downloadUrl || "#"}
-                    className="mt-auto w-full bg-primary text-white text-lg"
-                    size="lg"
-                    disabled={!downloadUrl}
-                  >
-                    {downloadUrl ? 'Download for Mac' : 'Loading...'}
-                  </Button>
+                  {!isEmailSubmitted ? (
+                    <form onSubmit={handleEmailSubmit} className="mt-auto w-full">
+                      <Input
+                        type="email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        placeholder="Enter your email"
+                        required
+                        className="mb-2"
+                      />
+                      <Button
+                        type="submit"
+                        className="w-full bg-primary text-white text-lg"
+                        size="lg"
+                      >
+                        Submit Email to Download
+                      </Button>
+                    </form>
+                  ) : (
+                    <Button
+                      href={downloadUrl || "#"}
+                      className="mt-auto w-full bg-primary text-white text-lg"
+                      size="lg"
+                      disabled={!downloadUrl}
+                    >
+                      {downloadUrl ? 'Download for Mac' : 'Loading...'}
+                    </Button>
+                  )}
                 </motion.div>
               ))}
             </div>
