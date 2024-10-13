@@ -99,27 +99,30 @@ export default function LandingPage() {
             About Dash
           </Link>
           {!isEmailSubmitted ? (
-            <form onSubmit={handleEmailSubmit} className="flex items-center">
+            <form onSubmit={handleEmailSubmit} className="flex items-center w-64">
               <Input
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="Enter your email"
                 required
-                className="mr-2 w-40 sm:w-auto"
+                className="mr-2 flex-grow"
               />
-              <Button type="submit" size="sm">
+              <Button type="submit" size="sm" className="whitespace-nowrap w-24">
                 Download
               </Button>
             </form>
           ) : (
-            <Button
-              href={downloadUrl || "#"}
-              size="sm"
-              disabled={!downloadUrl}
-            >
-              {downloadUrl ? 'Download' : 'Loading...'}
-            </Button>
+            <div className="w-64 flex justify-end">
+              <Button
+                href={downloadUrl || "#"}
+                size="sm"
+                disabled={!downloadUrl}
+                className="w-24"
+              >
+                {downloadUrl ? 'Download' : 'Loading...'}
+              </Button>
+            </div>
           )}
         </nav>
       </header>
@@ -337,8 +340,8 @@ export default function LandingPage() {
                       />
                       <Button
                         type="submit"
-                        className="w-full bg-primary text-white py-3" // Increased padding
-                        size="lg" // Ensure it's using the large size
+                        className="w-full bg-primary text-white py-3 text-lg"
+                        size="lg"
                       >
                         Submit Email to Download
                       </Button>
@@ -346,7 +349,7 @@ export default function LandingPage() {
                   ) : (
                     <Button
                       href={downloadUrl || "#"}
-                      className="mt-auto w-full bg-primary text-white text-lg"
+                      className="mt-auto w-full bg-primary text-white text-lg py-3"
                       size="lg"
                       disabled={!downloadUrl}
                     >
