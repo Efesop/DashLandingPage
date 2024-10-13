@@ -116,7 +116,7 @@ export default function LandingPage() {
             <div className="w-64 flex justify-end">
               <Button
                 href={downloadUrl || "#"}
-                size="sm"
+                size="lg"
                 disabled={!downloadUrl}
                 className="w-24"
               >
