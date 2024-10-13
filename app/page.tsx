@@ -142,17 +142,19 @@ export default function LandingPage() {
                 <div className="flex flex-col sm:flex-row gap-4 mt-8">
                   {!isEmailSubmitted ? (
                     <form onSubmit={handleEmailSubmit} className="flex flex-col sm:flex-row gap-4 w-full">
-                      <Input
-                        type="email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        placeholder="Enter your email"
-                        required
-                        className="flex-grow"
-                      />
+                      <div className="sm:w-2/3"> {/* Wrap Input in a div to control width */}
+                        <Input
+                          type="email"
+                          value={email}
+                          onChange={(e) => setEmail(e.target.value)}
+                          placeholder="Enter your email"
+                          required
+                          className="w-full"
+                        />
+                      </div>
                       <Button 
                         type="submit" 
-                        className="bg-primary text-white whitespace-nowrap" 
+                        className="bg-primary text-white whitespace-nowrap flex-shrink-0" 
                         size="lg"
                       >
                         Download for Mac
@@ -335,8 +337,8 @@ export default function LandingPage() {
                       />
                       <Button
                         type="submit"
-                        className="w-full bg-primary text-white text-lg"
-                        size="lg"
+                        className="w-full bg-primary text-white py-3" // Increased padding
+                        size="lg" // Ensure it's using the large size
                       >
                         Submit Email to Download
                       </Button>
