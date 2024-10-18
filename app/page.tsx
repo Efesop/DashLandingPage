@@ -4,6 +4,7 @@ import React, { useRef, useEffect, useState } from 'react';
 import Link from "next/link"
 import { Button } from "./components/ui/button"
 import { Input } from "./components/ui/input"
+import BuyMeCoffeeButton from "./components/ui/BuyMeCoffeeButton"
 import { Lock, Wifi, Laptop, ChevronRight, Play } from "lucide-react"
 import { motion } from "framer-motion"
 import Image from 'next/image'
@@ -89,12 +90,13 @@ export default function LandingPage() {
           <span className="font-bold text-xl">Dash</span>
         </Link>
         <nav className="ml-auto flex gap-4 sm:gap-6 items-center">
+          <BuyMeCoffeeButton />
           <Link className="text-sm font-medium hover:text-primary transition-colors" href="#features">
             Features
           </Link>
-          <Link className="text-sm font-medium hover:text-primary transition-colors" href="#pricing">
+          {/*<Link className="text-sm font-medium hover:text-primary transition-colors" href="#pricing">
             Free Download
-          </Link>
+          </Link>*/}
           <Link className="text-sm font-medium hover:text-primary transition-colors" href="#about">
             About Dash
           </Link>

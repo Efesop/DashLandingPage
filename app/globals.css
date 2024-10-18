@@ -65,3 +65,8 @@ video::-webkit-media-controls-start-playback-button {
 }
 
 /* Add this to your global CSS file or a styled component */
+
+#buy-me-coffee-container {
+  display: inline-block;
+  margin-right: 10px;
+}
