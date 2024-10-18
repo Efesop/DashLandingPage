@@ -5,7 +5,7 @@ import Link from "next/link"
 import { Button } from "./components/ui/button"
 import { Input } from "./components/ui/input"
 import BuyMeCoffeeButton from "./components/ui/BuyMeCoffeeButton"
-import { Lock, Wifi, Laptop, ChevronRight, Play } from "lucide-react"
+import { Lock, Wifi, Laptop, ChevronRight, Play, Coffee } from "lucide-react"
 import { motion } from "framer-motion"
 import Image from 'next/image'
 import videojs from 'video.js';
@@ -177,6 +177,15 @@ export default function LandingPage() {
                   )}
                  
                 </div>
+                <Button 
+                  href="https://buymeacoffee.com/efez"
+                  className="bg-yellow-400 text-black text-sm hover:bg-yellow-500 h-10 px-6"
+                  size="sm"
+                  rel="noopener noreferrer"
+                >
+                  <Coffee className="mr-2 h-5 w-5" />
+                  Buy me a coffee
+                </Button>
               </motion.div>
               <motion.div
                 initial={{ opacity: 0, scale: 0.8 }}
@@ -294,7 +303,7 @@ export default function LandingPage() {
               transition={{ duration: 0.5 }}
               className="text-3xl font-bold tracking-tighter sm:text-5xl text-center mb-12"
             >
-              Download Now
+              Download Now - No Account Needed
             </motion.h2>
             <div className="grid grid-cols-1 md:grid-cols-1 gap-8 justify-center max-w-4xl mx-auto">
               {[
