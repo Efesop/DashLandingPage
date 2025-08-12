@@ -19,6 +19,7 @@ export default function LandingPage() {
   const [downloadUrl, setDownloadUrl] = useState('');
   const [email, setEmail] = useState('');
   const [isEmailSubmitted, setIsEmailSubmitted] = useState(false);
+  const [downloadError, setDownloadError] = useState('');
 
   const handleEmailSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -72,14 +73,26 @@ export default function LandingPage() {
   useEffect(() => {
     if (isEmailSubmitted) {
       fetch('https://api.github.com/repos/Efesop/rich-text-editor/releases/latest')
-        .then(response => response.json())
+        .then(response => {
+          if (!response.ok) {
+            throw new Error(`GitHub API error: ${response.status}`);
+          }
+          return response.json();
+        })
         .then(data => {
           const macAsset = data.assets.find((asset: any) => asset.name.endsWith('-arm64.dmg'));
           if (macAsset) {
             setDownloadUrl(macAsset.browser_download_url);
-          } 
+            setDownloadError('');
+          } else {
+            setDownloadError('Mac build not found in latest release');
+            console.error('No ARM64 DMG asset found in release');
+          }
         })
-        .catch(error => console.error('Error fetching latest release:', error));
+        .catch(error => {
+          console.error('Error fetching latest release:', error);
+          setDownloadError('Failed to fetch latest release');
+        });
     }
   }, [isEmailSubmitted]);
 
@@ -116,14 +129,20 @@ export default function LandingPage() {
             </form>
           ) : (
             <div className="w-64 flex justify-end">
-              <Button
-                href={downloadUrl || "#"}
-                size="sm"
-                disabled={!downloadUrl}
-                className="w-24"
-              >
-                {downloadUrl ? 'Download' : 'Loading...'}
-              </Button>
+              {downloadError ? (
+                <div className="text-sm text-red-500 text-right">
+                  {downloadError}
+                </div>
+              ) : (
+                <Button
+                  href={downloadUrl || "#"}
+                  size="sm"
+                  disabled={!downloadUrl}
+                  className="w-24"
+                >
+                  {downloadUrl ? 'Download' : 'Loading...'}
+                </Button>
+              )}
             </div>
           )}
         </nav>
@@ -166,14 +185,30 @@ export default function LandingPage() {
                       </Button>
                     </form>
                   ) : (
-                    <Button 
-                      href={downloadUrl || "#"}
-                      className="bg-primary text-white text-lg"
-                      size="lg"
-                      disabled={!downloadUrl}
-                    >
-                      {downloadUrl ? 'Download for Mac' : 'Loading...'}
-                    </Button>
+                    <>
+                      {downloadError ? (
+                        <div className="text-red-500 text-center p-4 bg-red-50 rounded-lg">
+                          <p className="font-medium">Download Error</p>
+                          <p className="text-sm">{downloadError}</p>
+                          <Button 
+                            onClick={() => window.location.reload()}
+                            className="mt-2 bg-red-600 text-white"
+                            size="sm"
+                          >
+                            Try Again
+                          </Button>
+                        </div>
+                      ) : (
+                        <Button 
+                          href={downloadUrl || "#"}
+                          className="bg-primary text-white text-lg"
+                          size="lg"
+                          disabled={!downloadUrl}
+                        >
+                          {downloadUrl ? 'Download for Mac' : 'Loading...'}
+                        </Button>
+                      )}
+                    </>
                   )}
                  
                 </div>
@@ -358,14 +393,30 @@ export default function LandingPage() {
                       </Button>
                     </form>
                   ) : (
-                    <Button
-                      href={downloadUrl || "#"}
-                      className="mt-auto w-full bg-primary text-white text-lg py-3"
-                      size="lg"
-                      disabled={!downloadUrl}
-                    >
-                      {downloadUrl ? 'Download for Mac' : 'Loading...'}
-                    </Button>
+                    <>
+                      {downloadError ? (
+                        <div className="mt-auto w-full text-center p-4 bg-red-50 rounded-lg">
+                          <p className="text-red-600 font-medium">Download Error</p>
+                          <p className="text-red-500 text-sm">{downloadError}</p>
+                          <Button 
+                            onClick={() => window.location.reload()}
+                            className="mt-2 bg-red-600 text-white"
+                            size="sm"
+                          >
+                            Try Again
+                          </Button>
+                        </div>
+                      ) : (
+                        <Button
+                          href={downloadUrl || "#"}
+                          className="mt-auto w-full bg-primary text-white text-lg py-3"
+                          size="lg"
+                          disabled={!downloadUrl}
+                        >
+                          {downloadUrl ? 'Download for Mac' : 'Loading...'}
+                        </Button>
+                      )}
+                    </>
                   )}
                 </motion.div>
               ))}
