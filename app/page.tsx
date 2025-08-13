@@ -238,7 +238,7 @@ export default function LandingPage() {
                     Own Your Notes
                     <br />
                     <span className="text-blue-600 dark:text-blue-400">For Real</span>
-                  </h1>
+                </h1>
                   
                   <p className="text-xl text-gray-600 dark:text-gray-300 leading-relaxed max-w-xl">
                     The only notes app that puts <strong>you</strong> in complete control. No cloud, no tracking, no corporate surveillance.
@@ -313,19 +313,16 @@ export default function LandingPage() {
                 </p>
               </motion.div>
 
-              {/* Right side - Video prominently featured */}
+                            {/* Right side - Video prominently featured */}
               <motion.div
                 initial={{ opacity: 0, x: 30 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
-                className="relative"
+                className="relative scale-110"
               >
-                <div className="relative group">
-                  {/* Glow effect */}
-                  <div className="absolute -inset-6 bg-gradient-to-r from-blue-500/20 via-blue-600/20 to-blue-500/20 rounded-3xl blur-2xl opacity-75 group-hover:opacity-100 transition-opacity" />
-                  
+                <div className="relative">
                   {/* Video container */}
-                  <div className="relative rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-700 shadow-2xl bg-white dark:bg-gray-900">
+                  <div className="relative rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
                 <div 
                   data-vjs-player 
                       className="aspect-video"
