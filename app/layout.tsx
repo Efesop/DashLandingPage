@@ -14,18 +14,20 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Dash - Own Your Notes For Real",
-  description: "Dash is a secure, offline-first note-taking app that keeps your data private and local.",
+  title: "Dash - Own Your Notes For Real | Private, Encrypted Notes App",
+  description: "Military-grade encrypted notes app that keeps your data 100% offline and private. No cloud, no tracking, no accounts needed. AES-256 encryption protects your thoughts from Big Tech surveillance.",
+  keywords: "private notes app, encrypted notes, offline notes, secure note taking, privacy notes, no cloud notes, local storage notes, military grade encryption, AES-256, privacy-first app",
   openGraph: {
-    title: "Dash - Own Your Notes For Real",
-    description: "Secure, offline-first note-taking app that keeps your data private and local.",
+    title: "Dash - Own Your Notes For Real | Private, Encrypted Notes App",
+    description: "Military-grade encrypted notes app that keeps your data 100% offline and private. No cloud, no tracking, no accounts needed.",
     url: "https://dashnote.io",
     siteName: "Dash",
     images: [
       {
-        url: "https://dashnote.io/og-image.png", // Make sure to create and add this image
+        url: "https://dashnote.io/og-image.png",
         width: 1200,
         height: 630,
+        alt: "Dash - Private Notes App Interface"
       },
     ],
     locale: "en_US",
@@ -34,9 +36,23 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Dash - Own Your Notes For Real",
-    description: "Secure, offline-first note-taking app that keeps your data private and local.",
+    description: "Military-grade encrypted notes app. 100% offline, no cloud, no tracking.",
     creator: "@efesopoulos",
-    images: ["https://dashnote.io/twitter-image.png"], // Make sure to create and add this image
+    images: ["https://dashnote.io/twitter-image.png"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  verification: {
+    google: "your-google-verification-code",
   },
 };
 
