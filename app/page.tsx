@@ -139,7 +139,7 @@ export default function LandingPage() {
             "name": "Dash",
             "applicationCategory": "ProductivityApplication",
             "description": "Private notes app that keeps your data 100% offline and secure",
-            "operatingSystem": ["macOS", "Windows", "Linux"],
+            "operatingSystem": ["macOS"],
             "offers": {
               "@type": "Offer",
               "price": "0",
@@ -256,7 +256,7 @@ export default function LandingPage() {
                   </div>
                   <div className="flex items-center gap-3">
                     <CheckCircle className="w-5 h-5 text-green-600" />
-                    <span className="font-medium">Free forever</span>
+                    <span className="font-medium">Private by design</span>
                   </div>
                 </div>
 
@@ -309,7 +309,7 @@ export default function LandingPage() {
                 </div>
 
                 <p className="text-gray-500 dark:text-gray-400">
-                  Free forever • No account required • Works on Mac, Windows & Linux
+                  No account required • Works on Mac
                 </p>
               </motion.div>
 
@@ -840,13 +840,7 @@ export default function LandingPage() {
                             evernote: false, 
                             obsidian: false 
                           },
-                          { 
-                            feature: "Free Forever", 
-                            dash: true, 
-                            notion: false, 
-                            evernote: false, 
-                            obsidian: true 
-                          },
+                          
                           { 
                             feature: "No Monthly Subscription", 
                             dash: true, 
@@ -952,7 +946,7 @@ export default function LandingPage() {
                 },
                 {
                   question: "Is Dash really free?",
-                  answer: "Yes, Dash is completely free forever. No subscriptions, no premium tiers, no hidden costs. We believe privacy is a fundamental right, not a premium feature."
+                  answer: "Dash is a one-time purchase with no subscriptions or hidden costs. We believe privacy is a fundamental right, not a premium feature."
                 },
                 {
                   question: "How secure is the encryption?",
@@ -1072,7 +1066,7 @@ export default function LandingPage() {
               </div>
               
               <p className="text-blue-200 mb-8">
-                Free forever • No account required • 2MB download • Mac, Windows & Linux
+                No account required • Mac
               </p>
               
               <Button 
