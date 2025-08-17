@@ -1,10 +1,23 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Shield, Lock, CheckCircle, CreditCard, Download } from 'lucide-react';
+import {
+  Shield,
+  Lock,
+  CheckCircle,
+  CreditCard,
+  Download,
+  Loader2,
+} from 'lucide-react';
 import { motion } from 'framer-motion';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
+import {
+  createCheckoutSession,
+  validateEmail,
+  handlePaymentError,
+} from '../../lib/payment';
+import { CheckoutSessionRequest } from '../../types/payment';
 
 interface PaymentSectionProps {
   email: string;
@@ -26,15 +39,41 @@ export default function PaymentSection({
   const [isProcessing, setIsProcessing] = useState(false);
   const [isCompleted, setIsCompleted] = useState(false);
 
-  const handlePayment = async (e: React.FormEvent<HTMLFormElement>) => {
+    const handlePayment = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    
+    // Validate email
+    if (!validateEmail(email)) {
+      alert('Please enter a valid email address');
+      return;
+    }
+    
     setIsProcessing(true);
-
-    // Simulate payment processing
-    setTimeout(() => {
+    
+    try {
+      // Create checkout session request
+      const request: CheckoutSessionRequest = {
+        email,
+        productId: 'dash-notes-app',
+        successUrl: `${window.location.origin}/payment/success?session_id={CHECKOUT_SESSION_ID}`,
+        cancelUrl: `${window.location.origin}/payment/cancel`,
+      };
+      
+      // Create Stripe checkout session
+      const response = await createCheckoutSession(request);
+      
+      // Redirect to Stripe Checkout
+      if (response.url) {
+        window.location.href = response.url;
+      } else {
+        throw new Error('No checkout URL received');
+      }
+    } catch (error) {
+      console.error('Payment error:', error);
+      const paymentError = handlePaymentError(error);
+      alert(`Payment failed: ${paymentError.message}`);
       setIsProcessing(false);
-      setIsCompleted(true);
-    }, 2000);
+    }
   };
 
   if (isCompleted) {
@@ -173,23 +212,23 @@ export default function PaymentSection({
                 </p>
               </div>
 
-              <Button
-                type='submit'
-                disabled={isProcessing}
-                className='w-full bg-blue-600 hover:bg-blue-700 text-white py-3 text-lg font-semibold'
-              >
-                {isProcessing ? (
-                  <>
-                    <div className='w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin mr-2' />
-                    Processing...
-                  </>
-                ) : (
-                  <>
-                    <CreditCard className='mr-2 h-5 w-5' />
-                    Complete Purchase
-                  </>
-                )}
-              </Button>
+                                              <Button
+                                  type='submit'
+                                  disabled={isProcessing}
+                                  className='w-full bg-blue-600 hover:bg-blue-700 text-white py-3 text-lg font-semibold'
+                                >
+                                  {isProcessing ? (
+                                    <>
+                                      <Loader2 className='w-5 h-5 animate-spin mr-2' />
+                                      Creating Checkout...
+                                    </>
+                                  ) : (
+                                    <>
+                                      <CreditCard className='mr-2 h-5 w-5' />
+                                      Complete Purchase
+                                    </>
+                                  )}
+                                </Button>
             </form>
           </div>
         </div>
