@@ -1,22 +1,22 @@
-'use client'
+'use client';
 
-import React, { useRef, useEffect } from 'react'
-import Link from 'next/link'
-import { Lock, CheckCircle } from 'lucide-react'
-import { motion } from 'framer-motion'
-import { Input } from './ui/input'
-import { Button } from './ui/button'
-import videojs from 'video.js'
-import 'video.js/dist/video-js.css'
-import type Player from 'video.js/dist/types/player'
+import React, { useRef, useEffect } from 'react';
+import Link from 'next/link';
+import { Lock, CheckCircle } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { Input } from './ui/input';
+import { Button } from './ui/button';
+import videojs from 'video.js';
+import 'video.js/dist/video-js.css';
+import type Player from 'video.js/dist/types/player';
 
 interface HeroSectionProps {
-  email: string
-  setEmail: (email: string) => void
-  isEmailSubmitted: boolean
-  downloadError: string
-  downloadUrl: string
-  handleEmailSubmit: (e: React.FormEvent<HTMLFormElement>) => void
+  email: string;
+  setEmail: (email: string) => void;
+  isEmailSubmitted: boolean;
+  downloadError: string;
+  downloadUrl: string;
+  handleEmailSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
 }
 
 export default function HeroSection({
@@ -25,15 +25,15 @@ export default function HeroSection({
   isEmailSubmitted,
   downloadError,
   downloadUrl,
-  handleEmailSubmit
+  handleEmailSubmit,
 }: HeroSectionProps) {
-  const videoRef = useRef<HTMLVideoElement | null>(null)
-  const playerRef = useRef<Player | null>(null)
+  const videoRef = useRef<HTMLVideoElement | null>(null);
+  const playerRef = useRef<Player | null>(null);
 
   useEffect(() => {
     if (!playerRef.current) {
-      const videoElement = videoRef.current
-      if (!videoElement) return
+      const videoElement = videoRef.current;
+      if (!videoElement) return;
 
       playerRef.current = videojs(videoElement, {
         autoplay: true,
@@ -41,17 +41,17 @@ export default function HeroSection({
         controls: false,
         responsive: true,
         fluid: true,
-        sources: [{ src: '/images/Dash.mp4', type: 'video/mp4' }]
-      })
+        sources: [{ src: '/images/Dash.mp4', type: 'video/mp4' }],
+      });
     }
 
     return () => {
       if (playerRef.current) {
-        playerRef.current.dispose()
-        playerRef.current = null
+        playerRef.current.dispose();
+        playerRef.current = null;
       }
-    }
-  }, [])
+    };
+  }, []);
 
   return (
     <section className='relative overflow-hidden bg-gradient-to-b from-white via-blue-50/30 to-white dark:from-gray-950 dark:via-blue-950/20 dark:to-gray-950'>
@@ -89,9 +89,8 @@ export default function HeroSection({
               </h1>
 
               <p className='text-xl text-gray-600 dark:text-gray-300 leading-relaxed max-w-xl'>
-                The only notes app that puts <strong>you</strong> in
-                complete control. No cloud, no tracking, no corporate
-                surveillance.
+                The only notes app that puts <strong>you</strong> in complete
+                control. No cloud, no tracking, no corporate surveillance.
               </p>
             </div>
 
@@ -110,32 +109,16 @@ export default function HeroSection({
               </div>
             </div>
 
-            <div className='flex flex-col sm:flex-row gap-6 pt-6'>
-              {!isEmailSubmitted ? (
-                <form
-                  onSubmit={handleEmailSubmit}
-                  className='flex w-full max-w-lg gap-4'
-                >
-                  <Input
-                    type='email'
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    placeholder='Enter your email'
-                    required
-                    className='flex-1 h-12 border-gray-300 focus:border-blue-500 focus:ring-blue-500'
-                    aria-label='Email address for download'
-                  />
-                  <Link
-                    href='https://buy.stripe.com/cN29B00000000000000000000'
-                    className='h-12 px-6 bg-blue-600 hover:bg-blue-700 text-white font-semibold inline-flex items-center justify-center rounded-md'
-                  >
-                    Buy now
-                  </Link>
-                </form>
-              ) : (
-                <Button>Redirect to payment</Button>
-              )}
-            </div>
+            <Button
+              onClick={() =>
+                document
+                  .getElementById('payment-section')
+                  ?.scrollIntoView({ behavior: 'smooth' })
+              }
+              className='h-12 w-1/3 bg-blue-600 hover:bg-blue-700 text-white font-semibold'
+            >
+              Get Dash for Mac
+            </Button>
 
             <p className='text-gray-500 dark:text-gray-400'>
               No account required • Works on Mac
@@ -186,5 +169,5 @@ export default function HeroSection({
         </div>
       </div>
     </section>
-  )
+  );
 }

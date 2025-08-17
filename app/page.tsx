@@ -9,6 +9,7 @@ import SecuritySection from './components/SecuritySection';
 import BenefitsSection from './components/BenefitsSection';
 import ComparisonTable from './components/ComparisonTable';
 import FAQSection from './components/FAQSection';
+import PaymentSection from './components/PaymentSection';
 import CTASection from './components/CTASection';
 import Footer from './components/Footer';
 
@@ -114,6 +115,7 @@ export default function LandingPage() {
         <SecuritySection />
         <BenefitsSection />
         <ComparisonTable />
+        <PaymentSection {...sharedProps} />
         <FAQSection />
         <CTASection {...sharedProps} />
       </main>
