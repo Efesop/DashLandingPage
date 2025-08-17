@@ -126,77 +126,71 @@ export default function PaymentSection({
             </p>
           </motion.div>
 
-          <div className='gap-12 items-start'>
-            {/* Payment Form */}
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-              className='bg-white dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-700 p-8 shadow-xl'
-            >
-              <div className='flex items-center gap-3 mb-6'>
-                <CreditCard className='w-6 h-6 text-blue-600' />
-                <h3 className='text-2xl font-bold text-gray-900 dark:text-white'>
-                  Complete Your Purchase
-                </h3>
-              </div>
+          <div className='bg-white  flex flex-col border border-gray-200 dark:border-gray-700 rounded-2xl p-8 w-1/2 mx-auto'>
+            <div className='flex items-center justify-center gap-3 mb-2'>
+              <CreditCard className='w-6 h-6 text-blue-600' />
+              <h3 className='text-2xl font-bold text-gray-900 dark:text-white'>
+                Complete Your Purchase
+              </h3>
+            </div>
 
-              <form onSubmit={handlePayment} className='space-y-6'>
-                <div className='space-y-4'>
-                  <span className='font-semibold text-gray-900 dark:text-white text-2xl'>
+            <form onSubmit={handlePayment} className='space-y-6'>
+              <div className='flex flex-col items-center justify-center'>
+                <div className='flex items-center justify-center mb-2'>
+                  <span className='font-bold text-gray-900 dark:text-white text-3xl'>
                     $9.99
                   </span>
-
-                  <h3 className='text-2xl font-bold text-gray-900 dark:text-white mb-6'>
-                    What You Get
-                  </h3>
-                  <div className='space-y-4'>
-                    {[
-                      'Full access to Dash Notes App',
-                      'Lifetime license (no subscriptions)',
-                      'Free updates and new features',
-                      'Priority customer support',
-                      '30-day money-back guarantee',
-                    ].map((benefit, index) => (
-                      <div key={index} className='flex items-center gap-3'>
-                        <CheckCircle className='w-5 h-5 text-green-600 flex-shrink-0' />
-                        <span className='text-gray-700 dark:text-gray-300'>
-                          {benefit}
-                        </span>
-                      </div>
-                    ))}
-                  </div>
                 </div>
 
-                <div className='border-t border-gray-200 dark:border-gray-700 pt-4'>
-                  <div className='flex items-center justify-between text-lg font-bold text-gray-900 dark:text-white'>
-                    <span>Total</span>
-                    <span>$9.99</span>
-                  </div>
-                  <p className='text-sm text-gray-500 dark:text-gray-400 mt-1'>
-                    One-time payment, no subscriptions
-                  </p>
+                <h3 className='text-2xl font-bold text-gray-900 dark:text-white mb-4'>
+                  What You Get:
+                </h3>
+                <div className='space-y-4'>
+                  {[
+                    'Full access to Dash Notes App',
+                    'Lifetime license (no subscriptions)',
+                    'Free updates and new features',
+                    'Priority customer support',
+                    '30-day money-back guarantee',
+                  ].map((benefit, index) => (
+                    <div key={index} className='flex items-center gap-3'>
+                      <CheckCircle className='w-5 h-5 text-green-600 flex-shrink-0' />
+                      <span className='text-gray-700 dark:text-gray-300'>
+                        {benefit}
+                      </span>
+                    </div>
+                  ))}
                 </div>
+              </div>
 
-                <Button
-                  type='submit'
-                  disabled={isProcessing}
-                  className='w-full bg-blue-600 hover:bg-blue-700 text-white py-3 text-lg font-semibold'
-                >
-                  {isProcessing ? (
-                    <>
-                      <div className='w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin mr-2' />
-                      Processing...
-                    </>
-                  ) : (
-                    <>
-                      <CreditCard className='mr-2 h-5 w-5' />
-                      Complete Purchase
-                    </>
-                  )}
-                </Button>
-              </form>
-            </motion.div>
+              <div className='border-t border-gray-200 dark:border-gray-700 pt-4'>
+                <div className='flex items-center justify-between text-lg font-bold text-gray-900 dark:text-white'>
+                  <span>Total</span>
+                  <span>$9.99</span>
+                </div>
+                <p className='text-sm text-gray-500 dark:text-gray-400 mt-1'>
+                  One-time payment, no subscriptions
+                </p>
+              </div>
+
+              <Button
+                type='submit'
+                disabled={isProcessing}
+                className='w-full bg-blue-600 hover:bg-blue-700 text-white py-3 text-lg font-semibold'
+              >
+                {isProcessing ? (
+                  <>
+                    <div className='w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin mr-2' />
+                    Processing...
+                  </>
+                ) : (
+                  <>
+                    <CreditCard className='mr-2 h-5 w-5' />
+                    Complete Purchase
+                  </>
+                )}
+              </Button>
+            </form>
           </div>
         </div>
       </div>
