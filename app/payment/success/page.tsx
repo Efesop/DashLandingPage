@@ -15,6 +15,8 @@ export default function PaymentSuccess() {
   const [isLoading, setIsLoading] = useState(true);
   const [paymentDetails, setPaymentDetails] = useState<any>(null);
   const [error, setError] = useState<string | null>(null);
+  const [downloadToken, setDownloadToken] = useState<string | null>(null);
+  const [downloadsRemaining, setDownloadsRemaining] = useState<number>(0);
 
   useEffect(() => {
     const verifyPayment = async () => {
@@ -35,6 +37,23 @@ export default function PaymentSuccess() {
         // Check if payment was successful based on paymentStatus
         if (data.paymentStatus === 'paid') {
           setPaymentDetails(data);
+
+          // Generate secure download token
+          const tokenResponse = await fetch('/api/generate-download-token', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ sessionId }),
+          });
+
+          if (tokenResponse.ok) {
+            const tokenData = await tokenResponse.json();
+            setDownloadToken(tokenData.downloadToken);
+            setDownloadsRemaining(tokenData.downloadsRemaining);
+          } else {
+            console.error('Failed to generate download token');
+          }
         } else {
           setError(
             `Payment verification failed. Status: ${data.paymentStatus}`
@@ -124,14 +143,38 @@ export default function PaymentSuccess() {
           </p>
 
           <div className='space-y-4'>
-            <Button
-              href='/api/latest-release'
-              className='bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 text-lg'
-              rel='noopener noreferrer'
-            >
-              <Download className='mr-2 h-5 w-5' />
-              Download Dash
-            </Button>
+            {downloadToken ? (
+              <div className='space-y-4'>
+                <Button
+                  href={`/api/secure-download?token=${downloadToken}`}
+                  className='bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 text-lg'
+                  rel='noopener noreferrer'
+                >
+                  <Download className='mr-2 h-5 w-5' />
+                  Download Dash
+                </Button>
+
+                <div className='bg-blue-50 dark:bg-blue-950/30 rounded-lg p-4 text-sm'>
+                  <p className='text-blue-800 dark:text-blue-200'>
+                    🔒 Secure download link • {downloadsRemaining} downloads
+                    remaining
+                  </p>
+                  <p className='text-blue-600 dark:text-blue-300 mt-1'>
+                    Save this page to re-download if needed (expires in 24
+                    hours)
+                  </p>
+                </div>
+              </div>
+            ) : (
+              <Button
+                href='/api/latest-release'
+                className='bg-gray-500 text-white px-8 py-3 text-lg cursor-not-allowed'
+                disabled
+              >
+                <Download className='mr-2 h-5 w-5' />
+                Generating Secure Link...
+              </Button>
+            )}
 
             <div className='pt-4'>
               <Link
