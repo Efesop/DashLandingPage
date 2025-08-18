@@ -40,8 +40,8 @@ export async function POST(request: NextRequest) {
     // Generate a secure, time-limited download token
     const downloadToken = generateDownloadToken({
       sessionId,
-      customerEmail: paymentVerification.customerEmail,
-      purchaseAmount: paymentVerification.amount,
+      customerEmail: paymentVerification.customerEmail || 'unknown',
+      purchaseAmount: paymentVerification.amount || 0,
       expiresIn: 24 * 60 * 60 * 1000, // 24 hours
       maxDownloads: 3, // Allow 3 downloads for reliability
     });
