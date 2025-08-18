@@ -162,7 +162,7 @@ export default function PaymentSection({}: PaymentSectionProps) {
               <div className='flex flex-col items-center justify-center'>
                 <div className='flex items-center justify-center mb-2'>
                   <span className='font-bold text-gray-900 dark:text-white text-2xl sm:text-3xl'>
-                    $9.99
+                    $14.99
                   </span>
                 </div>
 
@@ -190,7 +190,7 @@ export default function PaymentSection({}: PaymentSectionProps) {
               <div className='border-t border-gray-200 dark:border-gray-700 pt-4'>
                 <div className='flex items-center justify-between text-base sm:text-lg font-bold text-gray-900 dark:text-white'>
                   <span>Total</span>
-                  <span>$9.99</span>
+                  <span>$14.99</span>
                 </div>
                 <p className='text-xs sm:text-sm text-gray-500 dark:text-gray-400 mt-1'>
                   One-time payment, no subscriptions
