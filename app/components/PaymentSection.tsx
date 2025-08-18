@@ -12,56 +12,38 @@ import {
 import { motion } from 'framer-motion';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
-import {
-  createCheckoutSession,
-  validateEmail,
-  handlePaymentError,
-} from '../../lib/payment';
+import { createCheckoutSession, handlePaymentError } from '../../lib/payment';
 import { CheckoutSessionRequest } from '../../types/payment';
 
 interface PaymentSectionProps {
-  email: string;
-  setEmail: (email: string) => void;
-  isEmailSubmitted: boolean;
-  downloadError: string;
-  downloadUrl: string;
-  handleEmailSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
+  // No props needed - this component is self-contained
 }
 
-export default function PaymentSection({
-  email,
-  setEmail,
-  isEmailSubmitted,
-  downloadError,
-  downloadUrl,
-  handleEmailSubmit,
-}: PaymentSectionProps) {
+export default function PaymentSection({}: PaymentSectionProps) {
   const [isProcessing, setIsProcessing] = useState(false);
   const [isCompleted, setIsCompleted] = useState(false);
 
-    const handlePayment = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handlePayment = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    
-    // Validate email
-    if (!validateEmail(email)) {
-      alert('Please enter a valid email address');
-      return;
-    }
-    
+
     setIsProcessing(true);
-    
+
     try {
+      console.log('Creating checkout session...');
+
       // Create checkout session request
       const request: CheckoutSessionRequest = {
-        email,
+        email: '', // Stripe will collect email in their form
         productId: 'dash-notes-app',
         successUrl: `${window.location.origin}/payment/success?session_id={CHECKOUT_SESSION_ID}`,
         cancelUrl: `${window.location.origin}/payment/cancel`,
       };
-      
+
+      console.log('Request payload:', request);
+
       // Create Stripe checkout session
       const response = await createCheckoutSession(request);
-      
+
       // Redirect to Stripe Checkout
       if (response.url) {
         window.location.href = response.url;
@@ -71,6 +53,7 @@ export default function PaymentSection({
     } catch (error) {
       console.error('Payment error:', error);
       const paymentError = handlePaymentError(error);
+      console.error('Payment error details:', paymentError);
       alert(`Payment failed: ${paymentError.message}`);
       setIsProcessing(false);
     }
@@ -140,32 +123,34 @@ export default function PaymentSection({
   return (
     <section
       id='payment-section'
-      className='py-20 bg-gradient-to-b from-blue-50 to-white dark:from-blue-950/20 dark:to-gray-950'
+      className='py-12 sm:py-16 lg:py-20 bg-gradient-to-b from-blue-50 to-white dark:from-blue-950/20 dark:to-gray-950'
     >
-      <div className='container mx-auto px-6 lg:px-8'>
+      <div className='container mx-auto px-4 sm:px-6 lg:px-8'>
         <div className='max-w-6xl mx-auto'>
           {/* Section Header */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className='text-center mb-16'
+            className='text-center mb-12 sm:mb-16'
           >
-            <div className='inline-flex items-center rounded-full bg-blue-50 dark:bg-blue-950/50 px-4 py-2 text-blue-700 dark:text-blue-300 border border-blue-200 dark:border-blue-800 mb-6'>
-              <Lock className='mr-2 h-4 w-4' />
-              <span className='text-sm font-medium'>Secure Purchase</span>
+            <div className='inline-flex items-center rounded-full bg-blue-50 dark:bg-blue-950/50 px-3 sm:px-4 py-2 text-blue-700 dark:text-blue-300 border border-blue-200 dark:border-blue-800 mb-4 sm:mb-6'>
+              <Lock className='mr-2 h-3 w-3 sm:h-4 sm:w-4' />
+              <span className='text-xs sm:text-sm font-medium'>
+                Secure Purchase
+              </span>
             </div>
 
-            <h2 className='text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6'>
+            <h2 className='text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6'>
               Get Dash Today
             </h2>
 
-            <p className='text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto'>
+            <p className='text-lg sm:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto px-4 sm:px-0'>
               Join thousands of privacy-conscious users who've chosen Dash over
               corporate surveillance. One payment, lifetime access.
             </p>
           </motion.div>
 
-          <div className='bg-white  flex flex-col border border-gray-200 dark:border-gray-700 rounded-2xl p-8 w-1/2 mx-auto'>
+          <div className='bg-white dark:bg-gray-900 flex flex-col border border-gray-200 dark:border-gray-700 rounded-2xl p-4 sm:p-6 lg:p-8 w-full max-w-md sm:max-w-lg lg:max-w-xl mx-auto'>
             <div className='flex items-center justify-center gap-3 mb-2'>
               <CreditCard className='w-6 h-6 text-blue-600' />
               <h3 className='text-2xl font-bold text-gray-900 dark:text-white'>
@@ -173,18 +158,18 @@ export default function PaymentSection({
               </h3>
             </div>
 
-            <form onSubmit={handlePayment} className='space-y-6'>
+            <form onSubmit={handlePayment} className='space-y-4 sm:space-y-6'>
               <div className='flex flex-col items-center justify-center'>
                 <div className='flex items-center justify-center mb-2'>
-                  <span className='font-bold text-gray-900 dark:text-white text-3xl'>
+                  <span className='font-bold text-gray-900 dark:text-white text-2xl sm:text-3xl'>
                     $9.99
                   </span>
                 </div>
 
-                <h3 className='text-2xl font-bold text-gray-900 dark:text-white mb-4'>
+                <h3 className='text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-4 text-center'>
                   What You Get:
                 </h3>
-                <div className='space-y-4'>
+                <div className='space-y-3 sm:space-y-4 w-full'>
                   {[
                     'Full access to Dash Notes App',
                     'Lifetime license (no subscriptions)',
@@ -192,9 +177,9 @@ export default function PaymentSection({
                     'Priority customer support',
                     '30-day money-back guarantee',
                   ].map((benefit, index) => (
-                    <div key={index} className='flex items-center gap-3'>
-                      <CheckCircle className='w-5 h-5 text-green-600 flex-shrink-0' />
-                      <span className='text-gray-700 dark:text-gray-300'>
+                    <div key={index} className='flex items-start gap-3'>
+                      <CheckCircle className='w-4 h-4 sm:w-5 sm:h-5 text-green-600 flex-shrink-0 mt-0.5' />
+                      <span className='text-sm sm:text-base text-gray-700 dark:text-gray-300 leading-relaxed'>
                         {benefit}
                       </span>
                     </div>
@@ -203,32 +188,32 @@ export default function PaymentSection({
               </div>
 
               <div className='border-t border-gray-200 dark:border-gray-700 pt-4'>
-                <div className='flex items-center justify-between text-lg font-bold text-gray-900 dark:text-white'>
+                <div className='flex items-center justify-between text-base sm:text-lg font-bold text-gray-900 dark:text-white'>
                   <span>Total</span>
                   <span>$9.99</span>
                 </div>
-                <p className='text-sm text-gray-500 dark:text-gray-400 mt-1'>
+                <p className='text-xs sm:text-sm text-gray-500 dark:text-gray-400 mt-1'>
                   One-time payment, no subscriptions
                 </p>
               </div>
 
-                                              <Button
-                                  type='submit'
-                                  disabled={isProcessing}
-                                  className='w-full bg-blue-600 hover:bg-blue-700 text-white py-3 text-lg font-semibold'
-                                >
-                                  {isProcessing ? (
-                                    <>
-                                      <Loader2 className='w-5 h-5 animate-spin mr-2' />
-                                      Creating Checkout...
-                                    </>
-                                  ) : (
-                                    <>
-                                      <CreditCard className='mr-2 h-5 w-5' />
-                                      Complete Purchase
-                                    </>
-                                  )}
-                                </Button>
+              <Button
+                type='submit'
+                disabled={isProcessing}
+                className='w-full bg-blue-600 hover:bg-blue-700 text-white py-2.5 sm:py-3 text-base sm:text-lg font-semibold'
+              >
+                {isProcessing ? (
+                  <>
+                    <Loader2 className='w-5 h-5 animate-spin mr-2' />
+                    Creating Checkout...
+                  </>
+                ) : (
+                  <>
+                    <CreditCard className='mr-2 h-5 w-5' />
+                    Complete Purchase
+                  </>
+                )}
+              </Button>
             </form>
           </div>
         </div>

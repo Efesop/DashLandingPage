@@ -1,25 +1,36 @@
-import { NextRequest, NextResponse } from 'next/server'
-import stripe from '../../../lib/stripe'
+import { NextRequest, NextResponse } from 'next/server';
+import stripe from '../../../lib/stripe';
+
+// Force dynamic rendering for this API route
+export const dynamic = 'force-dynamic';
 
 export async function POST(request: NextRequest) {
   try {
-    const { sessionId } = await request.json()
+    // Check if Stripe is configured
+    if (!stripe) {
+      return NextResponse.json(
+        {
+          error:
+            'Stripe is not configured. Please add STRIPE_SECRET_KEY to your environment variables.',
+        },
+        { status: 500 }
+      );
+    }
+
+    const { sessionId } = await request.json();
 
     if (!sessionId) {
       return NextResponse.json(
         { error: 'Session ID is required' },
         { status: 400 }
-      )
+      );
     }
 
     // Retrieve the checkout session from Stripe
-    const session = await stripe.checkout.sessions.retrieve(sessionId)
+    const session = await stripe.checkout.sessions.retrieve(sessionId);
 
     if (!session) {
-      return NextResponse.json(
-        { error: 'Session not found' },
-        { status: 404 }
-      )
+      return NextResponse.json({ error: 'Session not found' }, { status: 404 });
     }
 
     // Check if payment was successful
@@ -32,7 +43,7 @@ export async function POST(request: NextRequest) {
         currency: session.currency,
         status: session.status,
         paymentStatus: session.payment_status,
-      })
+      });
     } else {
       return NextResponse.json({
         success: false,
@@ -40,41 +51,49 @@ export async function POST(request: NextRequest) {
         status: session.status,
         paymentStatus: session.payment_status,
         error: 'Payment not completed',
-      })
+      });
     }
   } catch (error) {
-    console.error('Error verifying payment:', error)
-    
+    console.error('Error verifying payment:', error);
+
     return NextResponse.json(
-      { 
+      {
         error: 'Failed to verify payment',
-        details: error instanceof Error ? error.message : 'Unknown error'
+        details: error instanceof Error ? error.message : 'Unknown error',
       },
       { status: 500 }
-    )
+    );
   }
 }
 
 export async function GET(request: NextRequest) {
   try {
-    const { searchParams } = new URL(request.url)
-    const sessionId = searchParams.get('session_id')
+    // Check if Stripe is configured
+    if (!stripe) {
+      return NextResponse.json(
+        {
+          error:
+            'Stripe is not configured. Please add STRIPE_SECRET_KEY to your environment variables.',
+        },
+        { status: 500 }
+      );
+    }
+
+    const { searchParams } = new URL(request.url);
+    const sessionId = searchParams.get('session_id');
 
     if (!sessionId) {
       return NextResponse.json(
         { error: 'Session ID is required' },
         { status: 400 }
-      )
+      );
     }
 
     // Retrieve the checkout session from Stripe
-    const session = await stripe.checkout.sessions.retrieve(sessionId)
+    const session = await stripe.checkout.sessions.retrieve(sessionId);
 
     if (!session) {
-      return NextResponse.json(
-        { error: 'Session not found' },
-        { status: 404 }
-      )
+      return NextResponse.json({ error: 'Session not found' }, { status: 404 });
     }
 
     // Return session details
@@ -87,16 +106,16 @@ export async function GET(request: NextRequest) {
       paymentStatus: session.payment_status,
       createdAt: session.created,
       expiresAt: session.expires_at,
-    })
+    });
   } catch (error) {
-    console.error('Error retrieving session:', error)
-    
+    console.error('Error retrieving session:', error);
+
     return NextResponse.json(
-      { 
+      {
         error: 'Failed to verify payment',
-        details: error instanceof Error ? error.message : 'Unknown error'
+        details: error instanceof Error ? error.message : 'Unknown error',
       },
       { status: 500 }
-    )
+    );
   }
 }

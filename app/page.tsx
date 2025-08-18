@@ -115,7 +115,7 @@ export default function LandingPage() {
         <SecuritySection />
         <BenefitsSection />
         <ComparisonTable />
-        <PaymentSection {...sharedProps} />
+        <PaymentSection />
         <FAQSection />
         <CTASection {...sharedProps} />
       </main>
