@@ -91,13 +91,6 @@ export async function POST(request: NextRequest) {
 async function handleCheckoutCompleted(event: StripeWebhookEvent) {
   const session = event.data.object;
 
-  console.log('Checkout completed:', {
-    sessionId: session.id,
-    customerEmail: session.customer_details?.email,
-    amount: session.amount_total,
-    currency: session.currency,
-  });
-
   // Here you would typically:
   // 1. Send confirmation email
   // 2. Update database

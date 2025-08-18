@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import Link from 'next/link';
 import {
   Shield,
   Lock,
@@ -75,6 +76,15 @@ export default function PaymentSection() {
                 Join thousands of privacy-conscious users who've chosen Dash
                 over corporate surveillance. One payment, lifetime access.
               </p>
+
+              <div className='mt-6'>
+                <Link
+                  href='/payment/recovery'
+                  className='text-sm text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300'
+                >
+                  Already purchased? Recover your downloads →
+                </Link>
+              </div>
             </motion.div>
 
             <div className='bg-white dark:bg-gray-900 flex flex-col border border-gray-200 dark:border-gray-700 rounded-2xl p-4 sm:p-6 lg:p-8 w-full max-w-md sm:max-w-lg lg:max-w-xl mx-auto'>
@@ -129,7 +139,7 @@ export default function PaymentSection() {
                   {isProcessing ? (
                     <>
                       <Loader2 className='w-5 h-5 animate-spin mr-2' />
-                      Creating Checkout...
+                      Processing...
                     </>
                   ) : (
                     <>

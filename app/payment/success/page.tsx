@@ -176,13 +176,23 @@ export default function PaymentSuccess() {
               </Button>
             )}
 
-            <div className='pt-4'>
+            <div className='pt-4 space-y-2'>
               <Link
                 href='/'
                 className='text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300'
               >
                 Return to Home
               </Link>
+
+              <div className='text-sm text-gray-500 dark:text-gray-400'>
+                Need to download again?{' '}
+                <Link
+                  href='/payment/recovery'
+                  className='text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300'
+                >
+                  Recover your downloads
+                </Link>
+              </div>
             </div>
           </div>
         </motion.div>

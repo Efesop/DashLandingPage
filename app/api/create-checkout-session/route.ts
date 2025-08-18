@@ -3,12 +3,10 @@ import stripe from '../../../lib/stripe';
 import { DASH_PRICE, STRIPE_URLS } from '../../../lib/stripe';
 import { CheckoutSessionRequest } from '../../../types/payment';
 
-// Force dynamic rendering for this API route
 export const dynamic = 'force-dynamic';
 
 export async function POST(request: NextRequest) {
   try {
-    // Check if Stripe is configured
     if (!stripe) {
       return NextResponse.json(
         {
@@ -19,14 +17,9 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Parse request body
     const body: CheckoutSessionRequest = await request.json();
     const { successUrl, cancelUrl } = body;
 
-    // Note: Email will be collected by Stripe during checkout
-    // We don't need to validate it here since Stripe handles it
-
-    // Create Stripe checkout session
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ['card'],
       line_items: [
@@ -49,18 +42,13 @@ export async function POST(request: NextRequest) {
       mode: 'payment',
       success_url: successUrl || STRIPE_URLS.success,
       cancel_url: cancelUrl || STRIPE_URLS.cancel,
-      // customer_email will be collected by Stripe during checkout
       metadata: {
         product_name: 'Dash Notes App',
         license_type: 'lifetime',
       },
       billing_address_collection: 'auto',
-      // Remove shipping address collection since Dash is a digital product
-      // shipping_address_collection: {
-      //   allowed_countries: ['US', 'CA', 'GB', 'DE', 'FR', 'AU'],
-      // },
       allow_promotion_codes: true,
-      expires_at: Math.floor(Date.now() / 1000) + 30 * 60, // 30 minutes from now
+      expires_at: Math.floor(Date.now() / 1000) + 30 * 60,
     });
 
     return NextResponse.json({
