@@ -55,9 +55,10 @@ export async function POST(request: NextRequest) {
         license_type: 'lifetime',
       },
       billing_address_collection: 'auto',
-      shipping_address_collection: {
-        allowed_countries: ['US', 'CA', 'GB', 'DE', 'FR', 'AU'], // Add countries as needed
-      },
+      // Remove shipping address collection since Dash is a digital product
+      // shipping_address_collection: {
+      //   allowed_countries: ['US', 'CA', 'GB', 'DE', 'FR', 'AU'],
+      // },
       allow_promotion_codes: true,
       expires_at: Math.floor(Date.now() / 1000) + 30 * 60, // 30 minutes from now
     });

@@ -32,10 +32,13 @@ export default function PaymentSuccess() {
         );
         const data = await response.json();
 
-        if (data.success) {
+        // Check if payment was successful based on paymentStatus
+        if (data.paymentStatus === 'paid') {
           setPaymentDetails(data);
         } else {
-          setError('Payment verification failed');
+          setError(
+            `Payment verification failed. Status: ${data.paymentStatus}`
+          );
         }
       } catch (err) {
         setError('Failed to verify payment');
@@ -120,35 +123,9 @@ export default function PaymentSuccess() {
             Thank you for purchasing Dash! Your download will begin shortly.
           </p>
 
-          <div className='bg-white dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-700 p-8 mb-8'>
-            <h3 className='text-xl font-semibold text-gray-900 dark:text-white mb-4'>
-              What's Next?
-            </h3>
-            <div className='space-y-4 text-left'>
-              <div className='flex items-center gap-3'>
-                <Mail className='w-5 h-5 text-blue-600' />
-                <span className='text-gray-600 dark:text-gray-300'>
-                  Check your email for download instructions
-                </span>
-              </div>
-              <div className='flex items-center gap-3'>
-                <Download className='w-5 h-5 text-blue-600' />
-                <span className='text-gray-600 dark:text-gray-300'>
-                  Install Dash on your Mac
-                </span>
-              </div>
-              <div className='flex items-center gap-3'>
-                <Shield className='w-5 h-5 text-blue-600' />
-                <span className='text-gray-600 dark:text-gray-300'>
-                  Start taking private notes immediately
-                </span>
-              </div>
-            </div>
-          </div>
-
           <div className='space-y-4'>
             <Button
-              href='https://github.com/Efesop/rich-text-editor/releases/latest'
+              href='/api/latest-release'
               className='bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 text-lg'
               rel='noopener noreferrer'
             >

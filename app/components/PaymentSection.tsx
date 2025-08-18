@@ -4,10 +4,10 @@ import React, { useState } from 'react';
 import {
   Shield,
   Lock,
-  CheckCircle,
   CreditCard,
   Download,
   Loader2,
+  Check,
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { Button } from './ui/button';
@@ -21,7 +21,6 @@ interface PaymentSectionProps {
 
 export default function PaymentSection({}: PaymentSectionProps) {
   const [isProcessing, setIsProcessing] = useState(false);
-  const [isCompleted, setIsCompleted] = useState(false);
 
   const handlePayment = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -58,67 +57,6 @@ export default function PaymentSection({}: PaymentSectionProps) {
       setIsProcessing(false);
     }
   };
-
-  if (isCompleted) {
-    return (
-      <section className='py-20 bg-gradient-to-b from-green-50 to-white dark:from-green-950/20 dark:to-gray-950'>
-        <div className='container mx-auto px-6 lg:px-8'>
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className='max-w-2xl mx-auto text-center'
-          >
-            <div className='w-20 h-20 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center mx-auto mb-8'>
-              <CheckCircle className='w-10 h-10 text-green-600' />
-            </div>
-
-            <h2 className='text-4xl font-bold text-gray-900 dark:text-white mb-6'>
-              Payment Successful!
-            </h2>
-
-            <p className='text-lg text-gray-600 dark:text-gray-300 mb-8'>
-              Thank you for purchasing Dash! Your download will begin shortly.
-            </p>
-
-            <div className='bg-white dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-700 p-8 mb-8'>
-              <h3 className='text-xl font-semibold text-gray-900 dark:text-white mb-4'>
-                What's Next?
-              </h3>
-              <div className='space-y-4 text-left'>
-                <div className='flex items-center gap-3'>
-                  <div className='w-2 h-2 bg-blue-500 rounded-full' />
-                  <span className='text-gray-600 dark:text-gray-300'>
-                    Check your email for download instructions
-                  </span>
-                </div>
-                <div className='flex items-center gap-3'>
-                  <div className='w-2 h-2 bg-blue-500 rounded-full' />
-                  <span className='text-gray-600 dark:text-gray-300'>
-                    Install Dash on your Mac
-                  </span>
-                </div>
-                <div className='flex items-center gap-3'>
-                  <div className='w-2 h-2 bg-blue-500 rounded-full' />
-                  <span className='text-gray-600 dark:text-gray-300'>
-                    Start taking private notes immediately
-                  </span>
-                </div>
-              </div>
-            </div>
-
-            <Button
-              href='https://github.com/Efesop/rich-text-editor/releases/latest'
-              className='bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 text-lg'
-              rel='noopener noreferrer'
-            >
-              <Download className='mr-2 h-5 w-5' />
-              Download Dash
-            </Button>
-          </motion.div>
-        </div>
-      </section>
-    );
-  }
 
   return (
     <section
@@ -166,7 +104,7 @@ export default function PaymentSection({}: PaymentSectionProps) {
                   </span>
                 </div>
 
-                <h3 className='text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-4 text-center'>
+                <h3 className='text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-4'>
                   What You Get:
                 </h3>
                 <div className='space-y-3 sm:space-y-4 w-full'>
@@ -178,7 +116,7 @@ export default function PaymentSection({}: PaymentSectionProps) {
                     '30-day money-back guarantee',
                   ].map((benefit, index) => (
                     <div key={index} className='flex items-start gap-3'>
-                      <CheckCircle className='w-4 h-4 sm:w-5 sm:h-5 text-green-600 flex-shrink-0 mt-0.5' />
+                      <Check className='w-4 h-4 sm:w-5 sm:h-5 text-green-600 flex-shrink-0 mt-0.5' />
                       <span className='text-sm sm:text-base text-gray-700 dark:text-gray-300 leading-relaxed'>
                         {benefit}
                       </span>
