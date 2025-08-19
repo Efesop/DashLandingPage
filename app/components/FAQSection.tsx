@@ -14,7 +14,7 @@ export default function FAQSection() {
         'Dash is the only notes app that keeps everything 100% on your device. No cloud servers, no data collection, no corporate surveillance. Your notes are encrypted and completely private.'
     },
     {
-      question: 'Is Dash really free?',
+      question: 'How much is Dash?',
       answer:
         'Dash is a one-time purchase with no subscriptions or hidden costs. We believe privacy is a fundamental right, not a premium feature.'
     },

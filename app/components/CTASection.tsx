@@ -1,7 +1,7 @@
 import React from 'react'
-import { Coffee, Download } from 'lucide-react'
+import { Download } from 'lucide-react'
 import { Button } from './ui/button'
-import { Input } from './ui/input'
+
 
 interface CTASectionProps {
   email: string
@@ -32,6 +32,8 @@ export default function CTASection({
             surveillance. Download Dash and own your thoughts for real.
           </p>
 
+          {/* Email form hidden but not deleted */}
+          {/* 
           <div className='flex flex-col sm:flex-row items-center justify-center gap-4 mb-8'>
             {!isEmailSubmitted ? (
               <form
@@ -84,17 +86,24 @@ export default function CTASection({
               </>
             )}
           </div>
+          */}
 
-          <p className='text-blue-200 mb-8'>No account required • Mac</p>
+          {/* CTA button that anchors to pricing section */}
+          <div className='mb-8'>
+            <Button
+              onClick={() =>
+                document
+                  .getElementById('payment-section')
+                  ?.scrollIntoView({ behavior: 'smooth' })
+              }
+              className='h-12 px-8 bg-white text-blue-600 hover:bg-gray-100 font-semibold'
+            >
+              <Download className='mr-2 h-4 w-4' />
+              Get Dash for Mac
+            </Button>
+          </div>
 
-          <Button
-            href='https://buymeacoffee.com/efez'
-            className='bg-yellow-400 hover:bg-yellow-500 text-black font-medium'
-            rel='noopener noreferrer'
-          >
-            <Coffee className='mr-2 h-4 w-4' />
-            Buy me a coffee
-          </Button>
+          <p className='text-blue-200'>No account required • Mac</p>
         </div>
       </div>
     </section>

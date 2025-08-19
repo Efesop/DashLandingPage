@@ -96,11 +96,10 @@ export default function PaymentSection() {
                     </h4>
                     <div className='space-y-3'>
                       {[
-                        'Full access to Dash Notes App',
+                        'Full access to Dash',
                         'Lifetime license (no subscriptions)',
                         'Free updates and new features',
                         'Priority customer support',
-                        '30-day money-back guarantee',
                       ].map((benefit, index) => (
                         <div key={index} className='flex items-start gap-3'>
                           <Check className='w-4 h-4 text-green-600 flex-shrink-0 mt-0.5' />
@@ -144,7 +143,7 @@ export default function PaymentSection() {
                   ) : (
                     <>
                       <CreditCard className='mr-2 h-5 w-5' />
-                      Complete Purchase
+                      Buy Now
                     </>
                   )}
                 </Button>
