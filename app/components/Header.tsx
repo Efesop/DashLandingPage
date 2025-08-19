@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { Shield } from 'lucide-react';
+import Image from 'next/image';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
 import BuyMeCoffeeButton from './ui/BuyMeCoffeeButton';
@@ -80,7 +80,13 @@ export default function Header({
               href='#'
               aria-label='Dash - Private Notes App'
             >
-              <Shield className='h-8 w-8 text-blue-600' />
+              <Image
+                src='/images/Dash256.png'
+                alt='Dash Logo'
+                width={32}
+                height={32}
+                className='h-8 w-8'
+              />
               <span className='text-xl font-semibold text-gray-900 dark:text-white'>
                 Dash
               </span>

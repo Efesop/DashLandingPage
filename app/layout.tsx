@@ -17,6 +17,11 @@ export const metadata: Metadata = {
   title: "Dash - Own Your Notes For Real | Private, Encrypted Notes App",
   description: "Military-grade encrypted notes app that keeps your data 100% offline and private. No cloud, no tracking, no accounts needed. AES-256 encryption protects your thoughts from Big Tech surveillance.",
   keywords: "private notes app, encrypted notes, offline notes, secure note taking, privacy notes, no cloud notes, local storage notes, military grade encryption, AES-256, privacy-first app",
+  icons: {
+    icon: '/favicon.ico',
+    shortcut: '/favicon.ico',
+    apple: '/favicon.ico',
+  },
   openGraph: {
     title: "Dash - Own Your Notes For Real | Private, Encrypted Notes App",
     description: "Military-grade encrypted notes app that keeps your data 100% offline and private. No cloud, no tracking, no accounts needed.",
