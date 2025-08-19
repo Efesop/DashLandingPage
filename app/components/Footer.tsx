@@ -1,6 +1,6 @@
 import React from 'react'
 import Link from 'next/link'
-import { Shield } from 'lucide-react'
+import Image from 'next/image'
 
 export default function Footer() {
   return (
@@ -9,7 +9,13 @@ export default function Footer() {
         <div className='grid gap-8 md:grid-cols-4'>
           <div className='md:col-span-2'>
             <div className='flex items-center space-x-3 mb-4'>
-              <Shield className='h-8 w-8 text-blue-400' />
+              <Image
+                src='/images/Dash256.png'
+                alt='Dash Logo'
+                width={32}
+                height={32}
+                className='h-8 w-8'
+              />
               <span className='text-xl font-semibold text-white'>Dash</span>
             </div>
             <p className='text-gray-300 mb-4 max-w-md'>
