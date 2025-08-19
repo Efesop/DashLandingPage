@@ -126,7 +126,7 @@ export default function PaymentSection() {
                     <span>$14.99</span>
                   </div>
                   <p className='text-sm text-gray-500 dark:text-gray-400'>
-                    No subscriptions • 30-day guarantee
+                    No subscriptions
                   </p>
                 </div>
 
