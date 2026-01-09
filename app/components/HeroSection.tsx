@@ -1,11 +1,10 @@
 'use client';
 
 import React, { useRef, useEffect } from 'react';
-import Link from 'next/link';
 import { Lock, CheckCircle } from 'lucide-react';
 import { motion } from 'framer-motion';
-import { Input } from './ui/input';
 import { Button } from './ui/button';
+import FloatingOrbs from './ui/FloatingOrbs';
 import videojs from 'video.js';
 import 'video.js/dist/video-js.css';
 import type Player from 'video.js/dist/types/player';
@@ -41,6 +40,7 @@ export default function HeroSection({
         controls: false,
         responsive: true,
         fluid: true,
+        loop: true,
         sources: [{ src: '/images/Dash.mp4', type: 'video/mp4' }],
       });
     }
@@ -54,33 +54,33 @@ export default function HeroSection({
   }, []);
 
   return (
-    <section className='relative overflow-hidden bg-gradient-to-b from-white via-blue-50/30 to-white dark:from-gray-950 dark:via-blue-950/20 dark:to-gray-950'>
-      <div className='container mx-auto px-6 lg:px-8 pt-20 pb-20'>
-        <div className='grid lg:grid-cols-2 gap-20 items-center'>
+    <section className='relative overflow-hidden bg-gradient-to-b from-white via-blue-50/30 to-white dark:from-gray-950 dark:via-blue-950/20 dark:to-gray-950 min-h-[90vh] flex items-center'>
+      {/* Subtle floating orbs background */}
+      <FloatingOrbs variant='light' density='low' />
+
+      <div className='container mx-auto px-6 lg:px-8 py-20 relative z-10'>
+        <div className='grid lg:grid-cols-2 gap-12 lg:gap-16 items-center'>
           {/* Left side - Content */}
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            animate={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className='space-y-10'
+            className='space-y-8'
           >
-            <div className='inline-flex items-center rounded-full bg-blue-50 dark:bg-blue-950/50 px-4 py-2 text-blue-700 dark:text-blue-300 border border-blue-200 dark:border-blue-800'>
+            {/* Badge */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className='inline-flex items-center rounded-full bg-blue-50 dark:bg-blue-950/50 px-4 py-2 text-blue-700 dark:text-blue-300 border border-blue-200 dark:border-blue-800'
+            >
               <Lock className='mr-2 h-4 w-4' />
-              <span className='text-sm font-medium'>
-                Military-grade privacy
-              </span>
-              <svg
-                className='ml-2 h-4 w-4'
-                viewBox='0 0 24 24'
-                fill='currentColor'
-              >
-                <path d='M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09z' />
-                <path d='M15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701' />
-              </svg>
-            </div>
+              <span className='text-sm font-medium'>Military-grade privacy</span>
+            </motion.div>
 
-            <div className='space-y-8'>
-              <h1 className='text-5xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-6xl lg:text-7xl xl:text-8xl leading-none'>
+            {/* Heading */}
+            <div className='space-y-6'>
+              <h1 className='text-5xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-6xl lg:text-7xl leading-[1.1]'>
                 Own Your Notes
                 <br />
                 <span className='text-blue-600 dark:text-blue-400'>
@@ -94,77 +94,100 @@ export default function HeroSection({
               </p>
             </div>
 
-            <div className='flex flex-wrap gap-8 text-gray-600 dark:text-gray-400'>
-              <div className='flex items-center gap-3'>
-                <CheckCircle className='w-5 h-5 text-green-600' />
-                <span className='font-medium'>No sign-up needed</span>
-              </div>
-              <div className='flex items-center gap-3'>
-                <CheckCircle className='w-5 h-5 text-green-600' />
-                <span className='font-medium'>Works 100% offline</span>
-              </div>
-              <div className='flex items-center gap-3'>
-                <CheckCircle className='w-5 h-5 text-green-600' />
-                <span className='font-medium'>Private by design</span>
-              </div>
+            {/* Checkmarks */}
+            <div className='flex flex-wrap gap-4'>
+              {[
+                'No sign-up needed',
+                'Works 100% offline',
+                'Private by design',
+              ].map((text, index) => (
+                <motion.div
+                  key={text}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.5, delay: 0.4 + index * 0.1 }}
+                  className='flex items-center gap-2'
+                >
+                  <CheckCircle className='w-5 h-5 text-green-500' />
+                  <span className='text-sm font-medium text-gray-700 dark:text-gray-300'>
+                    {text}
+                  </span>
+                </motion.div>
+              ))}
             </div>
 
-            <Button
-              onClick={() =>
-                document
-                  .getElementById('payment-section')
-                  ?.scrollIntoView({ behavior: 'smooth' })
-              }
-              className='h-12 w-1/3 bg-blue-600 hover:bg-blue-700 text-white font-semibold'
+            {/* CTA */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.7 }}
+              className='flex flex-col sm:flex-row items-start gap-4'
             >
-              Get Dash for Mac
-            </Button>
+              <Button
+                onClick={() =>
+                  document
+                    .getElementById('payment-section')
+                    ?.scrollIntoView({ behavior: 'smooth' })
+                }
+                className='h-12 px-8 bg-blue-600 hover:bg-blue-700 text-white text-lg font-semibold rounded-lg shadow-lg shadow-blue-500/20 transition-colors duration-200'
+              >
+                Get Dash for Mac
+              </Button>
 
-            <p className='text-gray-500 dark:text-gray-400'>
-              No account required • Works on Mac
-            </p>
+              <p className='text-gray-500 dark:text-gray-400 self-center'>
+                No account required • Works on Mac
+              </p>
+            </motion.div>
           </motion.div>
 
-          {/* Right side - Video prominently featured */}
+          {/* Right side - Video */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className='relative scale-110'
+            transition={{ duration: 0.8, delay: 0.3 }}
+            className='relative'
           >
-            <div className='relative'>
-              {/* Video container */}
-              <div className='relative rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900'>
-                <div data-vjs-player className='aspect-video'>
-                  <video
-                    ref={videoRef}
-                    className='video-js w-full h-full rounded-2xl'
-                    playsInline
-                    muted
-                    aria-label='Dash app demonstration video'
-                  />
-                </div>
-              </div>
-
-              {/* Floating indicators */}
-              <div className='absolute -top-4 -right-4 rounded-xl bg-white dark:bg-gray-900 shadow-lg border border-gray-200 dark:border-gray-700 px-4 py-3'>
-                <div className='flex items-center gap-2 text-sm'>
-                  <div className='h-2 w-2 rounded-full bg-green-500 animate-pulse' />
-                  <span className='font-medium text-gray-900 dark:text-white'>
-                    100% Private
-                  </span>
-                </div>
-              </div>
-
-              <div className='absolute -bottom-4 -left-4 rounded-xl bg-white dark:bg-gray-900 shadow-lg border border-gray-200 dark:border-gray-700 px-4 py-3'>
-                <div className='flex items-center gap-2 text-sm'>
-                  <Lock className='h-4 w-4 text-blue-600' />
-                  <span className='font-medium text-gray-900 dark:text-white'>
-                    Bank-level security
-                  </span>
-                </div>
+            {/* Video directly without browser chrome */}
+            <div className='relative rounded-2xl overflow-hidden shadow-2xl'>
+              <div data-vjs-player className='aspect-video'>
+                <video
+                  ref={videoRef}
+                  className='video-js w-full h-full'
+                  playsInline
+                  muted
+                  aria-label='Dash app demonstration video'
+                />
               </div>
             </div>
+
+            {/* Floating badges */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.6, delay: 0.8 }}
+              className='absolute -top-4 -right-4 bg-white dark:bg-gray-900 rounded-xl px-4 py-2.5 shadow-lg border border-gray-200 dark:border-gray-700'
+            >
+              <div className='flex items-center gap-2'>
+                <div className='h-2 w-2 rounded-full bg-green-500 animate-pulse' />
+                <span className='font-medium text-sm text-gray-900 dark:text-white'>
+                  100% Private
+                </span>
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.6, delay: 1 }}
+              className='absolute -bottom-4 -left-4 bg-white dark:bg-gray-900 rounded-xl px-4 py-2.5 shadow-lg border border-gray-200 dark:border-gray-700'
+            >
+              <div className='flex items-center gap-2'>
+                <Lock className='h-4 w-4 text-blue-600' />
+                <span className='font-medium text-sm text-gray-900 dark:text-white'>
+                  Bank-level security
+                </span>
+              </div>
+            </motion.div>
           </motion.div>
         </div>
       </div>

@@ -1,65 +1,75 @@
-'use client'
+'use client';
 
-import React, { useState, useEffect } from 'react'
-import { Edit3, Search, Folder, Lock } from 'lucide-react'
+import React, { useState, useEffect } from 'react';
+import { Edit3, Search, Folder, Lock } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 export default function CoreFeatures() {
-  const [typedText, setTypedText] = useState('')
+  const [typedText, setTypedText] = useState('');
 
-  // Fixed typing animation
-  const textToType = 'My private thoughts and sensitive information...'
+  // Faster typing animation
+  const textToType = 'My private thoughts and sensitive information...';
   useEffect(() => {
-    let i = 0
-    let isDeleting = false
+    let i = 0;
+    let isDeleting = false;
+    let pauseCounter = 0;
 
-    const timer = setInterval(
-      () => {
-        if (!isDeleting) {
-          if (i < textToType.length) {
-            setTypedText(textToType.slice(0, i + 1))
-            i++
-          } else {
-            isDeleting = true
-            setTimeout(() => {}, 2000) // Pause before deleting
-          }
+    const timer = setInterval(() => {
+      if (pauseCounter > 0) {
+        pauseCounter--;
+        return;
+      }
+
+      if (!isDeleting) {
+        if (i < textToType.length) {
+          setTypedText(textToType.slice(0, i + 1));
+          i++;
         } else {
-          if (i > 0) {
-            setTypedText(textToType.slice(0, i))
-            i--
-          } else {
-            isDeleting = false
-            setTimeout(() => {}, 1000) // Pause before typing again
-          }
+          pauseCounter = 15; // Short pause before deleting
+          isDeleting = true;
         }
-      },
-      isDeleting ? 50 : 100
-    )
+      } else {
+        if (i > 0) {
+          setTypedText(textToType.slice(0, i));
+          i--;
+        } else {
+          pauseCounter = 8; // Short pause before typing again
+          isDeleting = false;
+        }
+      }
+    }, isDeleting ? 30 : 80); // Much faster deletion
 
-    return () => clearInterval(timer)
-  }, [])
+    return () => clearInterval(timer);
+  }, []);
 
   const features = [
     {
       icon: Edit3,
       title: 'Rich text editing',
-      desc: 'Format your thoughts beautifully with a powerful editor'
+      desc: 'Format your thoughts beautifully with a powerful editor',
     },
     {
       icon: Search,
       title: 'Instant search',
-      desc: 'Find any note in milliseconds across your entire library'
+      desc: 'Find any note in milliseconds across your entire library',
     },
     {
       icon: Folder,
       title: 'Smart organization',
-      desc: 'Folders, tags, and categories to structure your knowledge'
-    }
-  ]
+      desc: 'Folders, tags, and categories to structure your knowledge',
+    },
+  ];
 
   return (
-    <section className='py-20 bg-gray-50 dark:bg-gray-900'>
+    <section className='py-24 bg-gray-50 dark:bg-gray-900'>
       <div className='container mx-auto px-6 lg:px-8'>
-        <div className='text-center mb-16'>
+        {/* Section Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className='text-center mb-16'
+        >
           <h2 className='text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6'>
             Your thoughts are yours.
           </h2>
@@ -68,11 +78,17 @@ export default function CoreFeatures() {
             them quickly, even offline. No one else can read them, not even
             us.
           </p>
-        </div>
+        </motion.div>
 
         {/* Interactive Feature Demo */}
-        <div className='grid lg:grid-cols-2 gap-16 items-center mb-16'>
-          <div>
+        <div className='grid lg:grid-cols-2 gap-16 items-center'>
+          {/* Left - Features list */}
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
             <h3 className='text-3xl font-bold text-gray-900 dark:text-white mb-6'>
               Write with confidence.
             </h3>
@@ -81,66 +97,84 @@ export default function CoreFeatures() {
               search - all while keeping your data completely private.
             </p>
 
-            <div className='space-y-6'>
+            <div className='space-y-5'>
               {features.map((feature, index) => (
-                <div key={feature.title} className='flex gap-4'>
-                  <div className='flex-shrink-0'>
-                    <div className='w-10 h-10 bg-blue-100 dark:bg-blue-900/30 rounded-lg flex items-center justify-center'>
-                      <feature.icon className='w-5 h-5 text-blue-600' />
-                    </div>
+                <motion.div
+                  key={feature.title}
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 }}
+                  className='flex gap-4 items-start'
+                >
+                  <div className='flex-shrink-0 w-10 h-10 bg-blue-100 dark:bg-blue-900/30 rounded-lg flex items-center justify-center'>
+                    <feature.icon className='w-5 h-5 text-blue-600 dark:text-blue-400' />
                   </div>
                   <div>
                     <h4 className='font-semibold text-gray-900 dark:text-white mb-1'>
                       {feature.title}
                     </h4>
-                    <p className='text-gray-600 dark:text-gray-300'>
+                    <p className='text-gray-600 dark:text-gray-400 text-sm'>
                       {feature.desc}
                     </p>
                   </div>
-                </div>
+                </motion.div>
               ))}
             </div>
-          </div>
+          </motion.div>
 
-          {/* Live typing demo */}
-          <div className='relative'>
-            <div className='bg-white dark:bg-gray-800 rounded-2xl shadow-xl border border-gray-200 dark:border-gray-700 p-6'>
-              <div className='flex items-center gap-2 mb-6'>
-                <div className='w-3 h-3 bg-red-500 rounded-full' />
-                <div className='w-3 h-3 bg-yellow-500 rounded-full' />
-                <div className='w-3 h-3 bg-green-500 rounded-full' />
-                <span className='text-sm text-gray-500 ml-3 font-medium'>
+          {/* Right - Live typing demo */}
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className='relative'
+          >
+            <div className='bg-white dark:bg-gray-800 rounded-2xl shadow-xl border border-gray-200 dark:border-gray-700 overflow-hidden'>
+              {/* Window chrome */}
+              <div className='flex items-center gap-2 px-4 py-3 bg-gray-50 dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700'>
+                <div className='flex items-center gap-1.5'>
+                  <div className='w-3 h-3 rounded-full bg-red-500' />
+                  <div className='w-3 h-3 rounded-full bg-yellow-500' />
+                  <div className='w-3 h-3 rounded-full bg-green-500' />
+                </div>
+                <span className='text-sm text-gray-500 dark:text-gray-400 ml-3 font-medium'>
                   Dash Notes
                 </span>
               </div>
 
-              <div className='space-y-4'>
-                <div className='text-lg font-semibold text-gray-900 dark:text-white'>
+              {/* Content */}
+              <div className='p-6'>
+                <div className='text-lg font-semibold text-gray-900 dark:text-white mb-4'>
                   Project Ideas
                 </div>
-                <div className='min-h-[80px] text-gray-900 dark:text-white'>
+                <div className='min-h-[80px] text-gray-700 dark:text-gray-300 leading-relaxed'>
                   {typedText}
-                  <span className='animate-pulse'>|</span>
+                  <span className='inline-block w-0.5 h-5 bg-blue-500 ml-0.5 animate-pulse' />
                 </div>
 
-                <div className='flex items-center gap-3 text-xs text-gray-500 bg-gray-100 dark:bg-gray-700 rounded-lg p-3'>
-                  <Lock className='w-4 h-4 text-green-600' />
-                  <span>Encrypted and saved locally on your device</span>
+                <div className='flex items-center gap-3 mt-6 pt-4 border-t border-gray-100 dark:border-gray-700'>
+                  <Lock className='w-4 h-4 text-green-500' />
+                  <span className='text-xs text-gray-500 dark:text-gray-400'>
+                    Encrypted and saved locally on your device
+                  </span>
                 </div>
               </div>
             </div>
 
-            <div className='absolute -bottom-4 -right-4 bg-white dark:bg-gray-900 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 px-4 py-2'>
+            {/* Auto-save indicator */}
+            <div className='absolute -bottom-3 -right-3 bg-white dark:bg-gray-900 rounded-lg px-3 py-1.5 shadow-lg border border-gray-200 dark:border-gray-700'>
               <div className='flex items-center gap-2 text-sm'>
                 <div className='w-2 h-2 bg-green-500 rounded-full animate-pulse' />
-                <span className='font-medium text-gray-900 dark:text-white'>
+                <span className='font-medium text-gray-900 dark:text-white text-xs'>
                   Auto-saved
                 </span>
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>
-  )
+  );
 }

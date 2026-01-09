@@ -70,38 +70,133 @@ body {
     -webkit-transform: translateZ(0);
     -moz-transform: translateZ(0);
     -ms-transform: translateZ(0);
-    /* Ensure proper stacking context */
     isolation: isolate;
-    /* Prevent any potential scroll issues */
     contain: layout style paint;
-    /* Smooth transitions */
     transition: all 0.3s ease-out;
   }
   
-  /* Ensure body doesn't interfere with fixed positioning */
   body {
     overflow-x: hidden;
   }
   
-  /* Force hardware acceleration for smooth scrolling */
   html {
     scroll-behavior: smooth;
     -webkit-overflow-scrolling: touch;
   }
   
-  /* Header spacer to prevent content jump */
   .header-spacer {
-    height: 4rem; /* 64px - matches header height */
+    height: 4rem;
     width: 100%;
   }
+
+  /* ===== GLASSMORPHISM UTILITIES ===== */
+  
+  .glass {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  }
+
+  .glass-dark {
+    background: rgba(15, 23, 42, 0.7);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  }
+
+  .glass-card {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+  }
+
+  .glass-card-dark {
+    background: rgba(30, 41, 59, 0.6);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
+  }
+}
+
+/* ===== ANIMATIONS ===== */
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes orb-float-1 {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  25% {
+    transform: translate(15px, -20px) scale(1.02);
+  }
+  50% {
+    transform: translate(-8px, -35px) scale(1);
+  }
+  75% {
+    transform: translate(-20px, -15px) scale(0.98);
+  }
+}
+
+@keyframes orb-float-2 {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  25% {
+    transform: translate(-20px, 15px) scale(0.98);
+  }
+  50% {
+    transform: translate(15px, 30px) scale(1.02);
+  }
+  75% {
+    transform: translate(25px, 8px) scale(1);
+  }
+}
+
+@keyframes orb-float-3 {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(-15px, -25px) scale(1.05);
+  }
+  66% {
+    transform: translate(20px, -12px) scale(0.95);
+  }
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+.animate-orb-1 {
+  animation: orb-float-1 20s ease-in-out infinite;
+}
+
+.animate-orb-2 {
+  animation: orb-float-2 25s ease-in-out infinite;
+}
+
+.animate-orb-3 {
+  animation: orb-float-3 18s ease-in-out infinite;
 }
 
 video::-webkit-media-controls-start-playback-button {
   display: none !important;
   -webkit-appearance: none;
 }
-
-/* Add this to your global CSS file or a styled component */
 
 #buy-me-coffee-container {
   display: inline-block;

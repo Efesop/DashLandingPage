@@ -94,7 +94,7 @@ export default function LandingPage() {
             operatingSystem: ['macOS'],
             offers: {
               '@type': 'Offer',
-              price: '0',
+              price: '14.99',
               priceCurrency: 'USD',
             },
             author: {

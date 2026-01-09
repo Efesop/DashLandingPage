@@ -1,69 +1,134 @@
-import React from 'react'
-import Link from 'next/link'
-import Image from 'next/image'
+'use client';
+
+import React from 'react';
+import Link from 'next/link';
+import Image from 'next/image';
+import { Shield, Lock, Eye, Database, Zap, Twitter, Coffee } from 'lucide-react';
 
 export default function Footer() {
+  const privacyFeatures = [
+    { icon: Shield, label: '100% Offline' },
+    { icon: Eye, label: 'No Tracking' },
+    { icon: Lock, label: 'No Accounts' },
+    { icon: Database, label: 'Military Encryption' },
+    { icon: Zap, label: 'Zero Knowledge' },
+  ];
+
   return (
-    <footer className='bg-gray-900 dark:bg-black'>
-      <div className='container mx-auto px-6 lg:px-8 py-12'>
-        <div className='grid gap-8 md:grid-cols-4'>
-          <div className='md:col-span-2'>
-            <div className='flex items-center space-x-3 mb-4'>
+    <footer className='bg-gray-900 dark:bg-black relative overflow-hidden'>
+      {/* Glass divider at top */}
+      <div className='absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-blue-500/30 to-transparent' />
+
+      {/* Background decoration */}
+      <div className='absolute bottom-0 left-1/4 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl' />
+
+      <div className='container mx-auto px-6 lg:px-8 py-16 relative z-10'>
+        <div className='grid gap-12 lg:grid-cols-12'>
+          {/* Brand section */}
+          <div className='lg:col-span-5'>
+            <Link href='#' className='flex items-center space-x-3 mb-6'>
               <Image
                 src='/images/Dash256.png'
                 alt='Dash Logo'
-                width={32}
-                height={32}
-                className='h-8 w-8'
+                width={40}
+                height={40}
+                className='h-10 w-10'
               />
-              <span className='text-xl font-semibold text-white'>Dash</span>
-            </div>
-            <p className='text-gray-300 mb-4 max-w-md'>
+              <span className='text-2xl font-semibold text-white'>Dash</span>
+            </Link>
+            <p className='text-gray-400 mb-6 max-w-md leading-relaxed'>
               Own your notes for real. The only notes app that puts privacy
               first and keeps your thoughts completely secure.
             </p>
+
+            {/* Privacy badges */}
+            <div className='flex flex-wrap gap-2'>
+              {privacyFeatures.slice(0, 3).map((feature) => (
+                <div
+                  key={feature.label}
+                  className='flex items-center gap-1.5 px-3 py-1.5 rounded-full glass-card-dark text-xs'
+                >
+                  <feature.icon className='w-3 h-3 text-blue-400' />
+                  <span className='text-gray-300'>{feature.label}</span>
+                </div>
+              ))}
+            </div>
           </div>
 
-          <div>
-            <h3 className='font-semibold text-white mb-4'>Privacy</h3>
-            <ul className='space-y-2 text-sm text-gray-400'>
-              <li>100% Offline</li>
-              <li>No Tracking</li>
-              <li>No Accounts</li>
-              <li>Military Encryption</li>
-              <li>Zero Knowledge</li>
+          {/* Privacy features */}
+          <div className='lg:col-span-3'>
+            <h3 className='font-semibold text-white mb-6 flex items-center gap-2'>
+              <Shield className='w-4 h-4 text-blue-400' />
+              Privacy Features
+            </h3>
+            <ul className='space-y-3'>
+              {privacyFeatures.map((feature) => (
+                <li key={feature.label} className='flex items-center gap-3 group'>
+                  <div className='w-1.5 h-1.5 rounded-full bg-blue-500 group-hover:bg-blue-400 transition-colors' />
+                  <span className='text-gray-400 group-hover:text-gray-300 transition-colors text-sm'>
+                    {feature.label}
+                  </span>
+                </li>
+              ))}
             </ul>
           </div>
 
-          <div>
-            <h3 className='font-semibold text-white mb-4'>Connect</h3>
-            <ul className='space-y-2 text-sm'>
-              <li>
-                <Link
-                  href='https://twitter.com/efesopoulos'
-                  className='text-gray-400 hover:text-white transition-colors'
-                >
-                  Follow on X/Twitter
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href='https://buymeacoffee.com/efez'
-                  className='text-gray-400 hover:text-white transition-colors'
-                >
-                  Buy me a coffee
-                </Link>
-              </li>
-            </ul>
+          {/* Connect */}
+          <div className='lg:col-span-4'>
+            <h3 className='font-semibold text-white mb-6'>Connect With Us</h3>
+            <div className='space-y-4'>
+              <Link
+                href='https://twitter.com/efesopoulos'
+                target='_blank'
+                rel='noopener noreferrer'
+                className='flex items-center gap-3 p-3 rounded-xl glass-card-dark hover:bg-white/5 transition-colors group'
+              >
+                <div className='w-10 h-10 rounded-lg bg-blue-500/20 flex items-center justify-center group-hover:bg-blue-500/30 transition-colors'>
+                  <Twitter className='w-5 h-5 text-blue-400' />
+                </div>
+                <div>
+                  <p className='text-white font-medium text-sm'>Follow on X/Twitter</p>
+                  <p className='text-gray-500 text-xs'>@efesopoulos</p>
+                </div>
+              </Link>
+
+              <Link
+                href='https://buymeacoffee.com/efez'
+                target='_blank'
+                rel='noopener noreferrer'
+                className='flex items-center gap-3 p-3 rounded-xl glass-card-dark hover:bg-white/5 transition-colors group'
+              >
+                <div className='w-10 h-10 rounded-lg bg-yellow-500/20 flex items-center justify-center group-hover:bg-yellow-500/30 transition-colors'>
+                  <Coffee className='w-5 h-5 text-yellow-400' />
+                </div>
+                <div>
+                  <p className='text-white font-medium text-sm'>Buy me a coffee</p>
+                  <p className='text-gray-500 text-xs'>Support development</p>
+                </div>
+              </Link>
+            </div>
           </div>
         </div>
 
-        <div className='mt-8 pt-8 border-t border-gray-800 text-center'>
-          <p className='text-gray-400 text-sm'>
-            © 2025 Dash. Your privacy is our priority.
-          </p>
+        {/* Bottom bar */}
+        <div className='mt-12 pt-8 border-t border-gray-800/50'>
+          <div className='flex flex-col md:flex-row items-center justify-between gap-4'>
+            <p className='text-gray-500 text-sm'>
+              © {new Date().getFullYear()} Dash. Your privacy is our priority.
+            </p>
+            <div className='flex items-center gap-6 text-sm text-gray-500'>
+              <span className='flex items-center gap-2'>
+                <Lock className='w-3 h-3 text-green-500' />
+                100% Offline
+              </span>
+              <span className='flex items-center gap-2'>
+                <Shield className='w-3 h-3 text-blue-500' />
+                AES-256 Encrypted
+              </span>
+            </div>
+          </div>
         </div>
       </div>
     </footer>
-  )
+  );
 }
