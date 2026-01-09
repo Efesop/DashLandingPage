@@ -94,15 +94,22 @@ export default function PaymentSection() {
 
           {/* Pricing Card - Centered with side mockup */}
           <div className='relative flex justify-center'>
-            {/* App Preview - positioned to the left */}
+            {/* Pricing Card - Centered */}
             <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: 0.2 }}
-              className='hidden lg:block absolute left-0 top-1/2 -translate-y-1/2 -translate-x-8'
+              className='w-full max-w-md relative'
             >
-              <div className='relative w-56'>
+              {/* App Preview - positioned to the left of pricing card */}
+              <motion.div
+                initial={{ opacity: 0, x: -30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.2 }}
+                className='hidden xl:block absolute right-full top-1/2 -translate-y-1/2 mr-12'
+              >
+                <div className='relative w-56'>
                 <div className='bg-white dark:bg-gray-800 rounded-xl p-4 shadow-lg border border-gray-200 dark:border-gray-700'>
                   <div className='flex items-center gap-3 mb-4'>
                     <Image
@@ -138,13 +145,7 @@ export default function PaymentSection() {
               </div>
             </motion.div>
 
-            {/* Pricing Card - Centered */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className='w-full max-w-md'
-            >
+            {/* Pricing card content */}
               <div className='bg-white dark:bg-gray-900 rounded-2xl shadow-xl border border-gray-200 dark:border-gray-700 overflow-hidden'>
                 <form onSubmit={handlePayment} className='p-6 sm:p-8'>
                   {/* Price header */}

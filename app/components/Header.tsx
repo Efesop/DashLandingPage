@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { ChevronDown } from 'lucide-react';
 import { Button } from './ui/button';
 import BuyMeCoffeeButton from './ui/BuyMeCoffeeButton';
 
@@ -26,6 +27,7 @@ export default function Header({
   const [isScrolled, setIsScrolled] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
+  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -53,6 +55,15 @@ export default function Header({
     return () => window.removeEventListener('scroll', handleScroll);
   }, [lastScrollY]);
 
+  const useCases = [
+    { href: '/private-notes', label: 'Private Notes App' },
+    { href: '/for-journalists', label: 'For Journalists' },
+  ];
+
+  const comparisons = [
+    { href: '/vs-notion', label: 'Dash vs Notion' },
+  ];
+
   return (
     <>
       {/* Spacer div to prevent content jump */}
@@ -60,7 +71,7 @@ export default function Header({
 
       <header
         className={`fixed top-0 left-0 right-0 z-50 w-full transition-all duration-300 ease-out ${isScrolled
-          ? 'bg-white/80 dark:bg-gray-950/80 backdrop-blur-xl shadow-sm border-b border-gray-200/50 dark:border-gray-800/50'
+          ? 'bg-white/95 dark:bg-gray-950/95 backdrop-blur-xl shadow-sm border-b border-gray-200/50 dark:border-gray-800/50'
           : 'bg-transparent'
           } ${isVisible ? 'translate-y-0' : '-translate-y-full'}`}
         style={{
@@ -77,7 +88,7 @@ export default function Header({
             {/* Logo */}
             <Link
               className='flex items-center space-x-3'
-              href='#'
+              href='/'
               aria-label='Dash - Private Notes App'
             >
               <Image
@@ -96,20 +107,82 @@ export default function Header({
             <nav className='hidden md:flex items-center space-x-1'>
               <BuyMeCoffeeButton />
 
-              {[
-                { href: '#features', label: 'Features' },
-                { href: '#security', label: 'Security' },
-                { href: '#comparison', label: 'Compare' },
-                { href: '#faq', label: 'FAQ' },
-              ].map((link) => (
-                <Link
-                  key={link.href}
-                  className='px-4 py-2 text-sm font-medium text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white transition-colors'
-                  href={link.href}
-                >
-                  {link.label}
-                </Link>
-              ))}
+              <Link
+                className='px-4 py-2 text-sm font-medium text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white transition-colors'
+                href='/#features'
+              >
+                Features
+              </Link>
+
+              <Link
+                className='px-4 py-2 text-sm font-medium text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white transition-colors'
+                href='/#security'
+              >
+                Security
+              </Link>
+
+              {/* Use Cases Dropdown */}
+              <div
+                className='relative'
+                onMouseEnter={() => setOpenDropdown('usecases')}
+                onMouseLeave={() => setOpenDropdown(null)}
+              >
+                <button className='px-4 py-2 text-sm font-medium text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white transition-colors flex items-center gap-1'>
+                  Use Cases
+                  <ChevronDown className='w-3 h-3' />
+                </button>
+                {openDropdown === 'usecases' && (
+                  <div className='absolute top-full left-0 mt-1 w-56 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg py-2'>
+                    {useCases.map((link) => (
+                      <Link
+                        key={link.href}
+                        href={link.href}
+                        className='block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors'
+                      >
+                        {link.label}
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </div>
+
+              {/* Compare Dropdown */}
+              <div
+                className='relative'
+                onMouseEnter={() => setOpenDropdown('compare')}
+                onMouseLeave={() => setOpenDropdown(null)}
+              >
+                <button className='px-4 py-2 text-sm font-medium text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white transition-colors flex items-center gap-1'>
+                  Compare
+                  <ChevronDown className='w-3 h-3' />
+                </button>
+                {openDropdown === 'compare' && (
+                  <div className='absolute top-full left-0 mt-1 w-56 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg py-2'>
+                    <Link
+                      href='/#comparison'
+                      className='block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors'
+                    >
+                      Feature Comparison
+                    </Link>
+                    {comparisons.map((link) => (
+                      <Link
+                        key={link.href}
+                        href={link.href}
+                        className='block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors'
+                      >
+                        {link.label}
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </div>
+
+              <Link
+                className='px-4 py-2 text-sm font-medium text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white transition-colors'
+                href='/#faq'
+              >
+                FAQ
+              </Link>
             </nav>
 
             {/* CTA Button */}

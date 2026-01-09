@@ -14,6 +14,15 @@ export default function Footer() {
     { icon: Zap, label: 'Zero Knowledge' },
   ];
 
+  const useCaseLinks = [
+    { href: '/private-notes', label: 'Private Notes App' },
+    { href: '/for-journalists', label: 'For Journalists' },
+  ];
+
+  const comparisonLinks = [
+    { href: '/vs-notion', label: 'Dash vs Notion' },
+  ];
+
   return (
     <footer className='bg-gray-900 dark:bg-black relative overflow-hidden'>
       {/* Glass divider at top */}
@@ -25,8 +34,8 @@ export default function Footer() {
       <div className='container mx-auto px-6 lg:px-8 py-16 relative z-10'>
         <div className='grid gap-12 lg:grid-cols-12'>
           {/* Brand section */}
-          <div className='lg:col-span-5'>
-            <Link href='#' className='flex items-center space-x-3 mb-6'>
+          <div className='lg:col-span-4'>
+            <Link href='/' className='flex items-center space-x-3 mb-6'>
               <Image
                 src='/images/Dash256.png'
                 alt='Dash Logo'
@@ -55,19 +64,37 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Privacy features */}
-          <div className='lg:col-span-3'>
-            <h3 className='font-semibold text-white mb-6 flex items-center gap-2'>
-              <Shield className='w-4 h-4 text-blue-400' />
-              Privacy Features
-            </h3>
+          {/* Use Cases */}
+          <div className='lg:col-span-2'>
+            <h3 className='font-semibold text-white mb-6'>Use Cases</h3>
             <ul className='space-y-3'>
-              {privacyFeatures.map((feature) => (
-                <li key={feature.label} className='flex items-center gap-3 group'>
-                  <div className='w-1.5 h-1.5 rounded-full bg-blue-500 group-hover:bg-blue-400 transition-colors' />
-                  <span className='text-gray-400 group-hover:text-gray-300 transition-colors text-sm'>
-                    {feature.label}
-                  </span>
+              {useCaseLinks.map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className='text-gray-400 hover:text-gray-300 transition-colors text-sm flex items-center gap-2 group'
+                  >
+                    <div className='w-1.5 h-1.5 rounded-full bg-blue-500 group-hover:bg-blue-400 transition-colors' />
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Compare */}
+          <div className='lg:col-span-2'>
+            <h3 className='font-semibold text-white mb-6'>Compare</h3>
+            <ul className='space-y-3'>
+              {comparisonLinks.map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className='text-gray-400 hover:text-gray-300 transition-colors text-sm flex items-center gap-2 group'
+                  >
+                    <div className='w-1.5 h-1.5 rounded-full bg-blue-500 group-hover:bg-blue-400 transition-colors' />
+                    {link.label}
+                  </Link>
                 </li>
               ))}
             </ul>
