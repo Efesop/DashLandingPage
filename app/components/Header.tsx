@@ -57,11 +57,14 @@ export default function Header({
 
   const useCases = [
     { href: '/private-notes', label: 'Private Notes App' },
+    { href: '/encrypted-notes', label: 'Encrypted Notes App' },
+    { href: '/offline-notes', label: 'Offline Notes App' },
     { href: '/for-journalists', label: 'For Journalists' },
   ];
 
   const comparisons = [
     { href: '/vs-notion', label: 'Dash vs Notion' },
+    { href: '/vs-evernote', label: 'Dash vs Evernote' },
   ];
 
   return (
