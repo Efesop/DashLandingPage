@@ -21,50 +21,97 @@ export default function PaymentSuccess() {
   useEffect(() => {
     const verifyPayment = async () => {
       try {
+        const source = searchParams.get('source');
         const sessionId = searchParams.get('session_id');
-        if (!sessionId) {
-          setError('No session ID provided');
-          setIsLoading(false);
-          return;
-        }
+        const paymentId = searchParams.get('payment_id');
 
-        // Verify payment with our API
-        const response = await fetch(
-          `/api/verify-payment?session_id=${sessionId}`
-        );
-        const data = await response.json();
-
-        // Check if payment was successful based on paymentStatus
-        if (data.paymentStatus === 'paid') {
-          setPaymentDetails(data);
-
-          // Generate secure download token
-          const tokenResponse = await fetch('/api/generate-download-token', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ sessionId }),
-          });
-
-          if (tokenResponse.ok) {
-            const tokenData = await tokenResponse.json();
-            setDownloadToken(tokenData.downloadToken);
-            setDownloadsRemaining(tokenData.downloadsRemaining);
-          } else {
-            console.error('Failed to generate download token');
-          }
+        // Determine payment type and verify accordingly
+        if (source === 'voltage' && paymentId) {
+          // Bitcoin payment via Voltage
+          await verifyVoltagePayment(paymentId);
+        } else if (sessionId) {
+          // Card payment via Stripe
+          await verifyStripePayment(sessionId);
         } else {
-          setError(
-            `Payment verification failed. Status: ${data.paymentStatus}`
-          );
+          setError('No payment session provided');
+          setIsLoading(false);
         }
       } catch (err) {
         setError('Failed to verify payment');
         console.error('Payment verification error:', err);
-      } finally {
         setIsLoading(false);
       }
+    };
+
+    const verifyStripePayment = async (sessionId: string) => {
+      // Verify payment with Stripe API
+      const response = await fetch(
+        `/api/verify-payment?session_id=${sessionId}`
+      );
+      const data = await response.json();
+
+      // Check if payment was successful based on paymentStatus
+      if (data.paymentStatus === 'paid') {
+        setPaymentDetails(data);
+
+        // Generate secure download token
+        const tokenResponse = await fetch('/api/generate-download-token', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ sessionId }),
+        });
+
+        if (tokenResponse.ok) {
+          const tokenData = await tokenResponse.json();
+          setDownloadToken(tokenData.downloadToken);
+          setDownloadsRemaining(tokenData.downloadsRemaining);
+        } else {
+          console.error('Failed to generate download token');
+        }
+      } else {
+        setError(
+          `Payment verification failed. Status: ${data.paymentStatus}`
+        );
+      }
+      setIsLoading(false);
+    };
+
+    const verifyVoltagePayment = async (paymentId: string) => {
+      // Verify payment with Voltage API
+      const response = await fetch(
+        `/api/voltage/verify-payment?payment_id=${paymentId}`
+      );
+      const data = await response.json();
+
+      // Check if payment was successful
+      if (data.paymentStatus === 'paid') {
+        setPaymentDetails({
+          ...data,
+          paymentMethod: 'Bitcoin (Lightning)',
+        });
+
+        // Voltage verify-payment generates the download token
+        if (data.downloadToken) {
+          setDownloadToken(data.downloadToken);
+          setDownloadsRemaining(data.downloadsRemaining || 3);
+        }
+      } else if (data.status === 'generating' || data.status === 'receiving') {
+        // Payment pending
+        setPaymentDetails({
+          ...data,
+          paymentMethod: 'Bitcoin (Lightning)',
+        });
+        setError(
+          'Payment is being processed. Please wait a moment...'
+        );
+      } else {
+        setError(
+          `Bitcoin payment verification failed. Status: ${data.status}`
+        );
+      }
+      setIsLoading(false);
     };
 
     verifyPayment();

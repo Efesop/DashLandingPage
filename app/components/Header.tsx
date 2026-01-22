@@ -59,12 +59,19 @@ export default function Header({
     { href: '/private-notes', label: 'Private Notes App' },
     { href: '/encrypted-notes', label: 'Encrypted Notes App' },
     { href: '/offline-notes', label: 'Offline Notes App' },
+    { href: '/secure-journal', label: 'Secure Journal' },
     { href: '/for-journalists', label: 'For Journalists' },
+    { href: '/for-writers', label: 'For Writers' },
+    { href: '/for-students', label: 'For Students' },
+    { href: '/for-researchers', label: 'For Researchers' },
+    { href: '/for-bitcoiners', label: 'For Bitcoiners' },
   ];
 
   const comparisons = [
     { href: '/vs-notion', label: 'Dash vs Notion' },
     { href: '/vs-evernote', label: 'Dash vs Evernote' },
+    { href: '/vs-obsidian', label: 'Dash vs Obsidian' },
+    { href: '/vs-google-keep', label: 'Dash vs Google Keep' },
   ];
 
   return (
