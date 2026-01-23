@@ -59,7 +59,7 @@ export default function ForJournalistsContent() {
       icon: Lock,
       title: 'AES-256-GCM Encryption',
       description:
-        'The gold standard in encryption. Each password-protected note uses a unique encryption key derived from your password with 200,000 PBKDF2 iterations.',
+        'The gold standard in encryption. Each password-protected note uses a unique encryption key derived from your password with 600,000 PBKDF2 iterations.',
     },
     {
       icon: WifiOff,
@@ -398,7 +398,7 @@ export default function ForJournalistsContent() {
                 <div className="grid md:grid-cols-2 gap-6">
                   {[
                     { label: 'Encryption Algorithm', value: 'AES-256-GCM', detail: 'Authenticated encryption with associated data' },
-                    { label: 'Key Derivation Function', value: 'PBKDF2-SHA256', detail: '200,000 iterations for password stretching' },
+                    { label: 'Key Derivation Function', value: 'PBKDF2-SHA256', detail: '600,000 iterations for password stretching' },
                     { label: 'Random Number Generation', value: 'crypto.getRandomValues', detail: 'Cryptographically secure PRNG' },
                     { label: 'Storage Location', value: '~/Library/Application Support/Dash/', detail: 'Local device only, no cloud sync' },
                     { label: 'Network Requests', value: 'Zero', detail: 'Completely offline, no telemetry' },

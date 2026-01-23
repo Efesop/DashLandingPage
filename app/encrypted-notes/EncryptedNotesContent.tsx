@@ -60,7 +60,7 @@ export default function EncryptedNotesContent() {
       icon: Key,
       title: 'PBKDF2 Key Derivation',
       description:
-        '200,000 iterations of password stretching makes brute-force attacks impractical. Your password becomes an uncrackable encryption key.',
+        '600,000 iterations of password stretching makes brute-force attacks impractical. Your password becomes an uncrackable encryption key.',
     },
     {
       icon: Database,
@@ -97,7 +97,7 @@ export default function EncryptedNotesContent() {
     {
       question: 'How are encryption keys generated?',
       answer:
-        'When you set a password on a note, Dash uses PBKDF2-SHA256 with 200,000 iterations to derive an encryption key from your password. This process, combined with a unique salt for each note, makes brute-force attacks computationally impractical.',
+        'When you set a password on a note, Dash uses PBKDF2-SHA256 with 600,000 iterations to derive an encryption key from your password. This process, combined with a unique salt for each note, makes brute-force attacks computationally impractical.',
     },
     {
       question: 'Can Dash decrypt my notes?',
@@ -428,7 +428,7 @@ export default function EncryptedNotesContent() {
                 <div className="grid md:grid-cols-2 gap-6">
                   {[
                     { label: 'Encryption Algorithm', value: 'AES-256-GCM', detail: 'Authenticated encryption with associated data' },
-                    { label: 'Key Derivation', value: 'PBKDF2-SHA256', detail: '200,000 iterations for password stretching' },
+                    { label: 'Key Derivation', value: 'PBKDF2-SHA256', detail: '600,000 iterations for password stretching' },
                     { label: 'Random Generation', value: 'crypto.getRandomValues', detail: 'Cryptographically secure PRNG' },
                     { label: 'Key Storage', value: 'Local device only', detail: 'Keys never transmitted anywhere' },
                     { label: 'Salt', value: 'Unique per note', detail: 'Prevents rainbow table attacks' },

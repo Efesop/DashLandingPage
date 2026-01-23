@@ -34,7 +34,7 @@ export default function SecuritySection() {
 
   const technicalSpecs = [
     { label: 'Encryption', value: 'AES-256-GCM' },
-    { label: 'Key Derivation', value: 'PBKDF2-SHA256 (200k iterations)' },
+    { label: 'Key Derivation', value: 'PBKDF2-SHA256 (600k iterations)' },
     { label: 'Storage', value: 'Local device only' },
     { label: 'Transmission', value: 'Never transmitted' },
   ];

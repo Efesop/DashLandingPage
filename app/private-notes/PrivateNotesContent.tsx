@@ -93,7 +93,7 @@ export default function PrivateNotesContent() {
     {
       question: 'How does the encryption work?',
       answer:
-        "Dash uses AES-256-GCM encryption, the same standard used by banks and governments. When you password-protect a note, it's encrypted with a key derived using PBKDF2-SHA256 with 200,000 iterations, making brute-force attacks impractical.",
+        "Dash uses AES-256-GCM encryption, the same standard used by banks and governments. When you password-protect a note, it's encrypted with a key derived using PBKDF2-SHA256 with 600,000 iterations, making brute-force attacks impractical.",
     },
     {
       question: 'Can Dash read my notes?',
@@ -455,7 +455,7 @@ export default function PrivateNotesContent() {
                     <CheckCircle className="w-4 h-4 text-blue-600 dark:text-blue-400" />
                   </div>
                   <div>
-                    <p className="font-medium text-gray-900 dark:text-white">200,000 PBKDF2 Iterations</p>
+                    <p className="font-medium text-gray-900 dark:text-white">600,000 PBKDF2 Iterations</p>
                     <p className="text-sm text-gray-600 dark:text-gray-400">Makes brute-force attacks impractical</p>
                   </div>
                 </li>

@@ -116,7 +116,7 @@ export default function ForResearchersContent() {
     },
     {
       title: 'Strong Encryption',
-      description: 'AES-256-GCM with PBKDF2 key derivation (200,000 iterations).',
+      description: 'AES-256-GCM with PBKDF2 key derivation (600,000 iterations).',
     },
     {
       title: 'No Account Required',
