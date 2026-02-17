@@ -189,6 +189,13 @@ export default function Header({
 
               <Link
                 className='px-4 py-2 text-sm font-medium text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white transition-colors'
+                href='/#payment-section'
+              >
+                Pricing
+              </Link>
+
+              <Link
+                className='px-4 py-2 text-sm font-medium text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white transition-colors'
                 href='/#faq'
               >
                 FAQ

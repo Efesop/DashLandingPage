@@ -75,12 +75,71 @@ const jsonLd = {
   ],
 };
 
+const faqJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'Can my notes be subpoenaed if they are in Dash?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: "Dash stores notes only on your local device with optional AES-256 encryption. Unlike cloud-based apps where a third party holds your data, there is no company server to subpoena. Your encrypted notes can only be accessed with your password, which you are not obligated to provide in many jurisdictions (consult legal counsel for your specific situation).",
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'How is this different from using encrypted cloud storage?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: "Encrypted cloud storage still sends your data to external servers, creating metadata trails and potential access points. Dash never transmits data anywhere - your notes exist only on your device. There is no network traffic to intercept, no server to hack, no company that can be compelled to hand over data.",
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'What happens if I lose my device?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Password-protected notes remain encrypted. Without your password, they are unreadable - even to forensic analysis. We recommend keeping encrypted backups (.dashpack files) in a secure location. Non-encrypted notes would be accessible, so we recommend encrypting sensitive material.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Can I share notes securely with colleagues?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Yes. Export notes as encrypted .dashpack files that can only be opened with Dash and your chosen password. Share via secure channels of your choice. The recipient needs Dash and the password to decrypt.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Is Dash open source? Can I verify the security claims?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Yes, Dash is fully open source. The complete source code is available on GitHub for security researchers, journalists, or anyone to audit. We believe transparency is essential for trust in security tools.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Does Dash work on mobile for field reporting?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Dash is available as a Progressive Web App (PWA) that works on iOS and Android browsers. The native Mac app provides the best experience with automatic updates. All versions maintain the same security standards.',
+      },
+    },
+  ],
+};
+
 export default function ForJournalistsPage() {
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
       <ForJournalistsContent />
     </>

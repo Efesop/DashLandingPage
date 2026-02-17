@@ -185,7 +185,7 @@ Dash is a beautiful, privacy-first note-taking app that keeps your thoughts comp
 3. **One-Time Purchase** - No subscriptions, lifetime access
 4. **Open Source** - Audit the code yourself (but we sell for convenience)
 5. **Beautiful Design** - Privacy doesn't mean ugly
-6. **Military-Grade Encryption** - AES-256-GCM with PBKDF2-SHA256 (200k iterations)
+6. **Military-Grade Encryption** - AES-256-GCM with PBKDF2-SHA256 (600k iterations)
 
 ---
 
@@ -210,7 +210,7 @@ Dash is a beautiful, privacy-first note-taking app that keeps your thoughts comp
 
 ### Security Features
 - **Encryption**: AES-256-GCM encryption for password-protected pages
-- **Key Derivation**: PBKDF2-SHA256 (200,000 iterations)
+- **Key Derivation**: PBKDF2-SHA256 (600,000 iterations)
 - **Random Generation**: Cryptographically secure
 - **XSS Protection**: DOMPurify sanitization
 - **Network Isolation**: No external network requests
@@ -382,7 +382,7 @@ Dash is a one-time purchase of $14.99 with no subscriptions or hidden costs. You
 Dash works best on **Mac** (native app with auto-updates). We also have a **Web version (PWA)** that works on any browser, including iOS and Android devices. Mac is recommended for the best experience.
 
 ### 4. How secure is the encryption?
-Dash uses AES-256-GCM encryption, the same standard used by banks and governments. Your notes are encrypted locally on your device with PBKDF2-SHA256 key derivation (200,000 iterations) before being saved, ensuring complete privacy.
+Dash uses AES-256-GCM encryption, the same standard used by banks and governments. Your notes are encrypted locally on your device with PBKDF2-SHA256 key derivation (600,000 iterations) before being saved, ensuring complete privacy.
 
 ### 5. What happens if I lose my device?
 Since your notes are stored locally, losing your device means losing your notes. We recommend regularly exporting your notes as encrypted backups (.dashpack files) to external storage for safekeeping.
@@ -458,7 +458,7 @@ If you've already purchased Dash, you can [recover your download link](https://d
 - Show the $14.99 price clearly (one-time, lifetime)
 - Focus on Mac as the best platform (but mention Web)
 - Compare to cloud-based competitors (Notion, Evernote)
-- Use security technical details (AES-256-GCM, PBKDF2-SHA256, 200k iterations)
+- Use security technical details (AES-256-GCM, PBKDF2-SHA256, 600k iterations)
 - Mention open source for credibility/trust (but don't emphasize "free")
 - Target professionals who need privacy (journalists, lawyers, activists)
 

@@ -64,12 +64,71 @@ const jsonLd = {
   ],
 };
 
+const faqJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'What encryption algorithm does Dash use?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Dash uses AES-256-GCM (Advanced Encryption Standard with 256-bit keys in Galois/Counter Mode). This is the same encryption standard used by the US government for classified information and by banks worldwide.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'How are encryption keys generated?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'When you set a password on a note, Dash uses PBKDF2-SHA256 with 600,000 iterations to derive an encryption key from your password. This process, combined with a unique salt for each note, makes brute-force attacks computationally impractical.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Can Dash decrypt my notes?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'No. Dash uses zero-knowledge architecture. We have no servers storing your data and no way to access your encryption keys. Your encrypted notes can only be decrypted with your password, which only you know.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'What happens if I forget my encryption password?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'If you forget your password, there is no way to recover encrypted notes. This is by design - it means no one else can recover them either. We recommend using a password manager and keeping secure backups.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Are all notes encrypted by default?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'No, encryption is opt-in per note. This lets you keep casual notes quick to access while protecting sensitive information with a password. You choose which notes need encryption.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Can I verify Dash encryption is secure?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Yes. Dash is fully open source. You can audit the encryption implementation on GitHub, or have a security professional review it. We believe transparency is essential for trust in security tools.',
+      },
+    },
+  ],
+};
+
 export default function EncryptedNotesPage() {
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
       <EncryptedNotesContent />
     </>

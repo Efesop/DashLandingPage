@@ -75,12 +75,71 @@ const jsonLd = {
   ],
 };
 
+const faqJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'Is this safe for storing seed phrases?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: "We recommend never storing your actual seed phrase digitally. However, Dash is excellent for storing hints, partial information, or instructions that could help you remember - encrypted with AES-256. The encryption is the same standard used by governments.",
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Why should I trust this app?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: "Don't trust - verify. Dash is fully open source on GitHub. The encryption uses standard AES-256-GCM with PBKDF2 key derivation. Your note data is never transmitted anywhere. The code is auditable.",
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'What if the company disappears?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: "Your notes are stored locally on your device as encrypted files. They don't depend on any server or service. Even if Dash disappeared tomorrow, your files would still exist on your machine. The code is open source if you ever need to build it yourself.",
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Can I run this air-gapped?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Yes. Once installed, Dash never needs internet access. You can use it on a completely air-gapped machine. Notes are stored locally and encrypted locally.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'How is the encryption implemented?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Dash uses AES-256-GCM encryption with PBKDF2 key derivation (600,000 iterations). Each note can have its own password. The encryption happens entirely on your device - no keys are ever transmitted anywhere.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Is there any telemetry or analytics?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Zero analytics or telemetry. Dash collects no data - no analytics, no crash reporting, no tracking. The Mac app checks for updates only, but your notes data is never transmitted. You can verify this by monitoring network traffic or reviewing the open source code.',
+      },
+    },
+  ],
+};
+
 export default function ForBitcoinersPage() {
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
       <ForBitcoinersContent />
     </>

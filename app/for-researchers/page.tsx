@@ -75,12 +75,71 @@ const jsonLd = {
   ],
 };
 
+const faqJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'Is Dash suitable for IRB-regulated research?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: "Dash's local-only storage and strong encryption can help meet many IRB data security requirements. Since data never leaves your device and can be encrypted, it provides a high level of protection. However, always consult your IRB and institution's specific requirements.",
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Can I use this for HIPAA-related research?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: "Dash's encryption and local storage align with many HIPAA security principles, but we cannot provide a formal HIPAA compliance certification. For healthcare research, work with your institution's compliance office to determine if Dash meets your specific requirements.",
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'How do I share research notes with collaborators?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Export notes to Word, PDF, or Markdown for sharing. For sensitive data, export as encrypted .dashpack files - collaborators need Dash and your password to decrypt. This keeps you in control of how data is shared.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Can I verify the security claims?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Yes. Dash is fully open source on GitHub. The encryption implementation uses standard cryptographic libraries (AES-256-GCM, PBKDF2). Security researchers can audit the code directly.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'What about backing up research notes?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Notes are stored in your local application data folder. Include this in your regular backup routine. You can also export encrypted .dashpack bundles as additional backups. With proper backups, you maintain data integrity without cloud dependency.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Does my institution need to approve this software?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: "That depends on your institution's policies. Dash's local-only, encrypted storage typically satisfies institutional security requirements more easily than cloud-based alternatives. Check with your IT department or data governance office.",
+      },
+    },
+  ],
+};
+
 export default function ForResearchersPage() {
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
       <ForResearchersContent />
     </>

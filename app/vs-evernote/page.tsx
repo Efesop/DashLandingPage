@@ -62,12 +62,71 @@ const jsonLd = {
   },
 };
 
+const faqJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'Can I import my Evernote notes directly?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Dash does not have a direct ENEX import feature yet. However, you can export your Evernote notes as HTML and copy the content into Dash. We are considering adding direct import in a future update.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Does Dash have all the features of Evernote?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Dash focuses on privacy-first note-taking. It includes rich text editing, formatting, folders, tags, search, and export. It does not include features like web clipping, collaboration, or cloud sync - these require servers that would compromise privacy.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'What about syncing between devices?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Dash does not have cloud sync by design. You can export encrypted .dashpack files and import them on another device. This gives you manual control over when and how your notes move between devices.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Is Dash really just $14.99 forever?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Yes. One payment, lifetime access. No subscription, no renewal fees, no upsells. Major updates are included. Compare that to Evernote at $180/year.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'What if Evernote adds better privacy features?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Cloud-based apps cannot offer true privacy because your data must exist on their servers for the service to work. Dash is architecturally different - your notes never leave your device.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Can I try Dash before buying?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Dash is open source, so you can review the code on GitHub. The PWA version is free to try in your browser. The Mac app is a one-time $14.99 purchase.',
+      },
+    },
+  ],
+};
+
 export default function VsEvernotePage() {
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
       <VsEvernoteContent />
     </>

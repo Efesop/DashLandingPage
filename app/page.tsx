@@ -105,6 +105,66 @@ export default function LandingPage() {
           }),
         }}
       />
+      {/* FAQ JSON-LD */}
+      <script
+        type='application/ld+json'
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'FAQPage',
+            mainEntity: [
+              {
+                '@type': 'Question',
+                name: 'How is Dash different from other notes apps?',
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: 'Dash is the only notes app that keeps everything 100% on your device. No cloud servers, no data collection, no corporate surveillance. Your notes are encrypted and completely private.',
+                },
+              },
+              {
+                '@type': 'Question',
+                name: 'How much is Dash?',
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: 'Dash is a one-time purchase with no subscriptions or hidden costs. We believe privacy is a fundamental right, not a premium feature.',
+                },
+              },
+              {
+                '@type': 'Question',
+                name: 'How secure is the encryption?',
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: 'Dash uses AES-256 encryption, the same standard used by banks and governments. Your notes are encrypted locally on your device before being saved, ensuring complete privacy.',
+                },
+              },
+              {
+                '@type': 'Question',
+                name: 'What happens if I lose my device?',
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: 'Since your notes are stored locally, losing your device means losing your notes. We recommend regularly exporting your notes as encrypted backups to external storage for safekeeping.',
+                },
+              },
+              {
+                '@type': 'Question',
+                name: 'Can I sync between devices?',
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: "Dash doesn't offer cloud sync to maintain your privacy. However, you can export your notes as encrypted files and import them on other devices manually.",
+                },
+              },
+              {
+                '@type': 'Question',
+                name: "Why don't you offer cloud storage?",
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: "Cloud storage requires sending your data to external servers, which compromises privacy. Dash's core principle is keeping your data exclusively on your device where you have complete control.",
+                },
+              },
+            ],
+          }),
+        }}
+      />
 
       <Header {...sharedProps} />
 

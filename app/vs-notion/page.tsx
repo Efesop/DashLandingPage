@@ -69,12 +69,63 @@ const jsonLd = {
   },
 };
 
+const faqJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'Can I really replace Notion with Dash?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'For personal note-taking, absolutely. Dash has rich text editing, organization with folders and tags, search, and multiple export formats. If you need team collaboration or databases, Notion may still be better - but for private, personal notes, Dash is the more secure choice.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'How do I migrate my notes from Notion?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Notion lets you export your workspace as Markdown files. Simply export from Notion, then import those Markdown files into Dash. Your formatting will be preserved, and you can then organize and encrypt as needed.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Is Dash as feature-rich as Notion?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Dash focuses on doing one thing exceptionally well: private, encrypted note-taking. It has rich text editing, folders, tags, search, and export options. It does not have databases or team features because those require cloud infrastructure that compromises privacy.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'What about syncing between devices?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Dash does not offer cloud sync because that would require storing your data on servers. Instead, you can export encrypted .dashpack files and import them on other devices. This keeps you in control of your data.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Why is Dash a one-time payment when Notion is subscription?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: "Notion needs ongoing revenue to maintain servers that store everyone's data. Dash runs entirely on your device with no server costs, so we can offer lifetime access for a single payment.",
+      },
+    },
+  ],
+};
+
 export default function VsNotionPage() {
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
       <VsNotionContent />
     </>

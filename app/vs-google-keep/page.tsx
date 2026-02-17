@@ -69,12 +69,63 @@ const jsonLd = {
   },
 };
 
+const faqJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'Google Keep is free. Why pay for Dash?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: "If a product is free, you're the product. Google Keep is free because your notes contribute to Google's advertising business. Dash costs $14.99 once because we make money from the product, not from your data. No ads, no tracking, no data mining - just a notes app that respects your privacy.",
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Can I migrate my notes from Google Keep?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Yes. Export your Google Keep notes using Google Takeout, which provides them as a .zip file with HTML or JSON format. These can then be converted to text or Markdown and imported into Dash.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Does Dash sync like Google Keep?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: "No - and that's by design. Syncing requires storing your data on servers, which creates privacy risks. Dash keeps notes only on your device. For moving notes between devices, export encrypted .dashpack files.",
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Is Dash really more private than Google Keep?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: "Yes. Google Keep stores your notes on Google's servers where they can be accessed, analyzed, and used for advertising. Dash stores notes only on your device with optional AES-256 encryption. There are no servers, no cloud, no way for anyone to access your notes without your device and password.",
+      },
+    },
+    {
+      '@type': 'Question',
+      name: "What about Google Keep's collaboration features?",
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: "Google Keep allows sharing lists with others through Google's servers. Dash is designed for private, personal notes. If you need to share, export to PDF or Word and send via your preferred secure method.",
+      },
+    },
+  ],
+};
+
 export default function VsGoogleKeepPage() {
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
       <VsGoogleKeepContent />
     </>

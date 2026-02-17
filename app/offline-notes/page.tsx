@@ -64,12 +64,71 @@ const jsonLd = {
   ],
 };
 
+const faqJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'How does Dash work without internet?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Dash stores all your notes locally on your device. The app never makes network requests - no API calls, no sync, no telemetry. Everything happens on your machine, so internet connectivity is simply not needed.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Where are my notes stored?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'On macOS, notes are stored in ~/Library/Application Support/Dash/. On the PWA version, notes are stored in your browser IndexedDB. You always have direct access to your data files.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Can I sync notes between devices?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'While there is no cloud sync (by design), you can export notes as encrypted .dashpack files and import them on another device. This gives you control over when and how data moves between devices.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'What happens if I lose my device?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Since notes are stored locally, losing your device means losing your notes unless you have exported backups. We recommend regularly exporting encrypted .dashpack backups to external storage.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Does the search feature work offline?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Yes, everything works offline. Search, editing, formatting, themes, encryption, export - all features work without any internet connection.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Is the PWA version also fully offline?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Yes. Once you install the PWA, it works completely offline. Notes are stored in your browser and the app is cached locally.',
+      },
+    },
+  ],
+};
+
 export default function OfflineNotesPage() {
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
       <OfflineNotesContent />
     </>

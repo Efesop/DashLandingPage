@@ -119,7 +119,7 @@ export default function ForBitcoinersContent() {
     {
       question: 'Why should I trust this app?',
       answer:
-        "Don't trust - verify. Dash is fully open source on GitHub. The encryption uses standard AES-256-GCM with PBKDF2 key derivation. There are no network requests - you can verify this with a packet sniffer. The code is auditable.",
+        "Don't trust - verify. Dash is fully open source on GitHub. The encryption uses standard AES-256-GCM with PBKDF2 key derivation. Your note data is never transmitted anywhere. The code is auditable.",
     },
     {
       question: 'What if the company disappears?',
@@ -134,12 +134,12 @@ export default function ForBitcoinersContent() {
     {
       question: 'How is the encryption implemented?',
       answer:
-        'Dash uses AES-256-GCM encryption with PBKDF2 key derivation (100,000 iterations). Each note can have its own password. The encryption happens entirely on your device - no keys are ever transmitted anywhere.',
+        'Dash uses AES-256-GCM encryption with PBKDF2 key derivation (600,000 iterations). Each note can have its own password. The encryption happens entirely on your device - no keys are ever transmitted anywhere.',
     },
     {
       question: 'Is there any telemetry or analytics?',
       answer:
-        'None. Zero. Dash makes no network requests whatsoever. No analytics, no crash reporting, no update checks. You can verify this by monitoring network traffic or reviewing the open source code.',
+        'Zero analytics or telemetry. Dash collects no data - no analytics, no crash reporting, no tracking. The Mac app checks for updates only, but your notes data is never transmitted. You can verify this by monitoring network traffic or reviewing the open source code.',
     },
   ];
 
