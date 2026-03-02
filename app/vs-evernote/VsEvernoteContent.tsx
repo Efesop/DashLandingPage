@@ -174,14 +174,7 @@ export default function VsEvernoteContent() {
 
   return (
     <main className="min-h-screen bg-white dark:bg-gray-950">
-      <Header
-        email=""
-        setEmail={() => { }}
-        isEmailSubmitted={false}
-        downloadError=""
-        downloadUrl=""
-        handleEmailSubmit={() => { }}
-      />
+      <Header />
 
       {/* Hero Section - Clean design like vs-notion */}
       <section className="relative overflow-hidden min-h-[70vh] flex items-center bg-gradient-to-b from-white via-blue-50/30 to-white dark:from-gray-950 dark:via-blue-950/20 dark:to-gray-950">

@@ -65,7 +65,7 @@ export default function Footer() {
               {privacyFeatures.slice(0, 3).map((feature) => (
                 <div
                   key={feature.label}
-                  className='flex items-center gap-1.5 px-3 py-1.5 rounded-full glass-card-dark text-xs'
+                  className='flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-gray-800/50 border border-gray-700/50 text-xs'
                 >
                   <feature.icon className='w-3 h-3 text-blue-400' />
                   <span className='text-gray-300'>{feature.label}</span>
@@ -118,7 +118,7 @@ export default function Footer() {
                 href='https://twitter.com/efesopoulos'
                 target='_blank'
                 rel='noopener noreferrer'
-                className='flex items-center gap-3 p-3 rounded-xl glass-card-dark hover:bg-white/5 transition-colors group'
+                className='flex items-center gap-3 p-3 rounded-xl bg-gray-800/50 border border-gray-700/50 hover:bg-white/5 transition-colors group'
               >
                 <div className='w-10 h-10 rounded-lg bg-blue-500/20 flex items-center justify-center group-hover:bg-blue-500/30 transition-colors'>
                   <Twitter className='w-5 h-5 text-blue-400' />
@@ -133,7 +133,7 @@ export default function Footer() {
                 href='https://buymeacoffee.com/efez'
                 target='_blank'
                 rel='noopener noreferrer'
-                className='flex items-center gap-3 p-3 rounded-xl glass-card-dark hover:bg-white/5 transition-colors group'
+                className='flex items-center gap-3 p-3 rounded-xl bg-gray-800/50 border border-gray-700/50 hover:bg-white/5 transition-colors group'
               >
                 <div className='w-10 h-10 rounded-lg bg-yellow-500/20 flex items-center justify-center group-hover:bg-yellow-500/30 transition-colors'>
                   <Coffee className='w-5 h-5 text-yellow-400' />

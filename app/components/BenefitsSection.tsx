@@ -3,7 +3,6 @@
 import React from 'react';
 import { Globe, Zap, Heart, CheckCircle, WifiOff } from 'lucide-react';
 import { motion } from 'framer-motion';
-import FloatingOrbs from './ui/FloatingOrbs';
 
 export default function BenefitsSection() {
   const benefits = [
@@ -30,8 +29,8 @@ export default function BenefitsSection() {
   return (
     <section className='py-24 bg-gray-900 relative overflow-hidden'>
       {/* Background effects */}
-      <div className='absolute inset-0 bg-gradient-to-br from-gray-900 via-slate-900 to-gray-900' />
-      <FloatingOrbs variant='dark' density='low' />
+      <div className='absolute top-0 left-1/4 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl' />
+      <div className='absolute bottom-0 right-1/3 w-80 h-80 bg-indigo-500/5 rounded-full blur-3xl' />
 
       <div className='container mx-auto px-6 lg:px-8 relative z-10'>
         {/* Section Header */}
@@ -51,7 +50,7 @@ export default function BenefitsSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className='text-5xl md:text-6xl font-bold text-white mb-6'
+            className='text-4xl md:text-5xl font-bold text-white mb-6'
           >
             No Cloud,{' '}
             <span className='text-blue-400'>No Worries</span>
@@ -64,7 +63,7 @@ export default function BenefitsSection() {
             className='text-xl text-gray-300 max-w-3xl mx-auto'
           >
             Experience the freedom of truly private notes that work exactly
-            how you'd expect
+            how you&apos;d expect
           </motion.p>
         </div>
 

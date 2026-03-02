@@ -2,8 +2,8 @@
 
 This document provides the complete, accurate context about Dash for use by AI, developers, marketers, or anyone working on the landing page, marketing materials, or SEO content.
 
-**Last Updated**: January 9, 2026  
-**Current Version**: v1.3.85+  
+**Last Updated**: March 2, 2026
+**Current Version**: v1.3.85+
 **Status**: Active development, Mac + Web versions available
 
 ---
@@ -66,13 +66,20 @@ Dash is a beautiful, privacy-first note-taking app that keeps your thoughts comp
 | **No Tracking** | Zero analytics or telemetry | Complete privacy, no profiling |
 | **Local Storage** | Data stored in user directory | You control where your data lives |
 | **Zero-Knowledge Design** | Even we can't read your notes | Data encrypted before touching storage |
+| **Touch ID / Biometric Lock** | Unlock app or individual pages with fingerprint | Fast, secure access without typing passwords |
+| **Auto-Lock** | Configurable timeout (1/5/15/30 min) + Cmd+Shift+L instant lock | Automatic protection when you step away |
+| **Self-Destructing Notes** | Auto-delete after 1h/1d/7d/30d with countdown | Sensitive info disappears automatically |
 
 ### 📝 Note Taking
 
 | Feature | Description | Benefit |
 |---------|-------------|---------|
-| **Rich Text Editor** | Headers, lists, checklists, quotes, code blocks | Full formatting without complexity |
-| **Multiple Block Types** | Paragraphs, headers, lists, code, embeds | Flexible content creation |
+| **Rich Text Editor** | Headers, lists, checklists, quotes, code blocks, tables, images | Full formatting without complexity |
+| **Multiple Block Types** | Paragraphs, headers, lists, code, tables, images, embeds | Flexible content creation |
+| **Code Blocks** | Syntax-highlighted code with language support | Developer-friendly note-taking |
+| **Tables** | Insert and edit tables within notes | Organize structured data |
+| **Image Support** | Embed images in notes | Visual note-taking |
+| **Focus Mode** | Distraction-free writing (Cmd+Shift+F) | Deep concentration mode |
 | **Live Word Count** | Real-time character/word counting | Track writing progress |
 | **Auto-Save** | Changes saved automatically | Never lose work |
 
@@ -92,6 +99,7 @@ Dash is a beautiful, privacy-first note-taking app that keeps your thoughts comp
 |---------|-------------|---------|
 | **Folders** | Nested organization | Keep notes structured |
 | **Color-Coded Tags** | Visual categorization | Quick identification |
+| **Quick Switcher** | Cmd+P to jump to any note instantly | Keyboard-first navigation |
 | **Fuzzy Search** | Find-as-you-type | Instant results |
 | **Smart Filtering** | Filter by folder, tag, or search | Find anything fast |
 
@@ -102,6 +110,7 @@ Dash is a beautiful, privacy-first note-taking app that keeps your thoughts comp
 | **Light Theme** | Clean, bright interface | Comfortable daytime use |
 | **Dark Theme** | Easy on the eyes | Late night writing |
 | **Fallout Theme** | Retro terminal aesthetic | Unique, fun experience |
+| **Solarized Theme** | Warm, balanced color palette | 4th theme option |
 | **Responsive Design** | Works on any screen | Desktop to mobile |
 | **Minimal Interface** | Distraction-free | Focus on writing |
 
@@ -177,6 +186,8 @@ Dash is a beautiful, privacy-first note-taking app that keeps your thoughts comp
 | Free to Sync | ✅ | ❌ | ❌ | ❌ |
 | Rich Text Editor | ✅ | ✅ | ✅ | ⚠️ |
 | No Cloud Dependencies | ✅ | ❌ | ❌ | ✅ |
+| Biometric Lock | ✅ | ❌ | ✅ | ❌ |
+| Self-Destructing Notes | ✅ | ❌ | ❌ | ❌ |
 | Cross-Platform | ✅ | ✅ | ✅ | ✅ |
 
 ### Key Differentiators
@@ -211,6 +222,9 @@ Dash is a beautiful, privacy-first note-taking app that keeps your thoughts comp
 ### Security Features
 - **Encryption**: AES-256-GCM encryption for password-protected pages
 - **Key Derivation**: PBKDF2-SHA256 (600,000 iterations)
+- **Biometric Authentication**: Touch ID support for app unlock and individual page lock
+- **Auto-Lock**: Configurable inactivity timeout (1/5/15/30 min) + Cmd+Shift+L instant lock
+- **Self-Destructing Notes**: Auto-delete after configurable time (1h/1d/7d/30d)
 - **Random Generation**: Cryptographically secure
 - **XSS Protection**: DOMPurify sanitization
 - **Network Isolation**: No external network requests
@@ -258,17 +272,18 @@ Dash is a beautiful, privacy-first note-taking app that keeps your thoughts comp
 ## Landing Page Structure (Current Implementation)
 
 ### Homepage Sections (in order)
-1. **Header** - Navigation, "Get Dash" CTA button
-2. **Hero Section** - Main value prop, video demo, "Get Dash for Mac" CTA
+1. **Header** - Navigation with dropdowns (Use Cases, Compare), "Get Dash" CTA button
+2. **Hero Section** - Centered layout, video demo with browser chrome, trust badges, "Get Dash for Mac" CTA
 3. **Feature Showcase** - Dark section highlighting encryption, offline, zero tracking
-4. **Core Features** - Rich text editing, search, organization with live demo
-5. **Security Section** - Technical security details, AES-256 specs
-6. **Benefits Section** - "No Cloud, No Worries" - works anywhere, lightning fast, stress-free
-7. **Comparison Table** - vs Notion, Evernote, Obsidian
-8. **Payment Section** - $14.99 purchase, Stripe checkout
-9. **FAQ Section** - Common questions
-10. **CTA Section** - Final call-to-action
-11. **Footer** - Privacy features, social links
+4. **Core Features** - Rich text editing, quick switcher, organization, focus mode, import/export with live demo
+5. **Security Section** - Technical security details, AES-256 specs, auto-lock, Touch ID
+6. **Biometric Lock Section** - Touch ID/biometric showcase with animated lock/unlock mockup
+7. **Benefits Section** - "No Cloud, No Worries" - works anywhere, lightning fast, stress-free
+8. **Comparison Table** - vs Notion, Evernote, Obsidian (includes biometric lock, self-destructing notes)
+9. **Payment Section** - $14.99 purchase, Stripe checkout
+10. **FAQ Section** - 7 common questions including Touch ID/biometric
+11. **CTA Section** - Final call-to-action with trust indicators
+12. **Footer** - Privacy features, use case links, comparison links, social links
 
 ### Key CTAs
 - **Primary**: "Get Dash for Mac" (scrolls to payment section)
@@ -481,8 +496,8 @@ If you've already purchased Dash, you can [recover your download link](https://d
 
 ---
 
-**Document Version**: 1.0  
-**Last Updated**: January 9, 2026  
+**Document Version**: 1.1
+**Last Updated**: March 2, 2026
 **Next Review**: When significant product changes occur
 
 This document should be updated whenever:

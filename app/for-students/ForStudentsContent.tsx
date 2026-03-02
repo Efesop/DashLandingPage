@@ -136,14 +136,7 @@ export default function ForStudentsContent() {
 
   return (
     <main className="min-h-screen bg-white dark:bg-gray-950">
-      <Header
-        email=""
-        setEmail={() => { }}
-        isEmailSubmitted={false}
-        downloadError=""
-        downloadUrl=""
-        handleEmailSubmit={() => { }}
-      />
+      <Header />
 
       {/* Hero Section */}
       <SEOHero

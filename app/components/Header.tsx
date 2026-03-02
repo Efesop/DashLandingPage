@@ -7,23 +7,7 @@ import { ChevronDown } from 'lucide-react';
 import { Button } from './ui/button';
 import BuyMeCoffeeButton from './ui/BuyMeCoffeeButton';
 
-interface HeaderProps {
-  email: string;
-  setEmail: (email: string) => void;
-  isEmailSubmitted: boolean;
-  downloadError: string;
-  downloadUrl: string;
-  handleEmailSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
-}
-
-export default function Header({
-  email,
-  setEmail,
-  isEmailSubmitted,
-  downloadError,
-  downloadUrl,
-  handleEmailSubmit,
-}: HeaderProps) {
+export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);

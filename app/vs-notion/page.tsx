@@ -61,11 +61,6 @@ const jsonLd = {
       priceCurrency: 'USD',
       priceValidUntil: '2026-12-31',
     },
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ratingValue: '5',
-      ratingCount: '100',
-    },
   },
 };
 

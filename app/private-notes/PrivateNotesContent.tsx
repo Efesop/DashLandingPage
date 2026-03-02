@@ -114,14 +114,7 @@ export default function PrivateNotesContent() {
 
   return (
     <main className="min-h-screen bg-white dark:bg-gray-950">
-      <Header
-        email=""
-        setEmail={() => { }}
-        isEmailSubmitted={false}
-        downloadError=""
-        downloadUrl=""
-        handleEmailSubmit={() => { }}
-      />
+      <Header />
 
       {/* Hero Section - Redesigned */}
       <section className="relative pt-32 pb-20 overflow-hidden bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900">

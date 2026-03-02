@@ -60,11 +60,6 @@ const jsonLd = {
     price: '14.99',
     priceCurrency: 'USD',
   },
-  aggregateRating: {
-    '@type': 'AggregateRating',
-    ratingValue: '5',
-    ratingCount: '100',
-  },
   featureList: [
     'Zero data collection',
     'No AI training on your content',

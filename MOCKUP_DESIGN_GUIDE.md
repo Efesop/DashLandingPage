@@ -1,6 +1,104 @@
 # Mockup Design Guide for Dash Landing Page
 
-Based on reference examples from Linkjolt, Resend, and similar modern SaaS products.
+**Last Updated**: March 2, 2026
+
+Based on reference examples from Linear, Raycast, Notion, Craft, and modern SaaS products.
+
+---
+
+## Design Direction (March 2026)
+
+### Moving Away From Legacy Utility Components
+We are phasing out the following utility components in favor of clean, inline Tailwind CSS:
+- `GlassCard` → Use explicit `bg-slate-800/40 border border-slate-700/50 rounded-2xl` (dark) or `bg-white border border-gray-200 rounded-2xl` (light)
+- `FloatingOrbs` → Use positioned absolute `div` elements with `blur-3xl` and low-opacity backgrounds
+- `DeviceMockup` → Build browser-window chrome inline with macOS traffic light dots
+- `GradientText` → Use flat accent colors (`text-blue-600` light, `text-blue-400` dark) - NO gradient text
+
+### Standard Patterns
+
+**Section Headings:**
+- Size: `text-4xl md:text-5xl font-bold` (NOT text-5xl/6xl)
+- Accent word: `text-blue-600 dark:text-blue-400` (flat color, not gradient)
+
+**Pill Badges (dark sections):**
+```
+bg-blue-500/10 border border-blue-500/20 rounded-full px-4 py-2
+```
+
+**Pill Badges (light sections):**
+```
+bg-blue-50 border border-blue-200 rounded-full px-4 py-1.5
+```
+
+**Dark Section Cards:**
+```
+bg-slate-800/40 border border-slate-700/50 rounded-2xl p-8
+```
+
+**Dark Section Inner Elements:**
+```
+bg-slate-700/40 border border-slate-600/30 rounded-lg px-4 py-3
+```
+
+**Light Section Cards:**
+```
+bg-white border border-gray-200 rounded-2xl shadow-lg p-8
+```
+
+**Browser-Window Chrome (macOS mockup):**
+```jsx
+<div className='bg-slate-800 border-b border-slate-700/50 px-4 py-2.5 flex items-center justify-between'>
+  <div className='flex items-center gap-1.5'>
+    <div className='w-3 h-3 rounded-full bg-[#ff5f57]' />
+    <div className='w-3 h-3 rounded-full bg-[#febc2e]' />
+    <div className='w-3 h-3 rounded-full bg-[#28c840]' />
+  </div>
+  <div className='flex items-center gap-1.5 px-3 py-1 rounded-md bg-slate-700/50 border border-slate-600/50'>
+    <Lock className='w-2.5 h-2.5 text-green-400' />
+    <span className='text-[11px] text-slate-400 font-medium'>Title</span>
+  </div>
+  <div className='w-[44px]' />
+</div>
+```
+
+**Background Blobs (dark sections):**
+```
+absolute w-96 h-96 bg-blue-500/5 rounded-full blur-3xl
+```
+
+**Background Blobs (light sections):**
+```
+absolute w-[1200px] h-[700px] bg-blue-100/60 rounded-full blur-[120px]
+```
+
+### Section Background Alternation
+Sections alternate between light and dark for visual rhythm:
+1. HeroSection → white (`bg-white`)
+2. FeatureShowcase → dark slate (`bg-slate-900`)
+3. CoreFeatures → light (`bg-white`)
+4. SecuritySection → light gradient (`from-blue-50 to-white`)
+5. BiometricLockSection → dark blue (`from-blue-950 via-slate-900 to-slate-900`)
+6. BenefitsSection → dark gray (`bg-gray-900`)
+7. ComparisonTable → light gray (`bg-gray-100`)
+8. PaymentSection → light gradient (`from-white to-gray-50`)
+9. FAQSection → white (`bg-white`)
+10. CTASection → blue gradient (`from-blue-600 via-blue-700 to-gray-900`)
+11. Footer → dark (`bg-gray-900`)
+
+### Accent Colors
+- **Primary accent (light mode):** `text-blue-600`, `bg-blue-600`
+- **Primary accent (dark mode):** `text-blue-400`, `bg-blue-500`
+- **Success:** `text-green-500`, `bg-green-500`
+- **Error/negative:** `text-red-400`, `bg-red-500`
+- **Special/secondary:** `text-purple-400`, `bg-purple-500`
+- **Emerald (offline theme):** `text-emerald-400`, `bg-emerald-500`
+
+### CTA Buttons
+- **Primary (light bg):** `bg-blue-600 hover:bg-blue-700 text-white rounded-xl shadow-lg shadow-blue-600/25`
+- **Primary (dark/blue bg):** `bg-white text-blue-600 hover:bg-blue-50 rounded-lg shadow-xl`
+
+---
 
 ## Preferred Mockup Styles
 
@@ -123,19 +221,20 @@ Based on reference examples from Linkjolt, Resend, and similar modern SaaS produ
 
 ---
 
-## Color Palette Preferences
+## Color Palette
 
-### Dark Themes
-- **Backgrounds:** `slate-900`, `gray-900`, `slate-800`
-- **Cards:** `slate-800/50`, `gray-800` with subtle borders
-- **Text:** White for headers, `slate-300` for body
-- **Accents:** Blue (`blue-500`, `blue-400`), Green for success, Red for alerts
+### Dark Sections
+- **Backgrounds:** `slate-900`, `gray-900`, `bg-gradient-to-b from-blue-950 via-slate-900 to-slate-900`
+- **Cards:** `bg-slate-800/40 border border-slate-700/50` or `bg-gray-800/50 border border-gray-700`
+- **Inner elements:** `bg-slate-700/40 border border-slate-600/30`
+- **Text:** White for headers, `slate-300`/`gray-300` for body, `gray-400` for secondary
+- **Accents:** `blue-400` for text, `blue-500` for backgrounds, `green-400` for success, `red-400` for alerts
 
-### Light Themes
-- **Backgrounds:** White, `gray-50`, `blue-50`
-- **Cards:** White with `gray-200` borders
-- **Text:** `gray-900` for headers, `gray-600` for body
-- **Accents:** `blue-600`, `green-500`, `red-500`
+### Light Sections
+- **Backgrounds:** White, `gray-50`, `bg-gradient-to-b from-blue-50 to-white`, `gray-100`
+- **Cards:** `bg-white border border-gray-200 rounded-2xl shadow-lg`
+- **Text:** `gray-900` for headers, `gray-600` for body, `gray-500` for secondary
+- **Accents:** `blue-600` for text, `blue-600` for buttons, `green-500` for success
 
 ### Status Colors
 - **Success/Active:** Green (`green-500`, `green-400`)
