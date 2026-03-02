@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { Shield, Key, Eye, Database, Lock, CheckCircle } from 'lucide-react';
+import { Shield, Key, Eye, Database, Lock, CheckCircle, Timer } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 export default function SecuritySection() {
@@ -30,6 +30,12 @@ export default function SecuritySection() {
       description:
         'Notes never leave your device. No cloud uploads, no external dependencies.',
     },
+    {
+      icon: Timer,
+      title: 'Auto-lock protection',
+      description:
+        'App locks automatically after inactivity. Touch ID or master password required to unlock.',
+    },
   ];
 
   const technicalSpecs = [
@@ -37,6 +43,7 @@ export default function SecuritySection() {
     { label: 'Key Derivation', value: 'PBKDF2-SHA256 (600k iterations)' },
     { label: 'Storage', value: 'Local device only' },
     { label: 'Transmission', value: 'Never transmitted' },
+    { label: 'App Lock', value: 'Touch ID + Master Password' },
   ];
 
   return (

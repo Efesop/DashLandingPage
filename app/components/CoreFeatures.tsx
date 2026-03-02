@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { Edit3, Search, Folder, Lock } from 'lucide-react';
+import { Edit3, Search, Folder, Lock, Focus, ArrowDownUp } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 export default function CoreFeatures() {
@@ -46,17 +46,27 @@ export default function CoreFeatures() {
     {
       icon: Edit3,
       title: 'Rich text editing',
-      desc: 'Format your thoughts beautifully with a powerful editor',
+      desc: 'Code blocks with syntax highlighting, tables, images, and beautiful formatting',
     },
     {
       icon: Search,
-      title: 'Instant search',
-      desc: 'Find any note in milliseconds across your entire library',
+      title: 'Quick Switcher',
+      desc: 'Press Cmd+P to jump to any note instantly across your entire library',
     },
     {
       icon: Folder,
       title: 'Smart organization',
       desc: 'Folders, tags, and categories to structure your knowledge',
+    },
+    {
+      icon: Focus,
+      title: 'Focus Mode',
+      desc: 'Distraction-free writing with Cmd+Shift+F. Just you and your thoughts',
+    },
+    {
+      icon: ArrowDownUp,
+      title: 'Import & Export',
+      desc: 'Export to PDF, Word, Markdown, RTF, and more. Import from multiple formats',
     },
   ];
 
@@ -159,6 +169,17 @@ export default function CoreFeatures() {
                   <span className='text-xs text-gray-500 dark:text-gray-400'>
                     Encrypted and saved locally on your device
                   </span>
+                </div>
+
+                <div className='flex flex-wrap gap-2 mt-4'>
+                  {['Code blocks', 'Tables', 'Images', '4 themes'].map((badge) => (
+                    <span
+                      key={badge}
+                      className='text-[11px] font-medium px-2.5 py-1 rounded-full bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 border border-blue-100 dark:border-blue-800/30'
+                    >
+                      {badge}
+                    </span>
+                  ))}
                 </div>
               </div>
             </div>

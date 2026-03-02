@@ -16,6 +16,8 @@ export default function ComparisonTable() {
     { feature: 'Free to Sync', dash: true, notion: false, evernote: false, obsidian: false },
     { feature: 'Rich Text Editor', dash: true, notion: true, evernote: true, obsidian: true },
     { feature: 'No Cloud Dependencies', dash: true, notion: false, evernote: false, obsidian: true },
+    { feature: 'Biometric Lock', dash: true, notion: false, evernote: true, obsidian: false },
+    { feature: 'Self-Destructing Notes', dash: true, notion: false, evernote: false, obsidian: false },
     { feature: 'Cross-Platform', dash: true, notion: true, evernote: true, obsidian: true },
   ];
 

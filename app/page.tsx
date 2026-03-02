@@ -6,6 +6,7 @@ import HeroSection from './components/HeroSection';
 import FeatureShowcase from './components/FeatureShowcase';
 import CoreFeatures from './components/CoreFeatures';
 import SecuritySection from './components/SecuritySection';
+import BiometricLockSection from './components/BiometricLockSection';
 import BenefitsSection from './components/BenefitsSection';
 import ComparisonTable from './components/ComparisonTable';
 import FAQSection from './components/FAQSection';
@@ -161,6 +162,14 @@ export default function LandingPage() {
                   text: "Cloud storage requires sending your data to external servers, which compromises privacy. Dash's core principle is keeping your data exclusively on your device where you have complete control.",
                 },
               },
+              {
+                '@type': 'Question',
+                name: 'Does Dash support Touch ID or biometric unlock?',
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: 'Yes! On macOS, Dash supports Touch ID to unlock the app or individual locked pages. You can also set auto-lock timers (1, 5, 15, or 30 minutes) or lock instantly with Cmd+Shift+L. A master password is available as a fallback.',
+                },
+              },
             ],
           }),
         }}
@@ -173,6 +182,7 @@ export default function LandingPage() {
         <FeatureShowcase />
         <CoreFeatures />
         <SecuritySection />
+        <BiometricLockSection />
         <BenefitsSection />
         <ComparisonTable />
         <PaymentSection />

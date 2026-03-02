@@ -38,6 +38,11 @@ export default function FAQSection() {
       answer:
         "Cloud storage requires sending your data to external servers, which compromises privacy. Dash's core principle is keeping your data exclusively on your device where you have complete control.",
     },
+    {
+      question: 'Does Dash support Touch ID or biometric unlock?',
+      answer:
+        'Yes! On macOS, Dash supports Touch ID to unlock the app or individual locked pages. You can also set auto-lock timers (1, 5, 15, or 30 minutes) or lock instantly with Cmd+Shift+L. A master password is available as a fallback.',
+    },
   ];
 
   return (
