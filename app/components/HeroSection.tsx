@@ -30,7 +30,7 @@ export default function HeroSection() {
         responsive: true,
         fluid: true,
         loop: true,
-        sources: [{ src: '/images/Dash.mp4', type: 'video/mp4' }],
+        sources: [{ src: '/images/Dashdemo2.mp4', type: 'video/mp4' }],
       });
     }
 
