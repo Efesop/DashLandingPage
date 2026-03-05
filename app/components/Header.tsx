@@ -58,6 +58,14 @@ export default function Header() {
     { href: '/vs-google-keep', label: 'Dash vs Google Keep' },
   ];
 
+  const guides = [
+    { href: '/guides/encryption', label: 'Encryption' },
+    { href: '/guides/self-destructing-notes', label: 'Self-Destructing Notes' },
+    { href: '/guides/offline-first', label: 'Offline-First Apps' },
+    { href: '/guides/privacy-first-note-taking', label: 'Privacy-First Design' },
+    { href: '/guides/app-lock', label: 'App Lock' },
+  ];
+
   return (
     <>
       {/* Spacer div to prevent content jump */}
@@ -159,6 +167,31 @@ export default function Header() {
                       Feature Comparison
                     </Link>
                     {comparisons.map((link) => (
+                      <Link
+                        key={link.href}
+                        href={link.href}
+                        className='block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors'
+                      >
+                        {link.label}
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </div>
+
+              {/* Guides Dropdown */}
+              <div
+                className='relative'
+                onMouseEnter={() => setOpenDropdown('guides')}
+                onMouseLeave={() => setOpenDropdown(null)}
+              >
+                <button className='px-4 py-2 text-sm font-medium text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white transition-colors flex items-center gap-1'>
+                  Guides
+                  <ChevronDown className='w-3 h-3' />
+                </button>
+                {openDropdown === 'guides' && (
+                  <div className='absolute top-full left-0 mt-1 w-56 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg py-2'>
+                    {guides.map((link) => (
                       <Link
                         key={link.href}
                         href={link.href}

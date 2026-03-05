@@ -110,8 +110,32 @@ export default function Footer() {
             </ul>
           </div>
 
+          {/* Guides */}
+          <div className='lg:col-span-2'>
+            <h3 className='font-semibold text-white mb-6'>Guides</h3>
+            <ul className='space-y-3'>
+              {[
+                { href: '/guides/encryption', label: 'Encryption' },
+                { href: '/guides/self-destructing-notes', label: 'Self-Destructing Notes' },
+                { href: '/guides/offline-first', label: 'Offline-First Apps' },
+                { href: '/guides/privacy-first-note-taking', label: 'Privacy-First Design' },
+                { href: '/guides/app-lock', label: 'App Lock' },
+              ].map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className='text-gray-400 hover:text-gray-300 transition-colors text-sm flex items-center gap-2 group'
+                  >
+                    <div className='w-1.5 h-1.5 rounded-full bg-blue-500 group-hover:bg-blue-400 transition-colors' />
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
           {/* Connect */}
-          <div className='lg:col-span-4'>
+          <div className='lg:col-span-2'>
             <h3 className='font-semibold text-white mb-6'>Connect With Us</h3>
             <div className='space-y-4'>
               <Link
