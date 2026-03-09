@@ -24,6 +24,7 @@ import Footer from '../components/Footer';
 import PaymentSection from '../components/PaymentSection';
 import SEOHero from '../components/seo/SEOHero';
 import CTABanner from '../components/seo/CTABanner';
+import InlineCTA from '../components/seo/InlineCTA';
 
 export default function EncryptedNotesContent() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
@@ -294,6 +295,8 @@ export default function EncryptedNotesContent() {
           </div>
         </div>
       </section>
+
+      <InlineCTA text="Get encrypted notes — $14.99" variant="dark" />
 
       {/* Encryption Flow Mockup */}
       <section className="py-24 bg-white dark:bg-gray-950">

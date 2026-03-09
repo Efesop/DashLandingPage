@@ -7,9 +7,10 @@ import {
   Fingerprint,
   WifiOff,
   EyeOff,
+  Star,
+  Download,
 } from 'lucide-react';
 import { motion } from 'framer-motion';
-import { Button } from './ui/button';
 import videojs from 'video.js';
 import 'video.js/dist/video-js.css';
 import type Player from 'video.js/dist/types/player';
@@ -102,16 +103,17 @@ export default function HeroSection() {
             transition={{ duration: 0.4, delay: 0.35 }}
             className='flex flex-col sm:flex-row items-center justify-center gap-4 pt-2'
           >
-            <Button
-              onClick={() =>
-                document
-                  .getElementById('payment-section')
-                  ?.scrollIntoView({ behavior: 'smooth' })
-              }
-              className='h-13 px-10 bg-blue-600 hover:bg-blue-700 text-white text-base font-semibold rounded-xl shadow-lg shadow-blue-600/25 transition-all duration-200 hover:shadow-xl hover:shadow-blue-600/30'
+            <a
+              href='#payment-section'
+              onClick={(e) => {
+                e.preventDefault();
+                document.getElementById('payment-section')?.scrollIntoView({ behavior: 'smooth' });
+              }}
+              className='py-3.5 px-10 bg-blue-600 text-white text-base font-semibold rounded-xl shadow-lg shadow-blue-600/25 inline-flex items-center justify-center gap-2 hover:bg-blue-700 active:bg-blue-800'
             >
+              <Download className='w-4 h-4' />
               Get Dash for Mac
-            </Button>
+            </a>
             <button
               onClick={() =>
                 document
@@ -124,27 +126,61 @@ export default function HeroSection() {
             </button>
           </motion.div>
 
-          {/* Trust row */}
+          {/* Social proof */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.4, delay: 0.5 }}
-            className='flex flex-wrap items-center justify-center gap-3 pt-4'
+            className='flex flex-col items-center gap-5 pt-4'
           >
-            {trustItems.map((item, i) => (
-              <motion.div
-                key={item.label}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.3, delay: 0.55 + i * 0.06 }}
-                className='flex items-center gap-2 px-3.5 py-2 rounded-full bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-800'
-              >
-                <item.icon className='w-4 h-4 text-blue-600 dark:text-blue-400' />
-                <span className='text-sm text-gray-700 dark:text-gray-300 font-medium'>
-                  {item.label}
+            {/* Avatars + downloads + stars */}
+            <div className='flex items-center gap-3'>
+              {/* Overlapping avatar circles */}
+              <div className='flex -space-x-2'>
+                {[
+                  { initials: 'JM', bg: 'bg-blue-500' },
+                  { initials: 'AK', bg: 'bg-emerald-500' },
+                  { initials: 'TS', bg: 'bg-purple-500' },
+                  { initials: 'RD', bg: 'bg-amber-500' },
+                  { initials: 'LP', bg: 'bg-rose-500' },
+                ].map((avatar) => (
+                  <div
+                    key={avatar.initials}
+                    className={`w-8 h-8 rounded-full ${avatar.bg} flex items-center justify-center text-[11px] font-bold text-white ring-2 ring-white dark:ring-gray-950`}
+                  >
+                    {avatar.initials}
+                  </div>
+                ))}
+              </div>
+              <div className='flex flex-col items-start'>
+                <div className='flex items-center gap-1'>
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} className='w-3.5 h-3.5 fill-amber-400 text-amber-400' />
+                  ))}
+                </div>
+                <span className='text-xs text-gray-500 dark:text-gray-400'>
+                  100+ downloads
                 </span>
-              </motion.div>
-            ))}
+              </div>
+            </div>
+
+            {/* Trust pills */}
+            <div className='flex flex-wrap items-center justify-center gap-3'>
+              {trustItems.map((item, i) => (
+                <motion.div
+                  key={item.label}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.3, delay: 0.55 + i * 0.06 }}
+                  className='flex items-center gap-2 px-3.5 py-2 rounded-full bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-800'
+                >
+                  <item.icon className='w-4 h-4 text-blue-600 dark:text-blue-400' />
+                  <span className='text-sm text-gray-700 dark:text-gray-300 font-medium'>
+                    {item.label}
+                  </span>
+                </motion.div>
+              ))}
+            </div>
           </motion.div>
         </div>
 

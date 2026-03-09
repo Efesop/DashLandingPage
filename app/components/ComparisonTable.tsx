@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { CheckCircle, X, Crown } from 'lucide-react';
+import { CheckCircle, X, Crown, ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 import GlassCard from './ui/GlassCard';
 import GradientText from './ui/GradientText';
@@ -155,6 +155,22 @@ export default function ComparisonTable() {
               </div>
             </div>
           </GlassCard>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className='mt-10 text-center'
+        >
+          <a
+            href='#payment-section'
+            onClick={(e) => { e.preventDefault(); document.getElementById('payment-section')?.scrollIntoView({ behavior: 'smooth' }); }}
+            className='inline-flex items-center gap-2 px-6 py-2.5 bg-blue-600 text-white text-sm font-semibold rounded-lg hover:bg-blue-700 active:bg-blue-800'
+          >
+            Switch to Dash
+            <ArrowRight className='w-4 h-4' />
+          </a>
         </motion.div>
       </div>
     </section>

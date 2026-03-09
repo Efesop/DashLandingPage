@@ -24,6 +24,7 @@ import Footer from '../../components/Footer';
 import PaymentSection from '../../components/PaymentSection';
 import SEOHero from '../../components/seo/SEOHero';
 import CTABanner from '../../components/seo/CTABanner';
+import InlineCTA from '../../components/seo/InlineCTA';
 
 export default function PrivacyFirstGuideContent() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
@@ -299,6 +300,8 @@ export default function PrivacyFirstGuideContent() {
           </div>
         </div>
       </section>
+
+      <InlineCTA text="Go privacy-first with Dash" variant="dark" />
 
       {/* How Dash Implements Privacy-First */}
       <section className="py-24 bg-white dark:bg-gray-950">

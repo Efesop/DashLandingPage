@@ -28,6 +28,7 @@ import Footer from '../components/Footer';
 import PaymentSection from '../components/PaymentSection';
 import SEOHero from '../components/seo/SEOHero';
 import CTABanner from '../components/seo/CTABanner';
+import InlineCTA from '../components/seo/InlineCTA';
 
 export default function OfflineNotesContent() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
@@ -358,6 +359,8 @@ export default function OfflineNotesContent() {
           </div>
         </div>
       </section>
+
+      <InlineCTA text="Get offline notes — No cloud needed" variant="dark" />
 
       {/* Offline Features Grid */}
       <section className="py-24 bg-white dark:bg-gray-950">

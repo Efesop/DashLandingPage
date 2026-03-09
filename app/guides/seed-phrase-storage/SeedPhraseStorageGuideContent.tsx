@@ -25,6 +25,7 @@ import Footer from '../../components/Footer';
 import PaymentSection from '../../components/PaymentSection';
 import SEOHero from '../../components/seo/SEOHero';
 import CTABanner from '../../components/seo/CTABanner';
+import InlineCTA from '../../components/seo/InlineCTA';
 
 export default function SeedPhraseStorageGuideContent() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
@@ -308,6 +309,8 @@ export default function SeedPhraseStorageGuideContent() {
           </div>
         </div>
       </section>
+
+      <InlineCTA text="Store seed phrases securely — $14.99" variant="dark" />
 
       {/* Section 3 - Security Recommendations */}
       <section className="py-24 bg-white dark:bg-gray-950">

@@ -28,6 +28,7 @@ import Footer from '../components/Footer';
 import PaymentSection from '../components/PaymentSection';
 import SEOHero from '../components/seo/SEOHero';
 import CTABanner from '../components/seo/CTABanner';
+import InlineCTA from '../components/seo/InlineCTA';
 import GlassCard from '../components/ui/GlassCard';
 
 export default function ForJournalistsContent() {
@@ -355,6 +356,8 @@ export default function ForJournalistsContent() {
           </div>
         </div>
       </section>
+
+      <InlineCTA text="Protect your sources with Dash" />
 
       {/* Technical Specifications - Separate Section */}
       <section className="py-24 bg-gray-50 dark:bg-gray-900">

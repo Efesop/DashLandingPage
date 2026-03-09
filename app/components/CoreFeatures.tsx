@@ -10,6 +10,7 @@ import {
   Link,
   FileText,
   Download,
+  ArrowRight,
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 
@@ -411,6 +412,21 @@ export default function CoreFeatures() {
         >
           Dash combines the power of wiki-style page linking, rich text editing, and smart organization — all running locally on your Mac with no cloud dependency. Available for macOS, one-time purchase at $14.99.
         </motion.p>
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mt-6 text-center"
+        >
+          <a
+            href="#payment-section"
+            onClick={(e) => { e.preventDefault(); document.getElementById('payment-section')?.scrollIntoView({ behavior: 'smooth' }); }}
+            className="inline-flex items-center gap-2 px-6 py-2.5 bg-blue-600 text-white text-sm font-semibold rounded-lg hover:bg-blue-700 active:bg-blue-800"
+          >
+            Start writing privately
+            <ArrowRight className="w-4 h-4" />
+          </a>
+        </motion.div>
       </div>
     </section>
   );

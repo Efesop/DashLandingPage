@@ -25,6 +25,7 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import PaymentSection from '../components/PaymentSection';
 import CTABanner from '../components/seo/CTABanner';
+import InlineCTA from '../components/seo/InlineCTA';
 import { Button } from '../components/ui/button';
 
 export default function PrivateNotesContent() {
@@ -369,6 +370,8 @@ export default function PrivateNotesContent() {
           </div>
         </div>
       </section>
+
+      <InlineCTA text="Go truly private with Dash" />
 
       {/* How Dash Protects Your Privacy */}
       <section className="py-24 bg-slate-900 relative overflow-hidden">

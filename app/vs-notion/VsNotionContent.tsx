@@ -23,6 +23,7 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import PaymentSection from '../components/PaymentSection';
 import CTABanner from '../components/seo/CTABanner';
+import InlineCTA from '../components/seo/InlineCTA';
 import GlassCard from '../components/ui/GlassCard';
 import { Button } from '../components/ui/button';
 import FloatingOrbs from '../components/ui/FloatingOrbs';
@@ -306,6 +307,8 @@ export default function VsNotionContent() {
           </motion.div>
         </div>
       </section>
+
+      <InlineCTA text="Switch to Dash — $14.99 one-time" />
 
       {/* Why Switch from Notion */}
       <section className="py-24 bg-white dark:bg-gray-950">

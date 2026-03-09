@@ -3,7 +3,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, Shield, Lock } from 'lucide-react';
-import { Button } from '../ui/button';
 
 interface CTABannerProps {
   headline: string;
@@ -116,13 +115,14 @@ export default function CTABanner({
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
           >
-            <Button
-              onClick={handleClick}
-              className="h-14 px-10 bg-white text-blue-600 hover:bg-blue-50 text-lg font-semibold rounded-xl shadow-2xl shadow-black/20 transition-all duration-300 group"
+            <a
+              href="#payment-section"
+              onClick={(e) => { e.preventDefault(); handleClick(); }}
+              className="py-3.5 px-10 bg-white text-blue-600 hover:bg-blue-50 active:bg-blue-100 text-lg font-semibold rounded-xl shadow-2xl shadow-black/20 inline-flex items-center gap-2"
             >
               <span>{buttonText}</span>
-              <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-            </Button>
+              <ArrowRight className="w-5 h-5" />
+            </a>
           </motion.div>
 
           {/* Trust indicators */}

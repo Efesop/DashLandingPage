@@ -22,6 +22,7 @@ import Footer from '../components/Footer';
 import PaymentSection from '../components/PaymentSection';
 import SEOHero from '../components/seo/SEOHero';
 import CTABanner from '../components/seo/CTABanner';
+import InlineCTA from '../components/seo/InlineCTA';
 import GlassCard from '../components/ui/GlassCard';
 
 export default function ForBitcoinersContent() {
@@ -341,6 +342,8 @@ export default function ForBitcoinersContent() {
           </motion.div>
         </div>
       </section>
+
+      <InlineCTA text="Secure your seed phrases with Dash" />
 
       {/* Features */}
       <section id="features" className="py-24 bg-slate-900 relative overflow-hidden">

@@ -23,6 +23,7 @@ import Footer from '../components/Footer';
 import PaymentSection from '../components/PaymentSection';
 import SEOHero from '../components/seo/SEOHero';
 import CTABanner from '../components/seo/CTABanner';
+import InlineCTA from '../components/seo/InlineCTA';
 import GlassCard from '../components/ui/GlassCard';
 
 export default function ForStudentsContent() {
@@ -294,6 +295,8 @@ export default function ForStudentsContent() {
           </div>
         </div>
       </section>
+
+      <InlineCTA text="Get Dash for Mac — $14.99" />
 
       {/* Features */}
       <section className="py-24 bg-slate-900 relative overflow-hidden">

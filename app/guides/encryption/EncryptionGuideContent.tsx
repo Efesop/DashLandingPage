@@ -23,6 +23,7 @@ import Footer from '../../components/Footer';
 import PaymentSection from '../../components/PaymentSection';
 import SEOHero from '../../components/seo/SEOHero';
 import CTABanner from '../../components/seo/CTABanner';
+import InlineCTA from '../../components/seo/InlineCTA';
 
 export default function EncryptionGuideContent() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
@@ -304,6 +305,8 @@ export default function EncryptionGuideContent() {
           </div>
         </div>
       </section>
+
+      <InlineCTA text="Get AES-256 encryption — $14.99" variant="dark" />
 
       {/* Section 3 - How Dash Encrypts */}
       <section className="py-24 bg-white dark:bg-gray-950">

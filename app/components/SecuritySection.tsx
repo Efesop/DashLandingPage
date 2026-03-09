@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { Shield, Key, Eye, Database, Lock, CheckCircle, Timer } from 'lucide-react';
+import { Shield, Key, Eye, Database, Lock, CheckCircle, Timer, ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 export default function SecuritySection() {
@@ -164,6 +164,21 @@ export default function SecuritySection() {
         >
           Dash uses AES-256-GCM encryption with PBKDF2-SHA256 key derivation (600k iterations) to protect your notes. All encryption happens locally — your data is never transmitted to any server. How it works: set a master password, and every note is encrypted before being saved to your device.
         </motion.p>
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className='mt-6 text-center'
+        >
+          <a
+            href='#payment-section'
+            onClick={(e) => { e.preventDefault(); document.getElementById('payment-section')?.scrollIntoView({ behavior: 'smooth' }); }}
+            className='inline-flex items-center gap-2 px-6 py-2.5 bg-blue-600 text-white text-sm font-semibold rounded-lg hover:bg-blue-700 active:bg-blue-800'
+          >
+            Get Dash — $14.99
+            <ArrowRight className='w-4 h-4' />
+          </a>
+        </motion.div>
       </div>
     </section>
   );

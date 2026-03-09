@@ -13,6 +13,7 @@ import {
   GraduationCap,
   Briefcase,
   Newspaper,
+  ArrowRight,
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 
@@ -598,9 +599,17 @@ export default function FeatureShowcase() {
               </div>
             ))}
           </div>
-          <p className="text-xs text-[#5d6b88] max-w-2xl mx-auto leading-relaxed">
+          <p className="text-xs text-[#5d6b88] max-w-2xl mx-auto leading-relaxed mb-6">
             Dash is a private, encrypted notes app for macOS. AES-256 encryption, offline storage, and zero data collection — starting at $14.99, one-time purchase with no subscriptions.
           </p>
+          <a
+            href="#payment-section"
+            onClick={(e) => { e.preventDefault(); document.getElementById('payment-section')?.scrollIntoView({ behavior: 'smooth' }); }}
+            className="inline-flex items-center gap-2 px-6 py-2.5 bg-blue-500 text-white text-sm font-semibold rounded-lg hover:bg-blue-600 active:bg-blue-700"
+          >
+            Get Dash — One-time purchase
+            <ArrowRight className="w-4 h-4" />
+          </a>
         </motion.div>
       </div>
     </section>

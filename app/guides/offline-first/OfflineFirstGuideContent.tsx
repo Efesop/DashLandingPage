@@ -25,6 +25,7 @@ import Footer from '../../components/Footer';
 import PaymentSection from '../../components/PaymentSection';
 import SEOHero from '../../components/seo/SEOHero';
 import CTABanner from '../../components/seo/CTABanner';
+import InlineCTA from '../../components/seo/InlineCTA';
 
 export default function OfflineFirstGuideContent() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
@@ -322,6 +323,8 @@ export default function OfflineFirstGuideContent() {
           </div>
         </div>
       </section>
+
+      <InlineCTA text="Try Dash — 100% offline" variant="dark" />
 
       {/* How Dash Stores Your Data */}
       <section className="py-24 bg-white dark:bg-gray-950">

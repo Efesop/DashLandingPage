@@ -3,7 +3,6 @@
 import React from 'react';
 import { Download } from 'lucide-react';
 import { motion } from 'framer-motion';
-import { Button } from './ui/button';
 
 export default function CTASection() {
   return (
@@ -39,17 +38,14 @@ export default function CTASection() {
               transition={{ delay: 0.3 }}
               className='mb-8'
             >
-              <Button
-                onClick={() =>
-                  document
-                    .getElementById('payment-section')
-                    ?.scrollIntoView({ behavior: 'smooth' })
-                }
-                className='h-14 px-10 bg-white text-blue-600 hover:bg-blue-50 text-lg font-semibold rounded-lg shadow-xl transition-colors duration-200'
+              <a
+                href='#payment-section'
+                onClick={(e) => { e.preventDefault(); document.getElementById('payment-section')?.scrollIntoView({ behavior: 'smooth' }); }}
+                className='py-3.5 px-10 bg-white text-blue-600 hover:bg-blue-50 active:bg-blue-100 text-lg font-semibold rounded-lg shadow-xl inline-flex items-center gap-2'
               >
-                <Download className='mr-2 h-5 w-5' />
+                <Download className='h-5 w-5' />
                 Get Dash for Mac
-              </Button>
+              </a>
             </motion.div>
 
             {/* Trust indicators */}

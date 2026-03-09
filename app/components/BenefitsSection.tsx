@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { Globe, Zap, Heart, CheckCircle, Plane, Wifi, MapPin } from 'lucide-react';
+import { Globe, Zap, Heart, CheckCircle, Plane, Wifi, MapPin, ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 export default function BenefitsSection() {
@@ -116,9 +116,17 @@ export default function BenefitsSection() {
               </div>
             ))}
           </div>
-          <p className="text-xs text-[#5d6b88] max-w-2xl mx-auto leading-relaxed">
+          <p className="text-xs text-[#5d6b88] max-w-2xl mx-auto leading-relaxed mb-6">
             Unlike cloud-based note apps, Dash stores everything locally on your Mac. No server outages, no sync conflicts, no internet dependency — your notes are always available, instantly.
           </p>
+          <a
+            href="#payment-section"
+            onClick={(e) => { e.preventDefault(); document.getElementById('payment-section')?.scrollIntoView({ behavior: 'smooth' }); }}
+            className="inline-flex items-center gap-2 px-6 py-2.5 bg-blue-500 text-white text-sm font-semibold rounded-lg hover:bg-blue-600 active:bg-blue-700"
+          >
+            Try Dash — No subscription needed
+            <ArrowRight className="w-4 h-4" />
+          </a>
         </motion.div>
       </div>
     </section>

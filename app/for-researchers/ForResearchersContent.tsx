@@ -23,6 +23,7 @@ import Footer from '../components/Footer';
 import PaymentSection from '../components/PaymentSection';
 import SEOHero from '../components/seo/SEOHero';
 import CTABanner from '../components/seo/CTABanner';
+import InlineCTA from '../components/seo/InlineCTA';
 import GlassCard from '../components/ui/GlassCard';
 
 export default function ForResearchersContent() {
@@ -291,6 +292,8 @@ export default function ForResearchersContent() {
           </div>
         </div>
       </section>
+
+      <InlineCTA text="Try Dash — No subscription needed" />
 
       {/* Security Details */}
       <section id="security" className="py-24 bg-slate-900 relative overflow-hidden">

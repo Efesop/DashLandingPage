@@ -24,6 +24,7 @@ import Footer from '../../components/Footer';
 import PaymentSection from '../../components/PaymentSection';
 import SEOHero from '../../components/seo/SEOHero';
 import CTABanner from '../../components/seo/CTABanner';
+import InlineCTA from '../../components/seo/InlineCTA';
 
 export default function AppLockGuideContent() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
@@ -286,6 +287,8 @@ export default function AppLockGuideContent() {
           </div>
         </div>
       </section>
+
+      <InlineCTA text="Lock your notes with Dash" variant="dark" />
 
       {/* Section 3 - The Full Encryption Flow */}
       <section className="py-24 bg-white dark:bg-gray-950">
