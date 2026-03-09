@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { Lock, Timer, WifiOff, ShieldCheck, Fingerprint } from 'lucide-react';
+import { Lock, Timer, WifiOff, ShieldCheck, Fingerprint, ShieldAlert, Link as LinkIcon, Coins } from 'lucide-react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 
@@ -93,6 +93,33 @@ const guides = [
     icon: Fingerprint,
     color: 'indigo',
   },
+  {
+    slug: 'duress-password',
+    title: 'Duress Password',
+    subtitle: 'Silent Panic Protection Under Coercion',
+    description:
+      'Learn how Dash\u2019s duress password silently wipes or hides your data when you\u2019re forced to unlock. Plausible deniability, built in.',
+    icon: ShieldAlert,
+    color: 'red',
+  },
+  {
+    slug: 'page-linking',
+    title: 'Page Linking',
+    subtitle: 'Wiki-Style Links Between Your Notes',
+    description:
+      'Connect your notes with [[ wiki links, build a personal knowledge base, and navigate between pages instantly.',
+    icon: LinkIcon,
+    color: 'cyan',
+  },
+  {
+    slug: 'seed-phrase-storage',
+    title: 'Seed Phrase Storage',
+    subtitle: 'Secure Crypto Recovery Phrase Backup',
+    description:
+      'Store crypto wallet seed phrases in a secure numbered grid with BIP-39 validation and AES-256 encryption.',
+    icon: Coins,
+    color: 'amber',
+  },
 ];
 
 const colorClasses: Record<string, { bg: string; icon: string; border: string }> = {
@@ -120,6 +147,21 @@ const colorClasses: Record<string, { bg: string; icon: string; border: string }>
     bg: 'bg-indigo-100 dark:bg-indigo-900/30',
     icon: 'text-indigo-600 dark:text-indigo-400',
     border: 'group-hover:border-indigo-300 dark:group-hover:border-indigo-700',
+  },
+  red: {
+    bg: 'bg-red-100 dark:bg-red-900/30',
+    icon: 'text-red-600 dark:text-red-400',
+    border: 'group-hover:border-red-300 dark:group-hover:border-red-700',
+  },
+  cyan: {
+    bg: 'bg-cyan-100 dark:bg-cyan-900/30',
+    icon: 'text-cyan-600 dark:text-cyan-400',
+    border: 'group-hover:border-cyan-300 dark:group-hover:border-cyan-700',
+  },
+  amber: {
+    bg: 'bg-amber-100 dark:bg-amber-900/30',
+    icon: 'text-amber-600 dark:text-amber-400',
+    border: 'group-hover:border-amber-300 dark:group-hover:border-amber-700',
   },
 };
 

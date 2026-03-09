@@ -154,6 +154,16 @@ export default function SecuritySection() {
             </div>
           </motion.div>
         </div>
+
+        {/* SEO text */}
+        <motion.p
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          className='mt-12 text-center text-xs text-gray-400 dark:text-gray-500 max-w-2xl mx-auto leading-relaxed'
+        >
+          Dash uses AES-256-GCM encryption with PBKDF2-SHA256 key derivation (600k iterations) to protect your notes. All encryption happens locally — your data is never transmitted to any server. How it works: set a master password, and every note is encrypted before being saved to your device.
+        </motion.p>
       </div>
     </section>
   );

@@ -64,6 +64,9 @@ export default function Header() {
     { href: '/guides/offline-first', label: 'Offline-First Apps' },
     { href: '/guides/privacy-first-note-taking', label: 'Privacy-First Design' },
     { href: '/guides/app-lock', label: 'App Lock' },
+    { href: '/guides/duress-password', label: 'Duress Password' },
+    { href: '/guides/page-linking', label: 'Page Linking' },
+    { href: '/guides/seed-phrase-storage', label: 'Seed Phrase Storage' },
   ];
 
   return (

@@ -13,6 +13,10 @@ import {
   Eye,
   Minus,
   Plus,
+  Scale,
+  Stethoscope,
+  Building2,
+  Briefcase,
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Header from '../../components/Header';
@@ -215,6 +219,21 @@ export default function AppLockGuideContent() {
                   </p>
                 </div>
               </motion.div>
+            ))}
+          </div>
+
+          <div className="flex flex-wrap items-center justify-center gap-2 mt-8 max-w-6xl mx-auto">
+            <span className="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wider font-medium mr-1">Ideal for</span>
+            {[
+              { icon: Scale, label: 'Legal professionals' },
+              { icon: Stethoscope, label: 'Healthcare workers' },
+              { icon: Building2, label: 'Enterprise teams' },
+              { icon: Briefcase, label: 'Remote workers' },
+            ].map((chip) => (
+              <div key={chip.label} className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-xs text-gray-600 dark:text-gray-400">
+                <chip.icon className="w-3 h-3 text-blue-600 dark:text-blue-400" />
+                {chip.label}
+              </div>
             ))}
           </div>
         </div>

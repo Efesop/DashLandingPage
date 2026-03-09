@@ -9,6 +9,9 @@ import {
   Lock,
   FileText,
   Shield,
+  Scale,
+  Stethoscope,
+  Building2,
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -134,6 +137,28 @@ export default function BiometricLockSection() {
                 </div>
               </motion.div>
             ))}
+
+            {/* Ideal for chips */}
+            <div className='pt-2'>
+              <p className='text-xs text-slate-500 uppercase tracking-wider font-medium mb-3'>
+                Ideal for
+              </p>
+              <div className='flex flex-wrap gap-2'>
+                {[
+                  { icon: Scale, label: 'Legal professionals' },
+                  { icon: Stethoscope, label: 'Healthcare workers' },
+                  { icon: Building2, label: 'Enterprise teams' },
+                ].map((chip) => (
+                  <div
+                    key={chip.label}
+                    className='inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-slate-800/60 border border-slate-700/50 text-xs text-slate-400'
+                  >
+                    <chip.icon className='w-3 h-3 text-blue-400' />
+                    {chip.label}
+                  </div>
+                ))}
+              </div>
+            </div>
           </motion.div>
 
           {/* Right - Animated Mockup */}

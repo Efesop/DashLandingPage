@@ -18,6 +18,9 @@ export default function ComparisonTable() {
     { feature: 'No Cloud Dependencies', dash: true, notion: false, evernote: false, obsidian: true },
     { feature: 'Biometric Lock', dash: true, notion: false, evernote: true, obsidian: false },
     { feature: 'Self-Destructing Notes', dash: true, notion: false, evernote: false, obsidian: false },
+    { feature: 'Duress Password', dash: true, notion: false, evernote: false, obsidian: false },
+    { feature: 'Wiki-Style Page Links', dash: true, notion: true, evernote: false, obsidian: true },
+    { feature: 'Seed Phrase Storage', dash: true, notion: false, evernote: false, obsidian: false },
     { feature: 'Cross-Platform', dash: true, notion: true, evernote: true, obsidian: true },
   ];
 

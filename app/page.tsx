@@ -4,6 +4,7 @@ import FeatureShowcase from './components/FeatureShowcase';
 import CoreFeatures from './components/CoreFeatures';
 import SecuritySection from './components/SecuritySection';
 import BiometricLockSection from './components/BiometricLockSection';
+import AdvancedSecuritySection from './components/AdvancedSecuritySection';
 import BenefitsSection from './components/BenefitsSection';
 import ComparisonTable from './components/ComparisonTable';
 import FAQSection from './components/FAQSection';
@@ -116,6 +117,7 @@ export default function LandingPage() {
         <CoreFeatures />
         <SecuritySection />
         <BiometricLockSection />
+        <AdvancedSecuritySection />
         <BenefitsSection />
         <ComparisonTable />
         <PaymentSection />
