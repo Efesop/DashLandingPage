@@ -4,13 +4,13 @@ import VsEvernoteContent from './VsEvernoteContent';
 export const metadata: Metadata = {
   title: 'Dash vs Evernote | Private Alternative to Evernote - Dash',
   description:
-    'Compare Dash to Evernote. No subscription, 100% offline, military-grade encryption. Switch from Evernote monthly fees to $14.99 one-time privacy.',
+    'Compare Dash to Evernote. No subscription, 100% offline, AES-256 encryption. Switch from Evernote monthly fees to $14.99 one-time privacy.',
   keywords:
     'dash vs evernote, evernote alternative, private evernote alternative, offline note app, evernote replacement, switch from evernote',
   openGraph: {
     title: 'Dash vs Evernote | Private Alternative to Evernote',
     description:
-      'Compare Dash to Evernote. No subscription, 100% offline, military-grade encryption.',
+      'Compare Dash to Evernote. No subscription, 100% offline, AES-256 encryption.',
     url: 'https://dashnote.io/vs-evernote',
     siteName: 'Dash',
     locale: 'en_US',
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Dash vs Evernote - Private Alternative',
     description:
-      'No subscription, 100% offline, military-grade encryption.',
+      'No subscription, 100% offline, AES-256 encryption.',
     creator: '@efesopoulos',
     images: ['/images/Dashfeature1.png'],
   },
@@ -41,7 +41,7 @@ const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'WebPage',
   name: 'Dash vs Evernote Comparison',
-  description: 'Compare Dash to Evernote. No subscription, 100% offline, military-grade encryption.',
+  description: 'Compare Dash to Evernote. No subscription, 100% offline, AES-256 encryption.',
   mainEntity: {
     '@type': 'SoftwareApplication',
     name: 'Dash',

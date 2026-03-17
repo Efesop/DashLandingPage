@@ -4,7 +4,7 @@ import ForJournalistsContent from './ForJournalistsContent';
 export const metadata: Metadata = {
   title: 'Secure Notes for Journalists | Encrypted, Offline Note Taking - Dash',
   description:
-    'Protect your sources with Dash. Military-grade encrypted notes that never touch the cloud. No accounts, no tracking, no subpoena risk.',
+    'Protect your sources with Dash. AES-256 encrypted notes that stay on your device by default. No accounts, no tracking, no cloud storage.',
   keywords: [
     'notes app for journalists',
     'secure notes for reporters',
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Secure Notes for Journalists | Encrypted, Offline Note Taking - Dash',
     description:
-      'Protect your sources with Dash. Military-grade encrypted notes that never touch the cloud.',
+      'Protect your sources with Dash. AES-256 encrypted notes that stay on your device by default.',
     url: 'https://dashnote.io/for-journalists',
     siteName: 'Dash',
     locale: 'en_US',
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Secure Notes for Journalists - Dash',
-    description: 'Protect your sources. Military-grade encrypted notes.',
+    description: 'Protect your sources. AES-256 encrypted notes that stay on your device.',
     creator: '@efesopoulos',
     images: ['/images/Dashfeature1.png'],
   },
@@ -48,7 +48,7 @@ const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'SoftwareApplication',
   name: 'Dash - Secure Notes for Journalists',
-  description: 'Protect your sources with military-grade encrypted notes that never touch the cloud.',
+  description: 'Protect your sources with AES-256 encrypted notes that stay on your device by default.',
   applicationCategory: 'ProductivityApplication',
   operatingSystem: 'macOS, Web',
   audience: {
@@ -62,9 +62,9 @@ const jsonLd = {
   },
   featureList: [
     'Source protection',
-    'Military-grade encryption',
-    'No cloud storage',
-    'No subpoena risk',
+    'AES-256-GCM encryption',
+    'No cloud storage by default',
+    'E2E encrypted sharing (opt-in)',
     'Offline functionality',
     'Zero tracking',
   ],
@@ -79,7 +79,7 @@ const faqJsonLd = {
       name: 'Can my notes be subpoenaed if they are in Dash?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: "Dash stores notes only on your local device with optional AES-256 encryption. Unlike cloud-based apps where a third party holds your data, there is no company server to subpoena. Your encrypted notes can only be accessed with your password, which you are not obligated to provide in many jurisdictions (consult legal counsel for your specific situation).",
+        text: "Dash stores notes on your local device with optional AES-256 encryption. Unlike cloud-based apps, there is no company server holding your data by default. If you use optional sharing, notes are end-to-end encrypted on a zero-knowledge relay with no accounts and auto-deletion after 30 days. Your encrypted notes can only be accessed with your password, which you are not obligated to provide in many jurisdictions (consult legal counsel for your specific situation).",
       },
     },
     {
@@ -87,7 +87,7 @@ const faqJsonLd = {
       name: 'How is this different from using encrypted cloud storage?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: "Encrypted cloud storage still sends your data to external servers, creating metadata trails and potential access points. Dash never transmits data anywhere - your notes exist only on your device. There is no network traffic to intercept, no server to hack, no company that can be compelled to hand over data.",
+        text: "Encrypted cloud storage sends your data to external servers by default, creating metadata trails and potential access points. Dash keeps your notes on your device by default — they never leave unless you explicitly share them. When you do share, content is end-to-end encrypted before leaving your device, stored on a zero-knowledge relay, and auto-deleted after 30 days.",
       },
     },
     {

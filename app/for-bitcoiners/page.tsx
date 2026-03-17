@@ -4,7 +4,7 @@ import ForBitcoinersContent from './ForBitcoinersContent';
 export const metadata: Metadata = {
   title: 'Notes App for Bitcoiners | Privacy-First Encrypted Notes - Dash',
   description:
-    'Privacy-first notes for the Bitcoin community. Store notes offline with military-grade encryption. Your seed phrase hints and crypto notes stay private.',
+    'Privacy-first notes for the Bitcoin community. Store notes offline with AES-256 encryption. Your seed phrase hints and crypto notes stay private.',
   keywords: [
     'bitcoin notes app',
     'crypto privacy notes',
@@ -61,7 +61,7 @@ const jsonLd = {
     priceCurrency: 'USD',
   },
   featureList: [
-    'Military-grade encryption',
+    'AES-256 encryption',
     'Offline storage',
     'Zero tracking',
     'No account required',

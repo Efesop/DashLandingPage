@@ -35,7 +35,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Secure Notes for Researchers - Dash',
-    description: 'Research data privacy with military-grade encryption.',
+    description: 'Research data privacy with AES-256 encryption.',
     creator: '@efesopoulos',
     images: ['/images/Dashfeature1.png'],
   },
@@ -63,7 +63,7 @@ const jsonLd = {
   featureList: [
     'Research data protection',
     'IRB compliance friendly',
-    'Military-grade encryption',
+    'AES-256 encryption',
     'Local-only storage',
     'No cloud transmission',
     'Open source auditable',

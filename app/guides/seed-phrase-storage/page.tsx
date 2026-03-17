@@ -79,7 +79,7 @@ const faqJsonLd = {
       name: 'How should I protect my seed phrase in Dash?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Lock the page with a password to encrypt it with AES-256-GCM. Enable app lock for full-device encryption. Consider setting up a duress password for additional protection under coercion.',
+        text: 'Lock the page with a password to encrypt it with AES-256-GCM. Enable app lock for full-device encryption. Consider setting up a decoy password for additional protection under coercion.',
       },
     },
     {

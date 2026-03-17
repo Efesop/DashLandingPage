@@ -24,6 +24,7 @@ import PaymentSection from '../../components/PaymentSection';
 import SEOHero from '../../components/seo/SEOHero';
 import CTABanner from '../../components/seo/CTABanner';
 import InlineCTA from '../../components/seo/InlineCTA';
+import RelatedLinks from '../../components/seo/RelatedLinks';
 
 export default function EncryptionGuideContent() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
@@ -321,7 +322,7 @@ export default function EncryptionGuideContent() {
               How Dash <span className="text-blue-600 dark:text-blue-400">Encrypts</span> Your Notes
             </h2>
             <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-              A three-step process that turns your password into military-grade protection.
+              A three-step process that turns your password into AES-256 protection.
             </p>
           </motion.div>
 
@@ -566,11 +567,18 @@ export default function EncryptionGuideContent() {
         </div>
       </section>
 
+      <RelatedLinks heading="Related" links={[
+        { title: 'Encrypted Notes', href: '/encrypted-notes', description: 'See Dash encryption in action.' },
+        { title: 'App Lock Guide', href: '/guides/app-lock', description: 'Add biometric protection on top of encryption.' },
+        { title: 'Decoy Password Guide', href: '/guides/duress-password', description: 'Hide data behind convincing decoy notes.' },
+        { title: 'Secure Notes for Journalists', href: '/for-journalists', description: 'How journalists use Dash encryption.' },
+      ]} />
+
       {/* CTA Banner */}
       <CTABanner
         headline="Protect your notes with real encryption"
         subheadline="AES-256-GCM encryption for $14.99. One-time purchase."
-        buttonText="Get Dash Now"
+        buttonText="Get Dash for Mac"
       />
 
       <Footer />

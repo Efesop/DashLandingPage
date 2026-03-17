@@ -26,6 +26,7 @@ import PaymentSection from '../../components/PaymentSection';
 import SEOHero from '../../components/seo/SEOHero';
 import CTABanner from '../../components/seo/CTABanner';
 import InlineCTA from '../../components/seo/InlineCTA';
+import RelatedLinks from '../../components/seo/RelatedLinks';
 
 export default function OfflineFirstGuideContent() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
@@ -552,11 +553,18 @@ export default function OfflineFirstGuideContent() {
         </div>
       </section>
 
+      <RelatedLinks heading="Related" links={[
+        { title: 'Offline Notes', href: '/offline-notes', description: 'Dash offline notes feature overview.' },
+        { title: 'Notes for Students', href: '/for-students', description: 'Study anywhere without Wi-Fi.' },
+        { title: 'Notes for Writers', href: '/for-writers', description: 'Write anywhere, anytime.' },
+        { title: 'Privacy-First Note Taking', href: '/guides/privacy-first-note-taking', description: 'Why local-first means private-first.' },
+      ]} />
+
       {/* CTA Banner */}
       <CTABanner
         headline="Notes that work everywhere, always"
         subheadline="No internet required. $14.99 one-time purchase."
-        buttonText="Get Dash Now"
+        buttonText="Get Dash for Mac"
       />
 
       <Footer />

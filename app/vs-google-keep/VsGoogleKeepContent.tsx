@@ -23,6 +23,7 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import PaymentSection from '../components/PaymentSection';
 import CTABanner from '../components/seo/CTABanner';
+import RelatedLinks from '../components/seo/RelatedLinks';
 import InlineCTA from '../components/seo/InlineCTA';
 import GlassCard from '../components/ui/GlassCard';
 import { Button } from '../components/ui/button';
@@ -35,7 +36,7 @@ export default function VsGoogleKeepContent() {
     { feature: 'Works 100% Offline', dash: true, keep: false },
     { feature: 'No Account Required', dash: true, keep: false },
     { feature: 'Zero Data Collection', dash: true, keep: false },
-    { feature: 'Military-Grade Encryption', dash: true, keep: false },
+    { feature: 'AES-256-GCM Encryption', dash: true, keep: false },
     { feature: 'No Ads or Tracking', dash: true, keep: false },
     { feature: 'Your Data Stays Local', dash: true, keep: false },
     { feature: 'Rich Text Editor', dash: true, keep: true },
@@ -73,7 +74,7 @@ export default function VsGoogleKeepContent() {
   const dashAdvantages = [
     {
       icon: Lock,
-      title: 'Military Encryption',
+      title: 'AES-256 Encryption',
       description: 'AES-256-GCM encryption built-in. Password-protect any sensitive note.',
     },
     {
@@ -524,11 +525,17 @@ export default function VsGoogleKeepContent() {
         </div>
       </section>
 
+      <RelatedLinks heading="Learn More About Dash" links={[
+        { title: 'Privacy-First Note Taking', href: '/guides/privacy-first-note-taking', description: 'Your notes, not Google data.' },
+        { title: 'Offline-First Architecture', href: '/guides/offline-first', description: 'Works without Google servers.' },
+        { title: 'Private Notes', href: '/private-notes', description: 'Truly private alternative to Keep.' },
+      ]} />
+
       {/* CTA Banner */}
       <CTABanner
         headline="Ready to take notes without Google?"
         subheadline="$14.99 once. Privacy forever."
-        buttonText="Get Dash Now"
+        buttonText="Get Dash for Mac"
       />
 
       <Footer />

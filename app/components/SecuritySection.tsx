@@ -64,7 +64,7 @@ export default function SecuritySection() {
             <span className='text-blue-600 dark:text-blue-400'>thoughts</span>
           </h2>
           <p className='text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto'>
-            Your privacy is mathematically guaranteed with military-grade
+            Your privacy is mathematically guaranteed with AES-256-GCM
             encryption and zero-knowledge architecture.
           </p>
         </motion.div>

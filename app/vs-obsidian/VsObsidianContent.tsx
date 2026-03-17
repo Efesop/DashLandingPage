@@ -24,6 +24,7 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import PaymentSection from '../components/PaymentSection';
 import CTABanner from '../components/seo/CTABanner';
+import RelatedLinks from '../components/seo/RelatedLinks';
 import InlineCTA from '../components/seo/InlineCTA';
 import GlassCard from '../components/ui/GlassCard';
 import { Button } from '../components/ui/button';
@@ -75,7 +76,7 @@ export default function VsObsidianContent() {
   const dashAdvantages = [
     {
       icon: Lock,
-      title: 'Military-Grade Encryption',
+      title: 'AES-256-GCM Encryption',
       description: 'AES-256-GCM encryption built into the app. Password-protect any note instantly.',
     },
     {
@@ -568,11 +569,17 @@ export default function VsObsidianContent() {
         </div>
       </section>
 
+      <RelatedLinks heading="Learn More About Dash" links={[
+        { title: 'How Dash Encryption Works', href: '/guides/encryption', description: 'Built-in encryption without plugins.' },
+        { title: 'Page Linking Guide', href: '/guides/page-linking', description: 'Bidirectional links in Dash.' },
+        { title: 'Secure Notes for Researchers', href: '/for-researchers', description: 'Research-grade security built in.' },
+      ]} />
+
       {/* CTA Banner */}
       <CTABanner
         headline="Ready for built-in encryption?"
         subheadline="No plugins. No subscriptions. Just privacy."
-        buttonText="Get Dash for $14.99"
+        buttonText="Get Dash for Mac"
       />
 
       <Footer />

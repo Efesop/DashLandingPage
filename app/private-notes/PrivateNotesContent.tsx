@@ -26,6 +26,7 @@ import Footer from '../components/Footer';
 import PaymentSection from '../components/PaymentSection';
 import CTABanner from '../components/seo/CTABanner';
 import InlineCTA from '../components/seo/InlineCTA';
+import RelatedLinks from '../components/seo/RelatedLinks';
 import { Button } from '../components/ui/button';
 
 export default function PrivateNotesContent() {
@@ -51,13 +52,13 @@ export default function PrivateNotesContent() {
       icon: WifiOff,
       title: '100% Offline',
       description:
-        'Dash never connects to the internet. Your notes exist only on your device, making remote access impossible.',
+        'Dash works entirely offline by default \u2014 your notes never leave your device unless you explicitly share them. Sharing and live collaboration are opt-in and end-to-end encrypted.',
     },
     {
       icon: Lock,
       title: 'AES-256 Encryption',
       description:
-        'Military-grade encryption protects your notes. Even if someone gets your device, encrypted notes remain unreadable.',
+        'AES-256 encryption protects your notes. Even if someone gets your device, encrypted notes remain unreadable.',
     },
     {
       icon: Eye,
@@ -669,11 +670,18 @@ export default function PrivateNotesContent() {
         </div>
       </section>
 
+      <RelatedLinks heading="Learn More" links={[
+        { title: 'Privacy-First Note Taking', href: '/guides/privacy-first-note-taking', description: 'The philosophy behind truly private notes.' },
+        { title: 'How Dash Encryption Works', href: '/guides/encryption', description: 'AES-256-GCM encryption explained.' },
+        { title: 'App Lock Guide', href: '/guides/app-lock', description: 'Biometric and password protection for your app.' },
+        { title: 'Dash vs Google Keep', href: '/vs-google-keep', description: 'See how Dash privacy compares.' },
+      ]} />
+
       {/* CTA Banner */}
       <CTABanner
         headline="Ready for truly private notes?"
         subheadline="One-time purchase. Lifetime privacy."
-        buttonText="Get Dash for $14.99"
+        buttonText="Get Dash for Mac"
       />
 
       <Footer />

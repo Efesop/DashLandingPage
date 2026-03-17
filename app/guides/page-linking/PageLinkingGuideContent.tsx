@@ -26,6 +26,7 @@ import PaymentSection from '../../components/PaymentSection';
 import SEOHero from '../../components/seo/SEOHero';
 import CTABanner from '../../components/seo/CTABanner';
 import InlineCTA from '../../components/seo/InlineCTA';
+import RelatedLinks from '../../components/seo/RelatedLinks';
 
 export default function PageLinkingGuideContent() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
@@ -470,11 +471,18 @@ export default function PageLinkingGuideContent() {
         </div>
       </section>
 
+      <RelatedLinks heading="Related" links={[
+        { title: 'Notes for Writers', href: '/for-writers', description: 'Build a connected writing workspace.' },
+        { title: 'Notes for Students', href: '/for-students', description: 'Link lecture notes across subjects.' },
+        { title: 'Notes for Researchers', href: '/for-researchers', description: 'Connect research notes and citations.' },
+        { title: 'Offline-First Architecture', href: '/guides/offline-first', description: 'Page links work entirely offline.' },
+      ]} />
+
       {/* CTA Banner */}
       <CTABanner
         headline="Build your personal knowledge base"
         subheadline="Wiki-style page linking with offline privacy. $14.99 one-time purchase."
-        buttonText="Get Dash Now"
+        buttonText="Get Dash for Mac"
       />
 
       <Footer />

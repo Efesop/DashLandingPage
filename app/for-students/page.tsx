@@ -63,7 +63,7 @@ const jsonLd = {
   featureList: [
     'Zero data collection',
     'No AI training on your content',
-    'Military-grade encryption',
+    'AES-256 encryption',
     'Offline functionality',
     'One-time payment',
     'No subscriptions',

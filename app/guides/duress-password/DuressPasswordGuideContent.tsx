@@ -24,6 +24,7 @@ import PaymentSection from '../../components/PaymentSection';
 import SEOHero from '../../components/seo/SEOHero';
 import CTABanner from '../../components/seo/CTABanner';
 import InlineCTA from '../../components/seo/InlineCTA';
+import RelatedLinks from '../../components/seo/RelatedLinks';
 
 export default function DuressPasswordGuideContent() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
@@ -54,42 +55,42 @@ export default function DuressPasswordGuideContent() {
       icon: KeyRound,
       title: 'Setup',
       description:
-        'Set a duress password in app lock settings. Must be at least 4 characters and different from your real password.',
+        'Set a decoy password in app lock settings. Must be at least 4 characters and different from your real password.',
     },
     {
       icon: EyeOff,
-      title: 'Duress Entered',
+      title: 'Decoy Password Entered',
       description:
-        'Enter the duress password at the lock screen. Notes are cleared from memory and the app opens to a convincing empty state. Data stays safe on disk.',
+        'Enter the decoy password at the lock screen. Notes are cleared from memory and the app opens to a convincing empty state. Data stays safe on disk.',
     },
     {
       icon: ShieldCheck,
       title: 'Undetectable',
       description:
-        'There is zero visual difference between a duress unlock and a fresh install. Enter your real password anytime to restore everything.',
+        'There is zero visual difference between a decoy unlock and a fresh install. Enter your real password anytime to restore everything.',
     },
   ];
 
   const faqs = [
     {
-      question: 'What is a duress password?',
+      question: 'What is a decoy password?',
       answer:
         'A secondary password that triggers a silent panic action when entered at the lock screen. Instead of unlocking your data, it opens a decoy empty app while your real data stays hidden.',
     },
     {
-      question: 'Can an attacker tell a duress password was used?',
+      question: 'Can an attacker tell a decoy password was used?',
       answer:
-        'No. There is zero visual difference between a normal unlock and a duress unlock. The app opens to an empty state identical to a fresh installation.',
+        'No. There is zero visual difference between a normal unlock and a decoy unlock. The app opens to an empty state identical to a fresh installation.',
     },
     {
-      question: 'Can I recover my data after using the duress password?',
+      question: 'Can I recover my data after using the decoy password?',
       answer:
         'Yes. Your data is always preserved on disk. Lock the app again and enter your real password to restore all your notes.',
     },
     {
-      question: 'How does the duress password work with app lock?',
+      question: 'How does the decoy password work with app lock?',
       answer:
-        'The duress password is part of the app lock system. Set it up after enabling app lock. At the lock screen, entering the duress password triggers the panic action silently.',
+        'The decoy password is part of the app lock system. Set it up after enabling app lock. At the lock screen, entering the decoy password triggers the panic action silently.',
     },
   ];
 
@@ -99,7 +100,7 @@ export default function DuressPasswordGuideContent() {
 
       {/* Hero Section */}
       <SEOHero
-        badge={{ icon: ShieldAlert, text: 'Duress Password Guide' }}
+        badge={{ icon: ShieldAlert, text: 'Decoy Password Guide' }}
         headline="A Password That Protects You Under Coercion"
         highlightedWord="Coercion"
         subheadline="A secondary password that silently hides your data when you're forced to unlock. Plausible deniability, built in."
@@ -117,7 +118,7 @@ export default function DuressPasswordGuideContent() {
             </div>
             <div className="flex items-center gap-1.5 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 px-2.5 py-1 rounded-full">
               <ShieldAlert className="w-3 h-3" />
-              <span className="text-xs font-medium">Duress Password</span>
+              <span className="text-xs font-medium">Decoy Password</span>
             </div>
           </div>
 
@@ -161,7 +162,7 @@ export default function DuressPasswordGuideContent() {
               <div className="bg-amber-50 dark:bg-amber-900/20 rounded-xl p-4 border border-amber-200 dark:border-amber-800">
                 <div className="flex items-center gap-2 mb-3">
                   <ShieldAlert className="w-4 h-4 text-amber-600 dark:text-amber-400" />
-                  <span className="text-xs font-medium text-amber-600 dark:text-amber-400">Duress Password</span>
+                  <span className="text-xs font-medium text-amber-600 dark:text-amber-400">Decoy Password</span>
                 </div>
                 <div className="space-y-2">
                   <div className="h-2 bg-amber-100 dark:bg-amber-900/30 rounded w-full" />
@@ -185,7 +186,7 @@ export default function DuressPasswordGuideContent() {
             className="text-center mb-16"
           >
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-              What Is a <span className="text-blue-600 dark:text-blue-400">Duress Password</span>?
+              What Is a <span className="text-blue-600 dark:text-blue-400">Decoy Password</span>?
             </h2>
             <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
               A secondary password designed for extreme situations where you may be forced to unlock your device.
@@ -251,7 +252,7 @@ export default function DuressPasswordGuideContent() {
               How It <span className="text-blue-400">Works</span>
             </h2>
             <p className="text-lg text-slate-300 max-w-2xl mx-auto">
-              From setup to activation — what happens when a duress password is entered.
+              From setup to activation — what happens when a decoy password is entered.
             </p>
           </motion.div>
 
@@ -281,7 +282,7 @@ export default function DuressPasswordGuideContent() {
         </div>
       </section>
 
-      <InlineCTA text="Get duress protection — $14.99" variant="dark" />
+      <InlineCTA text="Get decoy protection — $14.99" variant="dark" />
 
       {/* Section 3 - How It Protects You */}
       <section className="py-24 bg-white dark:bg-gray-950">
@@ -312,7 +313,7 @@ export default function DuressPasswordGuideContent() {
                   <div className="w-12 h-12 bg-amber-100 dark:bg-amber-900/30 rounded-xl flex items-center justify-center mb-4">
                     <ShieldAlert className="w-6 h-6 text-amber-600 dark:text-amber-400" />
                   </div>
-                  <span className="inline-block text-xs font-bold text-amber-700 dark:text-amber-400 bg-amber-100 dark:bg-amber-900/30 px-3 py-1 rounded-full mb-4">DURESS PASSWORD</span>
+                  <span className="inline-block text-xs font-bold text-amber-700 dark:text-amber-400 bg-amber-100 dark:bg-amber-900/30 px-3 py-1 rounded-full mb-4">DECOY PASSWORD</span>
                   <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
                     Opens a decoy empty app. Notes are cleared from memory but preserved on disk. Looks identical to a fresh install — no trace of your data.
                   </p>
@@ -354,7 +355,7 @@ export default function DuressPasswordGuideContent() {
                 Security <span className="text-blue-600 dark:text-blue-400">Properties</span>
               </h2>
               <p className="text-lg text-gray-600 dark:text-gray-400">
-                The cryptographic and architectural details behind the duress password system
+                The cryptographic and architectural details behind the decoy password system
               </p>
             </div>
 
@@ -362,18 +363,18 @@ export default function DuressPasswordGuideContent() {
               <div className="bg-gradient-to-r from-blue-600 to-indigo-600 px-6 py-4">
                 <div className="flex items-center gap-3">
                   <Shield className="w-6 h-6 text-white" />
-                  <h3 className="text-lg font-semibold text-white">Duress Password Details</h3>
+                  <h3 className="text-lg font-semibold text-white">Decoy Password Details</h3>
                 </div>
               </div>
 
               <div className="p-6">
                 <div className="grid md:grid-cols-2 gap-6">
                   {[
-                    { label: 'Duress password hash', value: 'bcrypt', detail: 'With independent salt' },
+                    { label: 'Decoy password hash', value: 'bcrypt', detail: 'With independent salt' },
                     { label: 'Storage', value: 'Separate hash', detail: 'Alongside but separate from real password hash' },
-                    { label: 'Check order', value: 'Duress first', detail: 'Duress checked first, then real password' },
+                    { label: 'Check order', value: 'Decoy first', detail: 'Decoy checked first, then real password' },
                     { label: 'Rate limiting', value: 'Equal enforcement', detail: 'Applies equally to all attempts' },
-                    { label: 'When disabled', value: 'Settings cleared', detail: 'Duress settings cleared with app lock' },
+                    { label: 'When disabled', value: 'Settings cleared', detail: 'Decoy settings cleared with app lock' },
                   ].map((spec) => (
                     <div key={spec.label} className="border-b border-gray-100 dark:border-gray-700 pb-4 last:border-0">
                       <span className="text-sm font-medium text-gray-500 dark:text-gray-400">{spec.label}</span>
@@ -402,7 +403,7 @@ export default function DuressPasswordGuideContent() {
               className="text-center mb-12"
             >
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-                Duress Password <span className="text-blue-600 dark:text-blue-400">FAQ</span>
+                Decoy Password <span className="text-blue-600 dark:text-blue-400">FAQ</span>
               </h2>
             </motion.div>
 
@@ -460,11 +461,18 @@ export default function DuressPasswordGuideContent() {
         </div>
       </section>
 
+      <RelatedLinks heading="Related" links={[
+        { title: 'Secure Notes for Bitcoiners', href: '/for-bitcoiners', description: 'Protect seed phrases with decoy mode.' },
+        { title: 'Secure Notes for Journalists', href: '/for-journalists', description: 'Source protection with decoy passwords.' },
+        { title: 'How Dash Encryption Works', href: '/guides/encryption', description: 'The encryption behind decoy mode.' },
+        { title: 'App Lock Guide', href: '/guides/app-lock', description: 'Another layer of protection for your notes.' },
+      ]} />
+
       {/* CTA Banner */}
       <CTABanner
         headline="Protection when you need it most"
-        subheadline="Duress password with plausible deniability. $14.99 one-time purchase."
-        buttonText="Get Dash Now"
+        subheadline="Decoy password with plausible deniability. $14.99 one-time purchase."
+        buttonText="Get Dash for Mac"
       />
 
       <Footer />

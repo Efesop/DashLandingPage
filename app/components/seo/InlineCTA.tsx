@@ -11,7 +11,7 @@ interface InlineCTAProps {
 }
 
 export default function InlineCTA({
-  text = 'Get Dash — $14.99, one-time purchase',
+  text = 'Get Dash for Mac — $14.99, one-time purchase',
   href = '#payment-section',
   variant = 'light',
 }: InlineCTAProps) {

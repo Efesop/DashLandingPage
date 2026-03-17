@@ -10,7 +10,7 @@ export default function Footer() {
     { icon: Shield, label: '100% Offline' },
     { icon: Eye, label: 'No Tracking' },
     { icon: Lock, label: 'No Accounts' },
-    { icon: Database, label: 'Military Encryption' },
+    { icon: Database, label: 'AES-256 Encrypted' },
     { icon: Zap, label: 'Zero Knowledge' },
   ];
 
@@ -24,6 +24,8 @@ export default function Footer() {
     { href: '/for-students', label: 'For Students' },
     { href: '/for-researchers', label: 'For Researchers' },
     { href: '/for-bitcoiners', label: 'For Bitcoiners' },
+    { href: '/share', label: 'Encrypted Sharing' },
+    { href: '/download', label: 'Download Dash' },
   ];
 
   const comparisonLinks = [
@@ -120,9 +122,10 @@ export default function Footer() {
                 { href: '/guides/offline-first', label: 'Offline-First Apps' },
                 { href: '/guides/privacy-first-note-taking', label: 'Privacy-First Design' },
                 { href: '/guides/app-lock', label: 'App Lock' },
-                { href: '/guides/duress-password', label: 'Duress Password' },
+                { href: '/guides/duress-password', label: 'Decoy Password' },
                 { href: '/guides/page-linking', label: 'Page Linking' },
                 { href: '/guides/seed-phrase-storage', label: 'Seed Phrase Storage' },
+                { href: '/changelog', label: 'Changelog' },
               ].map((link) => (
                 <li key={link.href}>
                   <Link
@@ -181,6 +184,18 @@ export default function Footer() {
               © {new Date().getFullYear()} Dash. Your privacy is our priority.
             </p>
             <div className='flex items-center gap-6 text-sm text-gray-500'>
+              <Link
+                href='/privacy-policy'
+                className='hover:text-gray-300 transition-colors'
+              >
+                Privacy Policy
+              </Link>
+              <Link
+                href='/terms'
+                className='hover:text-gray-300 transition-colors'
+              >
+                Terms of Service
+              </Link>
               <span className='flex items-center gap-2'>
                 <Lock className='w-3 h-3 text-green-500' />
                 100% Offline

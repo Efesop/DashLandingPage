@@ -24,6 +24,7 @@ import PaymentSection from '../components/PaymentSection';
 import SEOHero from '../components/seo/SEOHero';
 import CTABanner from '../components/seo/CTABanner';
 import InlineCTA from '../components/seo/InlineCTA';
+import RelatedLinks from '../components/seo/RelatedLinks';
 import GlassCard from '../components/ui/GlassCard';
 
 export default function ForResearchersContent() {
@@ -40,7 +41,7 @@ export default function ForResearchersContent() {
       icon: Users,
       title: 'Participant Privacy',
       description:
-        "Interview notes, observations, and participant data deserve protection. With Dash, this information never leaves your device and can be encrypted with military-grade security.",
+        "Interview notes, observations, and participant data deserve protection. With Dash, this information never leaves your device and can be encrypted with AES-256 security.",
     },
     {
       icon: Server,
@@ -59,7 +60,7 @@ export default function ForResearchersContent() {
     {
       icon: WifiOff,
       title: 'Offline Operation',
-      description: 'Works in the field, in the lab, anywhere. No network requests, no cloud dependency.',
+      description: 'Works in the field, in the lab, anywhere. Your notes never leave your device unless you choose to share them.',
     },
     {
       icon: Database,
@@ -113,7 +114,7 @@ export default function ForResearchersContent() {
   const compliancePoints = [
     {
       title: 'No Cloud Transmission',
-      description: 'Research data never leaves your device. No network requests are made.',
+      description: 'Research data never leaves your device unless you explicitly share it. Sharing is opt-in and end-to-end encrypted.',
     },
     {
       title: 'Strong Encryption',
@@ -171,7 +172,7 @@ export default function ForResearchersContent() {
         badge={{ icon: Microscope, text: 'For Researchers' }}
         headline="Research Data Deserves Real Protection"
         highlightedWord="Protection"
-        subheadline="Local-only storage with military-grade encryption. Meet institutional data security requirements without third-party cloud services."
+        subheadline="Local-only storage with AES-256 encryption. Meet institutional data security requirements without third-party cloud services."
         primaryCTA={{ text: 'Get Dash for Mac' }}
         secondaryCTA={{ text: 'See security details', href: '#security' }}
       >
@@ -464,11 +465,17 @@ export default function ForResearchersContent() {
         </div>
       </section>
 
+      <RelatedLinks heading="Learn More" links={[
+        { title: 'How Dash Encryption Works', href: '/guides/encryption', description: 'AES-256-GCM encryption for research data protection.' },
+        { title: 'Offline-First Architecture', href: '/guides/offline-first', description: 'Work in the field without connectivity.' },
+        { title: 'Privacy-First Note Taking', href: '/guides/privacy-first-note-taking', description: 'Why local storage matters for sensitive research.' },
+      ]} />
+
       {/* CTA Banner */}
       <CTABanner
         headline="Research data deserves protection."
-        subheadline="Local storage. Military encryption. One-time $14.99."
-        buttonText="Get Dash Now"
+        subheadline="Local storage. AES-256 encryption. One-time $14.99."
+        buttonText="Get Dash for Mac"
       />
 
       <Footer />

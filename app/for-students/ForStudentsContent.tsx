@@ -24,6 +24,7 @@ import PaymentSection from '../components/PaymentSection';
 import SEOHero from '../components/seo/SEOHero';
 import CTABanner from '../components/seo/CTABanner';
 import InlineCTA from '../components/seo/InlineCTA';
+import RelatedLinks from '../components/seo/RelatedLinks';
 import GlassCard from '../components/ui/GlassCard';
 
 export default function ForStudentsContent() {
@@ -426,11 +427,17 @@ export default function ForStudentsContent() {
         </div>
       </section>
 
+      <RelatedLinks heading="Learn More" links={[
+        { title: 'Offline-First Architecture', href: '/guides/offline-first', description: 'Study anywhere — no Wi-Fi required.' },
+        { title: 'Page Linking Guide', href: '/guides/page-linking', description: 'Connect lecture notes across subjects.' },
+        { title: 'App Lock Guide', href: '/guides/app-lock', description: 'Keep your notes private with biometric lock.' },
+      ]} />
+
       {/* CTA Banner */}
       <CTABanner
         headline="Your notes. Not their data."
         subheadline="One-time $14.99 for lifetime privacy."
-        buttonText="Get Dash Now"
+        buttonText="Get Dash for Mac"
       />
 
       <Footer />

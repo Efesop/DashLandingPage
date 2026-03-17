@@ -21,6 +21,7 @@ import {
   Briefcase,
   Scale,
   Code,
+  ImageOff,
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Header from '../components/Header';
@@ -29,6 +30,7 @@ import PaymentSection from '../components/PaymentSection';
 import SEOHero from '../components/seo/SEOHero';
 import CTABanner from '../components/seo/CTABanner';
 import InlineCTA from '../components/seo/InlineCTA';
+import RelatedLinks from '../components/seo/RelatedLinks';
 import GlassCard from '../components/ui/GlassCard';
 
 export default function ForJournalistsContent() {
@@ -39,13 +41,13 @@ export default function ForJournalistsContent() {
       icon: Users,
       title: 'Source Protection',
       description:
-        "Your sources trust you with sensitive information. Standard note apps store data on servers that can be subpoenaed, hacked, or leaked. Dash keeps everything encrypted on your device - there is nothing to hand over.",
+        "Your sources trust you with sensitive information. Standard note apps store data on servers that can be subpoenaed, hacked, or leaked. Dash keeps your notes encrypted on your device — they never leave unless you explicitly choose to share them.",
     },
     {
       icon: AlertTriangle,
       title: 'Legal Compliance Concerns',
       description:
-        "When your notes exist only on your encrypted device, there is no third-party server to subpoena. Your notes, your device, your control - protected by the same encryption governments use.",
+        "Your notes live on your encrypted device by default — no third-party server holds your data. If you opt into sharing, notes are end-to-end encrypted on a zero-knowledge relay with no accounts, no logs, and auto-deletion after 30 days.",
     },
     {
       icon: Eye,
@@ -64,15 +66,15 @@ export default function ForJournalistsContent() {
     },
     {
       icon: WifiOff,
-      title: 'Offline-Only Architecture',
+      title: 'Offline by Default',
       description:
-        'Dash never connects to the internet. There are no servers, no cloud storage, no network requests. Your notes physically cannot be remotely accessed.',
+        'Dash works entirely offline by default. Your notes stay on your device unless you explicitly share them. Sharing and live collaboration are opt-in and end-to-end encrypted.',
     },
     {
       icon: Server,
       title: 'No Server-Side Storage',
       description:
-        "Unlike Evernote, Notion, or Google Keep, we do not have servers storing your data. There is nothing to hack, nothing to subpoena, nothing to leak.",
+        "Unlike Evernote, Notion, or Google Keep, your notes are never stored on our servers. Optional sharing uses a zero-knowledge relay that only handles encrypted blobs it cannot read — auto-deleted after 30 days.",
     },
     {
       icon: UserX,
@@ -91,6 +93,12 @@ export default function ForJournalistsContent() {
       title: 'Local Key Generation',
       description:
         'Encryption keys are generated on your device using cryptographically secure random number generation. Keys never leave your machine.',
+    },
+    {
+      icon: ImageOff,
+      title: 'Automatic EXIF Stripping',
+      description:
+        'Images pasted into Dash are automatically stripped of GPS coordinates, camera info, and timestamps. Protect your sources by eliminating metadata trails.',
     },
   ];
 
@@ -144,12 +152,12 @@ export default function ForJournalistsContent() {
     {
       question: 'Can my notes be subpoenaed if they are in Dash?',
       answer:
-        "Dash stores notes only on your local device with optional AES-256 encryption. Unlike cloud-based apps where a third party holds your data, there is no company server to subpoena. Your encrypted notes can only be accessed with your password, which you are not obligated to provide in many jurisdictions (consult legal counsel for your specific situation).",
+        "Dash stores notes on your local device with optional AES-256 encryption. Unlike cloud-based apps, there is no company server holding your data by default. If you use optional sharing, notes are end-to-end encrypted on a zero-knowledge relay with no accounts and auto-deletion after 30 days. Your encrypted notes can only be accessed with your password, which you are not obligated to provide in many jurisdictions (consult legal counsel for your specific situation).",
     },
     {
       question: 'How is this different from using encrypted cloud storage?',
       answer:
-        "Encrypted cloud storage still sends your data to external servers, creating metadata trails and potential access points. Dash never transmits data anywhere - your notes exist only on your device. There is no network traffic to intercept, no server to hack, no company that can be compelled to hand over data.",
+        "Encrypted cloud storage sends your data to external servers by default, creating metadata trails and potential access points. Dash keeps your notes on your device by default — they never leave unless you explicitly share them. When you do share, content is end-to-end encrypted before leaving your device, stored on a zero-knowledge relay, and auto-deleted after 30 days.",
     },
     {
       question: 'What happens if I lose my device?',
@@ -182,7 +190,7 @@ export default function ForJournalistsContent() {
         badge={{ icon: Newspaper, text: 'For Journalists' }}
         headline="Protect Your Sources. Protect Your Notes."
         highlightedWord="Protect"
-        subheadline="Military-grade encrypted notes that never touch the cloud. No servers to subpoena, no data to leak, no compromises on press freedom."
+        subheadline="AES-256 encrypted notes that stay on your device by default. No cloud storage, no tracking, no compromises on press freedom."
         primaryCTA={{ text: 'Get Dash for Mac' }}
         secondaryCTA={{ text: 'See security details', href: '#security' }}
       >
@@ -397,7 +405,7 @@ export default function ForJournalistsContent() {
                     { label: 'Key Derivation Function', value: 'PBKDF2-SHA256', detail: '600,000 iterations for password stretching' },
                     { label: 'Random Number Generation', value: 'crypto.getRandomValues', detail: 'Cryptographically secure PRNG' },
                     { label: 'Storage Location', value: '~/Library/Application Support/Dash/', detail: 'Local device only, no cloud sync' },
-                    { label: 'Network Requests', value: 'Zero', detail: 'Completely offline, no telemetry' },
+                    { label: 'Network Requests', value: 'None by default', detail: 'Sharing opt-in, E2E encrypted via zero-knowledge relay' },
                     { label: 'Source Code', value: 'Open Source (GitHub)', detail: 'Fully auditable by security researchers' },
                   ].map((spec) => (
                     <div
@@ -572,11 +580,18 @@ export default function ForJournalistsContent() {
         </div>
       </section>
 
+      <RelatedLinks heading="Learn More" links={[
+        { title: 'How Dash Encryption Works', href: '/guides/encryption', description: 'Deep dive into AES-256-GCM encryption and key derivation.' },
+        { title: 'Privacy-First Note Taking', href: '/guides/privacy-first-note-taking', description: 'Why local-first architecture matters for privacy.' },
+        { title: 'Decoy Password Guide', href: '/guides/duress-password', description: 'How decoy mode protects sensitive notes under pressure.' },
+        { title: 'Encrypted Sharing', href: '/share', description: 'Share notes securely with end-to-end encryption.' },
+      ]} />
+
       {/* CTA Banner */}
       <CTABanner
         headline="Your sources deserve protection."
-        subheadline="Get military-grade encryption for $14.99."
-        buttonText="Get Dash Now"
+        subheadline="Get AES-256-GCM encryption for $14.99."
+        buttonText="Get Dash for Mac"
       />
 
       <Footer />

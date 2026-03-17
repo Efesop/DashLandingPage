@@ -95,10 +95,10 @@ const guides = [
   },
   {
     slug: 'duress-password',
-    title: 'Duress Password',
-    subtitle: 'Silent Panic Protection Under Coercion',
+    title: 'Decoy Password',
+    subtitle: 'Silent Protection Under Coercion',
     description:
-      'Learn how Dash\u2019s duress password silently wipes or hides your data when you\u2019re forced to unlock. Plausible deniability, built in.',
+      'Learn how Dash\u2019s decoy password silently hides your data behind convincing decoy notes when you\u2019re forced to unlock. Plausible deniability, built in.',
     icon: ShieldAlert,
     color: 'red',
   },

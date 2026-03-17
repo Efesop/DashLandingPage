@@ -4,7 +4,7 @@ import SecureJournalContent from './SecureJournalContent';
 export const metadata: Metadata = {
   title: 'Private Journal App | Encrypted Diary That Stays Yours - Dash',
   description:
-    'Your private thoughts deserve real privacy. Military-grade encrypted journal that never syncs to the cloud. No subscription, no tracking, truly private.',
+    'Your private thoughts deserve real privacy. AES-256 encrypted journal that never syncs to the cloud. No subscription, no tracking, truly private.',
   keywords: [
     'private journal app',
     'encrypted diary',
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Private Journal App | Encrypted Diary That Stays Yours - Dash',
     description:
-      'Your private thoughts deserve real privacy. Military-grade encrypted journal that never syncs to the cloud.',
+      'Your private thoughts deserve real privacy. AES-256 encrypted journal that never syncs to the cloud.',
     url: 'https://dashnote.io/secure-journal',
     siteName: 'Dash',
     locale: 'en_US',
@@ -48,7 +48,7 @@ const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'SoftwareApplication',
   name: 'Dash - Private Journal App',
-  description: 'Military-grade encrypted journal that never syncs to the cloud. Your diary, truly private.',
+  description: 'AES-256 encrypted journal that never syncs to the cloud. Your diary, truly private.',
   applicationCategory: 'ProductivityApplication',
   operatingSystem: 'macOS, Web',
   offers: {
@@ -58,7 +58,7 @@ const jsonLd = {
   },
   featureList: [
     'Private journaling',
-    'Military-grade encryption',
+    'AES-256 encryption',
     'No cloud sync',
     'Offline diary',
     'One-time payment',

@@ -4,7 +4,7 @@ import VsObsidianContent from './VsObsidianContent';
 export const metadata: Metadata = {
   title: 'Dash vs Obsidian: Encrypted Notes Alternative | Built-in Security',
   description:
-    'Compare Dash to Obsidian. Get true encryption built-in, not as an add-on. No sync subscription, no plugins needed. One-time $14.99 for military-grade security.',
+    'Compare Dash to Obsidian. Get true encryption built-in, not as an add-on. No sync subscription, no plugins needed. One-time $14.99 for AES-256 security.',
   keywords: [
     'Obsidian alternative',
     'Obsidian encryption',

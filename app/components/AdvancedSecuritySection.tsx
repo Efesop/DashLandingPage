@@ -98,7 +98,7 @@ export default function AdvancedSecuritySection() {
             <span className="text-blue-400">a decoy app</span>
           </h2>
           <p className="text-lg text-[#8b99b5] max-w-2xl mx-auto">
-            Set a duress password that opens Dash to a convincing empty state.
+            Set a decoy password that opens Dash to a convincing empty state.
             Your real notes stay hidden until you unlock with your actual password.
           </p>
         </motion.div>
@@ -119,7 +119,7 @@ export default function AdvancedSecuritySection() {
                   <EyeOff className="w-5 h-5 text-amber-400" />
                 </div>
                 <h3 className="font-semibold text-[#e0e6f0] text-lg">
-                  Duress password
+                  Decoy password
                 </h3>
               </div>
               <p className="text-sm text-[#8b99b5] leading-relaxed mb-4">
@@ -213,7 +213,7 @@ export default function AdvancedSecuritySection() {
                       <>
                         <div className="w-1.5 h-1.5 bg-amber-400 rounded-full" />
                         <span className="text-[10px] text-amber-400 font-medium">
-                          Duress password
+                          Decoy password
                         </span>
                       </>
                     )}
@@ -314,7 +314,7 @@ export default function AdvancedSecuritySection() {
                             }`}
                           >
                             {isDuressPhase
-                              ? 'Entering duress password...'
+                              ? 'Entering decoy password...'
                               : isRealPhase
                                 ? 'Entering real password...'
                                 : 'Enter password to unlock'}

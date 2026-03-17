@@ -29,6 +29,7 @@ import PaymentSection from '../components/PaymentSection';
 import SEOHero from '../components/seo/SEOHero';
 import CTABanner from '../components/seo/CTABanner';
 import InlineCTA from '../components/seo/InlineCTA';
+import RelatedLinks from '../components/seo/RelatedLinks';
 
 export default function OfflineNotesContent() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
@@ -63,9 +64,9 @@ export default function OfflineNotesContent() {
   const howOfflineWorks = [
     {
       icon: CloudOff,
-      title: 'Zero Network Requests',
+      title: 'Your Notes Stay on Your Device',
       description:
-        'Dash never connects to the internet. No API calls, no telemetry, no analytics. Complete network isolation.',
+        'Your notes never leave your device unless you choose to share them. No telemetry, no analytics. Sharing and live collaboration are opt-in and end-to-end encrypted.',
     },
     {
       icon: HardDrive,
@@ -143,7 +144,7 @@ export default function OfflineNotesContent() {
     {
       question: 'How does Dash work without internet?',
       answer:
-        'Dash stores all your notes locally on your device. The app never makes network requests - no API calls, no sync, no telemetry. Everything happens on your machine, so internet connectivity is simply not needed.',
+        'Dash stores all your notes locally on your device. There is no telemetry, no analytics, and no cloud sync. Your notes never leave your device unless you choose to share them. Sharing and live collaboration are opt-in, end-to-end encrypted, and routed through a zero-knowledge relay.',
     },
     {
       question: 'Where are my notes stored?',
@@ -522,11 +523,17 @@ export default function OfflineNotesContent() {
         </div>
       </section>
 
+      <RelatedLinks heading="Learn More" links={[
+        { title: 'Offline-First Architecture', href: '/guides/offline-first', description: 'Technical details of how offline-first works.' },
+        { title: 'Privacy-First Note Taking', href: '/guides/privacy-first-note-taking', description: 'Why keeping notes local matters.' },
+        { title: 'Encrypted Sharing', href: '/share', description: 'When you do want to share, do it securely.' },
+      ]} />
+
       {/* CTA Banner */}
       <CTABanner
         headline="Take notes anywhere"
         subheadline="No internet required. $14.99 one-time purchase."
-        buttonText="Get Dash Now"
+        buttonText="Get Dash for Mac"
       />
 
       <Footer />

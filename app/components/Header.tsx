@@ -49,6 +49,7 @@ export default function Header() {
     { href: '/for-students', label: 'For Students' },
     { href: '/for-researchers', label: 'For Researchers' },
     { href: '/for-bitcoiners', label: 'For Bitcoiners' },
+    { href: '/share', label: 'Encrypted Sharing' },
   ];
 
   const comparisons = [
@@ -64,7 +65,7 @@ export default function Header() {
     { href: '/guides/offline-first', label: 'Offline-First Apps' },
     { href: '/guides/privacy-first-note-taking', label: 'Privacy-First Design' },
     { href: '/guides/app-lock', label: 'App Lock' },
-    { href: '/guides/duress-password', label: 'Duress Password' },
+    { href: '/guides/duress-password', label: 'Decoy Password' },
     { href: '/guides/page-linking', label: 'Page Linking' },
     { href: '/guides/seed-phrase-storage', label: 'Seed Phrase Storage' },
   ];

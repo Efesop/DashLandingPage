@@ -27,6 +27,7 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import PaymentSection from '../components/PaymentSection';
 import CTABanner from '../components/seo/CTABanner';
+import RelatedLinks from '../components/seo/RelatedLinks';
 import InlineCTA from '../components/seo/InlineCTA';
 import GlassCard from '../components/ui/GlassCard';
 import { Button } from '../components/ui/button';
@@ -697,11 +698,17 @@ export default function VsEvernoteContent() {
         </div>
       </section>
 
+      <RelatedLinks heading="Learn More About Dash" links={[
+        { title: 'How Dash Encryption Works', href: '/guides/encryption', description: 'Real encryption, not just server-side.' },
+        { title: 'Privacy-First Note Taking', href: '/guides/privacy-first-note-taking', description: 'Why local-first matters for privacy.' },
+        { title: 'Encrypted Notes', href: '/encrypted-notes', description: 'AES-256 encrypted notes overview.' },
+      ]} />
+
       {/* CTA Banner */}
       <CTABanner
         headline="Ready to switch to privacy?"
         subheadline="One payment. No more subscriptions."
-        buttonText="Get Dash for $14.99"
+        buttonText="Get Dash for Mac"
       />
 
       <Footer />

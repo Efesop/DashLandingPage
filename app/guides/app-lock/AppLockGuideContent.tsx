@@ -25,6 +25,7 @@ import PaymentSection from '../../components/PaymentSection';
 import SEOHero from '../../components/seo/SEOHero';
 import CTABanner from '../../components/seo/CTABanner';
 import InlineCTA from '../../components/seo/InlineCTA';
+import RelatedLinks from '../../components/seo/RelatedLinks';
 
 export default function AppLockGuideContent() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
@@ -574,11 +575,18 @@ export default function AppLockGuideContent() {
         </div>
       </section>
 
+      <RelatedLinks heading="Related" links={[
+        { title: 'Secure Journal', href: '/secure-journal', description: 'Lock your private journal with biometrics.' },
+        { title: 'Private Notes', href: '/private-notes', description: 'Keep your notes completely private.' },
+        { title: 'How Dash Encryption Works', href: '/guides/encryption', description: 'Encryption plus app lock for maximum security.' },
+        { title: 'Decoy Password Guide', href: '/guides/duress-password', description: 'Another layer of protection beyond app lock.' },
+      ]} />
+
       {/* CTA Banner */}
       <CTABanner
         headline="Lock your notes with real encryption"
         subheadline="AES-256-GCM app lock with Touch ID. $14.99 one-time purchase."
-        buttonText="Get Dash Now"
+        buttonText="Get Dash for Mac"
       />
 
       <Footer />

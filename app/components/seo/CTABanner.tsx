@@ -15,7 +15,7 @@ interface CTABannerProps {
 export default function CTABanner({
   headline,
   subheadline,
-  buttonText = 'Get Dash Now',
+  buttonText = 'Get Dash for Mac',
   onClick,
   variant = 'default',
 }: CTABannerProps) {

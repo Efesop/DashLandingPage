@@ -23,6 +23,7 @@ import PaymentSection from '../components/PaymentSection';
 import SEOHero from '../components/seo/SEOHero';
 import CTABanner from '../components/seo/CTABanner';
 import InlineCTA from '../components/seo/InlineCTA';
+import RelatedLinks from '../components/seo/RelatedLinks';
 import GlassCard from '../components/ui/GlassCard';
 
 export default function ForBitcoinersContent() {
@@ -58,7 +59,7 @@ export default function ForBitcoinersContent() {
     {
       icon: WifiOff,
       title: '100% Offline',
-      description: 'No internet required. No network requests. Your notes never touch any server.',
+      description: 'No internet required. Your notes never leave your device unless you choose to share them.',
     },
     {
       icon: UserX,
@@ -107,7 +108,7 @@ export default function ForBitcoinersContent() {
     { feature: '100% Offline Operation', dash: true, others: false },
     { feature: 'Open Source', dash: true, others: false },
     { feature: 'Local-Only Storage', dash: true, others: false },
-    { feature: 'Military-Grade Encryption', dash: true, others: false },
+    { feature: 'AES-256-GCM Encryption', dash: true, others: false },
     { feature: 'One-Time Purchase (No Subscriptions)', dash: true, others: false },
   ];
 
@@ -154,7 +155,7 @@ export default function ForBitcoinersContent() {
         headline="Privacy-First Notes. Built for Bitcoiners."
         highlightedWord="Bitcoiners"
         subheadline="No accounts, no cloud, no tracking. Just encrypted notes you control. The same privacy values you expect from Bitcoin."
-        primaryCTA={{ text: 'Get Dash' }}
+        primaryCTA={{ text: 'Get Dash for Mac' }}
         secondaryCTA={{ text: 'See features', href: '#features' }}
       >
         {/* Bitcoin-themed mockup */}
@@ -491,6 +492,12 @@ export default function ForBitcoinersContent() {
           </div>
         </div>
       </section>
+
+      <RelatedLinks heading="Learn More" links={[
+        { title: 'Seed Phrase Storage Guide', href: '/guides/seed-phrase-storage', description: 'Best practices for storing seed phrases securely.' },
+        { title: 'How Dash Encryption Works', href: '/guides/encryption', description: 'AES-256-GCM encryption and PBKDF2 key derivation.' },
+        { title: 'Decoy Password Guide', href: '/guides/duress-password', description: 'Hide sensitive data behind convincing decoy notes.' },
+      ]} />
 
       {/* CTA Banner */}
       <CTABanner

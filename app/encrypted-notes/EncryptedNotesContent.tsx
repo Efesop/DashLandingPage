@@ -25,6 +25,7 @@ import PaymentSection from '../components/PaymentSection';
 import SEOHero from '../components/seo/SEOHero';
 import CTABanner from '../components/seo/CTABanner';
 import InlineCTA from '../components/seo/InlineCTA';
+import RelatedLinks from '../components/seo/RelatedLinks';
 
 export default function EncryptedNotesContent() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
@@ -128,7 +129,7 @@ export default function EncryptedNotesContent() {
 
       {/* Hero Section */}
       <SEOHero
-        badge={{ icon: Lock, text: 'Military-Grade Encryption' }}
+        badge={{ icon: Lock, text: 'AES-256-GCM Encryption' }}
         headline="Notes Protected by Real Encryption."
         highlightedWord="Encryption"
         subheadline="AES-256-GCM encryption keeps your sensitive notes unreadable to anyone but you. No backdoors, no master keys, no compromises."
@@ -266,7 +267,7 @@ export default function EncryptedNotesContent() {
               How Dash <span className="text-blue-400">Encrypts</span> Your Notes
             </h2>
             <p className="text-lg text-slate-300 max-w-2xl mx-auto">
-              Military-grade encryption with zero-knowledge architecture. Here is exactly how we protect your data.
+              AES-256-GCM encryption with zero-knowledge architecture. Here is exactly how we protect your data.
             </p>
           </motion.div>
 
@@ -515,11 +516,18 @@ export default function EncryptedNotesContent() {
         </div>
       </section>
 
+      <RelatedLinks heading="Learn More" links={[
+        { title: 'How Dash Encryption Works', href: '/guides/encryption', description: 'Deep dive into AES-256-GCM and key derivation.' },
+        { title: 'Self-Destructing Notes', href: '/guides/self-destructing-notes', description: 'Notes that automatically delete after reading.' },
+        { title: 'App Lock Guide', href: '/guides/app-lock', description: 'Add biometric protection on top of encryption.' },
+        { title: 'Dash vs Notion', href: '/vs-notion', description: 'See how Dash encryption compares to Notion.' },
+      ]} />
+
       {/* CTA Banner */}
       <CTABanner
         headline="Encrypt your notes today"
-        subheadline="Military-grade protection for $14.99. One-time purchase."
-        buttonText="Get Dash Now"
+        subheadline="AES-256 protection for $14.99. One-time purchase."
+        buttonText="Get Dash for Mac"
       />
 
       <Footer />

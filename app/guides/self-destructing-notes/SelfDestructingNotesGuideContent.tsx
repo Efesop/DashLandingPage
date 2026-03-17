@@ -28,6 +28,7 @@ import PaymentSection from '../../components/PaymentSection';
 import SEOHero from '../../components/seo/SEOHero';
 import CTABanner from '../../components/seo/CTABanner';
 import InlineCTA from '../../components/seo/InlineCTA';
+import RelatedLinks from '../../components/seo/RelatedLinks';
 
 export default function SelfDestructingNotesGuideContent() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
@@ -601,11 +602,17 @@ export default function SelfDestructingNotesGuideContent() {
         </div>
       </section>
 
+      <RelatedLinks heading="Related" links={[
+        { title: 'Encrypted Notes', href: '/encrypted-notes', description: 'Permanent encrypted notes for sensitive data.' },
+        { title: 'Encrypted Sharing', href: '/share', description: 'Share self-destructing content securely.' },
+        { title: 'How Dash Encryption Works', href: '/guides/encryption', description: 'The encryption behind self-destructing notes.' },
+      ]} />
+
       {/* CTA Banner */}
       <CTABanner
         headline="Sensitive notes deserve a deadline"
         subheadline="Self-destructing notes with encryption. $14.99 one-time."
-        buttonText="Get Dash Now"
+        buttonText="Get Dash for Mac"
       />
 
       <Footer />

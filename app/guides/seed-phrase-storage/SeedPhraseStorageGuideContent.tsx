@@ -26,6 +26,7 @@ import PaymentSection from '../../components/PaymentSection';
 import SEOHero from '../../components/seo/SEOHero';
 import CTABanner from '../../components/seo/CTABanner';
 import InlineCTA from '../../components/seo/InlineCTA';
+import RelatedLinks from '../../components/seo/RelatedLinks';
 
 export default function SeedPhraseStorageGuideContent() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
@@ -105,9 +106,9 @@ export default function SeedPhraseStorageGuideContent() {
     },
     {
       icon: ShieldAlert,
-      title: 'Set Up Duress Password',
+      title: 'Set Up Decoy Password',
       description:
-        'If concerned about coercion, set a duress password that wipes or hides data on entry.',
+        'If concerned about coercion, set a decoy password that hides your real data behind convincing decoy notes.',
     },
     {
       icon: HardDrive,
@@ -136,7 +137,7 @@ export default function SeedPhraseStorageGuideContent() {
     {
       question: 'How should I protect my seed phrase in Dash?',
       answer:
-        'Lock the page with a password, enable app lock for full-device encryption, and consider setting up a duress password for additional coercion protection.',
+        'Lock the page with a password, enable app lock for full-device encryption, and consider setting up a decoy password for additional coercion protection.',
     },
     {
       question: 'Can I export my seed phrase?',
@@ -485,11 +486,17 @@ export default function SeedPhraseStorageGuideContent() {
         </div>
       </section>
 
+      <RelatedLinks heading="Related" links={[
+        { title: 'Secure Notes for Bitcoiners', href: '/for-bitcoiners', description: 'Full guide to Bitcoin security with Dash.' },
+        { title: 'How Dash Encryption Works', href: '/guides/encryption', description: 'AES-256-GCM protecting your seed phrases.' },
+        { title: 'Decoy Password Guide', href: '/guides/duress-password', description: 'Hide seed phrases behind decoy notes.' },
+      ]} />
+
       {/* CTA Banner */}
       <CTABanner
         headline="Protect your crypto recovery phrases"
         subheadline="BIP-39 validated seed phrase storage with AES-256 encryption. $14.99 one-time purchase."
-        buttonText="Get Dash Now"
+        buttonText="Get Dash for Mac"
       />
 
       <Footer />

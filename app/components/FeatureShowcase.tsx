@@ -607,7 +607,7 @@ export default function FeatureShowcase() {
             onClick={(e) => { e.preventDefault(); document.getElementById('payment-section')?.scrollIntoView({ behavior: 'smooth' }); }}
             className="inline-flex items-center gap-2 px-6 py-2.5 bg-blue-500 text-white text-sm font-semibold rounded-lg hover:bg-blue-600 active:bg-blue-700"
           >
-            Get Dash — One-time purchase
+            Get Dash for Mac
             <ArrowRight className="w-4 h-4" />
           </a>
         </motion.div>

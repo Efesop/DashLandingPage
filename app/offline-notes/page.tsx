@@ -54,7 +54,7 @@ const jsonLd = {
     'No internet required',
     'Local storage only',
     'Works on flights',
-    'Zero network requests',
+    'Notes stay on your device by default',
     'Instant access',
   ],
 };
@@ -68,7 +68,7 @@ const faqJsonLd = {
       name: 'How does Dash work without internet?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Dash stores all your notes locally on your device. The app never makes network requests - no API calls, no sync, no telemetry. Everything happens on your machine, so internet connectivity is simply not needed.',
+        text: 'Dash stores all your notes locally on your device. There is no telemetry, no analytics, and no cloud sync. Your notes never leave your device unless you choose to share them. Sharing and live collaboration are opt-in, end-to-end encrypted, and routed through a zero-knowledge relay.',
       },
     },
     {

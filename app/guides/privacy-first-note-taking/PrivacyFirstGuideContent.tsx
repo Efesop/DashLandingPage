@@ -25,6 +25,7 @@ import PaymentSection from '../../components/PaymentSection';
 import SEOHero from '../../components/seo/SEOHero';
 import CTABanner from '../../components/seo/CTABanner';
 import InlineCTA from '../../components/seo/InlineCTA';
+import RelatedLinks from '../../components/seo/RelatedLinks';
 
 export default function PrivacyFirstGuideContent() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
@@ -91,7 +92,7 @@ export default function PrivacyFirstGuideContent() {
     {
       icon: Search,
       title: 'No Third-Party Scripts',
-      description: 'No tracking pixels, no fingerprinting, no ad networks, no external JavaScript. Zero outbound network requests.',
+      description: 'No tracking pixels, no fingerprinting, no ad networks, no external JavaScript. Your notes never leave your device unless you opt in to sharing or live collaboration, which are end-to-end encrypted.',
     },
   ];
 
@@ -112,7 +113,7 @@ export default function PrivacyFirstGuideContent() {
       icon: EyeOff,
       title: 'No Telemetry',
       description:
-        'Zero analytics packages in the dependencies. Zero outbound network calls. The only network activity is checking for app updates on desktop.',
+        'Zero analytics packages in the dependencies. The only network activity is checking for app updates on desktop, plus opt-in encrypted sharing and live collaboration through a zero-knowledge relay.',
     },
     {
       icon: WifiOff,
@@ -148,7 +149,7 @@ export default function PrivacyFirstGuideContent() {
     {
       question: 'Does Dash collect any analytics or telemetry?',
       answer:
-        'No. Dash has zero analytics \u2014 no Segment, Amplitude, Google Analytics, Mixpanel, Sentry, or any telemetry service. The app makes zero network requests during normal operation. This is verifiable in the open-source code.',
+        'No. Dash has zero analytics \u2014 no Segment, Amplitude, Google Analytics, Mixpanel, Sentry, or any telemetry service. Your notes never leave your device unless you opt in to sharing or live collaboration, which are end-to-end encrypted through a zero-knowledge relay. The desktop app also checks for updates. This is verifiable in the open-source code.',
     },
     {
       question: 'What data does Dash store about me?',
@@ -461,11 +462,18 @@ export default function PrivacyFirstGuideContent() {
         </div>
       </section>
 
+      <RelatedLinks heading="Related" links={[
+        { title: 'Private Notes', href: '/private-notes', description: 'Dash private notes feature overview.' },
+        { title: 'Secure Notes for Journalists', href: '/for-journalists', description: 'Privacy-first note taking for reporters.' },
+        { title: 'How Dash Encryption Works', href: '/guides/encryption', description: 'The technical foundation of privacy.' },
+        { title: 'Offline-First Architecture', href: '/guides/offline-first', description: 'No cloud means no data leaks.' },
+      ]} />
+
       {/* CTA */}
       <CTABanner
         headline="Privacy guaranteed by design"
         subheadline="Zero data collection. Zero telemetry. $14.99 one-time."
-        buttonText="Get Dash Now"
+        buttonText="Get Dash for Mac"
       />
 
       <Footer />

@@ -25,8 +25,8 @@ export const metadata: Metadata = {
     default: "Dash - Own Your Notes For Real | Private, Encrypted Notes App",
     template: "%s | Dash",
   },
-  description: "Military-grade encrypted notes app that keeps your data 100% offline and private. No cloud, no tracking, no accounts needed. AES-256 encryption protects your thoughts from Big Tech surveillance.",
-  keywords: "private notes app, encrypted notes, offline notes, secure note taking, privacy notes, no cloud notes, local storage notes, military grade encryption, AES-256, privacy-first app",
+  description: "AES-256 encrypted notes app that keeps your data 100% offline and private. No cloud, no tracking, no accounts needed. AES-256 encryption protects your thoughts from Big Tech surveillance.",
+  keywords: "private notes app, encrypted notes, offline notes, secure note taking, privacy notes, no cloud notes, local storage notes, AES-256 encryption, AES-256, privacy-first app",
   authors: [{ name: "Dash", url: "https://dashnote.io" }],
   creator: "Dash",
   publisher: "Dash",
@@ -48,7 +48,7 @@ export const metadata: Metadata = {
   manifest: '/manifest.json',
   openGraph: {
     title: "Dash - Own Your Notes For Real | Private, Encrypted Notes App",
-    description: "Military-grade encrypted notes app that keeps your data 100% offline and private. No cloud, no tracking, no accounts needed.",
+    description: "AES-256 encrypted notes app that keeps your data 100% offline and private. No cloud, no tracking, no accounts needed.",
     url: "https://dashnote.io",
     siteName: "Dash",
     images: [
@@ -65,7 +65,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Dash - Own Your Notes For Real",
-    description: "Military-grade encrypted notes app. 100% offline, no cloud, no tracking.",
+    description: "AES-256 encrypted notes app. 100% offline, no cloud, no tracking.",
     creator: "@efesopoulos",
     images: ["/images/Dashfeature1.png"],
   },

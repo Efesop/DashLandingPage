@@ -24,6 +24,7 @@ import PaymentSection from '../components/PaymentSection';
 import SEOHero from '../components/seo/SEOHero';
 import CTABanner from '../components/seo/CTABanner';
 import InlineCTA from '../components/seo/InlineCTA';
+import RelatedLinks from '../components/seo/RelatedLinks';
 import GlassCard from '../components/ui/GlassCard';
 
 export default function SecureJournalContent() {
@@ -53,7 +54,7 @@ export default function SecureJournalContent() {
   const features = [
     {
       icon: Lock,
-      title: 'Military-Grade Encryption',
+      title: 'AES-256-GCM Encryption',
       description: 'AES-256-GCM encryption protects your journal entries. Only you can read them.',
     },
     {
@@ -153,7 +154,7 @@ export default function SecureJournalContent() {
         badge={{ icon: BookHeart, text: 'Private Journal' }}
         headline="Your Diary. Truly Private."
         highlightedWord="Private"
-        subheadline="Military-grade encrypted journal that never syncs to the cloud. Write your deepest thoughts knowing they are protected from everyone - including us."
+        subheadline="AES-256 encrypted journal that never syncs to the cloud. Write your deepest thoughts knowing they are protected from everyone - including us."
         primaryCTA={{ text: 'Get Dash for Mac' }}
         secondaryCTA={{ text: 'See how it works', href: '#features' }}
       >
@@ -482,11 +483,17 @@ export default function SecureJournalContent() {
         </div>
       </section>
 
+      <RelatedLinks heading="Learn More" links={[
+        { title: 'How Dash Encryption Works', href: '/guides/encryption', description: 'Protect your journal with AES-256-GCM.' },
+        { title: 'App Lock Guide', href: '/guides/app-lock', description: 'Lock your journal with Touch ID or password.' },
+        { title: 'Decoy Password Guide', href: '/guides/duress-password', description: 'Hide journal entries behind decoy notes.' },
+      ]} />
+
       {/* CTA Banner */}
       <CTABanner
         headline="Start your private journal today."
         subheadline="$14.99 once. Your thoughts protected forever."
-        buttonText="Get Dash Now"
+        buttonText="Get Dash for Mac"
       />
 
       <Footer />

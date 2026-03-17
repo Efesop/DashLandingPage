@@ -18,7 +18,7 @@ Dash is a **privacy-first, offline note-taking application** designed for people
 - "The only notes app that puts you in complete control."
 
 ### Elevator Pitch
-Dash is a beautiful, privacy-first note-taking app that keeps your thoughts completely offline and encrypted. Unlike Notion, Evernote, or Google Keep, your data never touches a server. Everything stays on your device, protected by military-grade encryption. Built for people who value their privacy above all else - no accounts, no tracking, no compromises. Trusted by journalists, lawyers, and professionals who need true privacy.
+Dash is a beautiful, privacy-first note-taking app that keeps your thoughts offline and encrypted by default. Unlike Notion, Evernote, or Google Keep, your data stays on your device — protected by AES-256-GCM encryption with PBKDF2-SHA256 key derivation (600k iterations). Optional E2E encrypted sharing and live collaboration let you work with others without compromising privacy. Built for people who value their privacy above all else — no accounts, no tracking, no compromises. Trusted by journalists, lawyers, and professionals who need true privacy.
 
 ---
 
@@ -60,8 +60,8 @@ Dash is a beautiful, privacy-first note-taking app that keeps your thoughts comp
 
 | Feature | Description | Benefit |
 |---------|-------------|---------|
-| **100% Offline** | No internet required, ever | Your data never leaves your device |
-| **AES-256 Encryption** | Military-grade encryption (AES-256-GCM) | Protect sensitive notes with passwords |
+| **Offline by Default** | No internet required for core functionality | Your notes never leave your device unless you choose to share |
+| **AES-256 Encryption** | AES-256-GCM with PBKDF2-SHA256 (600k iterations) | Protect sensitive notes with passwords |
 | **No Account Required** | Use immediately, no sign-up | Zero personal data collected |
 | **No Tracking** | Zero analytics or telemetry | Complete privacy, no profiling |
 | **Local Storage** | Data stored in user directory | You control where your data lives |
@@ -69,6 +69,11 @@ Dash is a beautiful, privacy-first note-taking app that keeps your thoughts comp
 | **Touch ID / Biometric Lock** | Unlock app or individual pages with fingerprint | Fast, secure access without typing passwords |
 | **Auto-Lock** | Configurable timeout (1/5/15/30 min) + Cmd+Shift+L instant lock | Automatic protection when you step away |
 | **Self-Destructing Notes** | Auto-delete after 1h/1d/7d/30d with countdown | Sensitive info disappears automatically |
+| **Decoy Password** | Secondary password shows decoy notes under coercion | Plausible deniability, data hidden not deleted |
+| **Encrypted Sharing** | Share notes via E2E encrypted links (AES-256-GCM) | Zero-knowledge relay, auto-deleted after 30 days |
+| **Live Collaboration** | Real-time E2E encrypted editing sessions | WebSocket relay, encryption key in URL fragment |
+| **EXIF Stripping** | Auto-removes GPS, camera info from pasted images | Prevents metadata leaks from photos |
+| **Image Privacy** | EXIF metadata stripped on paste | No accidental location or device info exposure |
 
 ### 📝 Note Taking
 
@@ -82,6 +87,8 @@ Dash is a beautiful, privacy-first note-taking app that keeps your thoughts comp
 | **Focus Mode** | Distraction-free writing (Cmd+Shift+F) | Deep concentration mode |
 | **Live Word Count** | Real-time character/word counting | Track writing progress |
 | **Auto-Save** | Changes saved automatically | Never lose work |
+| **Multi-Block Selection** | Select multiple blocks and convert types with floating toolbar | Batch formatting changes |
+| **Page Linking** | Wiki-style [[ links between notes | Build a connected knowledge base |
 
 ### 📤 Export & Portability
 
@@ -181,13 +188,16 @@ Dash is a beautiful, privacy-first note-taking app that keeps your thoughts comp
 | 100% Offline | ✅ | ❌ | ❌ | ✅ |
 | No Account Required | ✅ | ❌ | ❌ | ✅ |
 | Zero Tracking | ✅ | ❌ | ❌ | ✅ |
-| Military Encryption | ✅ | ❌ | ❌ | ❌ |
+| AES-256-GCM Encryption | ✅ | ❌ | ❌ | ❌ |
 | No Monthly Subscription | ✅ | ❌ | ❌ | ⚠️ |
 | Free to Sync | ✅ | ❌ | ❌ | ❌ |
 | Rich Text Editor | ✅ | ✅ | ✅ | ⚠️ |
 | No Cloud Dependencies | ✅ | ❌ | ❌ | ✅ |
 | Biometric Lock | ✅ | ❌ | ✅ | ❌ |
 | Self-Destructing Notes | ✅ | ❌ | ❌ | ❌ |
+| Decoy Password | ✅ | ❌ | ❌ | ❌ |
+| Encrypted Sharing | ✅ | ❌ | ❌ | ❌ |
+| Live Collaboration (E2E) | ✅ | ❌ | ❌ | ❌ |
 | Cross-Platform | ✅ | ✅ | ✅ | ✅ |
 
 ### Key Differentiators
@@ -196,7 +206,9 @@ Dash is a beautiful, privacy-first note-taking app that keeps your thoughts comp
 3. **One-Time Purchase** - No subscriptions, lifetime access
 4. **Open Source** - Audit the code yourself (but we sell for convenience)
 5. **Beautiful Design** - Privacy doesn't mean ugly
-6. **Military-Grade Encryption** - AES-256-GCM with PBKDF2-SHA256 (600k iterations)
+6. **AES-256-GCM Encryption** - With PBKDF2-SHA256 (600k iterations)
+7. **Encrypted Sharing** - E2E encrypted share links with zero-knowledge relay
+8. **Live Collaboration** - Real-time E2E encrypted editing sessions
 
 ---
 
@@ -227,7 +239,10 @@ Dash is a beautiful, privacy-first note-taking app that keeps your thoughts comp
 - **Self-Destructing Notes**: Auto-delete after configurable time (1h/1d/7d/30d)
 - **Random Generation**: Cryptographically secure
 - **XSS Protection**: DOMPurify sanitization
-- **Network Isolation**: No external network requests
+- **Network Isolation**: No network requests by default (sharing/collaboration opt-in, E2E encrypted)
+- **Encrypted Sharing**: AES-256-GCM, zero-knowledge relay, 30-day auto-delete
+- **Live Sessions**: E2E encrypted WebSocket relay, random 256-bit key per session
+- **EXIF Stripping**: Automatic removal of GPS, camera info from pasted images
 - **Electron Security**: Sandbox enabled
 - **Rate Limiting**: Password attempt protection
 
@@ -256,7 +271,7 @@ Dash is a beautiful, privacy-first note-taking app that keeps your thoughts comp
 8. "The note app built for privacy advocates"
 
 ### Words to Use
-✅ Privacy, Secure, Encrypted, Offline, Local, Own, Control, Military-grade
+✅ Privacy, Secure, Encrypted, Offline, Local, Own, Control, AES-256
 ✅ Beautiful, Clean, Minimal, Focused, Distraction-free
 ✅ Cross-platform, Portable, Export, Sync (device-to-device)
 ✅ One-time payment, Lifetime access, No subscription
@@ -423,8 +438,8 @@ If you've already purchased Dash, you can [recover your download link](https://d
 
 ### Homepage Metadata (Current)
 - **Title**: "Dash - Own Your Notes For Real | Private, Encrypted Notes App"
-- **Description**: "Military-grade encrypted notes app that keeps your data 100% offline and private. No cloud, no tracking, no accounts needed. AES-256 encryption protects your thoughts from Big Tech surveillance."
-- **Keywords**: private notes app, encrypted notes, offline notes, secure note taking, privacy notes, no cloud notes, local storage notes, military grade encryption, AES-256, privacy-first app
+- **Description**: "AES-256 encrypted notes app that keeps your data offline and private by default. No cloud, no tracking, no accounts needed. E2E encrypted sharing and live collaboration when you need it."
+- **Keywords**: private notes app, encrypted notes, offline notes, secure note taking, privacy notes, no cloud notes, local storage notes, AES-256 encryption, privacy-first app, encrypted sharing
 - **OG Image**: https://dashnote.io/og-image.png
 - **Creator**: @efesopoulos
 
@@ -484,6 +499,9 @@ If you've already purchased Dash, you can [recover your download link](https://d
 - Don't overemphasize open source (mention it, but focus on paid convenience)
 - Don't use cloud/AI/tracking in positive contexts
 - Don't promise features that don't exist yet
+- Don't say "military-grade encryption" — lead with actual specs (AES-256-GCM)
+- Don't say "zero network requests" — say "offline by default" (sharing/collab are opt-in)
+- Don't say "no servers to subpoena" — say "notes stay on your device by default"
 
 ---
 

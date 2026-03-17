@@ -25,6 +25,7 @@ import PaymentSection from '../components/PaymentSection';
 import SEOHero from '../components/seo/SEOHero';
 import CTABanner from '../components/seo/CTABanner';
 import InlineCTA from '../components/seo/InlineCTA';
+import RelatedLinks from '../components/seo/RelatedLinks';
 import GlassCard from '../components/ui/GlassCard';
 
 export default function ForWritersContent() {
@@ -56,7 +57,7 @@ export default function ForWritersContent() {
       icon: Lock,
       title: 'AES-256 Encryption',
       description:
-        'Password-protect any note with military-grade encryption. Even if someone accesses your device, your manuscripts remain unreadable.',
+        'Password-protect any note with AES-256 encryption. Even if someone accesses your device, your manuscripts remain unreadable.',
     },
     {
       icon: WifiOff,
@@ -174,7 +175,7 @@ export default function ForWritersContent() {
         badge={{ icon: PenTool, text: 'For Writers' }}
         headline="Your Unpublished Work Deserves Real Protection"
         highlightedWord="Protection"
-        subheadline="Military-grade encrypted notes that never touch the cloud. Your manuscripts, character notes, and story ideas stay truly private."
+        subheadline="AES-256 encrypted notes that never touch the cloud. Your manuscripts, character notes, and story ideas stay truly private."
         primaryCTA={{ text: 'Get Dash for Mac' }}
         secondaryCTA={{ text: 'See features', href: '#features' }}
       >
@@ -477,11 +478,17 @@ export default function ForWritersContent() {
         </div>
       </section>
 
+      <RelatedLinks heading="Learn More" links={[
+        { title: 'Offline-First Architecture', href: '/guides/offline-first', description: 'How Dash works without an internet connection.' },
+        { title: 'Page Linking Guide', href: '/guides/page-linking', description: 'Connect ideas across notes with bidirectional links.' },
+        { title: 'Encrypted Notes', href: '/encrypted-notes', description: 'Protect your manuscripts with AES-256 encryption.' },
+      ]} />
+
       {/* CTA Banner */}
       <CTABanner
         headline="Your stories deserve protection."
-        subheadline="Military-grade encryption for $14.99."
-        buttonText="Get Dash Now"
+        subheadline="AES-256 encryption for $14.99."
+        buttonText="Get Dash for Mac"
       />
 
       <Footer />

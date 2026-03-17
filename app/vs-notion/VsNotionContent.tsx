@@ -23,6 +23,7 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import PaymentSection from '../components/PaymentSection';
 import CTABanner from '../components/seo/CTABanner';
+import RelatedLinks from '../components/seo/RelatedLinks';
 import InlineCTA from '../components/seo/InlineCTA';
 import GlassCard from '../components/ui/GlassCard';
 import { Button } from '../components/ui/button';
@@ -35,7 +36,7 @@ export default function VsNotionContent() {
     { feature: 'Works 100% Offline', dash: true, notion: false },
     { feature: 'No Account Required', dash: true, notion: false },
     { feature: 'Zero Data Collection', dash: true, notion: false },
-    { feature: 'Military-Grade Encryption', dash: true, notion: false },
+    { feature: 'AES-256-GCM Encryption', dash: true, notion: false },
     { feature: 'One-Time Payment', dash: true, notion: false },
     { feature: 'No Monthly Subscription', dash: true, notion: false },
     { feature: 'Your Data Stays Local', dash: true, notion: false },
@@ -432,7 +433,7 @@ export default function VsNotionContent() {
               },
               {
                 icon: Lock,
-                title: 'Military Encryption',
+                title: 'AES-256 Encryption',
                 description: 'AES-256-GCM protection for sensitive notes.',
               },
               {
@@ -542,11 +543,17 @@ export default function VsNotionContent() {
         </div>
       </section>
 
+      <RelatedLinks heading="Learn More About Dash" links={[
+        { title: 'How Dash Encryption Works', href: '/guides/encryption', description: 'AES-256-GCM encryption that Notion lacks.' },
+        { title: 'Offline-First Architecture', href: '/guides/offline-first', description: 'Why offline-first beats cloud-dependent.' },
+        { title: 'Notes for Writers', href: '/for-writers', description: 'A private writing environment.' },
+      ]} />
+
       {/* CTA Banner */}
       <CTABanner
         headline="Ready to take back your privacy?"
         subheadline="Switch from Notion in minutes."
-        buttonText="Get Dash for $14.99"
+        buttonText="Get Dash for Mac"
       />
 
       <Footer />

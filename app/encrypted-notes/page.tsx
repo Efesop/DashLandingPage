@@ -4,13 +4,13 @@ import EncryptedNotesContent from './EncryptedNotesContent';
 export const metadata: Metadata = {
   title: 'Encrypted Notes App | AES-256 Secure Note Taking - Dash',
   description:
-    'Military-grade AES-256 encrypted notes app. Password-protect sensitive notes with zero-knowledge architecture. No cloud, no backdoors, completely private.',
+    'AES-256 encrypted notes app. Password-protect sensitive notes with zero-knowledge architecture. No cloud, no backdoors, completely private.',
   keywords:
     'encrypted notes, encrypted note app, AES-256 notes, secure notes, password protected notes, encrypted note taking, private notes encryption',
   openGraph: {
     title: 'Encrypted Notes App | AES-256 Secure Note Taking - Dash',
     description:
-      'Military-grade AES-256 encrypted notes app. Password-protect sensitive notes with zero-knowledge architecture.',
+      'AES-256 encrypted notes app. Password-protect sensitive notes with zero-knowledge architecture.',
     url: 'https://dashnote.io/encrypted-notes',
     siteName: 'Dash',
     locale: 'en_US',
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Encrypted Notes App - Dash',
     description:
-      'Military-grade AES-256 encrypted notes. Zero-knowledge, no backdoors.',
+      'AES-256 encrypted notes. Zero-knowledge, no backdoors.',
     creator: '@efesopoulos',
     images: ['/images/Dashfeature1.png'],
   },
@@ -41,7 +41,7 @@ const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'SoftwareApplication',
   name: 'Dash - Encrypted Notes App',
-  description: 'Military-grade AES-256 encrypted notes app with zero-knowledge architecture.',
+  description: 'AES-256 encrypted notes app with zero-knowledge architecture.',
   applicationCategory: 'ProductivityApplication',
   operatingSystem: 'macOS, Web',
   offers: {
