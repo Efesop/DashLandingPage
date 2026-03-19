@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { Lock, Timer, WifiOff, ShieldCheck, Fingerprint, ShieldAlert, Link as LinkIcon, Coins } from 'lucide-react';
+import { Lock, Timer, WifiOff, ShieldCheck, Fingerprint, ShieldAlert, Link as LinkIcon, Coins, Bot } from 'lucide-react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 
@@ -120,6 +120,15 @@ const guides = [
     icon: Coins,
     color: 'amber',
   },
+  {
+    slug: 'local-ai',
+    title: 'Local AI',
+    subtitle: 'Private AI That Never Leaves Your Device',
+    description:
+      'Use AI to summarize, rewrite, brainstorm, and chat — powered by local models like Ollama and LM Studio. No cloud, no API keys.',
+    icon: Bot,
+    color: 'emerald',
+  },
 ];
 
 const colorClasses: Record<string, { bg: string; icon: string; border: string }> = {
@@ -162,6 +171,11 @@ const colorClasses: Record<string, { bg: string; icon: string; border: string }>
     bg: 'bg-amber-100 dark:bg-amber-900/30',
     icon: 'text-amber-600 dark:text-amber-400',
     border: 'group-hover:border-amber-300 dark:group-hover:border-amber-700',
+  },
+  emerald: {
+    bg: 'bg-emerald-100 dark:bg-emerald-900/30',
+    icon: 'text-emerald-600 dark:text-emerald-400',
+    border: 'group-hover:border-emerald-300 dark:group-hover:border-emerald-700',
   },
 };
 

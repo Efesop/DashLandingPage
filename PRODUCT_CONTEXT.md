@@ -74,6 +74,7 @@ Dash is a beautiful, privacy-first note-taking app that keeps your thoughts offl
 | **Live Collaboration** | Real-time E2E encrypted editing sessions | WebSocket relay, encryption key in URL fragment |
 | **EXIF Stripping** | Auto-removes GPS, camera info from pasted images | Prevents metadata leaks from photos |
 | **Image Privacy** | EXIF metadata stripped on paste | No accidental location or device info exposure |
+| **Local AI** | Connect to Ollama, LM Studio, or any local AI server for writing assistance | AI-powered summarize, rewrite, chat — entirely on-device, no cloud |
 
 ### 📝 Note Taking
 
@@ -198,6 +199,7 @@ Dash is a beautiful, privacy-first note-taking app that keeps your thoughts offl
 | Decoy Password | ✅ | ❌ | ❌ | ❌ |
 | Encrypted Sharing | ✅ | ❌ | ❌ | ❌ |
 | Live Collaboration (E2E) | ✅ | ❌ | ❌ | ❌ |
+| Local AI (on-device) | ✅ | ❌ | ❌ | ❌ |
 | Cross-Platform | ✅ | ✅ | ✅ | ✅ |
 
 ### Key Differentiators
@@ -209,6 +211,7 @@ Dash is a beautiful, privacy-first note-taking app that keeps your thoughts offl
 6. **AES-256-GCM Encryption** - With PBKDF2-SHA256 (600k iterations)
 7. **Encrypted Sharing** - E2E encrypted share links with zero-knowledge relay
 8. **Live Collaboration** - Real-time E2E encrypted editing sessions
+9. **Local AI** - AI writing assistance that runs entirely on-device via Ollama, LM Studio, or any OpenAI-compatible local server
 
 ---
 
@@ -240,6 +243,7 @@ Dash is a beautiful, privacy-first note-taking app that keeps your thoughts offl
 - **Random Generation**: Cryptographically secure
 - **XSS Protection**: DOMPurify sanitization
 - **Network Isolation**: No network requests by default (sharing/collaboration opt-in, E2E encrypted)
+- **AI Localhost Enforcement**: Hard localhost-only restriction for AI connections — no data sent to external servers
 - **Encrypted Sharing**: AES-256-GCM, zero-knowledge relay, 30-day auto-delete
 - **Live Sessions**: E2E encrypted WebSocket relay, random 256-bit key per session
 - **EXIF Stripping**: Automatic removal of GPS, camera info from pasted images
@@ -279,7 +283,7 @@ Dash is a beautiful, privacy-first note-taking app that keeps your thoughts offl
 ### Words to Avoid
 ❌ Cloud (in a positive context), Server, Account, Sign up
 ❌ Track, Analytics, Telemetry, Data collection
-❌ AI-powered, Machine learning (we don't use these)
+❌ Cloud AI, AI-powered (generic) — use "Local AI" to distinguish on-device processing
 ❌ Free, Free forever (even though it's open source - focus on paid version)
 
 ---
@@ -291,7 +295,8 @@ Dash is a beautiful, privacy-first note-taking app that keeps your thoughts offl
 2. **Hero Section** - Centered layout, video demo with browser chrome, trust badges, "Get Dash for Mac" CTA
 3. **Feature Showcase** - Dark section highlighting encryption, offline, zero tracking
 4. **Core Features** - Rich text editing, quick switcher, organization, focus mode, import/export with live demo
-5. **Security Section** - Technical security details, AES-256 specs, auto-lock, Touch ID
+5. **Local AI Section** - On-device AI with Ollama/LM Studio, guided actions, chat mode, localhost enforcement
+6. **Security Section** - Technical security details, AES-256 specs, auto-lock, Touch ID
 6. **Biometric Lock Section** - Touch ID/biometric showcase with animated lock/unlock mockup
 7. **Benefits Section** - "No Cloud, No Worries" - works anywhere, lightning fast, stress-free
 8. **Comparison Table** - vs Notion, Evernote, Obsidian (includes biometric lock, self-destructing notes)

@@ -68,6 +68,7 @@ export default function Header() {
     { href: '/guides/duress-password', label: 'Decoy Password' },
     { href: '/guides/page-linking', label: 'Page Linking' },
     { href: '/guides/seed-phrase-storage', label: 'Seed Phrase Storage' },
+    { href: '/guides/local-ai', label: 'Local AI' },
   ];
 
   return (

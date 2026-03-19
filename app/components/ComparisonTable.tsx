@@ -23,6 +23,7 @@ export default function ComparisonTable() {
     { feature: 'Seed Phrase Storage', dash: true, notion: false, evernote: false, obsidian: false },
     { feature: 'Encrypted Sharing', dash: true, notion: false, evernote: false, obsidian: false },
     { feature: 'Live Collaboration', dash: true, notion: true, evernote: false, obsidian: false },
+    { feature: 'Local AI', dash: true, notion: false, evernote: false, obsidian: false },
     { feature: 'Cross-Platform', dash: true, notion: true, evernote: true, obsidian: true },
   ];
 
