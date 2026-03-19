@@ -143,7 +143,7 @@ export default function LocalAIGuideContent() {
               <div className="w-3 h-3 rounded-full bg-yellow-500" />
               <div className="w-3 h-3 rounded-full bg-green-500" />
             </div>
-            <div className="flex items-center gap-1.5 bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400 px-2.5 py-1 rounded-full">
+            <div className="flex items-center gap-1.5 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 px-2.5 py-1 rounded-full">
               <Bot className="w-3 h-3" />
               <span className="text-xs font-medium">Local AI</span>
             </div>
@@ -165,7 +165,7 @@ export default function LocalAIGuideContent() {
             {/* AI panel side */}
             <div className="w-52 p-4 bg-gray-50 dark:bg-gray-900/50">
               <div className="flex items-center gap-1.5 mb-3">
-                <Sparkles className="w-3.5 h-3.5 text-emerald-500" />
+                <Sparkles className="w-3.5 h-3.5 text-blue-500" />
                 <span className="text-xs font-medium text-gray-700 dark:text-gray-300">AI Response</span>
               </div>
               <div className="space-y-2 text-xs text-gray-600 dark:text-gray-400 leading-relaxed">
@@ -209,8 +209,8 @@ export default function LocalAIGuideContent() {
                 transition={{ delay: index * 0.1 }}
               >
                 <div className="bg-gray-50 dark:bg-gray-800/50 border border-gray-200 dark:border-gray-700 rounded-2xl p-8 h-full">
-                  <div className="w-14 h-14 bg-emerald-100 dark:bg-emerald-900/30 rounded-2xl flex items-center justify-center mb-6">
-                    <item.icon className="w-7 h-7 text-emerald-600 dark:text-emerald-400" />
+                  <div className="w-14 h-14 bg-blue-100 dark:bg-blue-900/30 rounded-2xl flex items-center justify-center mb-6">
+                    <item.icon className="w-7 h-7 text-blue-600 dark:text-blue-400" />
                   </div>
                   <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">
                     {item.title}
@@ -231,7 +231,7 @@ export default function LocalAIGuideContent() {
               { icon: Code, label: 'Developers' },
             ].map((chip) => (
               <div key={chip.label} className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-xs text-gray-600 dark:text-gray-400">
-                <chip.icon className="w-3 h-3 text-emerald-600 dark:text-emerald-400" />
+                <chip.icon className="w-3 h-3 text-blue-600 dark:text-blue-400" />
                 {chip.label}
               </div>
             ))}
@@ -242,7 +242,7 @@ export default function LocalAIGuideContent() {
       {/* Section 2 - How It Works */}
       <section id="how-it-works" className="py-24 bg-slate-900 relative overflow-hidden">
         <div className="absolute inset-0">
-          <div className="absolute top-20 left-10 w-72 h-72 bg-emerald-500/10 rounded-full blur-3xl" />
+          <div className="absolute top-20 left-10 w-72 h-72 bg-blue-500/10 rounded-full blur-3xl" />
           <div className="absolute bottom-20 right-10 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl" />
         </div>
 
@@ -254,7 +254,7 @@ export default function LocalAIGuideContent() {
             className="text-center mb-16"
           >
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-              How It <span className="text-emerald-400">Works</span>
+              How It <span className="text-blue-400">Works</span>
             </h2>
             <p className="text-lg text-slate-300 max-w-2xl mx-auto">
               Local AI in Dash is private by architecture, not by policy. Here is what makes it different.
@@ -281,8 +281,8 @@ export default function LocalAIGuideContent() {
                 transition={{ delay: index * 0.1 }}
               >
                 <div className="h-full bg-slate-800/60 border border-slate-700 rounded-2xl p-6">
-                  <div className="w-12 h-12 bg-emerald-500/20 border border-emerald-500/30 rounded-xl flex items-center justify-center mb-4">
-                    <feature.icon className="w-6 h-6 text-emerald-400" />
+                  <div className="w-12 h-12 bg-blue-500/20 border border-blue-500/30 rounded-xl flex items-center justify-center mb-4">
+                    <feature.icon className="w-6 h-6 text-blue-400" />
                   </div>
                   <h3 className="text-lg font-semibold text-white mb-2">
                     {feature.title}
@@ -318,7 +318,7 @@ export default function LocalAIGuideContent() {
             </div>
 
             <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl overflow-hidden">
-              <div className="bg-gradient-to-r from-emerald-600 to-blue-600 px-6 py-4">
+              <div className="bg-gradient-to-r from-blue-600 to-blue-600 px-6 py-4">
                 <div className="flex items-center gap-3">
                   <Bot className="w-6 h-6 text-white" />
                   <h3 className="text-lg font-semibold text-white">AI Comparison</h3>
@@ -330,7 +330,7 @@ export default function LocalAIGuideContent() {
                   <thead>
                     <tr className="border-b border-gray-200 dark:border-gray-700">
                       <th className="px-6 py-4 text-left text-sm font-medium text-gray-500 dark:text-gray-400">Feature</th>
-                      <th className="px-6 py-4 text-center text-sm font-medium text-emerald-600 dark:text-emerald-400">Dash</th>
+                      <th className="px-6 py-4 text-center text-sm font-medium text-blue-600 dark:text-blue-400">Dash</th>
                       <th className="px-6 py-4 text-center text-sm font-medium text-gray-500 dark:text-gray-400">Notion</th>
                       <th className="px-6 py-4 text-center text-sm font-medium text-gray-500 dark:text-gray-400">Obsidian</th>
                     </tr>

@@ -189,16 +189,16 @@ export default function AIOrb({ size = 120, generating = false }: AIOrbProps) {
     ctx.drawImage(blurred, 0, 0);
     ctx.restore();
 
-    // Pass 4: Glass frost overlay
+    // Pass 4: Glass frost overlay (subtle — preserve blob color vibrancy)
     ctx.save();
     ctx.beginPath();
     ctx.arc(cx, cy, sphereR, 0, Math.PI * 2);
     ctx.clip();
     const frost = ctx.createRadialGradient(cx, cy * 0.8, 0, cx, cy, sphereR);
-    frost.addColorStop(0, 'rgba(255,255,255,0.1)');
-    frost.addColorStop(0.4, 'rgba(255,255,255,0.15)');
-    frost.addColorStop(0.7, 'rgba(255,255,255,0.25)');
-    frost.addColorStop(1, 'rgba(255,255,255,0.35)');
+    frost.addColorStop(0, 'rgba(255,255,255,0.04)');
+    frost.addColorStop(0.4, 'rgba(255,255,255,0.06)');
+    frost.addColorStop(0.7, 'rgba(255,255,255,0.1)');
+    frost.addColorStop(1, 'rgba(255,255,255,0.14)');
     ctx.fillStyle = frost;
     ctx.fill();
     ctx.restore();
@@ -220,7 +220,7 @@ export default function AIOrb({ size = 120, generating = false }: AIOrbProps) {
     ctx.beginPath();
     ctx.ellipse(0, 0, sphereR * 0.35, sphereR * 0.25, 0, 0, Math.PI * 2);
     const spec = ctx.createRadialGradient(0, 0, 0, 0, 0, sphereR * 0.35);
-    spec.addColorStop(0, 'rgba(255,255,255,0.55)');
+    spec.addColorStop(0, 'rgba(255,255,255,0.3)');
     spec.addColorStop(1, 'rgba(255,255,255,0)');
     ctx.fillStyle = spec;
     ctx.fill();
