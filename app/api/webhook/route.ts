@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import stripe from '../../../lib/stripe';
 import { StripeWebhookEvent } from '../../../types/payment';
+import { grantMacEntitlement } from '../../../lib/entitlement';
 
 // Force dynamic rendering for this API route
 export const dynamic = 'force-dynamic';
@@ -90,15 +91,29 @@ export async function POST(request: NextRequest) {
 
 async function handleCheckoutCompleted(event: StripeWebhookEvent) {
   const session = event.data.object;
+  const email = session.customer_details?.email;
 
-  // Here you would typically:
-  // 1. Send confirmation email
-  // 2. Update database
-  // 3. Grant access to product
-  // 4. Log the successful payment
+  if (!email) {
+    // Without an email we can't grant the entitlement — log loudly so we
+    // notice if Stripe checkout config ever stops collecting emails.
+    console.error(
+      '[webhook] checkout.session.completed but no customer email!',
+      'session=', session.id,
+    );
+    return;
+  }
 
-  // For now, we'll just log it
-  console.log('Payment successful for Dash Notes App!');
+  // Forward to dash-relay so the buyer can use sync on Mac. Throws on
+  // failure → outer try/catch returns 500 → Stripe retries the webhook.
+  await grantMacEntitlement({
+    email,
+    stripeSessionId: session.id,
+    stripeCustomerId: (session as any).customer || undefined,
+    amountPaid: session.amount_total,
+    currency: session.currency,
+  });
+
+  console.log(`[webhook] sync entitlement granted to ${email}`);
 }
 
 async function handlePaymentSucceeded(event: StripeWebhookEvent) {
