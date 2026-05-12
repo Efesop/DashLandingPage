@@ -62,7 +62,7 @@ export default function LandingPage() {
                 name: 'How much is Dash?',
                 acceptedAnswer: {
                   '@type': 'Answer',
-                  text: 'Dash is a one-time purchase with no subscriptions or hidden costs. We believe privacy is a fundamental right, not a premium feature.',
+                  text: 'The Dash desktop app is $14.99 — a one-time payment that gives you the Mac (and Windows/Linux) app forever. Optional Dash Sync, which keeps your notes encrypted-synced across devices, is a separate subscription ($4.99/month or $47.99/year with a 7-day free trial). You can use Dash without sync; sync exists because operating the relay server costs real money and we charge it where the cost lives.',
                 },
               },
               {

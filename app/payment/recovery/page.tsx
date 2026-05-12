@@ -19,7 +19,11 @@ export default function PaymentRecovery() {
     setError(null);
 
     try {
-      const response = await fetch('/api/customer-portal', {
+      // Renamed in v1.5 — /api/customer-portal is now a real Stripe Billing
+      // Portal session for subscription self-service. Download recovery
+      // (for Mac DMG re-download via the original $14.99 one-time purchase)
+      // moved to /api/download-recovery.
+      const response = await fetch('/api/download-recovery', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

@@ -1,157 +1,228 @@
-import { NextRequest, NextResponse } from 'next/server';
-import stripe from '../../../lib/stripe';
-import { StripeWebhookEvent } from '../../../types/payment';
-import { grantMacEntitlement } from '../../../lib/entitlement';
+// Stripe webhook handler.
+//
+// v1.5 (Option C cross-platform sync sub) — handles three product paths:
+//
+//   1. Mac one-time desktop license ($14.99):
+//      - checkout.session.completed (mode=payment, metadata.product_type=mac-license)
+//      → grantMacEntitlement → relay /entitlements/grant-mac
+//
+//   2. Dash Sync subscription ($4.99/mo or $47.99/yr):
+//      - checkout.session.completed (mode=subscription, metadata.product_type=sync-sub)
+//        → retrieve sub, grantSyncEntitlement (initial trial start)
+//      - customer.subscription.created / .updated
+//        → grantSyncEntitlement (status changes, trial conversion)
+//      - customer.subscription.deleted
+//        → revokeSyncEntitlement (canceled at period end)
+//      - invoice.paid (renewal)
+//        → grantSyncEntitlement (refresh expiresAt with new period_end)
+//      - charge.refunded (associated with a subscription invoice)
+//        → revokeSyncEntitlement
+//
+// Webhook signature is verified BEFORE any handler runs. Failures
+// inside a handler bubble up as 500s so Stripe will retry automatically.
 
-// Force dynamic rendering for this API route
+import { NextRequest, NextResponse } from 'next/server';
+import type Stripe from 'stripe';
+import stripe from '../../../lib/stripe';
+import { grantMacEntitlement } from '../../../lib/entitlement';
+import { grantSyncEntitlement, revokeSyncEntitlement } from '../../../lib/syncEntitlement';
+
 export const dynamic = 'force-dynamic';
 
 export async function POST(request: NextRequest) {
-  // Check if Stripe is configured
   if (!stripe) {
     return NextResponse.json(
-      {
-        error:
-          'Stripe is not configured. Please add STRIPE_SECRET_KEY to your environment variables.',
-      },
-      { status: 500 }
+      { error: 'Stripe is not configured. Add STRIPE_SECRET_KEY to your environment variables.' },
+      { status: 500 },
     );
   }
 
   const body = await request.text();
   const signature = request.headers.get('stripe-signature');
-
   if (!signature) {
-    return NextResponse.json(
-      { error: 'Missing stripe-signature header' },
-      { status: 400 }
-    );
+    return NextResponse.json({ error: 'Missing stripe-signature header' }, { status: 400 });
   }
 
-  let event: StripeWebhookEvent;
+  const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET;
+  if (!webhookSecret) {
+    console.error('STRIPE_WEBHOOK_SECRET is not set');
+    return NextResponse.json({ error: 'Webhook secret not configured' }, { status: 500 });
+  }
 
+  let event: Stripe.Event;
   try {
-    // Verify webhook signature
-    // You'll need to add STRIPE_WEBHOOK_SECRET to your environment variables
-    const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET;
-    if (!webhookSecret) {
-      console.error('STRIPE_WEBHOOK_SECRET is not set');
-      return NextResponse.json(
-        { error: 'Webhook secret not configured' },
-        { status: 500 }
-      );
-    }
-
-    event = stripe.webhooks.constructEvent(
-      body,
-      signature,
-      webhookSecret
-    ) as StripeWebhookEvent;
+    event = stripe.webhooks.constructEvent(body, signature, webhookSecret);
   } catch (error) {
     console.error('Webhook signature verification failed:', error);
     return NextResponse.json({ error: 'Invalid signature' }, { status: 400 });
   }
 
   try {
-    // Handle different event types
     switch (event.type) {
       case 'checkout.session.completed':
         await handleCheckoutCompleted(event);
         break;
 
-      case 'payment_intent.succeeded':
-        await handlePaymentSucceeded(event);
+      case 'customer.subscription.created':
+      case 'customer.subscription.updated':
+        await handleSubscriptionUpsert(event);
         break;
 
-      case 'payment_intent.payment_failed':
-        await handlePaymentFailed(event);
+      case 'customer.subscription.deleted':
+        await handleSubscriptionDeleted(event);
         break;
 
+      case 'invoice.paid':
       case 'invoice.payment_succeeded':
-        await handleInvoicePaymentSucceeded(event);
+        await handleInvoicePaid(event);
         break;
 
+      case 'charge.refunded':
+        await handleChargeRefunded(event);
+        break;
+
+      case 'payment_intent.succeeded':
+      case 'payment_intent.payment_failed':
       case 'invoice.payment_failed':
-        await handleInvoicePaymentFailed(event);
+        // Logged for observability; no entitlement action.
+        console.log(`[webhook] ${event.type} ${(event.data.object as any).id}`);
         break;
 
       default:
-        console.log(`Unhandled event type: ${event.type}`);
+        console.log(`[webhook] unhandled event ${event.type}`);
     }
-
     return NextResponse.json({ received: true });
   } catch (error) {
-    console.error('Error processing webhook:', error);
-    return NextResponse.json(
-      { error: 'Webhook processing failed' },
-      { status: 500 }
-    );
+    console.error('[webhook] handler error:', error);
+    return NextResponse.json({ error: 'Webhook processing failed' }, { status: 500 });
   }
 }
 
-async function handleCheckoutCompleted(event: StripeWebhookEvent) {
-  const session = event.data.object;
-  const email = session.customer_details?.email;
+// ── Handlers ─────────────────────────────────────────────────────────
 
+async function handleCheckoutCompleted(event: Stripe.Event) {
+  const session = event.data.object as Stripe.Checkout.Session;
+  const email = session.customer_details?.email || session.customer_email || undefined;
   if (!email) {
-    // Without an email we can't grant the entitlement — log loudly so we
-    // notice if Stripe checkout config ever stops collecting emails.
-    console.error(
-      '[webhook] checkout.session.completed but no customer email!',
-      'session=', session.id,
-    );
+    console.error('[webhook] checkout.session.completed without email, session=', session.id);
     return;
   }
 
-  // Forward to dash-relay so the buyer can use sync on Mac. Throws on
-  // failure → outer try/catch returns 500 → Stripe retries the webhook.
+  // Branch on session.mode (payment = Mac one-time; subscription = sync sub)
+  if (session.mode === 'subscription') {
+    if (!stripe) throw new Error('stripe not configured');
+    const subId = typeof session.subscription === 'string'
+      ? session.subscription
+      : (session.subscription as any)?.id;
+    if (!subId) {
+      console.error('[webhook] subscription checkout completed without subscription id');
+      return;
+    }
+    const sub = await stripe.subscriptions.retrieve(subId);
+    await grantSyncEntitlement({
+      email,
+      stripeCustomerId: typeof sub.customer === 'string' ? sub.customer : (sub.customer as any)?.id,
+      stripeSubscriptionId: sub.id,
+      currentPeriodEnd: (sub as any).current_period_end || 0,
+      status: sub.status,
+    });
+    return;
+  }
+
+  // mode='payment' — Mac one-time desktop license
   await grantMacEntitlement({
     email,
     stripeSessionId: session.id,
-    stripeCustomerId: (session as any).customer || undefined,
-    amountPaid: session.amount_total,
-    currency: session.currency,
+    stripeCustomerId: typeof session.customer === 'string' ? session.customer : (session.customer as any)?.id,
+    amountPaid: session.amount_total ?? undefined,
+    currency: session.currency ?? undefined,
   });
-
-  console.log(`[webhook] sync entitlement granted to ${email}`);
+  console.log(`[webhook] mac-license granted to ${email}`);
 }
 
-async function handlePaymentSucceeded(event: StripeWebhookEvent) {
-  const paymentIntent = event.data.object;
+async function handleSubscriptionUpsert(event: Stripe.Event) {
+  const sub = event.data.object as Stripe.Subscription;
+  // Ignore non-Dash subscriptions if you ever add other products.
+  const meta = sub.metadata || {};
+  if (meta.product_type && meta.product_type !== 'sync-sub') return;
 
-  console.log('Payment succeeded:', {
-    paymentIntentId: paymentIntent.id,
-    amount: paymentIntent.amount_total,
-    currency: paymentIntent.currency,
-  });
-}
-
-async function handlePaymentFailed(event: StripeWebhookEvent) {
-  const paymentIntent = event.data.object;
-
-  console.log('Payment failed:', {
-    paymentIntentId: paymentIntent.id,
-    amount: paymentIntent.amount_total,
-    currency: paymentIntent.currency,
-  });
-}
-
-async function handleInvoicePaymentSucceeded(event: StripeWebhookEvent) {
-  const invoice = event.data.object;
-
-  console.log('Invoice payment succeeded:', {
-    invoiceId: invoice.id,
-    amount: invoice.amount_total,
-    currency: invoice.currency,
+  const email = await resolveCustomerEmail(sub.customer);
+  if (!email) {
+    console.error('[webhook] subscription update without email, sub=', sub.id);
+    return;
+  }
+  await grantSyncEntitlement({
+    email,
+    stripeCustomerId: typeof sub.customer === 'string' ? sub.customer : (sub.customer as any)?.id,
+    stripeSubscriptionId: sub.id,
+    currentPeriodEnd: (sub as any).current_period_end || 0,
+    status: sub.status,
   });
 }
 
-async function handleInvoicePaymentFailed(event: StripeWebhookEvent) {
-  const invoice = event.data.object;
+async function handleSubscriptionDeleted(event: Stripe.Event) {
+  const sub = event.data.object as Stripe.Subscription;
+  const email = await resolveCustomerEmail(sub.customer);
+  if (!email) {
+    console.error('[webhook] subscription deleted without email, sub=', sub.id);
+    return;
+  }
+  await revokeSyncEntitlement({ email, stripeSubscriptionId: sub.id });
+}
 
-  console.log('Invoice payment failed:', {
-    invoiceId: invoice.id,
-    amount: invoice.amount_total,
-    currency: invoice.currency,
+async function handleInvoicePaid(event: Stripe.Event) {
+  const invoice = event.data.object as Stripe.Invoice;
+  const subId = (invoice as any).subscription as string | undefined;
+  if (!subId) return; // one-time charge invoice (not a sync renewal)
+  if (!stripe) throw new Error('stripe not configured');
+  const sub = await stripe.subscriptions.retrieve(subId);
+  const email = invoice.customer_email || (await resolveCustomerEmail(sub.customer));
+  if (!email) {
+    console.error('[webhook] invoice.paid without email, invoice=', invoice.id);
+    return;
+  }
+  await grantSyncEntitlement({
+    email,
+    stripeCustomerId: typeof sub.customer === 'string' ? sub.customer : (sub.customer as any)?.id,
+    stripeSubscriptionId: sub.id,
+    currentPeriodEnd: (sub as any).current_period_end || 0,
+    status: sub.status,
   });
+}
+
+async function handleChargeRefunded(event: Stripe.Event) {
+  const charge = event.data.object as Stripe.Charge;
+  // Refunds on subscription invoices revoke the sync entitlement.
+  // For one-time mac-license refunds, we leave the relay state as-is —
+  // the desktop app continues working, but the user has been refunded;
+  // we may add explicit revoke-mac later if abuse becomes a problem.
+  const invoiceId = (charge as any).invoice as string | undefined;
+  if (!invoiceId) return;
+  if (!stripe) throw new Error('stripe not configured');
+  const invoice = await stripe.invoices.retrieve(invoiceId);
+  const subId = (invoice as any).subscription as string | undefined;
+  if (!subId) return;
+  const sub = await stripe.subscriptions.retrieve(subId);
+  const email = invoice.customer_email || (await resolveCustomerEmail(sub.customer));
+  if (!email) return;
+  await revokeSyncEntitlement({ email, stripeSubscriptionId: sub.id });
+}
+
+// ── helpers ─────────────────────────────────────────────────────────
+
+async function resolveCustomerEmail(customer: string | Stripe.Customer | Stripe.DeletedCustomer | null): Promise<string | undefined> {
+  if (!customer) return undefined;
+  if (typeof customer === 'object') {
+    if ((customer as any).deleted) return undefined;
+    return (customer as Stripe.Customer).email || undefined;
+  }
+  if (!stripe) return undefined;
+  try {
+    const c = await stripe.customers.retrieve(customer);
+    if ((c as any).deleted) return undefined;
+    return (c as Stripe.Customer).email || undefined;
+  } catch (err) {
+    console.error('[webhook] resolveCustomerEmail failed', err);
+    return undefined;
+  }
 }

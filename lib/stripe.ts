@@ -13,20 +13,21 @@ if (process.env.STRIPE_SECRET_KEY) {
 
 export default stripe;
 
-// Product configuration for Dash Notes App
+// ── Mac desktop license ($14.99 one-time) ─────────────────────────────
+// v1.5 split: this product unlocks the desktop app DOWNLOAD only.
+// Sync requires the separate sync subscription below.
 export const DASH_PRODUCT = {
-  name: 'Dash Notes App',
+  name: 'Dash Notes — Desktop License',
   description:
-    'Private, encrypted notes app that keeps your data 100% offline and secure',
-  images: ['https://dashnote.io/og-image.png'], // Replace with your actual image URL
+    'Mac desktop app — one-time purchase, no subscription. Cross-device sync sold separately.',
+  images: ['https://dashnote.io/og-image.png'],
   metadata: {
     app_name: 'Dash',
-    version: '1.0.0',
+    version: '1.5.0',
     platform: 'macOS',
   },
 };
 
-// Price configuration
 export const DASH_PRICE = {
   unit_amount: 1499,
   currency: 'usd',
@@ -38,11 +39,23 @@ export const DASH_PRICE = {
   },
   metadata: {
     product_type: 'one_time',
-    license_type: 'lifetime',
+    license_type: 'desktop',
   },
 };
 
-// Success and cancel URLs
+// ── Dash Sync subscription (Option C, v1.5) ───────────────────────────
+// Recurring product. Price IDs are configured in the Stripe dashboard
+// (Settings → Products) and passed via env so we can rotate without a
+// code deploy. The webhook handler reads `metadata.product_type` to
+// distinguish from the Mac one-time on incoming events.
+export const STRIPE_PRICES = {
+  syncMonthly: process.env.STRIPE_PRICE_SYNC_MONTHLY || '', // $4.99/mo
+  syncYearly: process.env.STRIPE_PRICE_SYNC_YEARLY || '', // $47.99/yr (20% off)
+};
+
+export const SYNC_TRIAL_DAYS = 7;
+
+// Success and cancel URLs (shared across product types via ?type= query)
 export const STRIPE_URLS = {
   success: `${
     process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'

@@ -147,19 +147,50 @@ export default function PrivacyPolicyPage() {
                     <strong className="text-gray-900 dark:text-white">
                       Stripe
                     </strong>{' '}
-                    &mdash; Payment processing only, at time of purchase
+                    &mdash; Payment processing for the Mac desktop app
+                    one-time purchase and the Dash Sync subscription. Stripe
+                    receives your email, billing address, and card. We never
+                    see your card details. For active sync subscribers, our
+                    server stores your email, your Stripe customer/subscription
+                    IDs, and your subscription status so we can verify the
+                    sync entitlement on each device.
+                  </li>
+                  <li>
+                    <strong className="text-gray-900 dark:text-white">
+                      RevenueCat
+                    </strong>{' '}
+                    &mdash; Used only on the iOS app to process Dash Sync
+                    subscriptions via Apple In-App Purchase. RevenueCat
+                    receives an anonymous device-generated ID and your
+                    Apple-provided subscription receipt. They do not receive
+                    your email or any note content.
+                  </li>
+                  <li>
+                    <strong className="text-gray-900 dark:text-white">
+                      Resend
+                    </strong>{' '}
+                    &mdash; Sends sign-in codes (6-digit, one per session)
+                    and one-time transactional notices. We never use Resend
+                    for marketing. Resend sees only your email address and
+                    the short code body.
                   </li>
                   <li>
                     <strong className="text-gray-900 dark:text-white">
                       GitHub
                     </strong>{' '}
-                    &mdash; Open source code hosting and app update checks
+                    &mdash; Open source code hosting and Mac app update
+                    checks.
                   </li>
                   <li>
                     <strong className="text-gray-900 dark:text-white">
                       Deno Deploy
                     </strong>{' '}
-                    &mdash; Relay server hosting for sharing and collaboration
+                    &mdash; Hosts the relay server. The relay stores
+                    end-to-end encrypted vault blobs (ciphertext only), per-
+                    request timestamps + IPs for abuse prevention, and (for
+                    sync subscribers) the entitlement records described
+                    above. The relay never has access to your vault key or
+                    note plaintext.
                   </li>
                 </ul>
               </div>

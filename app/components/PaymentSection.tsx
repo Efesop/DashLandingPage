@@ -195,10 +195,10 @@ export default function PaymentSection() {
   };
 
   const benefits = [
-    'Full access to Dash',
-    'Lifetime license (no subscriptions)',
+    'Full access to Dash on Mac, Windows, Linux',
+    'Local-first — your notes stay on your device',
     'Free updates and new features',
-    'Priority customer support',
+    'Optional cross-device sync available separately',
   ];
 
   return (
@@ -226,15 +226,23 @@ export default function PaymentSection() {
 
             <p className='text-lg sm:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto'>
               Join thousands of privacy-conscious users who've chosen Dash
-              over corporate surveillance. One payment, lifetime access.
+              over corporate surveillance. One-time payment for the desktop
+              app — sync across devices is an optional subscription.
             </p>
 
-            <div className='mt-6'>
+            <div className='mt-6 flex flex-wrap gap-4 justify-center text-sm'>
+              <Link
+                href='/subscribe'
+                className='text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300 transition-colors'
+              >
+                Want sync? See Dash Sync →
+              </Link>
+              <span className='text-gray-300 dark:text-gray-700'>·</span>
               <Link
                 href='/payment/recovery'
-                className='text-sm text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300 transition-colors'
+                className='text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300 transition-colors'
               >
-                Already purchased? Recover your downloads →
+                Already purchased? Recover your download →
               </Link>
             </div>
           </motion.div>
