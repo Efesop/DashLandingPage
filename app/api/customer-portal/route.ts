@@ -11,8 +11,17 @@
 // has a one-time Mac purchase, or no purchase at all). The old route
 // (download-link recovery for Mac DMG re-downloads) was moved to
 // /api/download-recovery — see app/payment/recovery/page.tsx.
+//
+// Multi-product Stripe account note: the same Stripe account hosts
+// other products (e.g. LinkJolt). To avoid affecting those products'
+// billing portal experience, we pass a Dash-specific portal
+// configuration ID via STRIPE_PORTAL_CONFIGURATION. If unset, falls
+// back to the account's default configuration (fine if Dash is the
+// only product using the portal). Create the Dash configuration in
+// the Stripe Dashboard: Settings → Billing → Customer portal → New.
 
 import { NextRequest, NextResponse } from 'next/server';
+import type Stripe from 'stripe';
 import stripe from '../../../lib/stripe';
 
 export const dynamic = 'force-dynamic';
@@ -44,11 +53,15 @@ export async function POST(request: NextRequest) {
     }
 
     const returnUrl = process.env.STRIPE_PORTAL_RETURN_URL || 'https://dashnote.io/payment/portal-return';
-    const session = await stripe.billingPortal.sessions.create({
+    const configuration = process.env.STRIPE_PORTAL_CONFIGURATION; // bpc_... — optional
+
+    const sessionParams: Stripe.BillingPortal.SessionCreateParams = {
       customer: customer.id,
       return_url: returnUrl,
-    });
+    };
+    if (configuration) sessionParams.configuration = configuration;
 
+    const session = await stripe.billingPortal.sessions.create(sessionParams);
     return NextResponse.json({ url: session.url });
   } catch (error) {
     console.error('Error creating billing portal session:', error);
