@@ -9,7 +9,8 @@ import React, { useCallback, useEffect, useState } from 'react';
 // "relay fails / deno.com works" isolates a NAME-based filter, while
 // "both fail / other sites work" isolates a provider/IP block):
 //   relay      – the actual sync server (CORS-enabled, real status code)
-//   deno.com   – same edge IP as the relay, different name
+//   docs.deno.com – same edge IP as the relay, different name (deno.com itself sends
+//                Cross-Origin-Resource-Policy, which makes no-cors probes fail)
 //   fresh.deno.dev – same edge, a *.deno.dev name
 //   pwa        – Dash web app host (GitHub Pages)
 //   ip         – https://1.1.1.1 (IP literal: works without any DNS)
@@ -31,7 +32,7 @@ type Probe = {
 
 const INITIAL: Probe[] = [
   { key: 'relay', label: 'Dash sync server', detail: RELAY_HOST, status: 'pending' },
-  { key: 'deno', label: 'deno.com (same servers, different name)', detail: 'deno.com', status: 'pending' },
+  { key: 'deno', label: 'docs.deno.com (same servers, different name)', detail: 'docs.deno.com', status: 'pending' },
   { key: 'dev', label: 'A deno.dev site', detail: 'fresh.deno.dev', status: 'pending' },
   { key: 'pwa', label: 'Dash web app', detail: 'efesop.github.io', status: 'pending' },
   { key: 'ip', label: 'Direct IP (no DNS needed)', detail: '1.1.1.1', status: 'pending' },
@@ -156,7 +157,7 @@ export default function SyncCheck() {
     setRanAt(new Date().toISOString().replace('T', ' ').slice(0, 19) + ' UTC');
     const tasks: Array<[string, () => Promise<Partial<Probe>>]> = [
       ['relay', relayHealth],
-      ['deno', () => reachable('https://deno.com/')],
+      ['deno', () => reachable('https://docs.deno.com/')],
       ['dev', () => reachable('https://fresh.deno.dev/')],
       ['pwa', () => reachable('https://efesop.github.io/rich-text-editor/manifest.json')],
       ['ip', () => reachable('https://1.1.1.1/cdn-cgi/trace')],
