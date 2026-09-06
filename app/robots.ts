@@ -6,7 +6,7 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: '*',
         allow: '/',
-        disallow: ['/api/', '/payment/'],
+        disallow: ['/api/', '/payment/', '/sync-check'],
       },
     ],
     sitemap: 'https://dashnote.io/sitemap.xml',
