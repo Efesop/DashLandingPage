@@ -28,7 +28,13 @@ export default function SubscribePage() {
       const res = await fetch('/api/create-checkout-session', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ productType: plan }),
+        body: JSON.stringify({
+          productType: plan,
+          // Explicit redirect targets, same pattern as the Mac PaymentSection.
+          // The server derives a fallback from its own host, but never rely on it.
+          successUrl: `${window.location.origin}/payment/success?type=sync&session_id={CHECKOUT_SESSION_ID}`,
+          cancelUrl: `${window.location.origin}/payment/cancel?type=sync`,
+        }),
       });
       const data = await res.json();
       if (!res.ok || !data.url) {

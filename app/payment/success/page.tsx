@@ -17,6 +17,9 @@ export default function PaymentSuccess() {
   const [error, setError] = useState<string | null>(null);
   const [downloadToken, setDownloadToken] = useState<string | null>(null);
   const [downloadsRemaining, setDownloadsRemaining] = useState<number>(0);
+  // Dash Sync subscription: no download — the entitlement is granted to the
+  // checkout email by the Stripe webhook and the user signs in with it in-app.
+  const [isSync, setIsSync] = useState(false);
 
   useEffect(() => {
     const verifyPayment = async () => {
@@ -50,8 +53,16 @@ export default function PaymentSuccess() {
       );
       const data = await response.json();
 
-      // Check if payment was successful based on paymentStatus
-      if (data.paymentStatus === 'paid') {
+      // A trialing Dash Sync subscription reports `no_payment_required`
+      // (nothing charged until the trial ends); the API's `success` applies
+      // the right rule per mode. Fall back to `paid` for older responses.
+      const isSubscription =
+        data.mode === 'subscription' || data.productType === 'sync-sub' || searchParams.get('type') === 'sync';
+      const succeeded = typeof data.success === 'boolean' ? data.success : data.paymentStatus === 'paid';
+      if (succeeded && isSubscription) {
+        setPaymentDetails(data);
+        setIsSync(true);
+      } else if (succeeded) {
         setPaymentDetails(data);
 
         // Generate secure download token
@@ -162,6 +173,66 @@ export default function PaymentSuccess() {
               <p className='text-sm text-gray-500 dark:text-gray-400'>
                 Need help? Contact us at support@dashnote.io
               </p>
+            </div>
+          </motion.div>
+        </div>
+      </div>
+    );
+  }
+
+  if (isSync) {
+    const email: string | undefined = paymentDetails?.customerEmail || undefined;
+    return (
+      <div className='min-h-screen bg-gradient-to-b from-green-50 to-white dark:from-green-950/20 dark:to-gray-950'>
+        <div className='container mx-auto px-6 lg:px-8 py-20'>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className='max-w-2xl mx-auto text-center'
+          >
+            <div className='w-20 h-20 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center mx-auto mb-8'>
+              <CheckCircle className='w-10 h-10 text-green-600' />
+            </div>
+
+            <h1 className='text-4xl font-bold text-gray-900 dark:text-white mb-6'>
+              Dash Sync is on
+            </h1>
+
+            <p className='text-lg text-gray-600 dark:text-gray-300 mb-8'>
+              Your 7-day free trial has started. Nothing is charged until it
+              ends, and you can cancel any time.
+            </p>
+
+            <div className='bg-blue-50 dark:bg-blue-950/30 rounded-lg p-5 text-left text-sm mb-8'>
+              <p className='font-semibold text-blue-900 dark:text-blue-100 mb-2'>
+                To turn on sync in the app
+              </p>
+              <ol className='list-decimal list-inside space-y-1 text-blue-800 dark:text-blue-200'>
+                <li>Open Dash and go to Settings → Sync.</li>
+                <li>
+                  Choose <strong>Sign in</strong> and enter{' '}
+                  {email ? <strong>{email}</strong> : 'the email you used at checkout'}.
+                </li>
+                <li>Type the 6-digit code we email you, then turn on Sync.</li>
+                <li>Sign in with the same email on every device you want to sync, and pair them with the QR code.</li>
+              </ol>
+            </div>
+
+            <div className='space-y-3'>
+              <Button
+                href='/payment/manage'
+                className='bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 text-lg'
+              >
+                Manage subscription
+              </Button>
+              <div>
+                <Link
+                  href='/'
+                  className='text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300'
+                >
+                  Return to Home
+                </Link>
+              </div>
             </div>
           </motion.div>
         </div>

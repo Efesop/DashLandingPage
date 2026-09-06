@@ -33,8 +33,17 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'Session not found' }, { status: 404 });
     }
 
-    // Check if payment was successful
-    if (session.payment_status === 'paid') {
+    // Check if payment was successful. One-time Mac purchase: must be paid.
+    // Dash Sync subscription: Checkout is `complete` once a card is on file;
+    // with the 7-day trial nothing is charged yet, so payment_status is
+    // `no_payment_required` (Stripe charges at trial end).
+    const isSubscription = session.mode === 'subscription';
+    const productType = session.metadata?.product_type || (isSubscription ? 'sync-sub' : 'mac-license');
+    const succeeded = isSubscription
+      ? session.status === 'complete' &&
+        (session.payment_status === 'paid' || session.payment_status === 'no_payment_required')
+      : session.payment_status === 'paid';
+    if (succeeded) {
       return NextResponse.json({
         success: true,
         sessionId: session.id,
@@ -43,6 +52,8 @@ export async function POST(request: NextRequest) {
         currency: session.currency,
         status: session.status,
         paymentStatus: session.payment_status,
+        mode: session.mode,
+        productType,
       });
     } else {
       return NextResponse.json({
@@ -96,14 +107,24 @@ export async function GET(request: NextRequest) {
       return NextResponse.json({ error: 'Session not found' }, { status: 404 });
     }
 
-    // Return session details
+    // Return session details. `success` applies the same rule as POST so the
+    // success page can treat a trialing Dash Sync subscription as complete.
+    const isSubscription = session.mode === 'subscription';
+    const productType = session.metadata?.product_type || (isSubscription ? 'sync-sub' : 'mac-license');
+    const success = isSubscription
+      ? session.status === 'complete' &&
+        (session.payment_status === 'paid' || session.payment_status === 'no_payment_required')
+      : session.payment_status === 'paid';
     return NextResponse.json({
+      success,
       sessionId: session.id,
       customerEmail: session.customer_details?.email,
       amount: session.amount_total,
       currency: session.currency,
       status: session.status,
       paymentStatus: session.payment_status,
+      mode: session.mode,
+      productType,
       createdAt: session.created,
       expiresAt: session.expires_at,
     });

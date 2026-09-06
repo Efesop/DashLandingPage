@@ -12,11 +12,26 @@
 
 import { NextRequest, NextResponse } from 'next/server';
 import stripe from '../../../lib/stripe';
-import { DASH_PRICE, STRIPE_PRICES, STRIPE_URLS, SYNC_TRIAL_DAYS } from '../../../lib/stripe';
+import { DASH_PRICE, STRIPE_PRICES, SYNC_TRIAL_DAYS } from '../../../lib/stripe';
 
 export const dynamic = 'force-dynamic';
 
 type ProductType = 'mac-license' | 'sync-monthly' | 'sync-yearly';
+
+/**
+ * Public origin for Stripe redirect URLs. Uses NEXT_PUBLIC_BASE_URL when it
+ * is set to a real host, otherwise the request's own public host (Vercel
+ * forwards it in x-forwarded-host). Before this, a missing env var sent
+ * every Dash Sync buyer to http://localhost:3000 the moment they paid.
+ */
+function resolveBaseUrl(request: NextRequest): string {
+  const configured = process.env.NEXT_PUBLIC_BASE_URL;
+  if (configured && !/localhost|127\.0\.0\.1/.test(configured)) return configured.replace(/\/$/, '');
+  const proto = request.headers.get('x-forwarded-proto') || 'https';
+  const host = request.headers.get('x-forwarded-host') || request.headers.get('host');
+  if (host) return `${proto}://${host}`;
+  return request.nextUrl.origin;
+}
 
 export async function POST(request: NextRequest) {
   try {
@@ -31,6 +46,7 @@ export async function POST(request: NextRequest) {
     const productType: ProductType = (body?.productType as ProductType) || 'mac-license';
     const successUrl: string | undefined = body?.successUrl;
     const cancelUrl: string | undefined = body?.cancelUrl;
+    const baseUrl = resolveBaseUrl(request);
     const customerEmail: string | undefined = typeof body?.email === 'string' ? body.email.trim().toLowerCase() : undefined;
 
     // ── Mac one-time desktop license ──────────────────────────────────
@@ -53,8 +69,8 @@ export async function POST(request: NextRequest) {
           },
         ],
         mode: 'payment',
-        success_url: successUrl || `${STRIPE_URLS.success}?type=mac`,
-        cancel_url: cancelUrl || `${STRIPE_URLS.cancel}?type=mac`,
+        success_url: successUrl || `${baseUrl}/payment/success?type=mac&session_id={CHECKOUT_SESSION_ID}`,
+        cancel_url: cancelUrl || `${baseUrl}/payment/cancel?type=mac`,
         metadata: {
           product_type: 'mac-license',
           license_type: 'desktop',
@@ -88,8 +104,9 @@ export async function POST(request: NextRequest) {
       // Capturing the email early so the webhook can resolve the user
       // even if Stripe collects it later in Checkout.
       ...(customerEmail ? { customer_email: customerEmail } : {}),
-      success_url: successUrl || `${STRIPE_URLS.success}?type=sync`,
-      cancel_url: cancelUrl || `${STRIPE_URLS.cancel}?type=sync`,
+      // session_id lets /payment/success verify the subscription session.
+      success_url: successUrl || `${baseUrl}/payment/success?type=sync&session_id={CHECKOUT_SESSION_ID}`,
+      cancel_url: cancelUrl || `${baseUrl}/payment/cancel?type=sync`,
       metadata: {
         product_type: 'sync-sub',
         plan: productType === 'sync-yearly' ? 'yearly' : 'monthly',
