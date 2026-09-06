@@ -17,6 +17,8 @@ import React, { useCallback, useEffect, useState } from 'react';
 //   cf / g     – public DNS-over-HTTPS answers for the relay's name
 const RELAY = 'https://dash-relay.efesop.deno.net';
 const RELAY_HOST = 'dash-relay.efesop.deno.net';
+// Current production revision's own hostname: the same relay under a second name.
+const REV_HOST = 'dash-relay-f8f7mmv6xn2y.efesop.deno.net';
 const TIMEOUT_MS = 12000;
 
 type Status = 'pending' | 'ok' | 'fail';
@@ -32,6 +34,10 @@ type Probe = {
 
 const INITIAL: Probe[] = [
   { key: 'relay', label: 'Dash sync server', detail: RELAY_HOST, status: 'pending' },
+  { key: 'rev', label: 'Same sync server, alternate name', detail: REV_HOST, status: 'pending' },
+  { key: 'sibling', label: 'Another name next to it', detail: 'zzz-probe.efesop.deno.net', status: 'pending' },
+  { key: 'org', label: 'The efesop.deno.net name', detail: 'efesop.deno.net', status: 'pending' },
+  { key: 'apex', label: 'deno.net itself', detail: 'deno.net', status: 'pending' },
   { key: 'deno', label: 'docs.deno.com (same servers, different name)', detail: 'docs.deno.com', status: 'pending' },
   { key: 'dev', label: 'A deno.dev site', detail: 'fresh.deno.dev', status: 'pending' },
   { key: 'pwa', label: 'Dash web app', detail: 'efesop.github.io', status: 'pending' },
@@ -122,10 +128,25 @@ function verdict(p: Record<string, Probe>): { title: string; body: string; tone:
     };
   }
   if (ok('deno') || ok('dev')) {
+    // Deno's servers answer under deno.com / deno.dev, so the failure is tied to a NAME.
+    if (!ok('apex')) {
+      return {
+        tone: 'bad',
+        title: 'Everything under deno.net is blocked on this phone.',
+        body: 'deno.com and deno.dev work, but no deno.net address does. That is a domain filter on this phone or its DNS: a DNS or ad-blocking app, a VPN, a configuration profile (Settings → General → VPN & Device Management), or the mobile carrier. Screenshot this page.',
+      };
+    }
+    if (!ok('org')) {
+      return {
+        tone: 'bad',
+        title: 'Only the efesop.deno.net names are blocked.',
+        body: 'deno.net itself works, but every name under efesop.deno.net is refused. That is a blocklist entry on this phone or its DNS. Screenshot this page.',
+      };
+    }
     return {
       tone: 'bad',
-      title: 'Something on this device blocks the sync server by name.',
-      body: 'Deno\'s servers answer under other names, but the sync server\'s address is refused. That is a DNS filter or blocklist on this phone (an ad-blocker or "DNS" app, a VPN, a configuration profile, or Screen Time web restrictions). Turn those off and run the check again.',
+      title: 'Only the sync server\'s exact name is blocked.',
+      body: 'Names right next to it work. This is almost always Screen Time: Settings → Screen Time → Content & Privacy Restrictions → Content Restrictions → Web Content. Set it to Unrestricted, or add dash-relay.efesop.deno.net under Always Allow. Then run the check again.',
     };
   }
   if (ok('pwa') || ok('ip')) {
@@ -157,6 +178,10 @@ export default function SyncCheck() {
     setRanAt(new Date().toISOString().replace('T', ' ').slice(0, 19) + ' UTC');
     const tasks: Array<[string, () => Promise<Partial<Probe>>]> = [
       ['relay', relayHealth],
+      ['rev', () => reachable(`https://${REV_HOST}/health`)],
+      ['sibling', () => reachable('https://zzz-probe.efesop.deno.net/')],
+      ['org', () => reachable('https://efesop.deno.net/')],
+      ['apex', () => reachable('https://deno.net/')],
       ['deno', () => reachable('https://docs.deno.com/')],
       ['dev', () => reachable('https://fresh.deno.dev/')],
       ['pwa', () => reachable('https://efesop.github.io/rich-text-editor/manifest.json')],
@@ -207,6 +232,12 @@ export default function SyncCheck() {
         )}
       </div>
 
+      <div className="mt-3 rounded-lg bg-gray-900 p-3 text-[11px] leading-relaxed text-gray-100 font-mono break-all">
+        DASHCHECK v2 · {device} · {ranAt}
+        <br />
+        {code}
+      </div>
+
       <ul className="mt-5 divide-y divide-gray-100 rounded-xl border border-gray-200">
         {probes.map(p => (
           <li key={p.key} className="flex items-start gap-3 px-4 py-3">
@@ -229,11 +260,6 @@ export default function SyncCheck() {
         ))}
       </ul>
 
-      <div className="mt-5 rounded-lg bg-gray-900 p-3 text-[11px] leading-relaxed text-gray-100 font-mono break-all">
-        DASHCHECK v1 · {device} · {ranAt}
-        <br />
-        {code}
-      </div>
 
       <button
         type="button"
