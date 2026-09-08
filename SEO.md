@@ -4,6 +4,13 @@
 
 ---
 
+## 0. Progress log
+
+| Date | Shipped | Ranking keywords | Top-10 | Est. visits/mo | Ref. domains | Notes |
+|---|---|---|---|---|---|---|
+| 2026-09-08 | Research; technical fixes; 7 query pages; homepage v3; article template (`article-template` branch) | 13 | 1 | ≈13 | 40 | Baseline from DataForSEO Labs |
+| 2026-09-08 | **S1** (`seo/sprint-1`): `/therapist-notes-app`, `/open-source-notes-app`; `/for-students` re-titled and `/encrypted-notes` given an E2EE section, both migrated to ArticleLayout; `scripts/check-seo.mjs` | — | — | — | — | Awaiting merge; record ranks at +14 days |
+
 ## 1. Where we started
 
 | Metric (Sep 8 2026) | dashnote.io |
@@ -49,8 +56,8 @@ Volume = US monthly searches; KD = DataForSEO difficulty 0–100. Bold = the pri
 | Local / private AI | **private ai assistant** 590/10 · offline ai assistant 90/4 · ai notes taking app 4,400/19 (stretch) | 5,000 | `/guides/local-ai` |
 | Seed phrase | **seed phrase storage** 390/11 · crypto seed phrase storage 110/2 · best way to store seed phrase 30/6 · where to store seed phrase 20/6 · seed phrase backup 20/11 | 570 | `/guides/seed-phrase-storage`, `/for-bitcoiners` |
 | Students | **notes taking app for students** 1,000/27 | 1,000 | `/for-students` |
-| Therapists | **therapist notes app** 590/6 · note taking app for therapists 10/5 · hipaa compliant notes app 40/0 | 640 | *not built* |
-| Open source | **open source note taking app** 590/32 · open source notes app 70/35 | 660 | *not built* |
+| Therapists | **therapist notes app** 590/6 · note taking app for therapists 10/5 · hipaa compliant notes app 40/0 | 640 | `/therapist-notes-app` (S1) |
+| Open source | **open source note taking app** 590/32 · open source notes app 70/35 | 660 | `/open-source-notes-app` (S1) |
 | Other alternatives | apple notes alternative 70/0 · joplin alternative 70/9 · bear alternative 50/0 · day one alternative 30/13 · standard notes alternative 20/0 · notesnook alternative 20 · simplenote alternative 20/10 · craft alternative 20/7 | 300 | *not built* |
 | Comparisons | notesnook vs standard notes 40/0 · standard notes vs notesnook 30/0 · obsidian vs standard notes 30/0 | 100 | *not built* |
 | Offline | offline notes app 50/15 · offline note taking app 50/37 · notes app offline (ranks #22) | 150 | `/offline-notes` |
@@ -65,6 +72,8 @@ Head terms we are **not** chasing: notes app 60,500/77 · app for taking notes 2
 |---|---|---|
 | `/` | private / encrypted notes app (category) | Dash Notes: Private, Encrypted Notes App for Mac & iPhone |
 | `/best-notes-app-for-mac` | mac note taking app, best app for taking notes mac | Best Notes App for Mac in 2026: 8 Apps Compared |
+| `/open-source-notes-app` | open source note taking app | Open Source Note Taking Apps in 2026: 6 Compared |
+| `/therapist-notes-app` | therapist notes app | Therapist Notes App: Private Session Notes on Mac & iPhone |
 | `/password-protected-notes` | notes app with password | Notes App With Password Protection for Mac & iPhone |
 | `/guides/lock-notes-on-iphone-and-mac` | how to lock notes app on iphone | How to Lock Notes on iPhone and Mac (and Is Apple Notes Secure?) |
 | `/guides/duress-password` | duress password | Duress Password: What It Is & How to Set One Up |
@@ -74,13 +83,13 @@ Head terms we are **not** chasing: notes app 60,500/77 · app for taking notes 2
 | `/privnote-alternatives` | privnote alternatives | Privnote Alternatives: Self-Destructing, Encrypted Notes (2026) |
 | `/vs-notion` `/vs-evernote` `/vs-obsidian` `/vs-google-keep` | "X alternative" (secondary) | Notion Alternative: Private, Offline Notes (Dash vs Notion) · Evernote Alternative: Private Notes, No Subscription · Obsidian Alternative with Built-In Encryption · Google Keep Alternative Without Google Tracking |
 | `/private-notes` | private notes, privacy notes | Private Notes App: Notes That Stay on Your Device |
-| `/encrypted-notes` | encrypted notes app | Encrypted Notes App with AES-256 for Mac & iPhone |
+| `/encrypted-notes` | encrypted notes app, end to end encrypted note taking app | Encrypted Notes App with AES-256 for Mac & iPhone |
 | `/offline-notes` | offline notes app | Offline Notes App That Works Without Internet |
 | `/secure-journal` | private journal app (re-target below) | Private Journal App for Mac & iPhone (Encrypted) |
 | `/guides/local-ai` | private ai assistant | Local AI Notes App: Private AI Assistant That Runs Offline |
 | `/guides/seed-phrase-storage` | seed phrase storage | Seed Phrase Storage: How to Store a Seed Phrase Securely |
 | `/guides/self-destructing-notes` | self destructing notes | Self-Destructing Notes: Notes That Auto-Delete |
-| `/for-students` `/for-writers` `/for-journalists` `/for-researchers` `/for-bitcoiners` | audience pages (students: notes taking app for students) | Private Notes App for Students · Private Writing App for Writers & Manuscripts · Secure Notes App for Journalists · Secure Notes App for Researchers · Private Notes App for Bitcoiners & Seed Phrases |
+| `/for-students` `/for-writers` `/for-journalists` `/for-researchers` `/for-bitcoiners` | audience pages (students: notes taking app for students) | Notes Taking App for Students (Private, Works Offline) · Private Writing App for Writers & Manuscripts · Secure Notes App for Journalists · Secure Notes App for Researchers · Private Notes App for Bitcoiners & Seed Phrases |
 | `/guides/app-lock` `/guides/encryption` `/guides/offline-first` `/guides/privacy-first-note-taking` `/guides/page-linking` | supporting explainers | (see each page) |
 | `/download` | dash notes for mac (brand) | Download Dash Notes for Mac, iPhone & Web |
 
@@ -90,8 +99,8 @@ Technical state (done Sep 8 2026): title template `%s | Dash Notes` in `app/layo
 
 ### A. Pages to build (in this order)
 
-1. **`/therapist-notes-app`** — therapist notes app (590/6). Angle: private session notes that never touch a vendor's server, lock and duress protection. Must say plainly that Dash is not a HIPAA-covered service or an EHR; it is a private notebook.
-2. **`/open-source-notes-app`** — open source note taking app (590/32). Listicle: Joplin, Standard Notes, Notesnook, Logseq, Trilium, Dash (MIT). Link the GitHub repo prominently.
+1. ✅ S1 (Sep 8 2026) **`/therapist-notes-app`** — therapist notes app (590/6). Angle: private session notes that never touch a vendor's server, lock and duress protection. Must say plainly that Dash is not a HIPAA-covered service or an EHR; it is a private notebook.
+2. ✅ S1 (Sep 8 2026) **`/open-source-notes-app`** — open source note taking app (590/32). Listicle: Joplin, Standard Notes, Notesnook, Logseq, Trilium, Dash (MIT). Link the GitHub repo prominently.
 3. **`/journal-app-mac`** — journal app mac / journaling app mac / diary app mac (2,600 across the three, KD 34–39). Listicle of Mac journaling apps with Dash's encrypted angle. Then re-title `/secure-journal` to "Encrypted Diary & Journal App for Mac and iPhone" so it keeps the "encrypted diary" ranking it already has instead of chasing "private journal app" (KD 86).
 4. **`/is-apple-notes-secure`** — is apple notes secure / how secure is apple notes / is apple notes encrypted / are apple notes private (190 total, KD ≤13). Short answer page; links to the lock guide and `/password-protected-notes`.
 5. **`/is-notion-private`** — is notion private / is notion encrypted (160, KD ≤9). Links to `/notion-alternatives`.
@@ -102,8 +111,8 @@ Technical state (done Sep 8 2026): title template `%s | Dash Notes` in `app/layo
 ### B. Pages to redo
 
 - `/secure-journal`: re-target as above.
-- `/for-students`: put "notes taking app for students" in the title and H1 (currently "Private Notes App for Students").
-- `/encrypted-notes`: add an explicit "end-to-end encrypted note taking app" section covering Dash Sync (320/36), the query Notesnook's homepage ranks #3 for.
+- ✅ S1: `/for-students` re-titled "Notes Taking App for Students (Private, Works Offline)", H1 carries the query.
+- ✅ S1: `/encrypted-notes` has the "end-to-end encrypted note taking app, when you sync" section (320/36).
 - Homepage: the visible H1 is the brand line ("Your notes are none of our business."); the category phrase lives in the eyebrow, description and title. If the homepage has not entered the top 20 for "private notes app" by December 2026, move the category into the H1.
 - OG image (`/images/Dashfeature1.png`) and all screenshots still show the pre-1.6 layout. Re-capture.
 

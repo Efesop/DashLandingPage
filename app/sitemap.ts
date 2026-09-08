@@ -18,6 +18,7 @@ const entries: Entry[] = [
   ['/download', '2026-09-08', 'monthly', 0.9],
   // Roundups & alternatives
   ['/best-notes-app-for-mac', '2026-09-08', 'monthly', 0.9],
+  ['/open-source-notes-app', '2026-09-08', 'monthly', 0.8],
   ['/obsidian-alternatives', '2026-09-08', 'monthly', 0.8],
   ['/notion-alternatives', '2026-09-08', 'monthly', 0.8],
   ['/evernote-alternatives', '2026-09-08', 'monthly', 0.8],
@@ -27,6 +28,7 @@ const entries: Entry[] = [
   ['/for-writers', '2026-09-08', 'monthly', 0.7],
   ['/for-bitcoiners', '2026-09-08', 'monthly', 0.7],
   ['/for-students', '2026-09-08', 'monthly', 0.7],
+  ['/therapist-notes-app', '2026-09-08', 'monthly', 0.8],
   ['/for-researchers', '2026-09-08', 'monthly', 0.7],
   // Comparisons
   ['/vs-notion', '2026-09-08', 'monthly', 0.7],

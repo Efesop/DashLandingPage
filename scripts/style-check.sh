@@ -23,6 +23,10 @@ SYSTEM_FILES=(
   app/components/Footer.tsx
   app/components/BitsField.tsx
   app/components/seo
+  app/therapist-notes-app/page.tsx
+  app/open-source-notes-app/page.tsx
+  app/for-students/page.tsx
+  app/encrypted-notes/page.tsx
 )
 
 # Retired components: nothing may import them.
