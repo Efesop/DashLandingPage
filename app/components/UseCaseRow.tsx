@@ -33,7 +33,7 @@ export default function UseCaseRow() {
             <Link
               key={u.href}
               href={u.href}
-              className='group rounded-2xl border border-[#d6e0f5] bg-white/80 p-5 flex flex-col gap-1.5 hover:border-blue-300 hover:bg-white transition-colors'
+              className='group rounded-2xl border border-gray-200 bg-white p-5 flex flex-col gap-1.5 hover:border-gray-400 transition-colors'
             >
               <span className='font-semibold text-base text-gray-900 dark:text-white inline-flex items-center gap-1.5'>
                 {u.title}

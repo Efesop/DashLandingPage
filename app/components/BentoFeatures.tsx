@@ -28,7 +28,7 @@ function LockCard({ active }: { active: boolean }) {
   const pressed = t >= 15 && t < 18;
   const locked = t >= 18;
   return (
-    <div className={`${card} bg-[#eef4ff] border-[#dbe6ff] lg:col-span-2 lg:grid lg:grid-cols-2 lg:items-center lg:gap-6 min-h-[340px]`}>
+    <div className={`${card} bg-[#f5f5f7] border-[#e5e7eb] lg:col-span-2 lg:grid lg:grid-cols-2 lg:items-center lg:gap-6 min-h-[340px]`}>
       <div className='flex flex-col gap-2.5'>
         <h3 className='text-2xl font-semibold tracking-[-0.02em] text-gray-900 dark:text-white'>Lock a note in one click.</h3>
         <p className='text-base text-gray-500 dark:text-gray-400'>
@@ -92,7 +92,7 @@ function ThemesCard({ active }: { active: boolean }) {
   const activeIndex = t < 4 ? t : 0;
   const matchSystem = t >= 4;
   return (
-    <div className={`${card} bg-[#e8f3ff] border-[#cfe2fb] min-h-[340px]`}>
+    <div className={`${card} bg-[#f5f5f7] border-[#e5e7eb] min-h-[340px]`}>
       <div className='flex flex-col gap-1.5'>
         <h3 className={title}>Four themes, or match your Mac.</h3>
         <p className={body}>Light, Dark, Night, Terminal. Follows the system setting if you like.</p>
@@ -145,7 +145,7 @@ function LinksCard({ active }: { active: boolean }) {
   const dropdown = t >= 5 && t < 24;
   const inserted = t >= 24;
   return (
-    <div className={`${card} bg-[#f3f0ff] border-[#e4dcff] min-h-[320px]`}>
+    <div className={`${card} bg-[#f5f5f7] border-[#e5e7eb] min-h-[320px]`}>
       <div className='flex flex-col gap-1.5'>
         <h3 className={title}>Type [[ to link notes.</h3>
         <p className={body}>Wiki-style links with autocomplete, plus folders and tags.</p>
@@ -192,7 +192,7 @@ function SelfDestructCard({ active }: { active: boolean }) {
   const gone = t >= 14;
   const urgent = secondsLeft <= 3 && !gone;
   return (
-    <div className={`${card} bg-[#fff7e6] border-[#fde7b8] min-h-[320px]`}>
+    <div className={`${card} bg-[#f5f5f7] border-[#e5e7eb] min-h-[320px]`}>
       <style>{`@keyframes dash-flame { 0% { transform: scaleY(0.7) scaleX(0.9) translateY(4px); opacity: 0.75; } 50% { transform: scaleY(1.15) scaleX(0.85) translateY(-5px); opacity: 1; } 100% { transform: scaleY(0.85) scaleX(1.05) translateY(2px); opacity: 0.85; } }`}</style>
       <div className='flex flex-col gap-1.5'>
         <h3 className={title}>Notes that delete themselves.</h3>
@@ -248,7 +248,7 @@ function DuressCard({ active }: { active: boolean }) {
   const dots = Math.min(6, Math.max(0, t - 3));
   const revealed = t >= 12 && t < 34;
   return (
-    <div className={`${card} bg-[#fff1f2] border-[#fecdd3] min-h-[320px]`}>
+    <div className={`${card} bg-[#f5f5f7] border-[#e5e7eb] min-h-[320px]`}>
       <div className='flex flex-col gap-1.5'>
         <h3 className={title}>A second password for bad days.</h3>
         <p className={body}>A duress password opens decoy notes. Your real notes stay encrypted on disk.</p>
@@ -294,7 +294,7 @@ function SyncLedgerCard({ active }: { active: boolean }) {
   const chunks = Array.from({ length: 12 }, (_, i) => hex(i * 97 + Math.floor((t + i) / 3)));
   const secs = (41 * 60 + t) % 3600;
   return (
-    <div className='rounded-[20px] bg-[#0c1017] text-white p-6 sm:p-7 lg:col-span-2 grid lg:grid-cols-2 gap-6 min-h-[300px]'>
+    <div className='rounded-[20px] bg-[#0f1115] text-white p-6 sm:p-7 lg:col-span-2 grid lg:grid-cols-2 gap-6 min-h-[300px]'>
       <div className='flex flex-col gap-2.5'>
         <h3 className='text-2xl font-semibold tracking-[-0.02em]'>Sync, if you want it. Encrypted before it leaves.</h3>
         <p className='text-base text-gray-400'>
@@ -303,7 +303,7 @@ function SyncLedgerCard({ active }: { active: boolean }) {
         </p>
         <span className='font-mono text-[13px] text-[#9aa3b5] mt-1'>$4.99 / month · $47.99 / year · 7-day trial · optional</span>
       </div>
-      <div className='bg-[#141825] rounded-xl border border-[#1c2438] p-4 flex flex-col gap-2.5'>
+      <div className='bg-[#181b22] rounded-xl border border-[#262a33] p-4 flex flex-col gap-2.5'>
         <span className='font-mono text-[11.5px] text-[#9aa3b5] tracking-[0.06em] tabular-nums'>
           RELAY · vault 3f9a · 09:{String(Math.floor(secs / 60)).padStart(2, '0')}:{String(secs % 60).padStart(2, '0')}
         </span>
@@ -322,7 +322,7 @@ function LocalAICard({ active }: { active: boolean }) {
   const t = useTicker(45, 160, active);
   const shown = REPLY.slice(0, Math.max(0, t - 18));
   return (
-    <div className={`${card} bg-[#ecfdf3] border-[#bbf0cf] min-h-[300px]`}>
+    <div className={`${card} bg-[#f5f5f7] border-[#e5e7eb] min-h-[300px]`}>
       <div className='flex flex-col gap-1.5'>
         <h3 className={title}>AI that stays on your Mac.</h3>
         <p className={body}>Summarize, rewrite and ask questions with Ollama or LM Studio. Nothing leaves the machine.</p>

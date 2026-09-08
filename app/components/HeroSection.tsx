@@ -15,14 +15,14 @@ const scrollToPayment = (e: React.MouseEvent) => {
   document.getElementById('payment-section')?.scrollIntoView({ behavior: 'smooth' });
 };
 
-const AVATARS = ['bg-[#bfd0f2] text-[#3b5aa6]', 'bg-[#aabfe9] text-[#2f4c99]', 'bg-[#96aee0] text-[#ffffff]', 'bg-[#829dd6] text-[#ffffff]'];
+const AVATARS = ['bg-gray-200 text-gray-500', 'bg-gray-300 text-gray-600', 'bg-gray-400 text-white', 'bg-gray-500 text-white'];
 
-const WASH =
-  'radial-gradient(800px 480px at 18% 12%, rgba(191,219,254,0.95), rgba(191,219,254,0) 70%), ' +
-  'radial-gradient(700px 420px at 84% 18%, rgba(221,214,254,0.85), rgba(221,214,254,0) 70%), ' +
-  'radial-gradient(900px 500px at 50% 100%, rgba(247,249,253,1), rgba(247,249,253,0) 70%), ' +
-  'linear-gradient(180deg, #e6efff 0%, #f5f7fb 100%)';
-const DOT_MASK = 'radial-gradient(70% 60% at 50% 40%, rgba(0,0,0,1), rgba(0,0,0,0))';
+// Diagonal silver light streaks: a soft wide band, a bright highlight, and a faint darker band lower down.
+const STREAK_MAIN =
+  'linear-gradient(90deg, rgba(229,231,235,0) 0%, rgba(209,213,219,0.9) 35%, rgba(243,244,246,1) 50%, rgba(209,213,219,0.9) 65%, rgba(229,231,235,0) 100%)';
+const STREAK_HIGHLIGHT =
+  'linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.9) 40%, rgba(255,255,255,1) 50%, rgba(255,255,255,0.9) 60%, rgba(255,255,255,0) 100%)';
+const STREAK_LOW = 'linear-gradient(90deg, rgba(156,163,175,0) 0%, rgba(156,163,175,0.45) 45%, rgba(156,163,175,0) 100%)';
 
 export default function HeroSection() {
   const videoHostRef = useRef<HTMLDivElement>(null);
@@ -57,21 +57,24 @@ export default function HeroSection() {
 
   return (
     <>
-      {/* Sky hero: blue → lavender wash, faint dot field, soft cloud blurs */}
-      <section className='relative overflow-hidden bg-[#eaf1ff]'>
-        <div aria-hidden='true' className='absolute inset-0' style={{ backgroundImage: WASH }} />
+      {/* Steel hero: white with a diagonal silver light streak */}
+      <section className='relative overflow-hidden bg-white'>
         <div
           aria-hidden='true'
-          className='absolute inset-0 opacity-35'
-          style={{
-            backgroundImage: 'radial-gradient(rgba(37,99,235,0.35) 1px, transparent 1px)',
-            backgroundSize: '20px 20px',
-            WebkitMaskImage: DOT_MASK,
-            maskImage: DOT_MASK,
-          }}
+          className='absolute -left-[200px] -top-[60px] w-[1900px] h-[520px] -rotate-[14deg] blur-[36px] opacity-90'
+          style={{ backgroundImage: STREAK_MAIN }}
         />
-        <div aria-hidden='true' className='absolute -left-[120px] top-[420px] w-[520px] h-[220px] rounded-full bg-white/75 blur-[28px]' />
-        <div aria-hidden='true' className='absolute -right-[80px] top-[380px] w-[460px] h-[200px] rounded-full bg-white/70 blur-[28px]' />
+        <div
+          aria-hidden='true'
+          className='absolute -left-[100px] top-[130px] w-[1800px] h-[120px] -rotate-[14deg] blur-[14px] opacity-90'
+          style={{ backgroundImage: STREAK_HIGHLIGHT }}
+        />
+        <div
+          aria-hidden='true'
+          className='absolute -left-[200px] top-[380px] w-[1900px] h-[240px] -rotate-[14deg] blur-[46px] opacity-60'
+          style={{ backgroundImage: STREAK_LOW }}
+        />
+        <div aria-hidden='true' className='absolute inset-0 bg-gradient-to-b from-transparent via-[#fbfbfc]/60 to-[#fbfbfc]' />
 
         <div className='container mx-auto px-6 lg:px-8 relative pt-24 sm:pt-28 pb-[150px] sm:pb-[190px]'>
           <div className='max-w-4xl mx-auto flex flex-col items-center text-center gap-5 sm:gap-6'>
@@ -79,7 +82,7 @@ export default function HeroSection() {
               initial={{ opacity: 0, y: 8 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4 }}
-              className='inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white/70 border border-blue-600/15 text-[13.5px] font-medium text-gray-700'
+              className='inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white border border-gray-200 text-[13.5px] font-medium text-gray-700'
             >
               <span className='w-[7px] h-[7px] rounded-full bg-green-600' aria-hidden='true' />
               Private notes for Mac and iPhone
@@ -122,7 +125,7 @@ export default function HeroSection() {
                 href={APP_STORE_URL}
                 target='_blank'
                 rel='noopener noreferrer'
-                className='inline-flex items-center justify-center gap-2 w-full sm:w-auto px-5 py-[15px] rounded-[10px] border border-[#b9c7e4] bg-white/60 hover:bg-white text-gray-900 font-medium text-base transition-colors'
+                className='inline-flex items-center justify-center gap-2 w-full sm:w-auto px-5 py-[15px] rounded-[10px] border border-gray-300 bg-white hover:bg-gray-50 text-gray-900 font-medium text-base transition-colors'
               >
                 <Smartphone className='w-4 h-4' />
                 Free on iPhone
@@ -140,7 +143,7 @@ export default function HeroSection() {
                 {AVATARS.map((cls, i) => (
                   <span
                     key={cls}
-                    className={`w-7 h-7 rounded-full ${cls} ring-2 ring-[#eaf1ff] inline-flex items-center justify-center ${i > 0 ? '-ml-2' : ''}`}
+                    className={`w-7 h-7 rounded-full ${cls} ring-2 ring-white inline-flex items-center justify-center ${i > 0 ? '-ml-2' : ''}`}
                   >
                     <User className='w-3.5 h-3.5' />
                   </span>
@@ -162,7 +165,7 @@ export default function HeroSection() {
           transition={{ duration: 0.6, delay: 0.3 }}
           className='relative max-w-[980px] mx-auto'
         >
-          <div className='rounded-[14px] overflow-hidden bg-white border border-gray-900/[0.06] shadow-[0_50px_120px_-40px_rgba(30,41,59,0.45)]'>
+          <div className='rounded-[14px] overflow-hidden bg-white border border-gray-900/[0.06] shadow-[0_50px_120px_-40px_rgba(17,24,39,0.35)]'>
             <div className='flex items-center justify-between px-4 py-2.5 bg-gray-50 border-b border-gray-200'>
               <div className='flex items-center gap-1.5' aria-hidden='true'>
                 <span className='w-3 h-3 rounded-full bg-[#ff5f57]' />
@@ -190,7 +193,7 @@ export default function HeroSection() {
             </span>
           </div>
           <div className='hidden md:flex absolute -right-6 top-[34px] items-center gap-2.5 px-[15px] py-[11px] rounded-xl bg-white border border-gray-200 shadow-[0_16px_40px_-20px_rgba(0,0,0,0.35)] text-[13.5px]'>
-            <span className='w-[26px] h-[26px] rounded-[7px] bg-amber-50 text-amber-700 inline-flex items-center justify-center'>
+            <span className='w-[26px] h-[26px] rounded-[7px] bg-gray-100 text-gray-700 inline-flex items-center justify-center'>
               <Clock className='w-3.5 h-3.5' />
             </span>
             <span className='text-gray-900'>
@@ -202,19 +205,19 @@ export default function HeroSection() {
 
         <div className='flex flex-wrap items-center justify-center gap-x-9 gap-y-3 pt-10 text-sm text-gray-500'>
           <span className='inline-flex items-center gap-[7px]'>
-            <Lock className='w-[15px] h-[15px] text-blue-600' />
+            <Lock className='w-[15px] h-[15px] text-gray-700' />
             AES-256-GCM encryption
           </span>
           <span className='inline-flex items-center gap-[7px]'>
-            <WifiOff className='w-[15px] h-[15px] text-blue-600' />
+            <WifiOff className='w-[15px] h-[15px] text-gray-700' />
             Works offline
           </span>
           <span className='inline-flex items-center gap-[7px]'>
-            <UserX className='w-[15px] h-[15px] text-blue-600' />
+            <UserX className='w-[15px] h-[15px] text-gray-700' />
             No account
           </span>
           <span className='inline-flex items-center gap-[7px]'>
-            <Code className='w-[15px] h-[15px] text-blue-600' />
+            <Code className='w-[15px] h-[15px] text-gray-700' />
             Open source
           </span>
         </div>

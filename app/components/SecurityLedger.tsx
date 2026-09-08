@@ -22,7 +22,7 @@ export default function SecurityLedger() {
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className='rounded-[24px] border border-[#d6e0f5] bg-gradient-to-br from-white to-[#eef3fc] p-8 sm:p-12 lg:p-14 grid lg:grid-cols-2 gap-10 lg:gap-14 items-start'
+          className='rounded-[24px] border border-gray-200 bg-gradient-to-br from-white to-[#f3f4f6] p-8 sm:p-12 lg:p-14 grid lg:grid-cols-2 gap-10 lg:gap-14 items-start'
         >
           <div className='flex flex-col gap-4'>
             <span className='text-[13px] font-semibold uppercase tracking-[0.06em] text-gray-500 dark:text-gray-400'>Security you can read</span>

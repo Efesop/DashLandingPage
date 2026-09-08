@@ -56,7 +56,7 @@ export default function FAQSection() {
           className='text-center mb-16'
         >
           <h2 className='text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6'>
-            Frequently asked <span className='text-blue-600 dark:text-blue-400'>questions</span>
+            Frequently asked questions
           </h2>
           <p className='text-lg text-gray-600 dark:text-gray-300'>
             Everything you need to know about Dash
@@ -72,18 +72,18 @@ export default function FAQSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.05 }}
-              className='rounded-xl bg-white/85 border border-[#d6e0f5] overflow-hidden'
+              className='rounded-xl bg-white border border-gray-200 overflow-hidden'
             >
               <button
                 onClick={() => setOpenFaq(openFaq === index ? null : index)}
-                className='w-full px-6 py-5 text-left flex items-center justify-between hover:bg-[#f3f6fc] transition-colors'
+                className='w-full px-6 py-5 text-left flex items-center justify-between hover:bg-gray-50 transition-colors'
               >
                 <span className='font-semibold text-gray-900 dark:text-white pr-4'>
                   {faq.question}
                 </span>
                 <div className='flex-shrink-0'>
                   {openFaq === index ? (
-                    <Minus className='h-5 w-5 text-blue-500' />
+                    <Minus className='h-5 w-5 text-gray-700' />
                   ) : (
                     <Plus className='h-5 w-5 text-gray-400' />
                   )}

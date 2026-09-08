@@ -8,7 +8,7 @@ import { APP_STORE_URL } from './HeroSection';
 
 export default function PricingSection() {
   return (
-    <section id='pricing' className='py-20 sm:py-24 mt-8' style={{ background: 'radial-gradient(700px 360px at 12% 0%, rgba(191,219,254,0.55), rgba(191,219,254,0) 70%), radial-gradient(600px 320px at 90% 100%, rgba(221,214,254,0.5), rgba(221,214,254,0) 70%), #eef3fc' }}>
+    <section id='pricing' className='py-20 sm:py-24 mt-8' style={{ background: 'linear-gradient(120deg, #f7f7f8 0%, #eeeff2 50%, #f7f7f8 100%)' }}>
       <div className='container mx-auto px-6 lg:px-8 flex flex-col gap-8'>
         <motion.div
           initial={{ opacity: 0, y: 16 }}
@@ -26,7 +26,7 @@ export default function PricingSection() {
           {/* Mac: the real checkout form, unchanged logic */}
           <PaymentSection embedded />
 
-          <div className='rounded-[20px] bg-white/90 border border-[#d6e0f5] p-8 flex flex-col gap-4'>
+          <div className='rounded-[20px] bg-white border border-gray-200 p-8 flex flex-col gap-4'>
             <span className='font-semibold text-[17px] text-gray-900 dark:text-white'>Dash for iPhone</span>
             <div className='flex items-baseline gap-2'>
               <span className='text-[46px] font-bold tracking-[-0.04em] text-gray-900 dark:text-white'>Free</span>
@@ -47,7 +47,7 @@ export default function PricingSection() {
             </Link>
           </div>
 
-          <div className='rounded-[20px] bg-white/90 border border-[#d6e0f5] p-8 flex flex-col gap-4'>
+          <div className='rounded-[20px] bg-white border border-gray-200 p-8 flex flex-col gap-4'>
             <span className='font-semibold text-[17px] text-gray-900 dark:text-white'>
               Dash Sync <span className='font-normal text-gray-500 dark:text-gray-400'>(optional)</span>
             </span>

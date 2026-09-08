@@ -42,12 +42,12 @@ export default function Footer() {
   ];
 
   return (
-    <footer className='bg-[#e9f0fc] border-t border-[#d6e0f5] relative overflow-hidden'>
+    <footer className='bg-[#f5f5f7] border-t border-gray-200 relative overflow-hidden'>
       {/* Glass divider at top */}
-      <div className='absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-blue-500/30 to-transparent' />
+      <div className='absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gray-400/40 to-transparent' />
 
       {/* Background decoration */}
-      <div className='absolute bottom-0 left-1/4 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl' />
+      <div className='absolute bottom-0 left-1/4 w-96 h-96 bg-gray-400/10 rounded-full blur-3xl' />
 
       <div className='container mx-auto px-6 lg:px-8 py-16 relative z-10'>
         <div className='grid gap-12 lg:grid-cols-12'>
@@ -75,9 +75,9 @@ export default function Footer() {
               {privacyFeatures.slice(0, 3).map((feature) => (
                 <div
                   key={feature.label}
-                  className='flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/70 border border-[#d6e0f5] text-xs'
+                  className='flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white border border-gray-200 text-xs'
                 >
-                  <feature.icon className='w-3 h-3 text-blue-600' />
+                  <feature.icon className='w-3 h-3 text-gray-700' />
                   <span className='text-gray-700'>{feature.label}</span>
                 </div>
               ))}
@@ -94,7 +94,7 @@ export default function Footer() {
                     href={link.href}
                     className='text-gray-600 hover:text-gray-900 transition-colors text-sm flex items-center gap-2 group'
                   >
-                    <div className='w-1.5 h-1.5 rounded-full bg-blue-500 group-hover:bg-blue-400 transition-colors' />
+                    <div className='w-1.5 h-1.5 rounded-full bg-gray-400 group-hover:bg-gray-600 transition-colors' />
                     {link.label}
                   </Link>
                 </li>
@@ -112,7 +112,7 @@ export default function Footer() {
                     href={link.href}
                     className='text-gray-600 hover:text-gray-900 transition-colors text-sm flex items-center gap-2 group'
                   >
-                    <div className='w-1.5 h-1.5 rounded-full bg-blue-500 group-hover:bg-blue-400 transition-colors' />
+                    <div className='w-1.5 h-1.5 rounded-full bg-gray-400 group-hover:bg-gray-600 transition-colors' />
                     {link.label}
                   </Link>
                 </li>
@@ -142,7 +142,7 @@ export default function Footer() {
                     href={link.href}
                     className='text-gray-600 hover:text-gray-900 transition-colors text-sm flex items-center gap-2 group'
                   >
-                    <div className='w-1.5 h-1.5 rounded-full bg-blue-500 group-hover:bg-blue-400 transition-colors' />
+                    <div className='w-1.5 h-1.5 rounded-full bg-gray-400 group-hover:bg-gray-600 transition-colors' />
                     {link.label}
                   </Link>
                 </li>
@@ -158,10 +158,10 @@ export default function Footer() {
                 href='https://twitter.com/efesopoulos'
                 target='_blank'
                 rel='noopener noreferrer'
-                className='flex items-center gap-3 p-3 rounded-xl bg-white/70 border border-[#d6e0f5] hover:bg-white transition-colors group'
+                className='flex items-center gap-3 p-3 rounded-xl bg-white border border-gray-200 hover:bg-white transition-colors group'
               >
-                <div className='w-10 h-10 rounded-lg bg-blue-100 flex items-center justify-center group-hover:bg-blue-200 transition-colors'>
-                  <Twitter className='w-5 h-5 text-blue-600' />
+                <div className='w-10 h-10 rounded-lg bg-gray-200 flex items-center justify-center group-hover:bg-gray-300 transition-colors'>
+                  <Twitter className='w-5 h-5 text-gray-700' />
                 </div>
                 <div>
                   <p className='text-gray-900 font-medium text-sm'>Follow on X/Twitter</p>
@@ -173,7 +173,7 @@ export default function Footer() {
                 href='https://buymeacoffee.com/efez'
                 target='_blank'
                 rel='noopener noreferrer'
-                className='flex items-center gap-3 p-3 rounded-xl bg-white/70 border border-[#d6e0f5] hover:bg-white transition-colors group'
+                className='flex items-center gap-3 p-3 rounded-xl bg-white border border-gray-200 hover:bg-white transition-colors group'
               >
                 <div className='w-10 h-10 rounded-lg bg-yellow-100 flex items-center justify-center group-hover:bg-yellow-200 transition-colors'>
                   <Coffee className='w-5 h-5 text-yellow-600' />
@@ -188,7 +188,7 @@ export default function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className='mt-12 pt-8 border-t border-[#d6e0f5]'>
+        <div className='mt-12 pt-8 border-t border-gray-200'>
           <div className='flex flex-col md:flex-row items-center justify-between gap-4'>
             <p className='text-gray-500 text-sm'>
               © {new Date().getFullYear()} Dash. Your privacy is our priority.
@@ -211,7 +211,7 @@ export default function Footer() {
                 100% Offline
               </span>
               <span className='flex items-center gap-2'>
-                <Shield className='w-3 h-3 text-blue-500' />
+                <Shield className='w-3 h-3 text-gray-600' />
                 AES-256 Encrypted
               </span>
             </div>

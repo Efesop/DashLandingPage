@@ -38,7 +38,7 @@ function Mark({ value }: { value: boolean }) {
 
 export default function ComparisonTable() {
   return (
-    <section id='comparison' className='py-20 sm:py-24 mt-8' style={{ background: 'radial-gradient(700px 360px at 12% 0%, rgba(191,219,254,0.55), rgba(191,219,254,0) 70%), radial-gradient(600px 320px at 90% 100%, rgba(221,214,254,0.5), rgba(221,214,254,0) 70%), #eef3fc' }}>
+    <section id='comparison' className='py-20 sm:py-24 mt-8' style={{ background: 'linear-gradient(120deg, #f7f7f8 0%, #eeeff2 50%, #f7f7f8 100%)' }}>
       <div className='container mx-auto px-6 lg:px-8 flex flex-col gap-7'>
         <motion.div
           initial={{ opacity: 0, y: 16 }}
@@ -54,7 +54,7 @@ export default function ComparisonTable() {
           </p>
         </motion.div>
 
-        <div className='overflow-x-auto rounded-[20px] border border-[#d6e0f5] bg-white/90'>
+        <div className='overflow-x-auto rounded-[20px] border border-gray-200 bg-white'>
           <table className='w-full min-w-[720px] border-collapse text-[15.5px]'>
             <thead>
               <tr className='bg-gray-50 dark:bg-gray-900 text-[12px] font-semibold uppercase tracking-[0.04em] text-gray-500 dark:text-gray-400'>

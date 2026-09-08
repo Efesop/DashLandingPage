@@ -13,13 +13,13 @@ export default function CTASection() {
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className='rounded-[24px] bg-gradient-to-r from-blue-600 to-indigo-600 text-white p-8 sm:p-12 lg:p-14 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8'
+          className='rounded-[24px] bg-[#0d0d0d] text-white p-8 sm:p-12 lg:p-14 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8'
         >
           <div className='flex flex-col gap-2'>
             <h2 className='text-3xl sm:text-4xl lg:text-[40px] font-bold tracking-[-0.035em] leading-[1.05] text-balance'>
               Your notes. Your device. Nobody else&apos;s server.
             </h2>
-            <p className='text-[17px] text-blue-100'>$14.99 once on Mac. Free on iPhone.</p>
+            <p className='text-[17px] text-gray-400'>$14.99 once on Mac. Free on iPhone.</p>
           </div>
           <div className='flex flex-col sm:flex-row gap-3 flex-shrink-0'>
             <a
@@ -28,7 +28,7 @@ export default function CTASection() {
                 e.preventDefault();
                 document.getElementById('payment-section')?.scrollIntoView({ behavior: 'smooth' });
               }}
-              className='px-6 py-4 rounded-[10px] bg-white text-gray-900 font-semibold text-base text-center hover:bg-blue-50 transition-colors'
+              className='px-6 py-4 rounded-[10px] bg-white text-gray-900 font-semibold text-base text-center hover:bg-gray-100 transition-colors'
             >
               Get Dash for Mac
             </a>
