@@ -44,6 +44,10 @@ SYSTEM_FILES=(
   app/vs-evernote/page.tsx
   app/vs-obsidian/page.tsx
   app/vs-google-keep/page.tsx
+  app/for-writers/page.tsx
+  app/for-journalists/page.tsx
+  app/for-researchers/page.tsx
+  app/for-bitcoiners/page.tsx
 )
 
 # Retired components: nothing may import them.
