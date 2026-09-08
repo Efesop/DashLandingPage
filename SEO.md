@@ -9,7 +9,8 @@
 | Date | Shipped | Ranking keywords | Top-10 | Est. visits/mo | Ref. domains | Notes |
 |---|---|---|---|---|---|---|
 | 2026-09-08 | Research; technical fixes; 7 query pages; homepage v3; article template (`article-template` branch) | 13 | 1 | ≈13 | 40 | Baseline from DataForSEO Labs |
-| 2026-09-08 | **S1** (`seo/sprint-1`): `/therapist-notes-app`, `/open-source-notes-app`; `/for-students` re-titled and `/encrypted-notes` given an E2EE section, both migrated to ArticleLayout; `scripts/check-seo.mjs` | — | — | — | — | Awaiting merge; record ranks at +14 days |
+| 2026-09-08 | **S2** (`seo/sprint-2`): `/journal-app-mac`, `/day-one-alternative`; `/secure-journal` re-targeted to "Encrypted Diary & Journal App" and migrated with a Dash / Day One / Journey comparison table; Bear and Day One facts corrected on `/best-notes-app-for-mac` | — | — | — | — | Merged to main; record ranks at +14 days |
+| 2026-09-08 | **S1** (`seo/sprint-1`): `/therapist-notes-app`, `/open-source-notes-app`; `/for-students` re-titled and `/encrypted-notes` given an E2EE section, both migrated to ArticleLayout; `scripts/check-seo.mjs` | — | — | — | — | Merged to main; record ranks at +14 days |
 
 ## 1. Where we started
 
@@ -51,14 +52,14 @@ Volume = US monthly searches; KD = DataForSEO difficulty 0–100. Bold = the pri
 | Evernote alternative | **evernote alternative** 880/9 · evernote alternative free 210/0 · best evernote alternative 140/16 | 1,200 | `/evernote-alternatives` (+ `/vs-evernote`) |
 | Notion alternative | **notion alternative** 720/2 · is notion private 90/9 · is notion encrypted 70/3 · notion alternative free 30/4 | 900 | `/notion-alternatives` (+ `/vs-notion`) |
 | Private / encrypted notes (category) | **privacy notes** 1,300/22 · **private notes** 880/20 · secure note taking app 480/47 · secure notes 320/40 · encrypted notes 260/63 · end to end encrypted note taking app 320/36 · encrypted note taking app 260/37 · encrypted notes app 170/35 · private notes app 110/37 · private note taking app 110/32 | 4,000 | `/` (category), `/private-notes`, `/encrypted-notes` |
-| Journal / diary on Mac | **journal app mac** 880/34 · journaling app mac 880/34 · diary app mac 880/39 · best journal app for mac 140/31 · best diary app for mac 140/26 · private journal 260/22 · encrypted diary (ranks #10) · private journal app 320/86 · private diary app 320/71 | 3,500 | `/secure-journal` (re-target, see §5) |
+| Journal / diary on Mac | **journal app mac** 880/34 · journaling app mac 880/34 · diary app mac 880/39 · best journal app for mac 140/31 · best diary app for mac 140/26 · private journal 260/22 · encrypted diary (ranks #10) · private journal app 320/86 · private diary app 320/71 | 3,500 | `/journal-app-mac` (S2); `/secure-journal` re-targeted to the encrypted-diary cluster (S2) |
 | Privnote / self-destructing | privnote 5,400/4 (brand) · **privnote alternatives** 110/1 · privnote alternative 110/2 · one time note 50/18 · disappearing note 40/18 · self destructing notes 90/22 · self destructing message 320/20 | 6,000 (mostly brand) | `/privnote-alternatives`, `/guides/self-destructing-notes` |
 | Local / private AI | **private ai assistant** 590/10 · offline ai assistant 90/4 · ai notes taking app 4,400/19 (stretch) | 5,000 | `/guides/local-ai` |
 | Seed phrase | **seed phrase storage** 390/11 · crypto seed phrase storage 110/2 · best way to store seed phrase 30/6 · where to store seed phrase 20/6 · seed phrase backup 20/11 | 570 | `/guides/seed-phrase-storage`, `/for-bitcoiners` |
 | Students | **notes taking app for students** 1,000/27 | 1,000 | `/for-students` |
 | Therapists | **therapist notes app** 590/6 · note taking app for therapists 10/5 · hipaa compliant notes app 40/0 | 640 | `/therapist-notes-app` (S1) |
 | Open source | **open source note taking app** 590/32 · open source notes app 70/35 | 660 | `/open-source-notes-app` (S1) |
-| Other alternatives | apple notes alternative 70/0 · joplin alternative 70/9 · bear alternative 50/0 · day one alternative 30/13 · standard notes alternative 20/0 · notesnook alternative 20 · simplenote alternative 20/10 · craft alternative 20/7 | 300 | *not built* |
+| Other alternatives | apple notes alternative 70/0 · joplin alternative 70/9 · bear alternative 50/0 · day one alternative 30/13 · standard notes alternative 20/0 · notesnook alternative 20 · simplenote alternative 20/10 · craft alternative 20/7 | 300 | `/day-one-alternative` (S2); the rest S3–S5 |
 | Comparisons | notesnook vs standard notes 40/0 · standard notes vs notesnook 30/0 · obsidian vs standard notes 30/0 | 100 | *not built* |
 | Offline | offline notes app 50/15 · offline note taking app 50/37 · notes app offline (ranks #22) | 150 | `/offline-notes` |
 
@@ -85,7 +86,9 @@ Head terms we are **not** chasing: notes app 60,500/77 · app for taking notes 2
 | `/private-notes` | private notes, privacy notes | Private Notes App: Notes That Stay on Your Device |
 | `/encrypted-notes` | encrypted notes app, end to end encrypted note taking app | Encrypted Notes App with AES-256 for Mac & iPhone |
 | `/offline-notes` | offline notes app | Offline Notes App That Works Without Internet |
-| `/secure-journal` | private journal app (re-target below) | Private Journal App for Mac & iPhone (Encrypted) |
+| `/journal-app-mac` | journal app mac, journaling app mac, diary app mac | Journal App for Mac (2026): 7 Journaling & Diary Apps |
+| `/day-one-alternative` | day one alternative | Day One Alternatives in 2026: Private Journals, Buy Once |
+| `/secure-journal` | encrypted diary, private journal, diary app with password | Encrypted Diary & Journal App for Mac and iPhone |
 | `/guides/local-ai` | private ai assistant | Local AI Notes App: Private AI Assistant That Runs Offline |
 | `/guides/seed-phrase-storage` | seed phrase storage | Seed Phrase Storage: How to Store a Seed Phrase Securely |
 | `/guides/self-destructing-notes` | self destructing notes | Self-Destructing Notes: Notes That Auto-Delete |
@@ -101,16 +104,16 @@ Technical state (done Sep 8 2026): title template `%s | Dash Notes` in `app/layo
 
 1. ✅ S1 (Sep 8 2026) **`/therapist-notes-app`** — therapist notes app (590/6). Angle: private session notes that never touch a vendor's server, lock and duress protection. Must say plainly that Dash is not a HIPAA-covered service or an EHR; it is a private notebook.
 2. ✅ S1 (Sep 8 2026) **`/open-source-notes-app`** — open source note taking app (590/32). Listicle: Joplin, Standard Notes, Notesnook, Logseq, Trilium, Dash (MIT). Link the GitHub repo prominently.
-3. **`/journal-app-mac`** — journal app mac / journaling app mac / diary app mac (2,600 across the three, KD 34–39). Listicle of Mac journaling apps with Dash's encrypted angle. Then re-title `/secure-journal` to "Encrypted Diary & Journal App for Mac and iPhone" so it keeps the "encrypted diary" ranking it already has instead of chasing "private journal app" (KD 86).
+3. ✅ S2 (Sep 8 2026) **`/journal-app-mac`** — journal app mac / journaling app mac / diary app mac (2,600 across the three, KD 34–39). Listicle of Mac journaling apps with Dash's encrypted angle. Then re-title `/secure-journal` to "Encrypted Diary & Journal App for Mac and iPhone" so it keeps the "encrypted diary" ranking it already has instead of chasing "private journal app" (KD 86).
 4. **`/is-apple-notes-secure`** — is apple notes secure / how secure is apple notes / is apple notes encrypted / are apple notes private (190 total, KD ≤13). Short answer page; links to the lock guide and `/password-protected-notes`.
 5. **`/is-notion-private`** — is notion private / is notion encrypted (160, KD ≤9). Links to `/notion-alternatives`.
 6. **`/standard-notes-vs-notesnook`** — notesnook vs standard notes and the reverse (70, KD 0), with Dash as the third column.
-7. **Alternative batch** on one template: `/apple-notes-alternative`, `/joplin-alternative`, `/bear-alternative`, `/day-one-alternative`, `/standard-notes-alternative`, `/simplenote-alternative`, `/craft-alternative`. Each is cheap (KD 0–13) and reuses the comparison table.
+7. **Alternative batch** on one template (✅ `/day-one-alternative` shipped early in S2): `/apple-notes-alternative`, `/joplin-alternative`, `/bear-alternative`, `/day-one-alternative`, `/standard-notes-alternative`, `/simplenote-alternative`, `/craft-alternative`. Each is cheap (KD 0–13) and reuses the comparison table.
 8. **`/private-ai-notes`** only if `/guides/local-ai` fails to move on "private ai assistant" within three months.
 
 ### B. Pages to redo
 
-- `/secure-journal`: re-target as above.
+- ✅ S2: `/secure-journal` re-targeted to "Encrypted Diary & Journal App for Mac and iPhone" and migrated; Day One's free-plan encryption and Bear's per-note encryption corrected on the Mac roundup.
 - ✅ S1: `/for-students` re-titled "Notes Taking App for Students (Private, Works Offline)", H1 carries the query.
 - ✅ S1: `/encrypted-notes` has the "end-to-end encrypted note taking app, when you sync" section (320/36).
 - Homepage: the visible H1 is the brand line ("Your notes are none of our business."); the category phrase lives in the eyebrow, description and title. If the homepage has not entered the top 20 for "private notes app" by December 2026, move the category into the H1.

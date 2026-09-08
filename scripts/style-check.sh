@@ -27,6 +27,9 @@ SYSTEM_FILES=(
   app/open-source-notes-app/page.tsx
   app/for-students/page.tsx
   app/encrypted-notes/page.tsx
+  app/journal-app-mac/page.tsx
+  app/secure-journal/page.tsx
+  app/day-one-alternative/page.tsx
 )
 
 # Retired components: nothing may import them.

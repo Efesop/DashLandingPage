@@ -4,7 +4,7 @@ import { articleJsonLd, faqJsonLd, itemListJsonLd, pageMetadata, type FAQ } from
 
 const TITLE = 'Best Notes App for Mac in 2026: 8 Apps Compared';
 const DESCRIPTION =
-  'The best notes apps for Mac in 2026, compared on privacy, offline use, encryption and price: Apple Notes, Dash, Bear, Obsidian, Craft, Notion, Joplin and Standard Notes.';
+  'The best notes apps for Mac in 2026, compared on privacy, offline use and price: Apple Notes, Dash, Bear, Obsidian, Craft, Notion, Joplin and Standard Notes.';
 const PATH = '/best-notes-app-for-mac';
 
 export const metadata: Metadata = pageMetadata({
@@ -51,10 +51,10 @@ const apps: ArticleApp[] = [
     name: 'Bear',
     tagline: 'A beautiful Markdown editor with tags instead of folders. One of the most polished writing experiences on the Mac.',
     bestFor: 'Writers who love Markdown and tags',
-    price: 'Free; Bear Pro subscription for sync and themes',
-    privacy: 'Syncs through iCloud; no note-level encryption',
+    price: 'Free; Bear Pro $2.99 a month or $29.99 a year for sync, themes and note encryption',
+    privacy: 'Syncs through iCloud; per-note encryption and app lock need Bear Pro',
     pros: ['Gorgeous typography and themes', 'Nested tags and cross-note links', 'Excellent export options'],
-    cons: ['Sync and themes need the subscription', 'Apple platforms only', 'No password on individual notes'],
+    cons: ['Sync, themes and note encryption need the subscription', 'Apple platforms only', 'iCloud sync is not end-to-end encrypted by Bear'],
   },
   {
     name: 'Obsidian',

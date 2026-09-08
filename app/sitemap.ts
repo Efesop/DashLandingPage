@@ -14,6 +14,8 @@ const entries: Entry[] = [
   ['/offline-notes', '2026-09-08', 'monthly', 0.9],
   ['/password-protected-notes', '2026-09-08', 'monthly', 0.9],
   ['/secure-journal', '2026-09-08', 'monthly', 0.8],
+  ['/journal-app-mac', '2026-09-08', 'monthly', 0.8],
+  ['/day-one-alternative', '2026-09-08', 'monthly', 0.6],
   ['/share', '2026-09-08', 'monthly', 0.7],
   ['/download', '2026-09-08', 'monthly', 0.9],
   // Roundups & alternatives
