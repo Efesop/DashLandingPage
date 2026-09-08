@@ -11,6 +11,17 @@ const nextConfig = {
   // works through this proxy; the WebSocket doorbell does not (Vercel
   // rewrites are HTTP-only), so those devices fall back to the 60s poll +
   // foreground pull. Real fix later: a custom domain on the relay itself.
+  // Serve one host: Google was indexing both www.dashnote.io and dashnote.io.
+  async redirects() {
+    return [
+      {
+        source: '/:path*',
+        has: [{ type: 'host', value: 'www.dashnote.io' }],
+        destination: 'https://dashnote.io/:path*',
+        permanent: true,
+      },
+    ];
+  },
   async rewrites() {
     return [
       { source: '/relay', destination: 'https://dash-relay.efesop.deno.net/' },

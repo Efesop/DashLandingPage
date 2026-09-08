@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import ForBitcoinersContent from './ForBitcoinersContent';
 
 export const metadata: Metadata = {
-  title: 'Notes App for Bitcoiners | Privacy-First Encrypted Notes - Dash',
+  title: 'Private Notes App for Bitcoiners & Seed Phrases',
   description:
     'Privacy-first notes for the Bitcoin community. Store notes offline with AES-256 encryption. Your seed phrase hints and crypto notes stay private.',
   keywords: [
@@ -16,11 +16,11 @@ export const metadata: Metadata = {
     'secure notes bitcoiners',
   ],
   openGraph: {
-    title: 'Notes App for Bitcoiners | Privacy-First Encrypted Notes - Dash',
+    title: 'Private Notes App for Bitcoiners & Seed Phrases | Dash Notes',
     description:
       'Privacy-first notes for the Bitcoin community. Store notes offline and encrypted.',
     url: 'https://dashnote.io/for-bitcoiners',
-    siteName: 'Dash',
+    siteName: 'Dash Notes',
     locale: 'en_US',
     type: 'website',
     images: [
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Notes for Bitcoiners - Privacy First',
+    title: 'Private Notes App for Bitcoiners & Seed Phrases',
     description: 'Privacy-first notes. Encrypted. Offline. No tracking.',
     creator: '@efesopoulos',
     images: ['/images/Dashfeature1.png'],

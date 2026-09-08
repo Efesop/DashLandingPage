@@ -2,9 +2,8 @@ import { Metadata } from 'next';
 import SecureJournalContent from './SecureJournalContent';
 
 export const metadata: Metadata = {
-  title: 'Private Journal App | Encrypted Diary That Stays Yours - Dash',
-  description:
-    'Your private thoughts deserve real privacy. AES-256 encrypted journal that stays on your device unless you choose to sync it. No subscription required, no tracking, truly private.',
+  title: 'Private Journal App for Mac & iPhone (Encrypted)',
+  description: 'A private journal app for Mac and iPhone with AES-256 encryption, Face ID and Touch ID, no account and no cloud by default. One-time $14.99 on Mac, free on iPhone.',
   keywords: [
     'private journal app',
     'encrypted diary',
@@ -16,11 +15,10 @@ export const metadata: Metadata = {
     'private thoughts app',
   ],
   openGraph: {
-    title: 'Private Journal App | Encrypted Diary That Stays Yours - Dash',
-    description:
-      'Your private thoughts deserve real privacy. AES-256 encrypted journal that never syncs to the cloud.',
+    title: 'Private Journal App for Mac & iPhone (Encrypted) | Dash Notes',
+    description: 'A private journal app for Mac and iPhone with AES-256 encryption, Face ID and Touch ID, no account and no cloud by default. One-time $14.99 on Mac, free on iPhone.',
     url: 'https://dashnote.io/secure-journal',
-    siteName: 'Dash',
+    siteName: 'Dash Notes',
     locale: 'en_US',
     type: 'website',
     images: [
@@ -34,7 +32,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Private Journal App - Dash',
+    title: 'Private Journal App for Mac & iPhone (Encrypted)',
     description: 'Your diary, truly private. Encrypted and offline.',
     creator: '@efesopoulos',
     images: ['/images/Dashfeature1.png'],

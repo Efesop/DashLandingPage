@@ -130,8 +130,8 @@ export default function EncryptedNotesContent() {
       {/* Hero Section */}
       <SEOHero
         badge={{ icon: Lock, text: 'AES-256-GCM Encryption' }}
-        headline="Notes Protected by Real Encryption."
-        highlightedWord="Encryption"
+        headline="An Encrypted Notes App With Real AES-256 Protection"
+        highlightedWord="Encrypted Notes App"
         subheadline="AES-256-GCM encryption keeps your sensitive notes unreadable to anyone but you. No backdoors, no master keys, no compromises."
         primaryCTA={{ text: 'Get Dash for Mac' }}
         secondaryCTA={{ text: 'Learn how it works', href: '#how-it-works' }}

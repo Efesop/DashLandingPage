@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import SeedPhraseStorageGuideContent from './SeedPhraseStorageGuideContent';
 
 export const metadata: Metadata = {
-  title: 'Seed Phrase Storage: Secure Crypto Recovery Phrase Backup | Guide',
+  title: 'Seed Phrase Storage: How to Store a Seed Phrase Securely',
   description:
     'Store cryptocurrency seed phrases securely in Dash with BIP-39 validation, AES-256 encryption, and fully offline local storage. No cloud, no risk.',
   keywords: [
@@ -16,17 +16,17 @@ export const metadata: Metadata = {
     'offline seed phrase storage',
   ],
   openGraph: {
-    title: 'Seed Phrase Storage: Secure Crypto Recovery Phrase Backup',
+    title: 'Seed Phrase Storage: How to Store a Seed Phrase Securely | Dash Notes',
     description: 'Store seed phrases with BIP-39 validation and AES-256 encryption. Fully offline.',
     url: 'https://dashnote.io/guides/seed-phrase-storage',
-    siteName: 'Dash',
+    siteName: 'Dash Notes',
     locale: 'en_US',
     type: 'article',
     images: [{ url: '/images/Dashfeature1.png', width: 1200, height: 630, alt: 'Seed Phrase Storage Guide' }],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Seed Phrase Storage Guide - Dash',
+    title: 'Seed Phrase Storage: How to Store a Seed Phrase Securely',
     description: 'Secure crypto recovery phrase storage with BIP-39 validation.',
     creator: '@efesopoulos',
     images: ['/images/Dashfeature1.png'],

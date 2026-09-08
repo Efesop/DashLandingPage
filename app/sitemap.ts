@@ -1,189 +1,61 @@
 import { MetadataRoute } from 'next';
 
-export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://dashnote.io';
-  const currentDate = new Date().toISOString();
+// lastModified is the date the page's CONTENT last changed — not the build
+// date. Bump an entry when you edit that page; add a row for every new route.
+const BASE = 'https://dashnote.io';
 
-  return [
-    // Main pages
-    {
-      url: baseUrl,
-      lastModified: currentDate,
-      changeFrequency: 'weekly',
-      priority: 1.0,
-    },
-    // Use Cases
-    {
-      url: `${baseUrl}/private-notes`,
-      lastModified: currentDate,
-      changeFrequency: 'monthly',
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/encrypted-notes`,
-      lastModified: currentDate,
-      changeFrequency: 'monthly',
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/offline-notes`,
-      lastModified: currentDate,
-      changeFrequency: 'monthly',
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/for-journalists`,
-      lastModified: currentDate,
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/for-writers`,
-      lastModified: currentDate,
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/for-bitcoiners`,
-      lastModified: currentDate,
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/for-students`,
-      lastModified: currentDate,
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/for-researchers`,
-      lastModified: currentDate,
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/secure-journal`,
-      lastModified: currentDate,
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/share`,
-      lastModified: currentDate,
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    // Comparison Pages
-    {
-      url: `${baseUrl}/vs-notion`,
-      lastModified: currentDate,
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/vs-evernote`,
-      lastModified: currentDate,
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/vs-obsidian`,
-      lastModified: currentDate,
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/vs-google-keep`,
-      lastModified: currentDate,
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    // Download & Changelog
-    {
-      url: `${baseUrl}/download`,
-      lastModified: currentDate,
-      changeFrequency: 'monthly',
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/changelog`,
-      lastModified: currentDate,
-      changeFrequency: 'weekly',
-      priority: 0.7,
-    },
-    // Guides
-    {
-      url: `${baseUrl}/guides`,
-      lastModified: currentDate,
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/guides/encryption`,
-      lastModified: currentDate,
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/guides/self-destructing-notes`,
-      lastModified: currentDate,
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/guides/offline-first`,
-      lastModified: currentDate,
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/guides/privacy-first-note-taking`,
-      lastModified: currentDate,
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/guides/app-lock`,
-      lastModified: currentDate,
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/guides/duress-password`,
-      lastModified: currentDate,
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/guides/page-linking`,
-      lastModified: currentDate,
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/guides/seed-phrase-storage`,
-      lastModified: currentDate,
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/guides/local-ai`,
-      lastModified: currentDate,
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    // Legal
-    {
-      url: `${baseUrl}/privacy-policy`,
-      lastModified: currentDate,
-      changeFrequency: 'yearly',
-      priority: 0.3,
-    },
-    {
-      url: `${baseUrl}/terms`,
-      lastModified: currentDate,
-      changeFrequency: 'yearly',
-      priority: 0.3,
-    },
-  ];
+type Entry = [path: string, lastModified: string, changeFrequency: 'weekly' | 'monthly' | 'yearly', priority: number];
+
+const entries: Entry[] = [
+  ['', '2026-09-08', 'weekly', 1.0],
+  // Product & keyword pages
+  ['/private-notes', '2026-09-08', 'monthly', 0.9],
+  ['/encrypted-notes', '2026-09-08', 'monthly', 0.9],
+  ['/offline-notes', '2026-09-08', 'monthly', 0.9],
+  ['/password-protected-notes', '2026-09-08', 'monthly', 0.9],
+  ['/secure-journal', '2026-09-08', 'monthly', 0.8],
+  ['/share', '2026-09-08', 'monthly', 0.7],
+  ['/download', '2026-09-08', 'monthly', 0.9],
+  // Roundups & alternatives
+  ['/best-notes-app-for-mac', '2026-09-08', 'monthly', 0.9],
+  ['/obsidian-alternatives', '2026-09-08', 'monthly', 0.8],
+  ['/notion-alternatives', '2026-09-08', 'monthly', 0.8],
+  ['/evernote-alternatives', '2026-09-08', 'monthly', 0.8],
+  ['/privnote-alternatives', '2026-09-08', 'monthly', 0.8],
+  // Use cases
+  ['/for-journalists', '2026-09-08', 'monthly', 0.7],
+  ['/for-writers', '2026-09-08', 'monthly', 0.7],
+  ['/for-bitcoiners', '2026-09-08', 'monthly', 0.7],
+  ['/for-students', '2026-09-08', 'monthly', 0.7],
+  ['/for-researchers', '2026-09-08', 'monthly', 0.7],
+  // Comparisons
+  ['/vs-notion', '2026-09-08', 'monthly', 0.7],
+  ['/vs-evernote', '2026-09-08', 'monthly', 0.7],
+  ['/vs-obsidian', '2026-09-08', 'monthly', 0.7],
+  ['/vs-google-keep', '2026-09-08', 'monthly', 0.7],
+  // Guides
+  ['/guides', '2026-09-08', 'monthly', 0.7],
+  ['/guides/lock-notes-on-iphone-and-mac', '2026-09-08', 'monthly', 0.8],
+  ['/guides/duress-password', '2026-09-08', 'monthly', 0.8],
+  ['/guides/seed-phrase-storage', '2026-09-08', 'monthly', 0.8],
+  ['/guides/local-ai', '2026-09-08', 'monthly', 0.8],
+  ['/guides/encryption', '2026-09-08', 'monthly', 0.7],
+  ['/guides/self-destructing-notes', '2026-09-08', 'monthly', 0.7],
+  ['/guides/offline-first', '2026-09-08', 'monthly', 0.7],
+  ['/guides/privacy-first-note-taking', '2026-09-08', 'monthly', 0.7],
+  ['/guides/app-lock', '2026-09-08', 'monthly', 0.7],
+  ['/guides/page-linking', '2026-09-08', 'monthly', 0.6],
+  // Misc
+  ['/changelog', '2026-09-08', 'weekly', 0.5],
+  ['/privacy-policy', '2026-09-08', 'yearly', 0.3],
+  ['/terms', '2026-03-17', 'yearly', 0.3],
+];
+
+export default function sitemap(): MetadataRoute.Sitemap {
+  return entries.map(([path, lastModified, changeFrequency, priority]) => ({
+    url: `${BASE}${path}`,
+    lastModified: new Date(`${lastModified}T00:00:00Z`),
+    changeFrequency,
+    priority,
+  }));
 }

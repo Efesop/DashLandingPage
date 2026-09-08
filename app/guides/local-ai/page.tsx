@@ -2,9 +2,8 @@ import type { Metadata } from 'next';
 import LocalAIGuideContent from './LocalAIGuideContent';
 
 export const metadata: Metadata = {
-  title: 'Local AI: Private AI That Never Leaves Your Device | Guide',
-  description:
-    'Use AI to summarize, rewrite, brainstorm, and chat — powered by local models like Ollama and LM Studio. No cloud, no API keys, no data ever sent anywhere.',
+  title: 'Local AI Notes App: Private AI Assistant That Runs Offline',
+  description: 'Use a private AI assistant inside your notes without sending a word to the cloud. Dash connects to Ollama, LM Studio and other local models, so AI runs offline on your Mac.',
   keywords: [
     'local ai notes app',
     'private ai writing',
@@ -18,17 +17,17 @@ export const metadata: Metadata = {
     'on-device ai notes',
   ],
   openGraph: {
-    title: 'Local AI: Private AI That Never Leaves Your Device',
-    description: 'AI writing assistance powered by local models. No cloud, no API keys, no data ever sent anywhere.',
+    title: 'Local AI Notes App: Private AI Assistant That Runs Offline | Dash Notes',
+    description: 'Use a private AI assistant inside your notes without sending a word to the cloud. Dash connects to Ollama, LM Studio and other local models, so AI runs offline on your Mac.',
     url: 'https://dashnote.io/guides/local-ai',
-    siteName: 'Dash',
+    siteName: 'Dash Notes',
     locale: 'en_US',
     type: 'article',
     images: [{ url: '/images/Dashfeature1.png', width: 1200, height: 630, alt: 'Local AI Guide' }],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Local AI Guide - Dash',
+    title: 'Local AI Notes App: Private AI Assistant That Runs Offline',
     description: 'AI writing assistance that runs entirely on your device.',
     creator: '@efesopoulos',
     images: ['/images/Dashfeature1.png'],

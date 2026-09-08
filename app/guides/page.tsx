@@ -1,11 +1,11 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { Lock, Timer, WifiOff, ShieldCheck, Fingerprint, ShieldAlert, Link as LinkIcon, Coins, Bot } from 'lucide-react';
+import { Lock, Timer, WifiOff, ShieldCheck, Fingerprint, ShieldAlert, Link as LinkIcon, Coins, Bot, KeyRound } from 'lucide-react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 
 export const metadata: Metadata = {
-  title: 'Guides | Learn About Privacy, Encryption & Security - Dash',
+  title: 'Guides: Privacy, Encryption & Secure Notes',
   description:
     'In-depth guides on encryption, self-destructing notes, offline-first architecture, and privacy-first design. Learn how Dash protects your data.',
   keywords: [
@@ -19,11 +19,11 @@ export const metadata: Metadata = {
     'biometric notes app',
   ],
   openGraph: {
-    title: 'Guides | Learn About Privacy, Encryption & Security - Dash',
+    title: 'Guides: Privacy, Encryption & Secure Notes | Dash Notes',
     description:
       'In-depth guides on encryption, self-destructing notes, offline-first architecture, and privacy-first design.',
     url: 'https://dashnote.io/guides',
-    siteName: 'Dash',
+    siteName: 'Dash Notes',
     locale: 'en_US',
     type: 'website',
     images: [
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Guides - Dash',
+    title: 'Guides: Privacy, Encryption & Secure Notes',
     description: 'Learn about encryption, privacy, and security in note-taking.',
     creator: '@efesopoulos',
     images: ['/images/Dashfeature1.png'],
@@ -127,6 +127,15 @@ const guides = [
     description:
       'Use AI to summarize, rewrite, brainstorm, and chat — powered by local models like Ollama and LM Studio. No cloud, no API keys.',
     icon: Bot,
+    color: 'blue',
+  },
+  {
+    slug: 'lock-notes-on-iphone-and-mac',
+    title: 'Lock Notes on iPhone & Mac',
+    subtitle: 'Apple Notes Steps, and Is Apple Notes Secure?',
+    description:
+      'How to lock notes in Apple Notes on iPhone and Mac, what locking really protects, and when a dedicated encrypted notes app is the better tool.',
+    icon: KeyRound,
     color: 'blue',
   },
 ];

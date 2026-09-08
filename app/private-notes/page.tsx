@@ -2,9 +2,8 @@ import { Metadata } from 'next';
 import PrivateNotesContent from './PrivateNotesContent';
 
 export const metadata: Metadata = {
-  title: 'Private Notes App | Secure Note Taking Without Cloud - Dash',
-  description:
-    'Take truly private notes with Dash. 100% offline, AES-256 encrypted, no accounts required. Your notes never leave your device.',
+  title: 'Private Notes App: Notes That Stay on Your Device',
+  description: 'Dash is a private notes app for Mac, iPhone and the web. Notes stay on your device, encrypted with AES-256, with no account and no tracking. Sync is optional and end-to-end encrypted.',
   keywords: [
     'private notes app',
     'private note taking',
@@ -16,11 +15,10 @@ export const metadata: Metadata = {
     'privacy notes app',
   ],
   openGraph: {
-    title: 'Private Notes App | Secure Note Taking Without Cloud - Dash',
-    description:
-      'Take truly private notes with Dash. 100% offline, AES-256 encrypted, no accounts required.',
+    title: 'Private Notes App: Notes That Stay on Your Device | Dash Notes',
+    description: 'Dash is a private notes app for Mac, iPhone and the web. Notes stay on your device, encrypted with AES-256, with no account and no tracking. Sync is optional and end-to-end encrypted.',
     url: 'https://dashnote.io/private-notes',
-    siteName: 'Dash',
+    siteName: 'Dash Notes',
     locale: 'en_US',
     type: 'website',
     images: [
@@ -34,7 +32,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Private Notes App - Dash',
+    title: 'Private Notes App: Notes That Stay on Your Device',
     description: 'Take truly private notes. 100% offline, AES-256 encrypted.',
     creator: '@efesopoulos',
     images: ['/images/Dashfeature1.png'],

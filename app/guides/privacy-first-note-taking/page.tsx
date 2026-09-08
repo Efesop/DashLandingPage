@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import PrivacyFirstGuideContent from './PrivacyFirstGuideContent';
 
 export const metadata: Metadata = {
-  title: 'Privacy-First Note Taking: Zero-Knowledge Design Explained | Guide',
+  title: 'Privacy-First Note Taking Explained',
   description:
     'Explore what privacy-first design means compared to traditional cloud note apps, zero-knowledge architecture, and how Dash ensures your data never leaves your device.',
   keywords: [
@@ -16,11 +16,11 @@ export const metadata: Metadata = {
     'no telemetry notes app',
   ],
   openGraph: {
-    title: 'Privacy-First Note Taking: Zero-Knowledge Design Explained',
+    title: 'Privacy-First Note Taking Explained | Dash Notes',
     description:
       'Explore what privacy-first design means and how Dash ensures your data never leaves your device.',
     url: 'https://dashnote.io/guides/privacy-first-note-taking',
-    siteName: 'Dash',
+    siteName: 'Dash Notes',
     locale: 'en_US',
     type: 'article',
     images: [
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Privacy-First Note Taking Guide - Dash',
+    title: 'Privacy-First Note Taking Explained',
     description: 'What zero-knowledge design means and why it matters.',
     creator: '@efesopoulos',
     images: ['/images/Dashfeature1.png'],

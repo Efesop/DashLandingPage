@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import ForResearchersContent from './ForResearchersContent';
 
 export const metadata: Metadata = {
-  title: 'Secure Notes for Researchers | Data Privacy & Protection - Dash',
+  title: 'Secure Notes App for Researchers',
   description:
     'Meet institutional data security requirements. Keep research notes encrypted and offline. Perfect for IRB compliance, sensitive data, and academic privacy.',
   keywords: [
@@ -16,11 +16,11 @@ export const metadata: Metadata = {
     'academic data protection',
   ],
   openGraph: {
-    title: 'Secure Notes for Researchers | Data Privacy & Protection - Dash',
+    title: 'Secure Notes App for Researchers | Dash Notes',
     description:
       'Meet institutional data security requirements. Keep research notes encrypted and offline.',
     url: 'https://dashnote.io/for-researchers',
-    siteName: 'Dash',
+    siteName: 'Dash Notes',
     locale: 'en_US',
     type: 'website',
     images: [
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Secure Notes for Researchers - Dash',
+    title: 'Secure Notes App for Researchers',
     description: 'Research data privacy with AES-256 encryption.',
     creator: '@efesopoulos',
     images: ['/images/Dashfeature1.png'],

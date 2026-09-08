@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import SelfDestructingNotesGuideContent from './SelfDestructingNotesGuideContent';
 
 export const metadata: Metadata = {
-  title: 'Self-Destructing Notes: Ephemeral Notes That Auto-Delete | Guide',
+  title: 'Self-Destructing Notes: Notes That Auto-Delete',
   description:
     'Learn what self-destructing notes are, why they matter for sensitive information, and how Dash implements timed automatic deletion with visual countdowns.',
   keywords: [
@@ -16,11 +16,11 @@ export const metadata: Metadata = {
     'timed note destruction',
   ],
   openGraph: {
-    title: 'Self-Destructing Notes: Ephemeral Notes That Auto-Delete',
+    title: 'Self-Destructing Notes: Notes That Auto-Delete | Dash Notes',
     description:
       'Learn what self-destructing notes are and how Dash implements timed automatic deletion.',
     url: 'https://dashnote.io/guides/self-destructing-notes',
-    siteName: 'Dash',
+    siteName: 'Dash Notes',
     locale: 'en_US',
     type: 'article',
     images: [
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Self-Destructing Notes Guide - Dash',
+    title: 'Self-Destructing Notes: Notes That Auto-Delete',
     description: 'Ephemeral notes that auto-delete after a set time.',
     creator: '@efesopoulos',
     images: ['/images/Dashfeature1.png'],

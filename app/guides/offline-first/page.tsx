@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import OfflineFirstGuideContent from './OfflineFirstGuideContent';
 
 export const metadata: Metadata = {
-  title: 'What Is Offline-First? How Dash Keeps Your Data Local | Guide',
+  title: 'Offline-First Apps: Why Your Notes Should Live Locally',
   description:
     'Learn what offline-first architecture means, how it compares to cloud-based apps, and how Dash stores everything on your device without requiring an internet connection.',
   keywords: [
@@ -16,11 +16,11 @@ export const metadata: Metadata = {
     'no cloud note app',
   ],
   openGraph: {
-    title: 'What Is Offline-First? How Dash Keeps Your Data Local',
+    title: 'Offline-First Apps: Why Your Notes Should Live Locally | Dash Notes',
     description:
       'Learn what offline-first architecture means and how Dash stores everything on your device.',
     url: 'https://dashnote.io/guides/offline-first',
-    siteName: 'Dash',
+    siteName: 'Dash Notes',
     locale: 'en_US',
     type: 'article',
     images: [
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Offline-First Architecture Guide - Dash',
+    title: 'Offline-First Apps: Why Your Notes Should Live Locally',
     description: 'How offline-first apps keep your data local and always accessible.',
     creator: '@efesopoulos',
     images: ['/images/Dashfeature1.png'],

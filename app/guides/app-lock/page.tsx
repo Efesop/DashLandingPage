@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import AppLockGuideContent from './AppLockGuideContent';
 
 export const metadata: Metadata = {
-  title: 'App Lock: Real Encryption, Not Just a Lock Screen | Guide',
+  title: 'App Lock: Real Encryption Behind Your Lock Screen',
   description:
     'Learn how Dash\'s app lock uses AES-256-GCM to encrypt all your notes on disk — not just a UI gate. Includes Touch ID integration, auto-lock, and per-page encryption layers.',
   keywords: [
@@ -18,11 +18,11 @@ export const metadata: Metadata = {
     'auto-lock notes app',
   ],
   openGraph: {
-    title: 'App Lock: Real Encryption, Not Just a Lock Screen',
+    title: 'App Lock: Real Encryption Behind Your Lock Screen | Dash Notes',
     description:
       'Learn how Dash\'s app lock encrypts all your notes with AES-256-GCM — not just a UI gate.',
     url: 'https://dashnote.io/guides/app-lock',
-    siteName: 'Dash',
+    siteName: 'Dash Notes',
     locale: 'en_US',
     type: 'article',
     images: [
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'App Lock Guide - Dash',
+    title: 'App Lock: Real Encryption Behind Your Lock Screen',
     description: 'Real encryption for all your notes, not just a lock screen.',
     creator: '@efesopoulos',
     images: ['/images/Dashfeature1.png'],

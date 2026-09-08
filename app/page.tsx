@@ -23,8 +23,15 @@ export default function LandingPage() {
           __html: JSON.stringify({
             '@context': 'https://schema.org',
             '@type': 'SoftwareApplication',
-            name: 'Dash',
+            name: 'Dash Notes',
+            alternateName: 'Dash',
+            url: 'https://dashnote.io',
             applicationCategory: 'ProductivityApplication',
+            applicationSubCategory: 'Note-taking',
+            softwareVersion: '1.6.3',
+            downloadUrl: 'https://dashnote.io/download',
+            installUrl: 'https://apps.apple.com/app/id6766192836',
+            screenshot: 'https://dashnote.io/images/Dashfeature1.png',
             description:
               'Private, encrypted notes app for Mac, iPhone and the web. Offline by default, with optional end-to-end encrypted sync.',
             operatingSystem: ['macOS', 'iOS', 'Web'],

@@ -5,7 +5,7 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 
 export const metadata: Metadata = {
-  title: 'Changelog | Dash - Version History & Updates',
+  title: 'Changelog & Release Notes',
   description:
     'Track every update to Dash. Full release history, new features, bug fixes, and improvements. Dash is open source and actively maintained.',
   keywords: [
@@ -17,11 +17,11 @@ export const metadata: Metadata = {
     'open source notes app updates',
   ],
   openGraph: {
-    title: 'Changelog | Dash - Version History & Updates',
+    title: 'Changelog & Release Notes | Dash Notes',
     description:
       'Track every update to Dash. Full release history, new features, bug fixes, and improvements.',
     url: 'https://dashnote.io/changelog',
-    siteName: 'Dash',
+    siteName: 'Dash Notes',
     locale: 'en_US',
     type: 'website',
     images: [
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Changelog - Dash',
+    title: 'Changelog & Release Notes',
     description: 'Track every update to Dash. Full release history and version notes.',
     creator: '@efesopoulos',
     images: ['/images/Dashfeature1.png'],

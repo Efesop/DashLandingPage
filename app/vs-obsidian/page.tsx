@@ -2,9 +2,8 @@ import { Metadata } from 'next';
 import VsObsidianContent from './VsObsidianContent';
 
 export const metadata: Metadata = {
-  title: 'Dash vs Obsidian: Encrypted Notes Alternative | Built-in Security',
-  description:
-    'Compare Dash to Obsidian. Get true encryption built-in, not as an add-on. No sync subscription, no plugins needed. One-time $14.99 for AES-256 security.',
+  title: 'Obsidian Alternative with Built-In Encryption',
+  description: 'An Obsidian alternative with encryption built in, no plugins required: wiki links, folders and tags, Face ID and Touch ID, offline by default. Dash vs Obsidian compared.',
   keywords: [
     'Obsidian alternative',
     'Obsidian encryption',
@@ -16,11 +15,10 @@ export const metadata: Metadata = {
     'Obsidian competitor',
   ],
   openGraph: {
-    title: 'Dash vs Obsidian: Encrypted Notes Alternative | Built-in Security',
-    description:
-      'Compare Dash to Obsidian. True encryption built-in, not as an add-on. No sync subscription needed.',
+    title: 'Obsidian Alternative with Built-In Encryption | Dash Notes',
+    description: 'An Obsidian alternative with encryption built in, no plugins required: wiki links, folders and tags, Face ID and Touch ID, offline by default. Dash vs Obsidian compared.',
     url: 'https://dashnote.io/vs-obsidian',
-    siteName: 'Dash',
+    siteName: 'Dash Notes',
     locale: 'en_US',
     type: 'website',
     images: [
@@ -34,7 +32,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Dash vs Obsidian - Encrypted Alternative',
+    title: 'Obsidian Alternative with Built-In Encryption',
     description: 'True encryption built-in. No plugins, no subscriptions.',
     creator: '@efesopoulos',
     images: ['/images/Dashfeature1.png'],

@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import ForWritersContent from './ForWritersContent';
 
 export const metadata: Metadata = {
-  title: 'Secure Notes for Writers | Protect Your Manuscripts - Dash',
+  title: 'Private Writing App for Writers & Manuscripts',
   description:
     'Keep your unpublished manuscripts truly private. AES-256 encrypted notes that never touch the cloud. No leaks, no theft, no compromises.',
   keywords: [
@@ -16,11 +16,11 @@ export const metadata: Metadata = {
     'protect unpublished work',
   ],
   openGraph: {
-    title: 'Secure Notes for Writers | Protect Your Manuscripts - Dash',
+    title: 'Private Writing App for Writers & Manuscripts | Dash Notes',
     description:
       'Keep your unpublished manuscripts truly private. AES-256 encrypted notes that never touch the cloud.',
     url: 'https://dashnote.io/for-writers',
-    siteName: 'Dash',
+    siteName: 'Dash Notes',
     locale: 'en_US',
     type: 'website',
     images: [
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Secure Notes for Writers - Dash',
+    title: 'Private Writing App for Writers & Manuscripts',
     description: 'Your unpublished work deserves AES-256 protection.',
     creator: '@efesopoulos',
     images: ['/images/Dashfeature1.png'],

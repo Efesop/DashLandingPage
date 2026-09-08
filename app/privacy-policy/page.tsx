@@ -3,7 +3,7 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 
 export const metadata: Metadata = {
-  title: 'Privacy Policy | Dash - Private Notes App',
+  title: 'Privacy Policy',
   description:
     'Dash privacy policy. No analytics, no telemetry, no account for local use. Your notes stay on your device unless you choose end-to-end encrypted sharing or sync.',
   alternates: {

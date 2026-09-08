@@ -2,17 +2,15 @@ import type { Metadata } from 'next';
 import EncryptedNotesContent from './EncryptedNotesContent';
 
 export const metadata: Metadata = {
-  title: 'Encrypted Notes App | AES-256 Secure Note Taking - Dash',
-  description:
-    'AES-256 encrypted notes app. Password-protect sensitive notes with zero-knowledge architecture. No cloud, no backdoors, completely private.',
+  title: 'Encrypted Notes App with AES-256 for Mac & iPhone',
+  description: 'An encrypted notes app that locks individual notes or the whole app with AES-256-GCM and PBKDF2 key derivation. Works offline on Mac, iPhone and the web; no account required.',
   keywords:
     'encrypted notes, encrypted note app, AES-256 notes, secure notes, password protected notes, encrypted note taking, private notes encryption',
   openGraph: {
-    title: 'Encrypted Notes App | AES-256 Secure Note Taking - Dash',
-    description:
-      'AES-256 encrypted notes app. Password-protect sensitive notes with zero-knowledge architecture.',
+    title: 'Encrypted Notes App with AES-256 for Mac & iPhone | Dash Notes',
+    description: 'An encrypted notes app that locks individual notes or the whole app with AES-256-GCM and PBKDF2 key derivation. Works offline on Mac, iPhone and the web; no account required.',
     url: 'https://dashnote.io/encrypted-notes',
-    siteName: 'Dash',
+    siteName: 'Dash Notes',
     locale: 'en_US',
     type: 'website',
     images: [
@@ -26,7 +24,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Encrypted Notes App - Dash',
+    title: 'Encrypted Notes App with AES-256 for Mac & iPhone',
     description:
       'AES-256 encrypted notes. Zero-knowledge, no backdoors.',
     creator: '@efesopoulos',

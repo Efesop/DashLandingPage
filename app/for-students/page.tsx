@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import ForStudentsContent from './ForStudentsContent';
 
 export const metadata: Metadata = {
-  title: 'Private Notes for Students | No Tracking, No Data Mining - Dash',
+  title: 'Private Notes App for Students',
   description:
     'Your study notes should not train AI models or feed ads. Private, encrypted notes for students who value their privacy. One-time $14.99 for Mac, no subscription required.',
   keywords: [
@@ -16,11 +16,11 @@ export const metadata: Metadata = {
     'student privacy notes',
   ],
   openGraph: {
-    title: 'Private Notes for Students | No Tracking, No Data Mining - Dash',
+    title: 'Private Notes App for Students | Dash Notes',
     description:
       'Your study notes should not train AI models. Private, encrypted notes for students.',
     url: 'https://dashnote.io/for-students',
-    siteName: 'Dash',
+    siteName: 'Dash Notes',
     locale: 'en_US',
     type: 'website',
     images: [
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Private Notes for Students - Dash',
+    title: 'Private Notes App for Students',
     description: 'Your study notes should not train AI or feed ads.',
     creator: '@efesopoulos',
     images: ['/images/Dashfeature1.png'],

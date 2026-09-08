@@ -2,9 +2,8 @@ import { Metadata } from 'next';
 import VsNotionContent from './VsNotionContent';
 
 export const metadata: Metadata = {
-  title: 'Dash vs Notion: Private Notes Alternative | No Cloud, No Tracking',
-  description:
-    'Compare Dash to Notion. Get the same note-taking power without cloud dependency, data collection, or monthly subscriptions. One-time $14.99.',
+  title: 'Notion Alternative: Private, Offline Notes (Dash vs Notion)',
+  description: 'Looking for a private Notion alternative? Dash keeps notes on your device, encrypted, with no account and no subscription required. Dash vs Notion, feature by feature.',
   keywords: [
     'Notion alternative',
     'Notion privacy',
@@ -16,11 +15,10 @@ export const metadata: Metadata = {
     'secure Notion alternative',
   ],
   openGraph: {
-    title: 'Dash vs Notion: Private Notes Alternative | No Cloud, No Tracking',
-    description:
-      'Compare Dash to Notion. Get the same note-taking power without cloud dependency or data collection.',
+    title: 'Notion Alternative: Private, Offline Notes (Dash vs Notion) | Dash Notes',
+    description: 'Looking for a private Notion alternative? Dash keeps notes on your device, encrypted, with no account and no subscription required. Dash vs Notion, feature by feature.',
     url: 'https://dashnote.io/vs-notion',
-    siteName: 'Dash',
+    siteName: 'Dash Notes',
     locale: 'en_US',
     type: 'website',
     images: [
@@ -34,7 +32,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Dash vs Notion - Private Alternative',
+    title: 'Notion Alternative: Private, Offline Notes (Dash vs Notion)',
     description: 'Same note-taking power without cloud dependency.',
     creator: '@efesopoulos',
     images: ['/images/Dashfeature1.png'],

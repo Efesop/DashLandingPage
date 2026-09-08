@@ -50,6 +50,8 @@ export default function Header() {
     { href: '/for-researchers', label: 'For Researchers' },
     { href: '/for-bitcoiners', label: 'For Bitcoiners' },
     { href: '/share', label: 'Encrypted Sharing' },
+    { href: '/password-protected-notes', label: 'Password-Protected Notes' },
+    { href: '/privnote-alternatives', label: 'Privnote Alternatives' },
   ];
 
   const comparisons = [
@@ -57,6 +59,10 @@ export default function Header() {
     { href: '/vs-evernote', label: 'Dash vs Evernote' },
     { href: '/vs-obsidian', label: 'Dash vs Obsidian' },
     { href: '/vs-google-keep', label: 'Dash vs Google Keep' },
+    { href: '/best-notes-app-for-mac', label: 'Best Notes Apps for Mac' },
+    { href: '/obsidian-alternatives', label: 'Obsidian Alternatives' },
+    { href: '/notion-alternatives', label: 'Notion Alternatives' },
+    { href: '/evernote-alternatives', label: 'Evernote Alternatives' },
   ];
 
   const guides = [
@@ -69,6 +75,7 @@ export default function Header() {
     { href: '/guides/page-linking', label: 'Page Linking' },
     { href: '/guides/seed-phrase-storage', label: 'Seed Phrase Storage' },
     { href: '/guides/local-ai', label: 'Local AI' },
+    { href: '/guides/lock-notes-on-iphone-and-mac', label: 'Lock Notes on iPhone & Mac' },
   ];
 
   return (

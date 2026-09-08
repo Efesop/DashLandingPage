@@ -2,17 +2,15 @@ import type { Metadata } from 'next';
 import VsEvernoteContent from './VsEvernoteContent';
 
 export const metadata: Metadata = {
-  title: 'Dash vs Evernote | Private Alternative to Evernote - Dash',
-  description:
-    'Compare Dash to Evernote. No subscription, 100% offline, AES-256 encryption. Switch from Evernote monthly fees to $14.99 one-time privacy.',
+  title: 'Evernote Alternative: Private Notes, No Subscription',
+  description: 'A free-to-try Evernote alternative that keeps notes on your device: AES-256 encryption, offline by default, one-time purchase on Mac. Dash vs Evernote, feature by feature.',
   keywords:
     'dash vs evernote, evernote alternative, private evernote alternative, offline note app, evernote replacement, switch from evernote',
   openGraph: {
-    title: 'Dash vs Evernote | Private Alternative to Evernote',
-    description:
-      'Compare Dash to Evernote. No subscription, 100% offline, AES-256 encryption.',
+    title: 'Evernote Alternative: Private Notes, No Subscription | Dash Notes',
+    description: 'A free-to-try Evernote alternative that keeps notes on your device: AES-256 encryption, offline by default, one-time purchase on Mac. Dash vs Evernote, feature by feature.',
     url: 'https://dashnote.io/vs-evernote',
-    siteName: 'Dash',
+    siteName: 'Dash Notes',
     locale: 'en_US',
     type: 'website',
     images: [
@@ -26,7 +24,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Dash vs Evernote - Private Alternative',
+    title: 'Evernote Alternative: Private Notes, No Subscription',
     description:
       'No subscription, 100% offline, AES-256 encryption.',
     creator: '@efesopoulos',

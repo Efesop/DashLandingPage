@@ -2,9 +2,8 @@ import type { Metadata } from 'next';
 import DuressPasswordGuideContent from './DuressPasswordGuideContent';
 
 export const metadata: Metadata = {
-  title: 'Decoy Password: Silent Protection for Your Notes | Guide',
-  description:
-    'Learn how Dash\'s decoy password silently hides your data under coercion. A secondary password that provides plausible deniability when you need it most.',
+  title: 'Duress Password: What It Is & How to Set One Up',
+  description: 'A duress password (or duress PIN) is a second password that opens a decoy instead of your real data. Learn how it works, where it is used, and how to set one up in Dash.',
   keywords: [
     'decoy password',
     'duress password',
@@ -17,18 +16,17 @@ export const metadata: Metadata = {
     'panic button notes app',
   ],
   openGraph: {
-    title: 'Decoy Password: Silent Protection for Your Notes',
-    description:
-      'A secondary password that silently hides your data under coercion.',
+    title: 'Duress Password: What It Is & How to Set One Up | Dash Notes',
+    description: 'A duress password (or duress PIN) is a second password that opens a decoy instead of your real data. Learn how it works, where it is used, and how to set one up in Dash.',
     url: 'https://dashnote.io/guides/duress-password',
-    siteName: 'Dash',
+    siteName: 'Dash Notes',
     locale: 'en_US',
     type: 'article',
     images: [{ url: '/images/Dashfeature1.png', width: 1200, height: 630, alt: 'Decoy Password Guide' }],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Decoy Password Guide - Dash',
+    title: 'Duress Password: What It Is & How to Set One Up',
     description: 'Silent protection that hides your notes under coercion.',
     creator: '@efesopoulos',
     images: ['/images/Dashfeature1.png'],

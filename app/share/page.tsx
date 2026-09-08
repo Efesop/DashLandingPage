@@ -2,17 +2,17 @@ import type { Metadata } from 'next';
 import ShareContent from './ShareContent';
 
 export const metadata: Metadata = {
-  title: 'Encrypted Sharing | Dash',
+  title: 'Encrypted Note Sharing',
   description:
     'Share notes securely with end-to-end encryption. Zero-knowledge relay, auto-deleted after 30 days.',
   keywords:
     'encrypted sharing, e2e encrypted notes, secure note sharing, zero-knowledge sharing, encrypted note links',
   openGraph: {
-    title: 'Encrypted Sharing | Dash',
+    title: 'Encrypted Note Sharing | Dash Notes',
     description:
       'Share notes securely with end-to-end encryption. Zero-knowledge relay, auto-deleted after 30 days.',
     url: 'https://dashnote.io/share',
-    siteName: 'Dash',
+    siteName: 'Dash Notes',
     locale: 'en_US',
     type: 'website',
     images: [
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Encrypted Sharing - Dash',
+    title: 'Encrypted Note Sharing',
     description:
       'E2E encrypted sharing. Zero-knowledge relay, auto-deleted after 30 days.',
     creator: '@efesopoulos',

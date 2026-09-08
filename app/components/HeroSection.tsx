@@ -31,7 +31,9 @@ export default function HeroSection() {
         responsive: true,
         fluid: true,
         loop: true,
-        sources: [{ src: '/images/Dashdemo2.mp4', type: 'video/mp4' }],
+        preload: 'metadata',
+        poster: '/images/Dashdemo2-poster.jpg',
+        sources: [{ src: '/images/Dashdemo2-1280.mp4', type: 'video/mp4' }],
       });
     }
 
@@ -92,8 +94,8 @@ export default function HeroSection() {
             transition={{ duration: 0.4, delay: 0.25 }}
             className='text-lg sm:text-xl text-gray-500 dark:text-gray-400 max-w-2xl mx-auto leading-relaxed'
           >
-            The only notes app that puts <strong className='text-gray-700 dark:text-gray-200'>you</strong> in complete control.
-            No cloud, no tracking, no corporate surveillance.
+            Dash is a private, encrypted notes app for Mac and iPhone. Works offline, needs no account,
+            and your notes never leave your device unless <strong className='text-gray-700 dark:text-gray-200'>you</strong> choose to sync them.
           </motion.p>
 
           {/* CTAs */}
@@ -219,6 +221,8 @@ export default function HeroSection() {
                 className='video-js w-full h-full'
                 playsInline
                 muted
+                preload='metadata'
+                poster='/images/Dashdemo2-poster.jpg'
                 aria-label='Dash app demonstration video'
               />
             </div>

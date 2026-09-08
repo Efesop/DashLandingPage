@@ -128,8 +128,8 @@ export default function LocalAIGuideContent() {
       {/* Hero Section */}
       <SEOHero
         badge={{ icon: Bot, text: 'Local AI Guide' }}
-        headline="AI That Never Leaves Your Device"
-        highlightedWord="Never Leaves"
+        headline="A Private AI Assistant That Never Leaves Your Device"
+        highlightedWord="Private AI Assistant"
         subheadline="Summarize, rewrite, brainstorm, and chat with AI — powered by local models on your machine. No API keys, no cloud, no data ever sent anywhere."
         primaryCTA={{ text: 'Get Dash for Mac' }}
         secondaryCTA={{ text: 'See how it works', href: '#how-it-works' }}

@@ -152,8 +152,8 @@ export default function SecureJournalContent() {
       {/* Hero Section */}
       <SEOHero
         badge={{ icon: BookHeart, text: 'Private Journal' }}
-        headline="Your Diary. Truly Private."
-        highlightedWord="Private"
+        headline="A Private Journal App That Stays Truly Yours"
+        highlightedWord="Private Journal App"
         subheadline="AES-256 encrypted journal that never syncs to the cloud. Write your deepest thoughts knowing they are protected from everyone - including us."
         primaryCTA={{ text: 'Get Dash for Mac' }}
         secondaryCTA={{ text: 'See how it works', href: '#features' }}

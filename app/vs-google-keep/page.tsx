@@ -2,9 +2,8 @@ import { Metadata } from 'next';
 import VsGoogleKeepContent from './VsGoogleKeepContent';
 
 export const metadata: Metadata = {
-  title: 'Dash vs Google Keep: Private Notes Without Google Tracking - Dash',
-  description:
-    'Take notes without Google watching. No ads, no tracking, no data mining. Private, encrypted notes that stay on your device. One-time $14.99.',
+  title: 'Google Keep Alternative Without Google Tracking',
+  description: 'A Google Keep alternative that keeps notes on your device instead of Google servers: encrypted, offline, no account. Dash vs Google Keep compared.',
   keywords: [
     'Google Keep alternative',
     'Google Keep privacy',
@@ -16,11 +15,10 @@ export const metadata: Metadata = {
     'notes without data collection',
   ],
   openGraph: {
-    title: 'Dash vs Google Keep: Private Notes Without Google Tracking',
-    description:
-      'Take notes without Google watching. No ads, no tracking, no data mining.',
+    title: 'Google Keep Alternative Without Google Tracking | Dash Notes',
+    description: 'A Google Keep alternative that keeps notes on your device instead of Google servers: encrypted, offline, no account. Dash vs Google Keep compared.',
     url: 'https://dashnote.io/vs-google-keep',
-    siteName: 'Dash',
+    siteName: 'Dash Notes',
     locale: 'en_US',
     type: 'website',
     images: [
@@ -34,7 +32,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Dash vs Google Keep - Private Alternative',
+    title: 'Google Keep Alternative Without Google Tracking',
     description: 'Notes without Google tracking. Private and encrypted.',
     creator: '@efesopoulos',
     images: ['/images/Dashfeature1.png'],

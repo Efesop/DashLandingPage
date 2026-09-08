@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import EncryptionGuideContent from './EncryptionGuideContent';
 
 export const metadata: Metadata = {
-  title: 'What Is AES-256 Encryption? How Dash Encrypts Your Notes | Guide',
+  title: 'What Is AES-256 Encryption? How Dash Encrypts Notes',
   description:
     'Learn how AES-256-GCM encryption works, what PBKDF2 key derivation does, and how Dash uses zero-knowledge client-side encryption to protect your notes.',
   keywords: [
@@ -16,11 +16,11 @@ export const metadata: Metadata = {
     'end-to-end encrypted notes',
   ],
   openGraph: {
-    title: 'What Is AES-256 Encryption? How Dash Encrypts Your Notes',
+    title: 'What Is AES-256 Encryption? How Dash Encrypts Notes | Dash Notes',
     description:
       'Learn how AES-256-GCM encryption works and how Dash uses zero-knowledge client-side encryption.',
     url: 'https://dashnote.io/guides/encryption',
-    siteName: 'Dash',
+    siteName: 'Dash Notes',
     locale: 'en_US',
     type: 'article',
     images: [
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'AES-256 Encryption Explained - Dash Guide',
+    title: 'What Is AES-256 Encryption? How Dash Encrypts Notes',
     description: 'How AES-256-GCM encryption works and how Dash protects your notes.',
     creator: '@efesopoulos',
     images: ['/images/Dashfeature1.png'],

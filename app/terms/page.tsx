@@ -3,7 +3,7 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 
 export const metadata: Metadata = {
-  title: 'Terms of Service | Dash - Private Notes App',
+  title: 'Terms of Service',
   description:
     'Terms of service for Dash, the privacy-first notes app. One-time purchase, lifetime access, no subscriptions.',
   alternates: {

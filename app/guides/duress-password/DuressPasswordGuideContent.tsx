@@ -101,8 +101,8 @@ export default function DuressPasswordGuideContent() {
       {/* Hero Section */}
       <SEOHero
         badge={{ icon: ShieldAlert, text: 'Decoy Password Guide' }}
-        headline="A Password That Protects You Under Coercion"
-        highlightedWord="Coercion"
+        headline="Duress Password: A Second Password That Protects You Under Coercion"
+        highlightedWord="Duress Password"
         subheadline="A secondary password that silently hides your data when you're forced to unlock. Plausible deniability, built in."
         primaryCTA={{ text: 'Get Dash for Mac' }}
         secondaryCTA={{ text: 'See how it works', href: '#how-it-works' }}

@@ -200,7 +200,7 @@ export default function VsEvernoteContent() {
               transition={{ duration: 0.6, delay: 0.1 }}
               className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-6"
             >
-              Dash vs Evernote
+              An Evernote Alternative <span className="text-blue-600 dark:text-blue-400">Without the Subscription</span>
             </motion.h1>
 
             <motion.p

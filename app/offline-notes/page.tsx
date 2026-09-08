@@ -2,17 +2,15 @@ import type { Metadata } from 'next';
 import OfflineNotesContent from './OfflineNotesContent';
 
 export const metadata: Metadata = {
-  title: 'Offline Notes App | Works Without Internet - Dash',
-  description:
-    'Note-taking app that works 100% offline. No internet required, no account, and sync stays off unless you turn it on. Your notes are always accessible, anywhere.',
+  title: 'Offline Notes App That Works Without Internet',
+  description: 'Dash is an offline notes app: every note lives on your device, works with no internet and no account, and syncs only if you turn on end-to-end encrypted Dash Sync.',
   keywords:
     'offline notes, offline note app, no internet notes, works offline, local notes app, notes without wifi, airplane mode notes',
   openGraph: {
-    title: 'Offline Notes App | Works Without Internet - Dash',
-    description:
-      'Note-taking app that works 100% offline. No internet required, no account, sync optional.',
+    title: 'Offline Notes App That Works Without Internet | Dash Notes',
+    description: 'Dash is an offline notes app: every note lives on your device, works with no internet and no account, and syncs only if you turn on end-to-end encrypted Dash Sync.',
     url: 'https://dashnote.io/offline-notes',
-    siteName: 'Dash',
+    siteName: 'Dash Notes',
     locale: 'en_US',
     type: 'website',
     images: [
@@ -26,7 +24,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Offline Notes App - Dash',
+    title: 'Offline Notes App That Works Without Internet',
     description:
       '100% offline note-taking. No internet, no servers, always accessible.',
     creator: '@efesopoulos',

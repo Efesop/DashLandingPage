@@ -140,9 +140,8 @@ export default function PrivateNotesContent() {
               </div>
 
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
-                Notes That Stay{' '}
-                <span className="text-blue-400">On Your Device</span>
-              </h1>
+              A Private Notes App That Keeps Notes <span className="text-blue-400">on Your Device</span>
+            </h1>
 
               <p className="text-xl text-slate-300 mb-8 leading-relaxed max-w-lg">
                 Unlike cloud apps that store your thoughts on remote servers, Dash keeps everything local and encrypted. Your private notes stay private.

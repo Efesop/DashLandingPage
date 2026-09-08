@@ -22,11 +22,11 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL('https://dashnote.io'),
   title: {
-    default: "Dash - Own Your Notes For Real | Private, Encrypted Notes App",
-    template: "%s | Dash",
+    default: "Dash Notes: Private, Encrypted Notes App for Mac & iPhone",
+    template: "%s | Dash Notes",
   },
-  description: "AES-256 encrypted notes app that keeps your data 100% offline and private. No cloud, no tracking, no accounts needed. AES-256 encryption protects your thoughts from Big Tech surveillance.",
-  keywords: "private notes app, encrypted notes, offline notes, secure note taking, privacy notes, no cloud notes, local storage notes, AES-256 encryption, AES-256, privacy-first app",
+  description: "Dash Notes is a private, encrypted notes app for Mac, iPhone and the web. Offline by default, no account needed, AES-256 encryption, and optional end-to-end encrypted sync.",
+  keywords: "dash notes, private notes app, encrypted notes app, secure notes app, offline notes app, notes app for mac, notes app with password, AES-256 encryption, privacy-first notes",
   authors: [{ name: "Dash", url: "https://dashnote.io" }],
   creator: "Dash",
   publisher: "Dash",
@@ -47,10 +47,10 @@ export const metadata: Metadata = {
   },
   manifest: '/manifest.json',
   openGraph: {
-    title: "Dash - Own Your Notes For Real | Private, Encrypted Notes App",
-    description: "AES-256 encrypted notes app that keeps your data 100% offline and private. No cloud, no tracking, no accounts needed.",
+    title: "Dash Notes: Private, Encrypted Notes App for Mac & iPhone",
+    description: "Private, encrypted notes for Mac, iPhone and the web. Offline by default, no account needed, optional end-to-end encrypted sync.",
     url: "https://dashnote.io",
-    siteName: "Dash",
+    siteName: "Dash Notes",
     images: [
       {
         url: "/images/Dashfeature1.png",
@@ -64,8 +64,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Dash - Own Your Notes For Real",
-    description: "AES-256 encrypted notes app. 100% offline, no cloud, no tracking.",
+    title: "Dash Notes: Private, Encrypted Notes App",
+    description: "Private, encrypted notes for Mac and iPhone. Offline by default, no account, no tracking.",
     creator: "@efesopoulos",
     images: ["/images/Dashfeature1.png"],
   },
@@ -97,19 +97,23 @@ export default function RootLayout({
   const organizationJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'Organization',
-    name: 'Dash',
+    name: 'Dash Notes',
+    alternateName: 'Dash',
     url: 'https://dashnote.io',
     logo: 'https://dashnote.io/images/Dash256.png',
     sameAs: [
       'https://twitter.com/efesopoulos',
       'https://github.com/Efesop/rich-text-editor',
+      'https://apps.apple.com/app/id6766192836',
+      'https://www.producthunt.com/products/dash-12',
     ],
   };
 
   const webSiteJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
-    name: 'Dash',
+    name: 'Dash Notes',
+    alternateName: 'Dash',
     url: 'https://dashnote.io',
   };
 

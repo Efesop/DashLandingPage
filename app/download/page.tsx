@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import DownloadContent from './DownloadContent';
 
 export const metadata: Metadata = {
-  title: 'Download Dash | Private Notes App for Mac',
+  title: 'Download Dash Notes for Mac, iPhone & Web',
   description:
     'Get Dash for Mac as a native app with auto-updates, get the free iPhone app on the App Store, or use the free Progressive Web App in any browser. One-time purchase for Mac, no subscription required.',
   keywords: [
@@ -14,11 +14,11 @@ export const metadata: Metadata = {
     'offline notes app download',
   ],
   openGraph: {
-    title: 'Download Dash | Private Notes App for Mac',
+    title: 'Download Dash Notes for Mac, iPhone & Web | Dash Notes',
     description:
       'Get Dash for Mac as a native app with auto-updates, or use the free Progressive Web App in any browser.',
     url: 'https://dashnote.io/download',
-    siteName: 'Dash',
+    siteName: 'Dash Notes',
     locale: 'en_US',
     type: 'website',
     images: [
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Download Dash - Private Notes App for Mac',
+    title: 'Download Dash Notes for Mac, iPhone & Web',
     description: 'Get Dash for Mac or use the free PWA in any browser.',
     creator: '@efesopoulos',
     images: ['/images/Dashfeature1.png'],

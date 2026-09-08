@@ -180,8 +180,8 @@ export default function OfflineNotesContent() {
       {/* Hero Section */}
       <SEOHero
         badge={{ icon: WifiOff, text: 'Works Offline' }}
-        headline="Notes That Work Without Internet."
-        highlightedWord="Without"
+        headline="An Offline Notes App That Works Without Internet"
+        highlightedWord="Offline Notes App"
         subheadline="No WiFi? No problem. Dash works 100% offline - no servers, no sync, no internet required. Your notes are always accessible."
         primaryCTA={{ text: 'Get Dash for Mac' }}
         secondaryCTA={{ text: 'See how it works', href: '#how-it-works' }}

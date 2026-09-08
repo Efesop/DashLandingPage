@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import PageLinkingGuideContent from './PageLinkingGuideContent';
 
 export const metadata: Metadata = {
-  title: 'Page Linking: Wiki-Style Links Between Your Notes | Guide',
+  title: 'Page Linking: Wiki-Style Links Between Notes',
   description:
     'Learn how to connect your notes with [[wiki links]] in Dash. Build a personal knowledge base with instant navigation between pages.',
   keywords: [
@@ -16,17 +16,17 @@ export const metadata: Metadata = {
     'note linking app',
   ],
   openGraph: {
-    title: 'Page Linking: Wiki-Style Links Between Your Notes',
+    title: 'Page Linking: Wiki-Style Links Between Notes | Dash Notes',
     description: 'Connect your notes with [[wiki links]] and build a personal knowledge base.',
     url: 'https://dashnote.io/guides/page-linking',
-    siteName: 'Dash',
+    siteName: 'Dash Notes',
     locale: 'en_US',
     type: 'article',
     images: [{ url: '/images/Dashfeature1.png', width: 1200, height: 630, alt: 'Page Linking Guide' }],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Page Linking Guide - Dash',
+    title: 'Page Linking: Wiki-Style Links Between Notes',
     description: 'Wiki-style links to connect your notes into a knowledge base.',
     creator: '@efesopoulos',
     images: ['/images/Dashfeature1.png'],

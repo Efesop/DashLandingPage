@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import ForJournalistsContent from './ForJournalistsContent';
 
 export const metadata: Metadata = {
-  title: 'Secure Notes for Journalists | Encrypted, Offline Note Taking - Dash',
+  title: 'Secure Notes App for Journalists',
   description:
     'Protect your sources with Dash. AES-256 encrypted notes that stay on your device by default. No accounts, no tracking, no cloud storage.',
   keywords: [
@@ -16,11 +16,11 @@ export const metadata: Metadata = {
     'offline notes for journalists',
   ],
   openGraph: {
-    title: 'Secure Notes for Journalists | Encrypted, Offline Note Taking - Dash',
+    title: 'Secure Notes App for Journalists | Dash Notes',
     description:
       'Protect your sources with Dash. AES-256 encrypted notes that stay on your device by default.',
     url: 'https://dashnote.io/for-journalists',
-    siteName: 'Dash',
+    siteName: 'Dash Notes',
     locale: 'en_US',
     type: 'website',
     images: [
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Secure Notes for Journalists - Dash',
+    title: 'Secure Notes App for Journalists',
     description: 'Protect your sources. AES-256 encrypted notes that stay on your device.',
     creator: '@efesopoulos',
     images: ['/images/Dashfeature1.png'],
