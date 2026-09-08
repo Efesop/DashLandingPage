@@ -5,7 +5,6 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { ChevronDown } from 'lucide-react';
 import { Button } from './ui/button';
-import BuyMeCoffeeButton from './ui/BuyMeCoffeeButton';
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -113,14 +112,12 @@ export default function Header() {
                 className='h-8 w-8'
               />
               <span className='text-xl font-semibold text-gray-900 dark:text-white'>
-                Dash
+                Dash Notes
               </span>
             </Link>
 
             {/* Navigation */}
             <nav className='hidden md:flex items-center space-x-1'>
-              <BuyMeCoffeeButton />
-
               <Link
                 className='px-4 py-2 text-sm font-medium text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white transition-colors'
                 href='/#features'
@@ -232,16 +229,24 @@ export default function Header() {
             </nav>
 
             {/* CTA Button */}
-            <div className='flex items-center space-x-4'>
+            <div className='flex items-center gap-2.5'>
+              <Link
+                href='https://apps.apple.com/app/id6766192836'
+                target='_blank'
+                rel='noopener noreferrer'
+                className='hidden sm:inline-flex h-9 items-center px-4 rounded-[10px] border border-gray-200 dark:border-gray-700 text-sm font-medium text-gray-900 dark:text-white hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors'
+              >
+                Free on iPhone
+              </Link>
               <Button
                 onClick={() =>
                   document
                     .getElementById('payment-section')
                     ?.scrollIntoView({ behavior: 'smooth' })
                 }
-                className='h-9 px-5 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-colors duration-200'
+                className='h-9 px-4 bg-gray-900 hover:bg-gray-800 dark:bg-white dark:hover:bg-gray-100 text-white dark:text-gray-900 text-sm font-medium rounded-[10px] transition-colors duration-200'
               >
-                Get Dash
+                Get Dash for Mac
               </Button>
             </div>
           </div>

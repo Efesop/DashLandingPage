@@ -48,7 +48,7 @@ interface LightningInvoice {
   expirationInSec: number;
 }
 
-export default function PaymentSection() {
+export default function PaymentSection({ embedded = false }: { embedded?: boolean } = {}) {
   const [isProcessing, setIsProcessing] = useState(false);
   const [isBitcoinProcessing, setIsBitcoinProcessing] = useState(false);
   const [bitcoinError, setBitcoinError] = useState<string | null>(null);
@@ -201,6 +201,239 @@ export default function PaymentSection() {
     'Optional cross-device sync available separately',
   ];
 
+  const checkoutCard = (
+    <div className='bg-white dark:bg-gray-900 rounded-[20px] shadow-xl border border-gray-200 dark:border-gray-700 overflow-hidden h-full'>
+      <form onSubmit={handlePayment} className='p-6 sm:p-8'>
+        {/* Price header */}
+        <div className='text-center mb-8'>
+          <p className='text-sm text-gray-500 dark:text-gray-400 mb-2'>
+            One-time purchase
+          </p>
+          <div className='flex items-baseline justify-center gap-1'>
+            <span className='text-5xl sm:text-6xl font-bold text-gray-900 dark:text-white'>
+              $14
+            </span>
+            <span className='text-2xl font-bold text-gray-400'>
+              .99
+            </span>
+          </div>
+          <p className='text-gray-500 dark:text-gray-400 mt-2'>
+            Lifetime access • No subscription required
+          </p>
+        </div>
+
+        {/* Benefits */}
+        <div className='space-y-3 mb-8'>
+          {benefits.map((benefit, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, x: -10 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 + index * 0.05 }}
+              className='flex items-center gap-3'
+            >
+              <div className='flex-shrink-0 w-5 h-5 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center'>
+                <Check className='w-3 h-3 text-green-600 dark:text-green-400' />
+              </div>
+              <span className='text-sm text-gray-700 dark:text-gray-300'>
+                {benefit}
+              </span>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Buy button - Card payment */}
+        <Button
+          type='submit'
+          disabled={isProcessing || isBitcoinProcessing || !!lightningInvoice}
+          className='w-full h-12 bg-blue-600 hover:bg-blue-700 text-white text-lg font-semibold rounded-lg shadow-lg shadow-blue-500/20 transition-colors duration-200'
+        >
+          {isProcessing ? (
+            <>
+              <Loader2 className='w-5 h-5 animate-spin mr-2' />
+              Processing...
+            </>
+          ) : (
+            <>
+              <CreditCard className='mr-2 h-5 w-5' />
+              Buy with Card
+            </>
+          )}
+        </Button>
+
+        {/* Bitcoin payment section - controlled by feature flag */}
+        {ENABLE_BITCOIN_PAYMENTS && (
+          <>
+            {/* Divider */}
+            <div className='flex items-center gap-4 my-4'>
+              <div className='flex-1 h-px bg-gray-200 dark:bg-gray-700' />
+              <span className='text-sm text-gray-500 dark:text-gray-400'>or</span>
+              <div className='flex-1 h-px bg-gray-200 dark:bg-gray-700' />
+            </div>
+
+            {/* Bitcoin payment button */}
+            <Button
+              type='button'
+              onClick={handleBitcoinPayment}
+              disabled={isProcessing || isBitcoinProcessing || !!lightningInvoice}
+              className='w-full h-12 bg-orange-500 hover:bg-orange-600 text-white text-lg font-semibold rounded-lg shadow-lg shadow-orange-500/20 transition-colors duration-200'
+            >
+              {isBitcoinProcessing ? (
+                <>
+                  <Loader2 className='w-5 h-5 animate-spin mr-2' />
+                  Creating Invoice...
+                </>
+              ) : (
+                <>
+                  <BitcoinIcon className='mr-2 h-5 w-5' />
+                  Pay with Bitcoin
+                </>
+              )}
+            </Button>
+
+            {/* Lightning Invoice Modal */}
+            <AnimatePresence>
+              {lightningInvoice && (
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 10 }}
+                  className='mt-4 p-4 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg'
+                >
+                  {/* Header with timer */}
+                  <div className='flex items-center justify-between mb-3'>
+                    <div className='flex items-center gap-2'>
+                      <Zap className='w-4 h-4 text-yellow-500' />
+                      <span className='text-sm font-medium text-gray-700 dark:text-gray-300'>
+                        Lightning Invoice
+                      </span>
+                    </div>
+                    <div className='flex items-center gap-2'>
+                      <span className='text-xs text-gray-500'>Expires in</span>
+                      <span className={`text-sm font-mono font-medium ${timeLeft < 60 ? 'text-red-500' : 'text-gray-700 dark:text-gray-300'}`}>
+                        {formatTime(timeLeft)}
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Amount */}
+                  <div className='text-center mb-3'>
+                    <span className='text-2xl font-bold text-gray-900 dark:text-white'>
+                      ${lightningInvoice.amountUsd.toFixed(2)} USD
+                    </span>
+                    <p className='text-sm text-gray-500 dark:text-gray-400'>
+                      ≈ {lightningInvoice.amountSats.toLocaleString()} sats
+                    </p>
+                  </div>
+
+                  {/* Invoice string (truncated) */}
+                  <div className='mb-3'>
+                    <div className='bg-white dark:bg-gray-900 p-2 rounded border border-gray-200 dark:border-gray-600'>
+                      <code className='text-xs text-gray-600 dark:text-gray-400 break-all'>
+                        {lightningInvoice.lnInvoice.slice(0, 50)}...
+                      </code>
+                    </div>
+                  </div>
+
+                  {/* Action buttons */}
+                  <div className='flex gap-2 mb-3'>
+                    <Button
+                      type='button'
+                      onClick={openInWallet}
+                      className='flex-1 h-10 bg-yellow-500 hover:bg-yellow-600 text-white font-medium'
+                    >
+                      <ExternalLink className='w-4 h-4 mr-2' />
+                      Open Wallet
+                    </Button>
+                    <Button
+                      type='button'
+                      onClick={copyToClipboard}
+                      variant='outline'
+                      className='h-10 px-4'
+                    >
+                      {copied ? (
+                        <Check className='w-4 h-4 text-green-500' />
+                      ) : (
+                        <Copy className='w-4 h-4' />
+                      )}
+                    </Button>
+                  </div>
+
+                  {/* Polling indicator */}
+                  <div className='flex items-center justify-center gap-2 text-xs text-gray-500'>
+                    <Loader2 className='w-3 h-3 animate-spin' />
+                    <span>Waiting for payment...</span>
+                  </div>
+
+                  {/* Cancel button */}
+                  <button
+                    type='button'
+                    onClick={() => setLightningInvoice(null)}
+                    className='mt-3 w-full text-center text-sm text-gray-500 hover:text-gray-700 dark:hover:text-gray-300'
+                  >
+                    Cancel and try again
+                  </button>
+                </motion.div>
+              )}
+            </AnimatePresence>
+
+            {/* Bitcoin error message */}
+            <AnimatePresence>
+              {bitcoinError && !lightningInvoice && (
+                <motion.div
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  className='mt-3 p-3 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg'
+                >
+                  <div className='flex items-start gap-2'>
+                    <X className='w-4 h-4 text-red-500 mt-0.5 flex-shrink-0' />
+                    <p className='text-sm text-red-600 dark:text-red-400'>
+                      {bitcoinError}
+                    </p>
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
+
+            {/* Bitcoin info badge */}
+            {!lightningInvoice && (
+              <div className='mt-3 p-3 bg-orange-50 dark:bg-orange-900/20 border border-orange-200 dark:border-orange-800 rounded-lg'>
+                <div className='flex items-center gap-2'>
+                  <Zap className='w-4 h-4 text-orange-500' />
+                  <p className='text-xs text-orange-700 dark:text-orange-300'>
+                    Lightning Network - instant, private, near-zero fees
+                  </p>
+                </div>
+              </div>
+            )}
+          </>
+        )}
+
+        {/* Trust badges */}
+        <div className='flex items-center justify-center gap-6 mt-6 pt-6 border-t border-gray-100 dark:border-gray-800'>
+          <div className='flex items-center gap-1.5 text-xs text-gray-500'>
+            <Shield className='w-4 h-4 text-green-500' />
+            <span>Secure checkout</span>
+          </div>
+          <div className='flex items-center gap-1.5 text-xs text-gray-500'>
+            <Lock className='w-4 h-4 text-blue-500' />
+            <span>SSL encrypted</span>
+          </div>
+        </div>
+      </form>
+    </div>
+  );
+
+  if (embedded) {
+    return (
+      <div id='payment-section' className='scroll-mt-24'>
+        {checkoutCard}
+      </div>
+    );
+  }
+
   return (
     <section
       id='payment-section'
@@ -301,228 +534,7 @@ export default function PaymentSection() {
             </motion.div>
 
             {/* Pricing card content */}
-              <div className='bg-white dark:bg-gray-900 rounded-2xl shadow-xl border border-gray-200 dark:border-gray-700 overflow-hidden'>
-                <form onSubmit={handlePayment} className='p-6 sm:p-8'>
-                  {/* Price header */}
-                  <div className='text-center mb-8'>
-                    <p className='text-sm text-gray-500 dark:text-gray-400 mb-2'>
-                      One-time purchase
-                    </p>
-                    <div className='flex items-baseline justify-center gap-1'>
-                      <span className='text-5xl sm:text-6xl font-bold text-gray-900 dark:text-white'>
-                        $14
-                      </span>
-                      <span className='text-2xl font-bold text-gray-400'>
-                        .99
-                      </span>
-                    </div>
-                    <p className='text-gray-500 dark:text-gray-400 mt-2'>
-                      Lifetime access • No subscription required
-                    </p>
-                  </div>
-
-                  {/* Benefits */}
-                  <div className='space-y-3 mb-8'>
-                    {benefits.map((benefit, index) => (
-                      <motion.div
-                        key={index}
-                        initial={{ opacity: 0, x: -10 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: 0.1 + index * 0.05 }}
-                        className='flex items-center gap-3'
-                      >
-                        <div className='flex-shrink-0 w-5 h-5 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center'>
-                          <Check className='w-3 h-3 text-green-600 dark:text-green-400' />
-                        </div>
-                        <span className='text-sm text-gray-700 dark:text-gray-300'>
-                          {benefit}
-                        </span>
-                      </motion.div>
-                    ))}
-                  </div>
-
-                  {/* Buy button - Card payment */}
-                  <Button
-                    type='submit'
-                    disabled={isProcessing || isBitcoinProcessing || !!lightningInvoice}
-                    className='w-full h-12 bg-blue-600 hover:bg-blue-700 text-white text-lg font-semibold rounded-lg shadow-lg shadow-blue-500/20 transition-colors duration-200'
-                  >
-                    {isProcessing ? (
-                      <>
-                        <Loader2 className='w-5 h-5 animate-spin mr-2' />
-                        Processing...
-                      </>
-                    ) : (
-                      <>
-                        <CreditCard className='mr-2 h-5 w-5' />
-                        Buy with Card
-                      </>
-                    )}
-                  </Button>
-
-                  {/* Bitcoin payment section - controlled by feature flag */}
-                  {ENABLE_BITCOIN_PAYMENTS && (
-                    <>
-                      {/* Divider */}
-                      <div className='flex items-center gap-4 my-4'>
-                        <div className='flex-1 h-px bg-gray-200 dark:bg-gray-700' />
-                        <span className='text-sm text-gray-500 dark:text-gray-400'>or</span>
-                        <div className='flex-1 h-px bg-gray-200 dark:bg-gray-700' />
-                      </div>
-
-                      {/* Bitcoin payment button */}
-                      <Button
-                        type='button'
-                        onClick={handleBitcoinPayment}
-                        disabled={isProcessing || isBitcoinProcessing || !!lightningInvoice}
-                        className='w-full h-12 bg-orange-500 hover:bg-orange-600 text-white text-lg font-semibold rounded-lg shadow-lg shadow-orange-500/20 transition-colors duration-200'
-                      >
-                        {isBitcoinProcessing ? (
-                          <>
-                            <Loader2 className='w-5 h-5 animate-spin mr-2' />
-                            Creating Invoice...
-                          </>
-                        ) : (
-                          <>
-                            <BitcoinIcon className='mr-2 h-5 w-5' />
-                            Pay with Bitcoin
-                          </>
-                        )}
-                      </Button>
-
-                      {/* Lightning Invoice Modal */}
-                      <AnimatePresence>
-                        {lightningInvoice && (
-                          <motion.div
-                            initial={{ opacity: 0, y: 10 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            exit={{ opacity: 0, y: 10 }}
-                            className='mt-4 p-4 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg'
-                          >
-                            {/* Header with timer */}
-                            <div className='flex items-center justify-between mb-3'>
-                              <div className='flex items-center gap-2'>
-                                <Zap className='w-4 h-4 text-yellow-500' />
-                                <span className='text-sm font-medium text-gray-700 dark:text-gray-300'>
-                                  Lightning Invoice
-                                </span>
-                              </div>
-                              <div className='flex items-center gap-2'>
-                                <span className='text-xs text-gray-500'>Expires in</span>
-                                <span className={`text-sm font-mono font-medium ${timeLeft < 60 ? 'text-red-500' : 'text-gray-700 dark:text-gray-300'}`}>
-                                  {formatTime(timeLeft)}
-                                </span>
-                              </div>
-                            </div>
-
-                            {/* Amount */}
-                            <div className='text-center mb-3'>
-                              <span className='text-2xl font-bold text-gray-900 dark:text-white'>
-                                ${lightningInvoice.amountUsd.toFixed(2)} USD
-                              </span>
-                              <p className='text-sm text-gray-500 dark:text-gray-400'>
-                                ≈ {lightningInvoice.amountSats.toLocaleString()} sats
-                              </p>
-                            </div>
-
-                            {/* Invoice string (truncated) */}
-                            <div className='mb-3'>
-                              <div className='bg-white dark:bg-gray-900 p-2 rounded border border-gray-200 dark:border-gray-600'>
-                                <code className='text-xs text-gray-600 dark:text-gray-400 break-all'>
-                                  {lightningInvoice.lnInvoice.slice(0, 50)}...
-                                </code>
-                              </div>
-                            </div>
-
-                            {/* Action buttons */}
-                            <div className='flex gap-2 mb-3'>
-                              <Button
-                                type='button'
-                                onClick={openInWallet}
-                                className='flex-1 h-10 bg-yellow-500 hover:bg-yellow-600 text-white font-medium'
-                              >
-                                <ExternalLink className='w-4 h-4 mr-2' />
-                                Open Wallet
-                              </Button>
-                              <Button
-                                type='button'
-                                onClick={copyToClipboard}
-                                variant='outline'
-                                className='h-10 px-4'
-                              >
-                                {copied ? (
-                                  <Check className='w-4 h-4 text-green-500' />
-                                ) : (
-                                  <Copy className='w-4 h-4' />
-                                )}
-                              </Button>
-                            </div>
-
-                            {/* Polling indicator */}
-                            <div className='flex items-center justify-center gap-2 text-xs text-gray-500'>
-                              <Loader2 className='w-3 h-3 animate-spin' />
-                              <span>Waiting for payment...</span>
-                            </div>
-
-                            {/* Cancel button */}
-                            <button
-                              type='button'
-                              onClick={() => setLightningInvoice(null)}
-                              className='mt-3 w-full text-center text-sm text-gray-500 hover:text-gray-700 dark:hover:text-gray-300'
-                            >
-                              Cancel and try again
-                            </button>
-                          </motion.div>
-                        )}
-                      </AnimatePresence>
-
-                      {/* Bitcoin error message */}
-                      <AnimatePresence>
-                        {bitcoinError && !lightningInvoice && (
-                          <motion.div
-                            initial={{ opacity: 0, y: -10 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            exit={{ opacity: 0, y: -10 }}
-                            className='mt-3 p-3 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg'
-                          >
-                            <div className='flex items-start gap-2'>
-                              <X className='w-4 h-4 text-red-500 mt-0.5 flex-shrink-0' />
-                              <p className='text-sm text-red-600 dark:text-red-400'>
-                                {bitcoinError}
-                              </p>
-                            </div>
-                          </motion.div>
-                        )}
-                      </AnimatePresence>
-
-                      {/* Bitcoin info badge */}
-                      {!lightningInvoice && (
-                        <div className='mt-3 p-3 bg-orange-50 dark:bg-orange-900/20 border border-orange-200 dark:border-orange-800 rounded-lg'>
-                          <div className='flex items-center gap-2'>
-                            <Zap className='w-4 h-4 text-orange-500' />
-                            <p className='text-xs text-orange-700 dark:text-orange-300'>
-                              Lightning Network - instant, private, near-zero fees
-                            </p>
-                          </div>
-                        </div>
-                      )}
-                    </>
-                  )}
-
-                  {/* Trust badges */}
-                  <div className='flex items-center justify-center gap-6 mt-6 pt-6 border-t border-gray-100 dark:border-gray-800'>
-                    <div className='flex items-center gap-1.5 text-xs text-gray-500'>
-                      <Shield className='w-4 h-4 text-green-500' />
-                      <span>Secure checkout</span>
-                    </div>
-                    <div className='flex items-center gap-1.5 text-xs text-gray-500'>
-                      <Lock className='w-4 h-4 text-blue-500' />
-                      <span>SSL encrypted</span>
-                    </div>
-                  </div>
-                </form>
-              </div>
+              {checkoutCard}
             </motion.div>
           </div>
         </div>

@@ -1,15 +1,11 @@
 import Header from './components/Header';
 import HeroSection from './components/HeroSection';
-import FeatureShowcase from './components/FeatureShowcase';
-import CoreFeatures from './components/CoreFeatures';
-import SecuritySection from './components/SecuritySection';
-import BiometricLockSection from './components/BiometricLockSection';
-import AdvancedSecuritySection from './components/AdvancedSecuritySection';
-import LocalAISection from './components/LocalAISection';
-import BenefitsSection from './components/BenefitsSection';
+import BentoFeatures from './components/BentoFeatures';
 import ComparisonTable from './components/ComparisonTable';
+import SecurityLedger from './components/SecurityLedger';
+import UseCaseRow from './components/UseCaseRow';
+import PricingSection from './components/PricingSection';
 import FAQSection from './components/FAQSection';
-import PaymentSection from './components/PaymentSection';
 import CTASection from './components/CTASection';
 import Footer from './components/Footer';
 
@@ -121,15 +117,11 @@ export default function LandingPage() {
 
       <main className='flex-1'>
         <HeroSection />
-        <FeatureShowcase />
-        <CoreFeatures />
-        <LocalAISection />
-        <SecuritySection />
-        <BiometricLockSection />
-        <AdvancedSecuritySection />
-        <BenefitsSection />
+        <BentoFeatures />
         <ComparisonTable />
-        <PaymentSection />
+        <SecurityLedger />
+        <UseCaseRow />
+        <PricingSection />
         <FAQSection />
         <CTASection />
       </main>

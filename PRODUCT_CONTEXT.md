@@ -215,19 +215,17 @@ Confident, straightforward, empowering, approachable. No fluff, no fear-mongerin
 
 ## Landing Page Structure (dashnote.io, September 2026)
 
-### Homepage (`app/page.tsx`)
-1. Header — nav (Features, Security, Pricing, FAQ), Use Cases / Compare / Guides dropdowns, "Get Dash" CTA
-2. Hero — "Own Your Notes / For Real", video demo (pre-1.6 layout), trust pills
-3. Feature Showcase — encryption, offline, zero tracking, self-destruct, no account, one-time purchase
-4. Core Features — page linking, rich text, quick switcher, folders & tags, focus mode, import/export
-5. Local AI
-6. Security — specs table
-7. Biometric Lock
-8. Benefits
-9. Comparison Table — vs Notion / Evernote / Obsidian
-10. Payment — $14.99 Mac purchase (card or Bitcoin), link to /subscribe for Dash Sync
-11. FAQ — 7 questions; **answers must match the FAQPage JSON-LD in `page.tsx`**
-12. CTA, Footer
+### Homepage (`app/page.tsx`) — rebuilt Sep 8 2026 (design canvas "Dash Notes Homepage")
+1. Header — "Dash Notes", nav (Features, Security, Use Cases / Compare / Guides dropdowns, Pricing, FAQ), "Free on iPhone" + black "Get Dash for Mac" (rounded rectangles, no pills)
+2. Hero — centered: eyebrow, H1 "Your notes are none of our business.", one-sentence description, two buttons, proof row (avatars are placeholders until real people are supplied; "100+ downloads · 122 Product Hunt upvotes · MIT"), then the full-width Mac window playing the demo video on a dotted panel with two live chips (encrypted, self-destruct countdown) and a trust strip. **Video still shows the pre-1.6 layout — re-record.**
+3. Bento (`BentoFeatures.tsx`) — seven animated cards: lock a note, four themes, [[links]], self-destructing notes, duress password, sync ledger (dark, what the relay sees), local AI. Animations pause off-screen and under prefers-reduced-motion.
+4. Comparison table — Dash / Notion / Evernote / Obsidian, 12 rows, Dash column tinted
+5. Security ledger — "The details are the promise." + mono spec rows + GitHub link
+6. Use-case row — journalists, writers, students, researchers, bitcoiners (links to /for-*)
+7. Pricing (`PricingSection.tsx`) — three cards: Mac (the real Stripe/Bitcoin checkout form, `PaymentSection embedded`), iPhone free (App Store), Dash Sync (→ /subscribe)
+8. FAQ — 7 questions; **answers must match the FAQPage JSON-LD in `page.tsx`**
+9. Closing band — blue, "Your notes. Your device. Nobody else's server." + two buttons
+10. Footer
 
 ### Other routes
 - `/download` — Mac card, web card, platform availability table (macOS, iPhone/iPad App Store link, Web PWA, Android via PWA, Windows/Linux not yet)

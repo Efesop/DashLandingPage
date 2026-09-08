@@ -1,125 +1,30 @@
 # Component Structure
 
-The page has been refactored from a single large `page.tsx` file (~1300 lines) into modular, maintainable components.
+**Last Updated**: September 8, 2026 (homepage rebuilt from the "Dash Notes Homepage" design canvas)
 
-**Last Updated**: September 8, 2026
+## Homepage (`app/page.tsx`)
+Server component: SoftwareApplication + FAQPage JSON-LD, then the sections below in order. The FAQ answers in `FAQSection.tsx` must stay identical to the FAQPage JSON-LD here.
 
-## Main Page (`app/page.tsx`)
-- **Responsibility**: State management, data fetching, JSON-LD structured data, and component composition
-- **Props**: Manages shared state for email, download status, and form handling
-- **JSON-LD**: SoftwareApplication schema + FAQPage schema (7 questions)
+| # | Component | Purpose |
+|---|-----------|---------|
+| 1 | `Header.tsx` | Fixed nav (hides on scroll down). Brand "Dash Notes"; Use Cases / Compare / Guides dropdowns; "Free on iPhone" + "Get Dash for Mac" buttons (rounded rectangles, 10px). |
+| 2 | `HeroSection.tsx` | Centered headline block (eyebrow, H1, description, two buttons, proof row) then the full-width Mac window with the video.js demo (`Dashdemo2-1280.mp4` + poster) on a dotted panel with two live chips and a trust strip. Exports `APP_STORE_URL`. |
+| 3 | `BentoFeatures.tsx` | Seven animated feature cards on a 3-column bento grid. A shared `useTicker` drives each card; animation runs only while the section is in view and not under `prefers-reduced-motion`. |
+| 4 | `ComparisonTable.tsx` | Dash vs Notion / Evernote / Obsidian, 12 rows, real `<table>` with the Dash column tinted; scrolls horizontally on small screens. |
+| 5 | `SecurityLedger.tsx` | "The details are the promise." copy + monospace spec rows + GitHub link. |
+| 6 | `UseCaseRow.tsx` | Five link cards to the /for-* pages. |
+| 7 | `PricingSection.tsx` | Three cards: Mac = `<PaymentSection embedded />` (the real Stripe + Lightning checkout, logic untouched, carries `id="payment-section"`), iPhone free, Dash Sync → /subscribe. |
+| 8 | `FAQSection.tsx` | Seven-item accordion. |
+| 9 | `CTASection.tsx` | Blue rounded closing band with two buttons. |
+| 10 | `Footer.tsx` | Brand, privacy badges, use-case / compare / guide links. |
 
-## Components (`app/components/`)
+## Shared
+- `PaymentSection.tsx` — checkout form. Without `embedded` it renders the full section used on every SEO page (header, side mockup, form). With `embedded` it renders only the card.
+- `components/seo/*` — `SEOHero`, `FeatureGrid`, `InlineCTA`, `CTABanner`, `RelatedLinks`, and `ArticleLayout` (the shared layout for the alternatives / roundup / guide pages added Sep 2026).
+- `lib/seo.ts` — `pageMetadata`, `articleJsonLd`, `faqJsonLd`, `itemListJsonLd`.
 
-### 1. **Header.tsx**
-- **Purpose**: Fixed top navigation with scroll hide/show behavior
-- **Features**: Logo, nav links (Features, Security, Pricing, FAQ), Use Cases dropdown, Compare dropdown, Buy Me Coffee button, "Get Dash" CTA
-- **Props**: Email state and form handlers
+## Removed Sep 8 2026
+`FeatureShowcase`, `CoreFeatures`, `LocalAISection`, `SecuritySection`, `BiometricLockSection`, `AdvancedSecuritySection`, `BenefitsSection` (homepage-only; superseded by the bento and ledger). `AIOrb` remains (used by the Local AI guide).
 
-### 2. **HeroSection.tsx**
-- **Purpose**: Centered hero with video demo and trust badges
-- **Features**: Pill badge, large headline ("Own Your Notes / For Real"), subheadline, CTA button, "See how it works" link, trust pill badges (AES-256, Touch ID, Offline, Zero Tracking), video with browser-window chrome mockup, floating badges
-- **Props**: Email state and form handlers (accepted but unused for interface compatibility)
-
-### 3. **FeatureShowcase.tsx**
-- **Purpose**: Dark-themed feature highlights (encryption, offline, privacy)
-- **Features**: Encryption demo with browser-window mockup, offline feature card, zero tracking card with status indicators
-- **Props**: None (static content)
-- **Section ID**: `features` (linked from hero "See how it works")
-
-### 4. **CoreFeatures.tsx**
-- **Purpose**: Core features with typing animation demo
-- **Features**: 5 features (rich text editing, quick switcher, smart organization, focus mode, import & export), capability badges (code blocks, tables, images, 4 themes), typing animation
-- **Props**: None (manages its own typing animation state)
-
-### 5. **SecuritySection.tsx**
-- **Purpose**: Security and technical details
-- **Features**: 5 security features (AES-256, key control, zero-knowledge, local storage, auto-lock), technical specs table (encryption, key derivation, storage, transmission, app lock)
-- **Props**: None (static content)
-
-### 6. **BiometricLockSection.tsx**
-- **Purpose**: Touch ID/biometric security showcase with animated mockup
-- **Features**: Animated lock/unlock cycle (unlocked → locking → locked → unlocking), Touch ID card, auto-lock card, self-destructing notes card, browser-window mockup with sidebar
-- **Props**: None (manages internal animation state with useState/useEffect)
-- **Background**: Dark blue gradient (`from-blue-950 via-slate-900 to-slate-900`)
-
-### 7. **BenefitsSection.tsx**
-- **Purpose**: "No Cloud, No Worries" benefits section
-- **Features**: Three benefit cards (works anywhere, lightning fast, stress-free privacy), offline status demo bar
-- **Props**: None (static content)
-
-### 8. **ComparisonTable.tsx**
-- **Purpose**: Feature comparison with competitors (Notion, Evernote, Obsidian)
-- **Features**: 11-row animated comparison table including biometric lock and self-destructing notes, Dash column highlighted
-- **Props**: None (static data)
-
-### 9. **PaymentSection.tsx**
-- **Purpose**: Pricing and purchase section
-- **Features**: $14.99 pricing card, Stripe checkout, Bitcoin Lightning payment (feature-flagged off), benefits list, trust badges
-- **Props**: None (manages own payment state)
-- **Section ID**: `payment-section`
-
-### 10. **FAQSection.tsx**
-- **Purpose**: Frequently asked questions
-- **Features**: 7 expandable FAQ items with animations (pricing incl. Dash Sync, sync, Touch ID / Face ID). The answers must stay identical to the FAQPage JSON-LD in `page.tsx`
-- **Props**: None (manages its own accordion state)
-- **Section ID**: `faq`
-
-### 11. **CTASection.tsx**
-- **Purpose**: Final call-to-action section
-- **Features**: "Take back control" headline, "Get Dash for Mac" CTA button, trust indicators (no account, Mac, one-time purchase)
-- **Props**: None (self-contained)
-
-### 12. **Footer.tsx**
-- **Purpose**: Site footer with links and branding
-- **Features**: Logo + description, privacy badges, use case links, comparison links, social links (Twitter, Buy Me Coffee)
-- **Props**: None (static content)
-
-## Section Order (Homepage)
-
-1. Header (fixed)
-2. HeroSection (light, centered)
-3. FeatureShowcase (dark slate)
-4. CoreFeatures (light)
-5. SecuritySection (light gradient)
-6. BiometricLockSection (dark blue)
-7. BenefitsSection (dark gray)
-8. ComparisonTable (light gray)
-9. PaymentSection (light gradient)
-10. FAQSection (white)
-11. CTASection (blue gradient)
-12. Footer (dark gray/black)
-
-## State Management
-
-- **Shared State**: Email, form submission status, download state
-- **Local State**: FAQ accordion, typing animation, biometric lock animation, payment processing
-- **Props Flow**: Main page → Header, HeroSection (components that need form state)
-
-## File Organization
-
-```
-app/
-├── page.tsx                     # Main landing page + JSON-LD schemas
-├── components/
-│   ├── Header.tsx               # Navigation with dropdowns
-│   ├── HeroSection.tsx          # Centered hero with video
-│   ├── FeatureShowcase.tsx      # Dark features section
-│   ├── CoreFeatures.tsx         # Features with typing demo
-│   ├── SecuritySection.tsx      # Security details + specs
-│   ├── BiometricLockSection.tsx # Touch ID animated showcase
-│   ├── BenefitsSection.tsx      # Benefits grid
-│   ├── ComparisonTable.tsx      # Competitor comparison
-│   ├── PaymentSection.tsx       # Pricing + Stripe checkout
-│   ├── FAQSection.tsx           # FAQ accordion
-│   ├── CTASection.tsx           # Final CTA
-│   └── Footer.tsx               # Site footer
-└── components/ui/               # Shared UI components
-    ├── button.tsx
-    ├── input.tsx
-    ├── BuyMeCoffeeButton.tsx
-    ├── GlassCard.tsx            # Legacy (being phased out)
-    ├── FloatingOrbs.tsx         # Legacy (being phased out)
-    ├── DeviceMockup.tsx         # Legacy (being phased out)
-    └── GradientText.tsx         # Legacy (being phased out)
-```
+## Design source
+Design canvas: https://claude.ai/code/artifact/b592286f-f2e1-45ba-ac14-5c00055b48c8 (page "Homepage" = desktop + phone; page "Explorations" = the four rejected directions). Style: white ground, ink #0d0d0d, muted #6b7280, cards #f5f5f7 at 20px radius, accent #2563eb, Geist; buttons are 10px rounded rectangles, never pills.

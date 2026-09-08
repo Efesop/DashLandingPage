@@ -61,11 +61,11 @@ export default function Footer() {
                 height={40}
                 className='h-10 w-10'
               />
-              <span className='text-2xl font-semibold text-white'>Dash</span>
+              <span className='text-2xl font-semibold text-white'>Dash Notes</span>
             </Link>
             <p className='text-gray-400 mb-6 max-w-md leading-relaxed'>
-              Own your notes for real. The only notes app that puts privacy
-              first and keeps your thoughts completely secure.
+              Private, encrypted notes for Mac and iPhone. Everything stays on
+              your device unless you choose to sync it.
             </p>
 
             {/* Privacy badges */}

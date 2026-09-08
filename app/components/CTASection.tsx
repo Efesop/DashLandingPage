@@ -1,70 +1,47 @@
 'use client';
 
 import React from 'react';
-import { Download } from 'lucide-react';
+import Link from 'next/link';
 import { motion } from 'framer-motion';
+import { APP_STORE_URL } from './HeroSection';
 
 export default function CTASection() {
   return (
-    <section className='py-24 bg-gradient-to-b from-blue-600 via-blue-700 to-gray-900 relative overflow-hidden'>
-      {/* Subtle background pattern */}
-      <div className='absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(255,255,255,0.1)_0%,transparent_50%)]' />
-
-      <div className='container mx-auto px-6 lg:px-8 relative z-10'>
-        <div className='max-w-4xl mx-auto'>
-          {/* Main content */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className='text-center'
-          >
-            <h2 className='text-4xl md:text-5xl font-bold text-white mb-6'>
-              Take back control of
-              <br />
-              <span className='text-blue-200'>your notes</span>
+    <section className='py-16 sm:py-20 bg-white dark:bg-gray-950'>
+      <div className='container mx-auto px-6 lg:px-8'>
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className='rounded-[24px] bg-blue-600 text-white p-8 sm:p-12 lg:p-14 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8'
+        >
+          <div className='flex flex-col gap-2'>
+            <h2 className='text-3xl sm:text-4xl lg:text-[40px] font-bold tracking-[-0.035em] leading-[1.05] text-balance'>
+              Your notes. Your device. Nobody else&apos;s server.
             </h2>
-
-            <p className='text-xl text-blue-100 mb-10 max-w-2xl mx-auto'>
-              Join thousands who&apos;ve chosen true privacy over corporate
-              surveillance. Download Dash and own your thoughts for real.
-            </p>
-
-            {/* CTA Button */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.3 }}
-              className='mb-8'
+            <p className='text-[17px] text-blue-100'>$14.99 once on Mac. Free on iPhone.</p>
+          </div>
+          <div className='flex flex-col sm:flex-row gap-3 flex-shrink-0'>
+            <a
+              href='#payment-section'
+              onClick={(e) => {
+                e.preventDefault();
+                document.getElementById('payment-section')?.scrollIntoView({ behavior: 'smooth' });
+              }}
+              className='px-6 py-4 rounded-[10px] bg-white text-gray-900 font-semibold text-base text-center hover:bg-blue-50 transition-colors'
             >
-              <a
-                href='#payment-section'
-                onClick={(e) => { e.preventDefault(); document.getElementById('payment-section')?.scrollIntoView({ behavior: 'smooth' }); }}
-                className='py-3.5 px-10 bg-white text-blue-600 hover:bg-blue-50 active:bg-blue-100 text-lg font-semibold rounded-lg shadow-xl inline-flex items-center gap-2'
-              >
-                <Download className='h-5 w-5' />
-                Get Dash for Mac
-              </a>
-            </motion.div>
-
-            {/* Trust indicators */}
-            <div className='flex flex-wrap items-center justify-center gap-6 text-blue-200'>
-              <div className='flex items-center gap-2'>
-                <div className='w-2 h-2 rounded-full bg-green-400' />
-                <span className='text-sm'>No account required</span>
-              </div>
-              <div className='flex items-center gap-2'>
-                <div className='w-2 h-2 rounded-full bg-green-400' />
-                <span className='text-sm'>Works on Mac</span>
-              </div>
-              <div className='flex items-center gap-2'>
-                <div className='w-2 h-2 rounded-full bg-green-400' />
-                <span className='text-sm'>One-time purchase</span>
-              </div>
-            </div>
-          </motion.div>
-        </div>
+              Get Dash for Mac
+            </a>
+            <Link
+              href={APP_STORE_URL}
+              target='_blank'
+              rel='noopener noreferrer'
+              className='px-6 py-4 rounded-[10px] border border-white/50 text-white font-semibold text-base text-center hover:bg-white/10 transition-colors'
+            >
+              App Store
+            </Link>
+          </div>
+        </motion.div>
       </div>
     </section>
   );
