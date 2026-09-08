@@ -8,6 +8,7 @@ import PricingSection from './components/PricingSection';
 import FAQSection from './components/FAQSection';
 import CTASection from './components/CTASection';
 import Footer from './components/Footer';
+import BitsField from './components/BitsField';
 
 export default function LandingPage() {
   return (
@@ -126,6 +127,9 @@ export default function LandingPage() {
         <CTASection />
       </main>
 
+      <div aria-hidden='true' className='relative h-[18px] mt-4'>
+        <BitsField className='absolute inset-0 w-full h-full' base={0.14} peak={0.3} period={13} cell={10.2} line={18} font={11} />
+      </div>
       <Footer />
     </div>
   );

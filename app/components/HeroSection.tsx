@@ -4,6 +4,7 @@ import React, { useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { Lock, Clock, WifiOff, UserX, Smartphone, User, Code } from 'lucide-react';
+import BitsField from './BitsField';
 import videojs from 'video.js';
 import type Player from 'video.js/dist/types/player';
 import 'video.js/dist/video-js.css';
@@ -17,11 +18,6 @@ const scrollToPayment = (e: React.MouseEvent) => {
 
 const AVATARS = ['bg-gray-200 text-gray-500', 'bg-gray-300 text-gray-600', 'bg-gray-400 text-white', 'bg-gray-500 text-white'];
 
-// One diagonal silver streak on a white ground: a soft halo, the silver band itself, and a thin bright sheen line.
-const STREAK_HALO = 'linear-gradient(90deg, rgba(229,231,235,0) 0%, rgba(229,231,235,0.9) 50%, rgba(229,231,235,0) 100%)';
-const STREAK_BAND =
-  'linear-gradient(90deg, rgba(203,208,216,0) 0%, rgba(203,208,216,0.95) 35%, rgba(226,229,234,1) 50%, rgba(203,208,216,0.95) 65%, rgba(203,208,216,0) 100%)';
-const STREAK_SHEEN = 'linear-gradient(90deg, rgba(255,255,255,0) 10%, rgba(255,255,255,1) 50%, rgba(255,255,255,0) 90%)';
 
 export default function HeroSection() {
   const videoHostRef = useRef<HTMLDivElement>(null);
@@ -56,24 +52,10 @@ export default function HeroSection() {
 
   return (
     <>
-      {/* Steel hero: white with a diagonal silver light streak */}
+      {/* Cipher hero: white with a faint field of binary that a slow "decrypt" sweep crosses */}
       <section className='relative overflow-hidden bg-white'>
-        <div
-          aria-hidden='true'
-          className='absolute -left-[200px] top-[40px] w-[1900px] h-[320px] -rotate-[14deg] blur-[50px] opacity-50'
-          style={{ backgroundImage: STREAK_HALO }}
-        />
-        <div
-          aria-hidden='true'
-          className='absolute -left-[100px] top-[150px] w-[1800px] h-[110px] -rotate-[14deg] blur-[12px] opacity-90'
-          style={{ backgroundImage: STREAK_BAND }}
-        />
-        <div
-          aria-hidden='true'
-          className='absolute -left-[100px] top-[196px] w-[1800px] h-[6px] -rotate-[14deg] blur-[2px] opacity-80'
-          style={{ backgroundImage: STREAK_SHEEN }}
-        />
-        <div aria-hidden='true' className='absolute inset-0 bg-gradient-to-b from-transparent via-[#fbfbfc]/60 to-[#fbfbfc]' />
+        <BitsField className='absolute inset-0 w-full h-full' base={0.09} peak={0.32} fade={0.58} clear period={7} />
+        <div aria-hidden='true' className='absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#fbfbfc]' />
 
         <div className='container mx-auto px-6 lg:px-8 relative pt-24 sm:pt-28 pb-[150px] sm:pb-[190px]'>
           <div className='max-w-4xl mx-auto flex flex-col items-center text-center gap-5 sm:gap-6'>

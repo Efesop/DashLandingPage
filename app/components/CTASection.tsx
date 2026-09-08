@@ -4,6 +4,7 @@ import React from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { APP_STORE_URL } from './HeroSection';
+import BitsField from './BitsField';
 
 export default function CTASection() {
   return (
@@ -13,8 +14,9 @@ export default function CTASection() {
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className='rounded-[24px] bg-[#0d0d0d] text-white p-8 sm:p-12 lg:p-14 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8'
+          className='relative overflow-hidden isolate rounded-[24px] bg-[#0d0d0d] text-white p-8 sm:p-12 lg:p-14 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8'
         >
+          <BitsField className='absolute inset-0 w-full h-full -z-10' ink='255,255,255' base={0.07} peak={0.28} period={8} />
           <div className='flex flex-col gap-2'>
             <h2 className='text-3xl sm:text-4xl lg:text-[40px] font-bold tracking-[-0.035em] leading-[1.05] text-balance'>
               Your notes. Your device. Nobody else&apos;s server.

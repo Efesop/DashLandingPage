@@ -1,5 +1,6 @@
 'use client';
 
+import BitsField from './BitsField';
 import React from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
@@ -22,8 +23,9 @@ export default function SecurityLedger() {
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className='rounded-[24px] border border-gray-200 bg-gradient-to-br from-white to-[#f3f4f6] p-8 sm:p-12 lg:p-14 grid lg:grid-cols-2 gap-10 lg:gap-14 items-start'
+          className='relative overflow-hidden isolate rounded-[24px] border border-gray-200 bg-gradient-to-br from-white to-[#f3f4f6] p-8 sm:p-12 lg:p-14 grid lg:grid-cols-2 gap-10 lg:gap-14 items-start'
         >
+          <BitsField className='absolute left-0 top-0 w-full h-[18px] -z-10' base={0.16} peak={0.34} period={9} cell={10.2} line={18} font={11} />
           <div className='flex flex-col gap-4'>
             <span className='text-[13px] font-semibold uppercase tracking-[0.06em] text-gray-500 dark:text-gray-400'>Security you can read</span>
             <h2 className='text-3xl sm:text-4xl lg:text-[40px] font-bold tracking-[-0.035em] leading-[1.08] text-gray-900 dark:text-white text-balance'>

@@ -1,5 +1,6 @@
 'use client';
 
+import BitsField from './BitsField';
 import React from 'react';
 import { motion } from 'framer-motion';
 import { CheckCircle2, X } from 'lucide-react';
@@ -36,9 +37,12 @@ function Mark({ value }: { value: boolean }) {
   );
 }
 
+const EDGE_MASK = 'linear-gradient(90deg, #000 0%, transparent 18%, transparent 82%, #000 100%)';
+
 export default function ComparisonTable() {
   return (
-    <section id='comparison' className='py-20 sm:py-24 mt-8' style={{ background: 'linear-gradient(120deg, #f7f7f8 0%, #eeeff2 50%, #f7f7f8 100%)' }}>
+    <section id='comparison' className='relative overflow-hidden isolate py-20 sm:py-24 mt-8' style={{ background: 'linear-gradient(120deg, #f7f7f8 0%, #eeeff2 50%, #f7f7f8 100%)' }}>
+      <BitsField className='absolute inset-0 w-full h-full -z-10' base={0.07} peak={0.18} period={11} style={{ WebkitMaskImage: EDGE_MASK, maskImage: EDGE_MASK }} />
       <div className='container mx-auto px-6 lg:px-8 flex flex-col gap-7'>
         <motion.div
           initial={{ opacity: 0, y: 16 }}

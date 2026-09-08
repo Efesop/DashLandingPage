@@ -3,12 +3,16 @@
 import React from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
+import BitsField from './BitsField';
 import PaymentSection from './PaymentSection';
 import { APP_STORE_URL } from './HeroSection';
 
+const EDGE_MASK = 'linear-gradient(90deg, #000 0%, transparent 18%, transparent 82%, #000 100%)';
+
 export default function PricingSection() {
   return (
-    <section id='pricing' className='py-20 sm:py-24 mt-8' style={{ background: 'linear-gradient(120deg, #f7f7f8 0%, #eeeff2 50%, #f7f7f8 100%)' }}>
+    <section id='pricing' className='relative overflow-hidden isolate py-20 sm:py-24 mt-8' style={{ background: 'linear-gradient(120deg, #f7f7f8 0%, #eeeff2 50%, #f7f7f8 100%)' }}>
+      <BitsField className='absolute inset-0 w-full h-full -z-10' base={0.07} peak={0.18} period={11} style={{ WebkitMaskImage: EDGE_MASK, maskImage: EDGE_MASK }} />
       <div className='container mx-auto px-6 lg:px-8 flex flex-col gap-8'>
         <motion.div
           initial={{ opacity: 0, y: 16 }}
