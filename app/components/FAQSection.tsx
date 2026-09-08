@@ -46,7 +46,7 @@ export default function FAQSection() {
   ];
 
   return (
-    <section id='faq' className='py-24 bg-white dark:bg-gray-950'>
+    <section id='faq' className='py-24'>
       <div className='container mx-auto px-6 lg:px-8'>
         {/* Section Header */}
         <motion.div
@@ -72,11 +72,11 @@ export default function FAQSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.05 }}
-              className='rounded-xl bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-800 overflow-hidden'
+              className='rounded-xl bg-white/85 border border-[#d6e0f5] overflow-hidden'
             >
               <button
                 onClick={() => setOpenFaq(openFaq === index ? null : index)}
-                className='w-full px-6 py-5 text-left flex items-center justify-between hover:bg-gray-100 dark:hover:bg-gray-800/50 transition-colors'
+                className='w-full px-6 py-5 text-left flex items-center justify-between hover:bg-[#f3f6fc] transition-colors'
               >
                 <span className='font-semibold text-gray-900 dark:text-white pr-4'>
                   {faq.question}

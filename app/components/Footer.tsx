@@ -42,7 +42,7 @@ export default function Footer() {
   ];
 
   return (
-    <footer className='bg-gray-900 dark:bg-black relative overflow-hidden'>
+    <footer className='bg-[#e9f0fc] border-t border-[#d6e0f5] relative overflow-hidden'>
       {/* Glass divider at top */}
       <div className='absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-blue-500/30 to-transparent' />
 
@@ -63,9 +63,9 @@ export default function Footer() {
                 unoptimized
                 loading='eager'
               />
-              <span className='text-2xl font-semibold text-white'>Dash Notes</span>
+              <span className='text-2xl font-semibold text-gray-900'>Dash Notes</span>
             </Link>
-            <p className='text-gray-400 mb-6 max-w-md leading-relaxed'>
+            <p className='text-gray-600 mb-6 max-w-md leading-relaxed'>
               Private, encrypted notes for Mac and iPhone. Everything stays on
               your device unless you choose to sync it.
             </p>
@@ -75,10 +75,10 @@ export default function Footer() {
               {privacyFeatures.slice(0, 3).map((feature) => (
                 <div
                   key={feature.label}
-                  className='flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-gray-800/50 border border-gray-700/50 text-xs'
+                  className='flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/70 border border-[#d6e0f5] text-xs'
                 >
-                  <feature.icon className='w-3 h-3 text-blue-400' />
-                  <span className='text-gray-300'>{feature.label}</span>
+                  <feature.icon className='w-3 h-3 text-blue-600' />
+                  <span className='text-gray-700'>{feature.label}</span>
                 </div>
               ))}
             </div>
@@ -86,13 +86,13 @@ export default function Footer() {
 
           {/* Use Cases */}
           <div className='lg:col-span-2'>
-            <h3 className='font-semibold text-white mb-6'>Use Cases</h3>
+            <h3 className='font-semibold text-gray-900 mb-6'>Use Cases</h3>
             <ul className='space-y-3'>
               {useCaseLinks.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className='text-gray-400 hover:text-gray-300 transition-colors text-sm flex items-center gap-2 group'
+                    className='text-gray-600 hover:text-gray-900 transition-colors text-sm flex items-center gap-2 group'
                   >
                     <div className='w-1.5 h-1.5 rounded-full bg-blue-500 group-hover:bg-blue-400 transition-colors' />
                     {link.label}
@@ -104,13 +104,13 @@ export default function Footer() {
 
           {/* Compare */}
           <div className='lg:col-span-2'>
-            <h3 className='font-semibold text-white mb-6'>Compare</h3>
+            <h3 className='font-semibold text-gray-900 mb-6'>Compare</h3>
             <ul className='space-y-3'>
               {comparisonLinks.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className='text-gray-400 hover:text-gray-300 transition-colors text-sm flex items-center gap-2 group'
+                    className='text-gray-600 hover:text-gray-900 transition-colors text-sm flex items-center gap-2 group'
                   >
                     <div className='w-1.5 h-1.5 rounded-full bg-blue-500 group-hover:bg-blue-400 transition-colors' />
                     {link.label}
@@ -122,7 +122,7 @@ export default function Footer() {
 
           {/* Guides */}
           <div className='lg:col-span-2'>
-            <h3 className='font-semibold text-white mb-6'>Guides</h3>
+            <h3 className='font-semibold text-gray-900 mb-6'>Guides</h3>
             <ul className='space-y-3'>
               {[
                 { href: '/guides/encryption', label: 'Encryption' },
@@ -140,7 +140,7 @@ export default function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className='text-gray-400 hover:text-gray-300 transition-colors text-sm flex items-center gap-2 group'
+                    className='text-gray-600 hover:text-gray-900 transition-colors text-sm flex items-center gap-2 group'
                   >
                     <div className='w-1.5 h-1.5 rounded-full bg-blue-500 group-hover:bg-blue-400 transition-colors' />
                     {link.label}
@@ -152,19 +152,19 @@ export default function Footer() {
 
           {/* Connect */}
           <div className='lg:col-span-2'>
-            <h3 className='font-semibold text-white mb-6'>Connect With Us</h3>
+            <h3 className='font-semibold text-gray-900 mb-6'>Connect With Us</h3>
             <div className='space-y-4'>
               <Link
                 href='https://twitter.com/efesopoulos'
                 target='_blank'
                 rel='noopener noreferrer'
-                className='flex items-center gap-3 p-3 rounded-xl bg-gray-800/50 border border-gray-700/50 hover:bg-white/5 transition-colors group'
+                className='flex items-center gap-3 p-3 rounded-xl bg-white/70 border border-[#d6e0f5] hover:bg-white transition-colors group'
               >
-                <div className='w-10 h-10 rounded-lg bg-blue-500/20 flex items-center justify-center group-hover:bg-blue-500/30 transition-colors'>
-                  <Twitter className='w-5 h-5 text-blue-400' />
+                <div className='w-10 h-10 rounded-lg bg-blue-100 flex items-center justify-center group-hover:bg-blue-200 transition-colors'>
+                  <Twitter className='w-5 h-5 text-blue-600' />
                 </div>
                 <div>
-                  <p className='text-white font-medium text-sm'>Follow on X/Twitter</p>
+                  <p className='text-gray-900 font-medium text-sm'>Follow on X/Twitter</p>
                   <p className='text-gray-500 text-xs'>@efesopoulos</p>
                 </div>
               </Link>
@@ -173,13 +173,13 @@ export default function Footer() {
                 href='https://buymeacoffee.com/efez'
                 target='_blank'
                 rel='noopener noreferrer'
-                className='flex items-center gap-3 p-3 rounded-xl bg-gray-800/50 border border-gray-700/50 hover:bg-white/5 transition-colors group'
+                className='flex items-center gap-3 p-3 rounded-xl bg-white/70 border border-[#d6e0f5] hover:bg-white transition-colors group'
               >
-                <div className='w-10 h-10 rounded-lg bg-yellow-500/20 flex items-center justify-center group-hover:bg-yellow-500/30 transition-colors'>
-                  <Coffee className='w-5 h-5 text-yellow-400' />
+                <div className='w-10 h-10 rounded-lg bg-yellow-100 flex items-center justify-center group-hover:bg-yellow-200 transition-colors'>
+                  <Coffee className='w-5 h-5 text-yellow-600' />
                 </div>
                 <div>
-                  <p className='text-white font-medium text-sm'>Buy me a coffee</p>
+                  <p className='text-gray-900 font-medium text-sm'>Buy me a coffee</p>
                   <p className='text-gray-500 text-xs'>Support development</p>
                 </div>
               </Link>
@@ -188,7 +188,7 @@ export default function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className='mt-12 pt-8 border-t border-gray-800/50'>
+        <div className='mt-12 pt-8 border-t border-[#d6e0f5]'>
           <div className='flex flex-col md:flex-row items-center justify-between gap-4'>
             <p className='text-gray-500 text-sm'>
               © {new Date().getFullYear()} Dash. Your privacy is our priority.
@@ -196,13 +196,13 @@ export default function Footer() {
             <div className='flex items-center gap-6 text-sm text-gray-500'>
               <Link
                 href='/privacy-policy'
-                className='hover:text-gray-300 transition-colors'
+                className='hover:text-gray-900 transition-colors'
               >
                 Privacy Policy
               </Link>
               <Link
                 href='/terms'
-                className='hover:text-gray-300 transition-colors'
+                className='hover:text-gray-900 transition-colors'
               >
                 Terms of Service
               </Link>

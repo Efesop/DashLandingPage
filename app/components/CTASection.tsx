@@ -7,13 +7,13 @@ import { APP_STORE_URL } from './HeroSection';
 
 export default function CTASection() {
   return (
-    <section className='py-16 sm:py-20 bg-white dark:bg-gray-950'>
+    <section className='py-16 sm:py-20'>
       <div className='container mx-auto px-6 lg:px-8'>
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className='rounded-[24px] bg-blue-600 text-white p-8 sm:p-12 lg:p-14 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8'
+          className='rounded-[24px] bg-gradient-to-r from-blue-600 to-indigo-600 text-white p-8 sm:p-12 lg:p-14 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8'
         >
           <div className='flex flex-col gap-2'>
             <h2 className='text-3xl sm:text-4xl lg:text-[40px] font-bold tracking-[-0.035em] leading-[1.05] text-balance'>

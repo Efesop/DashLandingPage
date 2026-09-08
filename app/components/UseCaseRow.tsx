@@ -15,7 +15,7 @@ const useCases = [
 
 export default function UseCaseRow() {
   return (
-    <section className='py-16 sm:py-20 bg-white dark:bg-gray-950'>
+    <section className='py-16 sm:py-20'>
       <div className='container mx-auto px-6 lg:px-8 flex flex-col gap-5'>
         <motion.div
           initial={{ opacity: 0, y: 16 }}
@@ -33,7 +33,7 @@ export default function UseCaseRow() {
             <Link
               key={u.href}
               href={u.href}
-              className='group rounded-2xl border border-gray-200 dark:border-gray-800 p-5 flex flex-col gap-1.5 hover:border-blue-300 dark:hover:border-blue-700 hover:bg-blue-50/40 dark:hover:bg-blue-900/10 transition-colors'
+              className='group rounded-2xl border border-[#d6e0f5] bg-white/80 p-5 flex flex-col gap-1.5 hover:border-blue-300 hover:bg-white transition-colors'
             >
               <span className='font-semibold text-base text-gray-900 dark:text-white inline-flex items-center gap-1.5'>
                 {u.title}

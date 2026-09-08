@@ -16,13 +16,13 @@ const rows: [string, string][] = [
 
 export default function SecurityLedger() {
   return (
-    <section id='security' className='py-16 sm:py-20 bg-white dark:bg-gray-950'>
+    <section id='security' className='py-16 sm:py-20'>
       <div className='container mx-auto px-6 lg:px-8'>
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className='rounded-[24px] border border-gray-200 dark:border-gray-800 p-8 sm:p-12 lg:p-14 grid lg:grid-cols-2 gap-10 lg:gap-14 items-start'
+          className='rounded-[24px] border border-[#d6e0f5] bg-gradient-to-br from-white to-[#eef3fc] p-8 sm:p-12 lg:p-14 grid lg:grid-cols-2 gap-10 lg:gap-14 items-start'
         >
           <div className='flex flex-col gap-4'>
             <span className='text-[13px] font-semibold uppercase tracking-[0.06em] text-gray-500 dark:text-gray-400'>Security you can read</span>

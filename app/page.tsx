@@ -11,7 +11,7 @@ import Footer from './components/Footer';
 
 export default function LandingPage() {
   return (
-    <div className='flex flex-col min-h-screen bg-white dark:bg-gray-950 overflow-x-hidden font-sans'>
+    <div className='flex flex-col min-h-screen bg-[#f7f9fd] overflow-x-hidden font-sans'>
       {/* JSON-LD Structured Data */}
       <script
         type='application/ld+json'
