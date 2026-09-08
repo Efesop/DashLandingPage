@@ -40,5 +40,7 @@ npm run build               # production build (runs type-check + lint)
 
 - [PRODUCT_CONTEXT.md](./PRODUCT_CONTEXT.md) — product facts, positioning, do/don't list
 - [COMPONENT_STRUCTURE.md](./COMPONENT_STRUCTURE.md) — homepage component map
-- [MOCKUP_DESIGN_GUIDE.md](./MOCKUP_DESIGN_GUIDE.md) — visual style rules for mockups and sections
+- [DESIGN.md](./DESIGN.md) — **design process (canvas → variations → pick → branch preview → merge) and the visual system**; read before any visual change
+- [SEO.md](./SEO.md) — keyword research, which page owns which query, the page build queue, on-page rules and targets
+- [MOCKUP_DESIGN_GUIDE.md](./MOCKUP_DESIGN_GUIDE.md) — legacy (March 2026) style notes, superseded by DESIGN.md
 - [docs/voltage-payments.md](./docs/voltage-payments.md) — Bitcoin Lightning checkout setup

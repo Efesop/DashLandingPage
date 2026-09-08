@@ -215,16 +215,18 @@ Confident, straightforward, empowering, approachable. No fluff, no fear-mongerin
 
 ## Landing Page Structure (dashnote.io, September 2026)
 
-### Homepage (`app/page.tsx`) — rebuilt Sep 8 2026 (design canvas "Dash Notes Homepage")
+### Homepage (`app/page.tsx`) — rebuilt Sep 8 2026, v3 "Steel / Cipher" (design canvas "Dash Notes Homepage"; system and process in [DESIGN.md](./DESIGN.md))
+
+Palette: white and silver, ink `#0d0d0d`, Dash blue only on the primary button and the Dash column of the comparison table. Texture: a faint animated field of binary (`BitsField`) behind the hero, at the edges of the Compare and Pricing bands, as a tape on the security ledger, in white inside the black closing band, and as the footer divider.
 1. Header — "Dash Notes", nav (Features, Security, Use Cases / Compare / Guides dropdowns, Pricing, FAQ), "Free on iPhone" + black "Get Dash for Mac" (rounded rectangles, no pills)
-2. Hero — centered: eyebrow, H1 "Your notes are none of our business.", one-sentence description, two buttons, proof row (avatars are placeholders until real people are supplied; "100+ downloads · Open source (MIT) · Works offline"), then the full-width Mac window playing the demo video on a dotted panel with two live chips (encrypted, self-destruct countdown) and a trust strip. **Video still shows the pre-1.6 layout — re-record.**
+2. Hero — white, with the animated binary field (a slow diagonal "decrypt" sweep) cleared behind the headline; centered: eyebrow, H1 "Your notes are none of our business.", one-sentence description, blue "Get Dash for Mac $14.99, once" + outlined "Free on iPhone" (10px rounded rectangles), proof row (avatars are placeholders until real people are supplied; "100+ downloads · Open source (MIT) · Works offline"), then the 980px Mac window playing the demo video, overlapping into the page, with two floating chips (encrypted, self-destruct countdown) and a trust strip. **Video still shows the pre-1.6 layout — re-record.**
 3. Bento (`BentoFeatures.tsx`) — seven animated cards: lock a note, four themes, [[links]], self-destructing notes, duress password, sync ledger (dark, what the relay sees), local AI. Animations pause off-screen and under prefers-reduced-motion.
-4. Comparison table — Dash / Notion / Evernote / Obsidian, 12 rows, Dash column tinted
+4. Comparison table — on a silver band; Dash / Notion / Evernote / Obsidian, 12 rows, Dash column tinted blue
 5. Security ledger — "The details are the promise." + mono spec rows + GitHub link
 6. Use-case row — journalists, writers, students, researchers, bitcoiners (links to /for-*)
 7. Pricing (`PricingSection.tsx`) — three cards: Mac (the real Stripe/Bitcoin checkout form, `PaymentSection embedded`), iPhone free (App Store), Dash Sync (→ /subscribe)
 8. FAQ — 7 questions; **answers must match the FAQPage JSON-LD in `page.tsx`**
-9. Closing band — blue, "Your notes. Your device. Nobody else's server." + two buttons
+9. Closing band — black with faint white binary, "Your notes. Your device. Nobody else's server." + white and outlined buttons
 10. Footer
 
 ### Other routes
@@ -235,7 +237,7 @@ Confident, straightforward, empowering, approachable. No fluff, no fear-mongerin
 - `/sync-check` — phone-side connectivity diagnostic for the sync relay
 - `/changelog` — links to GitHub Releases
 - `/privacy-policy`, `/terms`
-- SEO pages: `/private-notes`, `/encrypted-notes`, `/offline-notes`, `/secure-journal`
+- SEO pages: `/private-notes`, `/encrypted-notes`, `/offline-notes`, `/secure-journal`, and (Sep 8 2026, on `ArticleLayout`) `/best-notes-app-for-mac`, `/password-protected-notes`, `/obsidian-alternatives`, `/notion-alternatives`, `/evernote-alternatives`, `/privnote-alternatives`, `/guides/lock-notes-on-iphone-and-mac` — targeting and the build queue live in [SEO.md](./SEO.md)
 - Use cases: `/for-journalists`, `/for-writers`, `/for-students`, `/for-researchers`, `/for-bitcoiners`
 - Comparisons: `/vs-notion`, `/vs-evernote`, `/vs-obsidian`, `/vs-google-keep`
 - Guides: `/guides/{encryption,self-destructing-notes,offline-first,privacy-first-note-taking,app-lock,duress-password,page-linking,seed-phrase-storage,local-ai}` (reference content in the app repo's `guides/` folder)
@@ -274,10 +276,13 @@ Confident, straightforward, empowering, approachable. No fluff, no fear-mongerin
 
 ## Metadata & SEO
 
-- Homepage title: "Dash - Own Your Notes For Real | Private, Encrypted Notes App"
-- Homepage description (current): "AES-256 encrypted notes app that keeps your data 100% offline and private. No cloud, no tracking, no accounts needed." — accurate for the default; consider adding "optional end-to-end encrypted sync".
-- SoftwareApplication JSON-LD: `operatingSystem: ["macOS", "iOS", "Web"]`, offer $14.99 USD.
-- OG image: `/images/Dashfeature1.png` (pre-1.6 layout).
+The keyword research, page-to-query map, build queue and measurement plan are in [SEO.md](./SEO.md). Facts that matter when editing copy:
+
+- Brand string everywhere: **Dash Notes** (the App Store name). Title template `%s | Dash Notes` in `app/layout.tsx`; page titles carry the query and no brand.
+- Homepage title: "Dash Notes: Private, Encrypted Notes App for Mac & iPhone". Description: "Dash Notes is a private, encrypted notes app for Mac, iPhone and the web. Offline by default, no account needed, AES-256 encryption, and optional end-to-end encrypted sync."
+- `www.dashnote.io` 301s to the apex. `app/sitemap.ts` holds a static per-page `lastModified` — bump it when a page changes.
+- JSON-LD: Organization + WebSite (layout), SoftwareApplication + FAQPage (homepage; FAQ answers must match the visible FAQ), Article + FAQ + ItemList on article pages via `lib/seo.ts`.
+- OG image: `/images/Dashfeature1.png` (pre-1.6 layout — re-capture).
 
 ---
 
@@ -319,6 +324,6 @@ Full notes: `CHANGELOG.md` in the app repo and GitHub Releases.
 
 ---
 
-**Document Version**: 2.0 (rewritten Sep 8 2026 to match v1.6.3; v1.1 described v1.3.85)
+**Document Version**: 2.1 (Sep 8 2026: homepage v3 Steel/Cipher, DESIGN.md + SEO.md added; 2.0 rewrote the file for v1.6.3; v1.1 described v1.3.85)
 
 Update this file whenever platforms, pricing, major features, or positioning change.

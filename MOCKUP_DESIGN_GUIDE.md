@@ -1,5 +1,7 @@
 # Mockup Design Guide for Dash Landing Page
 
+> **Superseded (8 September 2026).** The current process and visual system are in [DESIGN.md](./DESIGN.md). Where this file disagrees with DESIGN.md (pill badges, blue accent words in headings, dark sections), DESIGN.md wins. Kept for the component-migration notes.
+
 **Last Updated**: March 2, 2026
 
 Based on reference examples from Linear, Raycast, Notion, Craft, and modern SaaS products.

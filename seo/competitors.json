@@ -1,0 +1,22 @@
+{
+  "source": "DataForSEO Labs bulk_traffic_estimation + ranked_keywords, Google US, Sep 8 2026. etv = estimated monthly organic visits, count = ranking keywords",
+  "traffic": [
+    ["dashnote.io", 13, 13], ["securenotesvault.com", 2, 4], ["thesecurenote.com", 10, 20], ["noteprivate.com", 0, 2], ["upnote.com", 9, 4], ["scrib.blog", 60, 72], ["securednotes.io", 114, 190], ["lock.pub", 1993, 2042], ["anytype.io", 2612, 225], ["notesnook.com", 5552, 687], ["bear.app", 10372, 484], ["simplenote.com", 29434, 1155], ["joplinapp.org", 35404, 1502], ["craft.do", 84036, 9178], ["notion.so", 157236, 822], ["standardnotes.com", 227610, 507], ["obsidian.md", 453417, 44758], ["evernote.com", 731579, 36559], ["cryptee.com", 0, 0]
+  ],
+  "dashnote_ranked": {
+    "metrics": {"etv": 13, "count": 13, "pos1": 0, "pos2_3": 0, "pos4_10": 1},
+    "rows": [["encrypted diary", 320, 10, "/secure-journal"], ["dash app for mac", 50, 15, "/download"], ["notes app offline", 50, 22, "/offline-notes"], ["dash for mac", 110, 21, "/download"], ["encrypted writing", 260, 26, "/for-writers"], ["secure journaling app", 70, 28, "/secure-journal"], ["dashnow", 590, 33, "/"], ["dash for macos", 110, 35, "/download"], ["dashing io", 320, 42, "/"], ["dash/plus system", 1000, 50, "/"], ["apps for dash and dot", 170, 57, "/"]],
+    "note": "Brand collision: 'dash' queries belong to Dash crypto, Dash & Dot robots, DashNow etc. Only one top-10 ranking (encrypted diary #10)."
+  },
+  "notesnook_ranked": {
+    "metrics": {"etv": 5552, "count": 687, "pos1": 5, "pos2_3": 8, "pos4_10": 90},
+    "homepage_ranks_for": [["end-to-end encrypted note-taking app", 320, 3], ["encrypted notes", 260, 4], ["private note taking app", 110, 4], ["open source note taking app", 590, 6], ["private notes app", 110, 6], ["secure note taking app", 480, 7], ["encrypted notes app", 170, 10], ["notes app with lock", 140, 9]],
+    "content_ranks_for": [["note notification", 590, 6, "/mobile-integration/quick-note-from-notification"], ["keep into", 390, 7, "/importing-notes/import-notes-from-googlekeep"], ["open source alternative onenote", 70, 6, "/encrypted-microsoft-onenote-alternative-notetaking-app"], ["how to put a lock on notes", 210, 11, "/lock-notes-with-private-vault"], ["notesnook vs joplin", 30, 7, "/compare/joplin"]],
+    "note": "Brand 'notesnook' 3,600/mo = 1,094 of their 5,552 visits. Homepage carries the core commercial cluster; docs/help pages win how-to and import queries."
+  },
+  "lockpub_ranked": {
+    "metrics": {"etv": 1993, "count": 2042, "pos1": 0, "pos2_3": 4, "pos4_10": 64},
+    "top": [["privnotes", 5400, 5, 253, "/en/blog/privnote-alternatives"], ["inpost sms", 880, 3, 143, "/en/blog/inpost-fake-sms-prevention"], ["netflix sharing rules", 590, 8, 28, "/en/blog/netflix-password-sharing-rules-2026"], ["how to delete chatgpt memory", 390, 15, 6, "/en/blog/chatgpt-memory-privacy-delete"], ["one time notes", 50, 10, 1, "/en/blog/privnote-alternatives"], ["disappearing note", 40, 11, 1, "/en/blog/privnote-alternatives"]],
+    "note": "A tiny product site earning ~2k visits/mo purely from a privacy how-to / alternatives blog (multilingual). Zero product-page rankings in the top list."
+  }
+}
