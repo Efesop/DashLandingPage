@@ -4,7 +4,7 @@ import { articleJsonLd, faqJsonLd, itemListJsonLd, pageMetadata, type FAQ } from
 
 const TITLE = 'Apple Notes Alternatives in 2026: Encrypted, Exportable';
 const DESCRIPTION =
-  'Apple Notes alternatives in 2026 for people who want encryption, export or Windows: Dash, Bear, Obsidian, Notesnook, UpNote and Joplin compared, with export steps.';
+  'Apple Notes alternatives in 2026 for people who want encryption, export or Windows: Dash, Bear, Obsidian, Notesnook, UpNote and Joplin compared.';
 const PATH = '/apple-notes-alternative';
 
 export const metadata: Metadata = pageMetadata({

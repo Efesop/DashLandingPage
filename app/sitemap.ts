@@ -23,6 +23,8 @@ const entries: Entry[] = [
   ['/apple-notes-alternative', '2026-09-08', 'monthly', 0.6],
   ['/joplin-alternative', '2026-09-08', 'monthly', 0.6],
   ['/bear-alternative', '2026-09-08', 'monthly', 0.6],
+  ['/simplenote-alternative', '2026-09-08', 'monthly', 0.6],
+  ['/craft-alternative', '2026-09-08', 'monthly', 0.6],
   ['/share', '2026-09-08', 'monthly', 0.7],
   ['/download', '2026-09-08', 'monthly', 0.9],
   // Roundups & alternatives

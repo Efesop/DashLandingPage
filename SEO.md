@@ -9,6 +9,7 @@
 | Date | Shipped | Ranking keywords | Top-10 | Est. visits/mo | Ref. domains | Notes |
 |---|---|---|---|---|---|---|
 | 2026-09-08 | Research; technical fixes; 7 query pages; homepage v3; article template (`article-template` branch) | 13 | 1 | ≈13 | 40 | Baseline from DataForSEO Labs |
+| 2026-09-08 | **S5 content** (`seo/sprint-5`, pulled forward): `/simplenote-alternative` (Automattic ended active development in March 2026), `/craft-alternative`. Gated items (private-ai-notes, homepage H1) still wait for December data | — | — | — | — | Merged to main; record ranks at +14 days |
 | 2026-09-08 | **S4** (`seo/sprint-4`): `/apple-notes-alternative`, `/joplin-alternative`, `/bear-alternative`; Apple Notes export claims updated for macOS 26 Markdown export; Notion alternatives description trimmed | — | — | — | — | Merged to main; record ranks at +14 days |
 | 2026-09-08 | **S3** (`seo/sprint-3`): `/is-apple-notes-secure`, `/is-notion-private`, `/standard-notes-vs-notesnook`, `/standard-notes-alternative`; lock guide title trimmed and its Apple-security FAQs handed to the new page; verified prices set on the open-source page | — | — | — | — | Merged to main; record ranks at +14 days |
 | 2026-09-08 | **S2** (`seo/sprint-2`): `/journal-app-mac`, `/day-one-alternative`; `/secure-journal` re-targeted to "Encrypted Diary & Journal App" and migrated with a Dash / Day One / Journey comparison table; Bear and Day One facts corrected on `/best-notes-app-for-mac` | — | — | — | — | Merged to main; record ranks at +14 days |
@@ -61,7 +62,7 @@ Volume = US monthly searches; KD = DataForSEO difficulty 0–100. Bold = the pri
 | Students | **notes taking app for students** 1,000/27 | 1,000 | `/for-students` |
 | Therapists | **therapist notes app** 590/6 · note taking app for therapists 10/5 · hipaa compliant notes app 40/0 | 640 | `/therapist-notes-app` (S1) |
 | Open source | **open source note taking app** 590/32 · open source notes app 70/35 | 660 | `/open-source-notes-app` (S1) |
-| Other alternatives | apple notes alternative 70/0 · joplin alternative 70/9 · bear alternative 50/0 · day one alternative 30/13 · standard notes alternative 20/0 · notesnook alternative 20 · simplenote alternative 20/10 · craft alternative 20/7 | 300 | `/day-one-alternative` (S2), `/standard-notes-alternative` (S3), `/apple-notes-alternative`, `/joplin-alternative`, `/bear-alternative` (S4); simplenote and craft in S5 |
+| Other alternatives | apple notes alternative 70/0 · joplin alternative 70/9 · bear alternative 50/0 · day one alternative 30/13 · standard notes alternative 20/0 · notesnook alternative 20 · simplenote alternative 20/10 · craft alternative 20/7 | 300 | `/day-one-alternative` (S2), `/standard-notes-alternative` (S3), `/apple-notes-alternative`, `/joplin-alternative`, `/bear-alternative` (S4), `/simplenote-alternative`, `/craft-alternative` (S5) |
 | Comparisons | notesnook vs standard notes 40/0 · standard notes vs notesnook 30/0 · obsidian vs standard notes 30/0 | 100 | `/standard-notes-vs-notesnook` (S3) |
 | Offline | offline notes app 50/15 · offline note taking app 50/37 · notes app offline (ranks #22) | 150 | `/offline-notes` |
 
@@ -86,6 +87,8 @@ Head terms we are **not** chasing: notes app 60,500/77 · app for taking notes 2
 | `/apple-notes-alternative` | apple notes alternative | Apple Notes Alternatives in 2026: Encrypted, Exportable |
 | `/joplin-alternative` | joplin alternative | Joplin Alternatives in 2026: Nicer Apps, Same Privacy |
 | `/bear-alternative` | bear alternative | Bear Alternatives in 2026: Encrypted, Buy Once |
+| `/simplenote-alternative` | simplenote alternative | Simplenote Alternatives in 2026: Simple, Private, Offline |
+| `/craft-alternative` | craft alternative | Craft Alternatives in 2026: Block Editors That Stay Local |
 | `/guides/duress-password` | duress password | Duress Password: What It Is & How to Set One Up |
 | `/obsidian-alternatives` | obsidian alternative | 8 Obsidian Alternatives in 2026 (Simpler, Encrypted or Free) |
 | `/notion-alternatives` | notion alternative | Notion Alternatives That Keep Your Notes Private (2026) |
@@ -117,7 +120,7 @@ Technical state (done Sep 8 2026): title template `%s | Dash Notes` in `app/layo
 4. ✅ S3 (Sep 8 2026) **`/is-apple-notes-secure`** — is apple notes secure / how secure is apple notes / is apple notes encrypted / are apple notes private (190 total, KD ≤13). Short answer page; links to the lock guide and `/password-protected-notes`.
 5. ✅ S3 (Sep 8 2026) **`/is-notion-private`** — is notion private / is notion encrypted (160, KD ≤9). Links to `/notion-alternatives`.
 6. ✅ S3 (Sep 8 2026) **`/standard-notes-vs-notesnook`** — notesnook vs standard notes and the reverse (70, KD 0), with Dash as the third column.
-7. **Alternative batch** on one template (✅ `/day-one-alternative` S2, ✅ `/standard-notes-alternative` S3, ✅ `/apple-notes-alternative` `/joplin-alternative` `/bear-alternative` S4; simplenote and craft remain): `/apple-notes-alternative`, `/joplin-alternative`, `/bear-alternative`, `/day-one-alternative`, `/standard-notes-alternative`, `/simplenote-alternative`, `/craft-alternative`. Each is cheap (KD 0–13) and reuses the comparison table.
+7. **Alternative batch** on one template (✅ `/day-one-alternative` S2, ✅ `/standard-notes-alternative` S3, ✅ `/apple-notes-alternative` `/joplin-alternative` `/bear-alternative` S4, ✅ `/simplenote-alternative` `/craft-alternative` S5 — batch complete): `/apple-notes-alternative`, `/joplin-alternative`, `/bear-alternative`, `/day-one-alternative`, `/standard-notes-alternative`, `/simplenote-alternative`, `/craft-alternative`. Each is cheap (KD 0–13) and reuses the comparison table.
 8. **`/private-ai-notes`** only if `/guides/local-ai` fails to move on "private ai assistant" within three months.
 
 ### B. Pages to redo

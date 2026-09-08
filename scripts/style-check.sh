@@ -37,6 +37,8 @@ SYSTEM_FILES=(
   app/apple-notes-alternative/page.tsx
   app/joplin-alternative/page.tsx
   app/bear-alternative/page.tsx
+  app/simplenote-alternative/page.tsx
+  app/craft-alternative/page.tsx
 )
 
 # Retired components: nothing may import them.

@@ -45,6 +45,8 @@ export default function Footer() {
     { href: '/apple-notes-alternative', label: 'Apple Notes Alternatives' },
     { href: '/joplin-alternative', label: 'Joplin Alternatives' },
     { href: '/bear-alternative', label: 'Bear Alternatives' },
+    { href: '/simplenote-alternative', label: 'Simplenote Alternatives' },
+    { href: '/craft-alternative', label: 'Craft Alternatives' },
     { href: '/obsidian-alternatives', label: 'Obsidian Alternatives' },
     { href: '/notion-alternatives', label: 'Notion Alternatives' },
     { href: '/evernote-alternatives', label: 'Evernote Alternatives' },
