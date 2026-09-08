@@ -59,6 +59,8 @@ SYSTEM_FILES=(
   app/guides/page-linking/page.tsx
   app/guides/seed-phrase-storage/page.tsx
   app/guides/local-ai/page.tsx
+  app/download/DownloadContent.tsx
+  app/subscribe/page.tsx
 )
 
 # Retired components: nothing may import them.

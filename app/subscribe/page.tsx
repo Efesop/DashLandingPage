@@ -50,11 +50,11 @@ export default function SubscribePage() {
   };
 
   return (
-    <div className='min-h-screen bg-gradient-to-b from-blue-50 to-white dark:from-blue-950/20 dark:to-gray-950'>
+    <div className='min-h-screen bg-[#fbfbfc]'>
       <div className='container mx-auto px-6 lg:px-8 py-16'>
         <Link
           href='/'
-          className='inline-flex items-center text-gray-600 dark:text-gray-300 hover:text-blue-600 mb-12'
+          className='inline-flex items-center text-gray-600 hover:text-gray-900 mb-12'
         >
           <ArrowLeft className='h-4 w-4 mr-2' /> Back to home
         </Link>
@@ -64,23 +64,23 @@ export default function SubscribePage() {
           animate={{ opacity: 1, y: 0 }}
           className='max-w-4xl mx-auto text-center mb-12'
         >
-          <div className='w-16 h-16 bg-blue-100 dark:bg-blue-900/30 rounded-full flex items-center justify-center mx-auto mb-6'>
-            <Cloud className='w-8 h-8 text-blue-600' />
+          <div className='w-14 h-14 bg-[#f5f5f7] border border-gray-200 rounded-2xl flex items-center justify-center mx-auto mb-6'>
+            <Cloud className='w-7 h-7 text-gray-700' />
           </div>
-          <h1 className='text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4'>
+          <h1 className='text-4xl md:text-5xl font-bold text-gray-900 mb-4'>
             Dash Sync
           </h1>
-          <p className='text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto'>
+          <p className='text-lg text-gray-600 max-w-2xl mx-auto'>
             End-to-end encrypted sync across your devices. Your notes stay
             private — the server only sees ciphertext.
           </p>
-          <p className='text-sm text-gray-500 dark:text-gray-400 mt-3'>
+          <p className='text-sm text-gray-500 mt-3'>
             7-day free trial. Cancel anytime.
           </p>
         </motion.div>
 
         {error && (
-          <div className='max-w-2xl mx-auto mb-8 p-4 bg-red-50 dark:bg-red-950/30 border border-red-200 dark:border-red-900 rounded-lg text-sm text-red-800 dark:text-red-200'>
+          <div className='max-w-2xl mx-auto mb-8 p-4 bg-red-50 border border-red-200 rounded-lg text-sm text-red-800'>
             {error}
           </div>
         )}
@@ -120,23 +120,23 @@ export default function SubscribePage() {
         </div>
 
         <div className='max-w-2xl mx-auto mt-16 text-center'>
-          <div className='inline-flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400'>
+          <div className='inline-flex items-center gap-2 text-sm text-gray-500'>
             <Shield className='h-4 w-4' />
             Your notes are encrypted on your device before they leave it. We
             cannot read them.
           </div>
-          <p className='text-xs text-gray-400 dark:text-gray-500 mt-6'>
+          <p className='text-xs text-gray-400 mt-6'>
             Already subscribed?{' '}
             <Link
               href='/payment/manage'
-              className='text-blue-600 hover:underline'
+              className='text-gray-700 underline underline-offset-[3px] decoration-gray-400 hover:decoration-gray-900'
             >
               Manage subscription
             </Link>
             {' · '}
             <Link
               href='/payment/recovery'
-              className='text-blue-600 hover:underline'
+              className='text-gray-700 underline underline-offset-[3px] decoration-gray-400 hover:decoration-gray-900'
             >
               Recover Mac download
             </Link>
@@ -162,23 +162,23 @@ function PriceCard(props: {
     <div
       className={`rounded-2xl p-8 border ${
         props.highlighted
-          ? 'border-blue-500 bg-white dark:bg-gray-900 shadow-lg shadow-blue-500/10'
-          : 'border-gray-200 dark:border-gray-800 bg-white/60 dark:bg-gray-900/40'
+          ? 'border-gray-400 bg-white shadow-sm'
+          : 'border-gray-200 bg-white/60'
       } relative`}
     >
       {props.badge && (
-        <span className='absolute -top-3 right-6 bg-blue-600 text-white text-xs font-medium px-3 py-1 rounded-full'>
+        <span className='absolute -top-3 right-6 bg-gray-900 text-white text-xs font-medium px-3 py-1 rounded-md'>
           {props.badge}
         </span>
       )}
-      <h3 className='text-lg font-semibold text-gray-900 dark:text-white mb-2'>
+      <h3 className='text-lg font-semibold text-gray-900 mb-2'>
         {props.title}
       </h3>
       <div className='flex items-baseline gap-1 mb-1'>
-        <span className='text-4xl font-bold text-gray-900 dark:text-white'>
+        <span className='text-4xl font-bold text-gray-900'>
           {props.price}
         </span>
-        <span className='text-sm text-gray-500 dark:text-gray-400'>
+        <span className='text-sm text-gray-500'>
           {props.cadence}
         </span>
       </div>
@@ -186,9 +186,9 @@ function PriceCard(props: {
         {props.features.map((f) => (
           <li
             key={f}
-            className='flex items-start gap-2 text-sm text-gray-700 dark:text-gray-300'
+            className='flex items-start gap-2 text-sm text-gray-700'
           >
-            <Check className='h-4 w-4 text-blue-600 mt-0.5 flex-shrink-0' />
+            <Check className='h-4 w-4 text-[#1a7f4b] mt-0.5 flex-shrink-0' />
             <span>{f}</span>
           </li>
         ))}
@@ -199,7 +199,7 @@ function PriceCard(props: {
         className={`w-full py-3 ${
           props.highlighted
             ? 'bg-blue-600 hover:bg-blue-700 text-white'
-            : 'bg-gray-900 hover:bg-gray-800 text-white dark:bg-white dark:hover:bg-gray-200 dark:text-gray-900'
+            : 'bg-gray-900 hover:bg-gray-800 text-white'
         }`}
       >
         {props.loading ? 'Loading…' : (
