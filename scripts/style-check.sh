@@ -50,10 +50,19 @@ SYSTEM_FILES=(
   app/for-bitcoiners/page.tsx
   app/offline-notes/page.tsx
   app/share/page.tsx
+  app/guides/encryption/page.tsx
+  app/guides/self-destructing-notes/page.tsx
+  app/guides/offline-first/page.tsx
+  app/guides/privacy-first-note-taking/page.tsx
+  app/guides/app-lock/page.tsx
+  app/guides/duress-password/page.tsx
+  app/guides/page-linking/page.tsx
+  app/guides/seed-phrase-storage/page.tsx
+  app/guides/local-ai/page.tsx
 )
 
 # Retired components: nothing may import them.
-RETIRED='GradientText|DeviceMockup|BuyMeCoffeeButton|FeatureGrid|GlassCard|FloatingOrbs'
+RETIRED='GradientText|DeviceMockup|BuyMeCoffeeButton|FeatureGrid|GlassCard|FloatingOrbs|AIOrb'
 
 echo "style-check: ${#SYSTEM_FILES[@]} system paths"
 
