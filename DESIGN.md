@@ -87,7 +87,12 @@ Rules: never behind body copy above ~10% ink; always `clear` or mask behind head
 
 ## 6. Applying the system to other pages
 
-- Article and guide pages use `app/components/seo/ArticleLayout.tsx`; they inherit the shared Header and Footer and should stay on the white/silver palette with the accent reserved for links and the primary button.
+### The article template (`app/components/seo/ArticleLayout.tsx`, restyled 8 Sep 2026)
+Every SEO page, guide, comparison and alternatives page is a data-only server page on this layout. Top to bottom: `SEOHero` (white, the binary field cleared behind a 56px H1, eyebrow chip, one-sentence lede, blue primary + bordered "Read on", mono "Updated … · Dash team" caption) → intro prose (gray-600 at 18px, ink links with a grey underline, 24px h3s) → optional `comparison` (the reusable `ComparisonTable` with `band={false}`) → listicle (`#f5f5f7` cards, radius 20, mono index, the Dash entry on the white→`#f3f4f6` gradient with a `#d4d4d8` border and an ink "Our app" chip) → `InlineCTA` (one sentence over a primary button) → sections with 80–96px spacing, no alternating bands → `PricingSection band={false}` (three cards; `showPayment={false}` on short answer pages) → `FAQSection` → `RelatedLinks` ("Keep reading", hairline cards) → `CTASection bits={false}` (black band; the hero already carries the field) → footer divider bits → Footer. `MotionConfig reducedMotion="user"` wraps the page. Non-home pages get exactly two canvases: the hero field and the footer divider.
+
+Legacy pages (the copy-pasted `*Content.tsx` skeletons) inherit the new hero, inline CTA, related links and closing band through the shared components, and keep their old middle sections until they are migrated onto this layout (see `SEO.md` and the execution plan: migrate when touched, one cleanup PR between sprints). `highlightedWord` and `variant` are still accepted by `SEOHero`/`InlineCTA`/`CTABanner` and ignored, so those pages compile; drop the props as each page migrates.
+
+- Article and guide pages inherit the shared Header and Footer and stay on the white/silver palette with the accent reserved for the primary button (and the Dash column of a comparison table).
 - Comparison and use-case pages may reuse the comparison table and the pricing cards; never re-tint them.
 - Checkout (`PaymentSection`) is untouched by restyling: it is the real Stripe and Lightning form.
 - When adding a section, ask first whether it is a card, a band, or plain flow. Most content is plain flow.

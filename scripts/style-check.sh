@@ -22,8 +22,8 @@ SYSTEM_FILES=(
   app/components/CTASection.tsx
   app/components/Footer.tsx
   app/components/BitsField.tsx
+  app/components/seo
 )
-# TODO(article-template): add app/components/seo once the template restyle lands.
 
 # Retired components: nothing may import them.
 RETIRED='GradientText|DeviceMockup|BuyMeCoffeeButton|FeatureGrid'

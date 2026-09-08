@@ -68,7 +68,6 @@ export default function LockNotesGuidePage() {
         badgeIcon="KeyRound"
         badgeText="Guide"
         headline="How to Lock Notes on iPhone and Mac"
-        highlightedWord="Lock Notes"
         subheadline="The steps for Apple Notes, what a locked note actually protects, whether Apple Notes is really encrypted, and when a dedicated encrypted notes app is the better tool."
         updated="September 2026"
         intro={

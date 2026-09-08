@@ -141,7 +141,6 @@ export default function EvernoteAlternativesPage() {
         badgeIcon="BookOpen"
         badgeText="Alternatives"
         headline="Evernote Alternatives Without the Subscription"
-        highlightedWord="Evernote Alternatives"
         subheadline="Evernote raised prices, cut its free plan and still cannot promise that nobody but you can read your notes. These eight apps fix at least one of those problems, and the first fixes all three."
         updated="September 2026"
         intro={

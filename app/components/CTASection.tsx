@@ -6,7 +6,18 @@ import { motion } from 'framer-motion';
 import { APP_STORE_URL } from '../../lib/links';
 import BitsField from './BitsField';
 
-export default function CTASection() {
+type Props = {
+  headline?: string;
+  subheadline?: string;
+  /** White binary field inside the band. On for the homepage; off on article pages, whose hero already carries the field. */
+  bits?: boolean;
+};
+
+export default function CTASection({
+  headline = "Your notes. Your device. Nobody else's server.",
+  subheadline = '$14.99 once on Mac. Free on iPhone.',
+  bits = true,
+}: Props) {
   return (
     <section className='py-16 sm:py-20'>
       <div className='container mx-auto px-6 lg:px-8'>
@@ -16,12 +27,10 @@ export default function CTASection() {
           viewport={{ once: true }}
           className='relative overflow-hidden isolate rounded-[24px] bg-[#0d0d0d] text-white p-8 sm:p-12 lg:p-14 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8'
         >
-          <BitsField className='absolute inset-0 w-full h-full -z-10' ink='255,255,255' base={0.07} peak={0.28} period={8} />
+          {bits && <BitsField className='absolute inset-0 w-full h-full -z-10' ink='255,255,255' base={0.07} peak={0.28} period={8} />}
           <div className='flex flex-col gap-2'>
-            <h2 className='text-3xl sm:text-4xl lg:text-[40px] font-bold tracking-[-0.035em] leading-[1.05] text-balance'>
-              Your notes. Your device. Nobody else&apos;s server.
-            </h2>
-            <p className='text-[17px] text-gray-400'>$14.99 once on Mac. Free on iPhone.</p>
+            <h2 className='text-3xl sm:text-4xl lg:text-[40px] font-bold tracking-[-0.035em] leading-[1.05] text-balance'>{headline}</h2>
+            {subheadline && <p className='text-[17px] text-gray-400'>{subheadline}</p>}
           </div>
           <div className='flex flex-col sm:flex-row gap-3 flex-shrink-0'>
             <a

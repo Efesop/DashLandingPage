@@ -153,7 +153,6 @@ export default function BestNotesAppForMacPage() {
         badgeIcon="Laptop"
         badgeText="Mac apps compared"
         headline="The Best Notes Apps for Mac in 2026"
-        highlightedWord="Notes Apps for Mac"
         subheadline="Eight Mac note-taking apps compared on the things that matter once the honeymoon is over: privacy, offline use, encryption, export and what you actually pay."
         updated="September 2026"
         intro={

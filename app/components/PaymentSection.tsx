@@ -437,7 +437,7 @@ export default function PaymentSection({ embedded = false }: { embedded?: boolea
   return (
     <section
       id='payment-section'
-      className='py-24 bg-gradient-to-b from-white to-gray-50 dark:from-gray-950 dark:to-gray-900'
+      className='py-20 sm:py-24'
     >
       <div className='container mx-auto px-4 sm:px-6 lg:px-8'>
         <div className='max-w-4xl mx-auto'>
@@ -448,34 +448,32 @@ export default function PaymentSection({ embedded = false }: { embedded?: boolea
             viewport={{ once: true }}
             className='text-center mb-12 sm:mb-16'
           >
-            <div className='inline-flex items-center rounded-full bg-blue-50 dark:bg-blue-950/50 px-4 py-2 text-blue-700 dark:text-blue-300 border border-blue-200 dark:border-blue-800 mb-6'>
-              <Lock className='mr-2 h-4 w-4' />
-              <span className='text-sm font-medium'>Secure Purchase</span>
-            </div>
+            <span className='inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white border border-gray-200 text-[13.5px] font-medium text-gray-700 mb-5'>
+              <Lock className='w-3.5 h-3.5 text-gray-700' aria-hidden='true' />
+              Buy once
+            </span>
 
-            <h2 className='text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6'>
-              Get <span className='text-blue-600 dark:text-blue-400'>Dash</span> Today
+            <h2 className='text-3xl sm:text-4xl lg:text-[44px] font-bold tracking-[-0.035em] leading-[1.05] text-gray-900 mb-4'>
+              Get Dash for Mac
             </h2>
 
-            <p className='text-lg sm:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto'>
-              Join thousands of privacy-conscious users who've chosen Dash
-              over corporate surveillance. One-time payment for the desktop
-              app — sync across devices is an optional subscription.
+            <p className='text-[17px] text-gray-500 max-w-2xl mx-auto'>
+              One-time payment for the Mac app. Sync across devices is an optional subscription.
             </p>
 
             <div className='mt-6 flex flex-wrap gap-4 justify-center text-sm'>
               <Link
                 href='/subscribe'
-                className='text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300 transition-colors'
+                className='text-gray-700 underline underline-offset-[3px] decoration-gray-400 hover:decoration-gray-900 transition-colors'
               >
-                Want sync? See Dash Sync →
+                Want sync? See Dash Sync
               </Link>
-              <span className='text-gray-300 dark:text-gray-700'>·</span>
+              <span className='text-gray-300'>·</span>
               <Link
                 href='/payment/recovery'
-                className='text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300 transition-colors'
+                className='text-gray-700 underline underline-offset-[3px] decoration-gray-400 hover:decoration-gray-900 transition-colors'
               >
-                Already purchased? Recover your download →
+                Already purchased? Recover your download
               </Link>
             </div>
           </motion.div>
@@ -524,7 +522,7 @@ export default function PaymentSection({ embedded = false }: { embedded?: boolea
                 {/* Floating badge */}
                 <div className='absolute -top-3 -right-3 bg-white dark:bg-gray-800 px-3 py-1.5 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700'>
                   <div className='flex items-center gap-1.5'>
-                    <Zap className='w-3 h-3 text-blue-500' />
+                    <Zap className='w-3 h-3 text-gray-700' />
                     <span className='text-xs font-medium text-gray-700 dark:text-gray-300'>
                       Instant Download
                     </span>

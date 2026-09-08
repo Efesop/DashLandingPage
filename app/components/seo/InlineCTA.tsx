@@ -2,41 +2,37 @@
 
 import React from 'react';
 import { ArrowRight } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { PRIMARY_BUTTON } from './SEOHero';
 
 interface InlineCTAProps {
+  /** One sentence above the button. */
   text?: string;
   href?: string;
+  /** Ignored. Kept for legacy call sites. */
   variant?: 'light' | 'dark';
 }
 
 export default function InlineCTA({
-  text = 'Get Dash for Mac — $14.99, one-time purchase',
+  text = 'Lock a note in one click. Dash is $14.99 once on Mac, free on iPhone.',
   href = '#payment-section',
-  variant = 'light',
 }: InlineCTAProps) {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 10 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      className="py-12 text-center"
-    >
-      <a
-        href={href}
-        onClick={(e) => {
-          e.preventDefault();
-          document.getElementById(href.replace('#', ''))?.scrollIntoView({ behavior: 'smooth' });
-        }}
-        className={`inline-flex items-center gap-2 px-6 py-2.5 text-sm font-semibold rounded-lg ${
-          variant === 'dark'
-            ? 'bg-blue-500 text-white hover:bg-blue-600 active:bg-blue-700'
-            : 'bg-blue-600 text-white hover:bg-blue-700 active:bg-blue-800'
-        }`}
-      >
-        {text}
-        <ArrowRight className="w-4 h-4" />
-      </a>
-    </motion.div>
+    <div className='container mx-auto px-6 lg:px-8 py-12 sm:py-14'>
+      <div className='flex flex-col items-center gap-4 text-center'>
+        <p className='text-lg text-gray-600 max-w-[52ch] text-pretty'>{text}</p>
+        <a
+          href={href}
+          onClick={(e) => {
+            if (!href.startsWith('#')) return;
+            e.preventDefault();
+            document.getElementById(href.slice(1))?.scrollIntoView({ behavior: 'smooth' });
+          }}
+          className={PRIMARY_BUTTON}
+        >
+          Get Dash for Mac
+          <ArrowRight className='w-4 h-4' aria-hidden='true' />
+        </a>
+      </div>
+    </div>
   );
 }

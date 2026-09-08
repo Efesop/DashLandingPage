@@ -114,7 +114,6 @@ export default function PrivnoteAlternativesPage() {
         badgeIcon="Flame"
         badgeText="Self-destructing notes"
         headline="Privnote Alternatives for Notes That Destroy Themselves"
-        highlightedWord="Privnote Alternatives"
         subheadline="Privnote made burn-after-reading links famous. These five tools do the same job with encryption you can check, passwords you can add, and expiry you control."
         updated="September 2026"
         intro={

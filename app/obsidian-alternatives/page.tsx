@@ -141,7 +141,6 @@ export default function ObsidianAlternativesPage() {
         badgeIcon="Search"
         badgeText="Alternatives"
         headline="8 Obsidian Alternatives Worth Switching To"
-        highlightedWord="Obsidian Alternatives"
         subheadline="Obsidian is brilliant if you enjoy building your tools. If you would rather write than configure, need encryption without plugins, or want a mobile app that just works, one of these fits better."
         updated="September 2026"
         intro={

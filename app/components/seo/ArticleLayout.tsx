@@ -1,29 +1,18 @@
 'use client';
 
-import React, { useState } from 'react';
+import React from 'react';
 import Link from 'next/link';
-import { motion, AnimatePresence } from 'framer-motion';
-import {
-  Minus,
-  Plus,
-  Check,
-  X,
-  Laptop,
-  Shield,
-  Lock,
-  KeyRound,
-  Flame,
-  BookOpen,
-  Search,
-  Share2,
-  type LucideIcon,
-} from 'lucide-react';
+import { MotionConfig } from 'framer-motion';
+import { Check, X, Laptop, Shield, Lock, KeyRound, Flame, BookOpen, Search, Share2, type LucideIcon } from 'lucide-react';
 import Header from '../Header';
 import Footer from '../Footer';
-import PaymentSection from '../PaymentSection';
+import PricingSection from '../PricingSection';
+import FAQSection from '../FAQSection';
+import CTASection from '../CTASection';
+import ComparisonTable, { type ComparisonColumn, type ComparisonRow } from '../ComparisonTable';
+import BitsField from '../BitsField';
 import SEOHero from './SEOHero';
 import InlineCTA from './InlineCTA';
-import CTABanner from './CTABanner';
 import RelatedLinks from './RelatedLinks';
 
 // Icons are referenced by name so server components can pass plain data.
@@ -60,41 +49,57 @@ export interface ArticleFAQ {
   answer: string;
 }
 
+export interface ArticleComparison {
+  columns: ComparisonColumn[];
+  rows: ComparisonRow[];
+  heading?: string;
+  subheading?: string;
+}
+
 export interface ArticleLayoutProps {
   badgeIcon: keyof typeof ICONS;
   badgeText: string;
   headline: string;
-  highlightedWord?: string;
   subheadline: string;
+  /** e.g. "September 2026" */
   updated: string;
   intro: React.ReactNode;
+  /** Feature grid rendered between the intro and the listicle. */
+  comparison?: ArticleComparison;
   apps?: ArticleApp[];
   appsHeading?: string;
   sections?: ArticleSection[];
   faqs: ArticleFAQ[];
   related: { title: string; href: string; description: string }[];
+  /** One sentence above a "Get Dash for Mac" button, placed after the listicle. */
   inlineCTA?: string;
   ctaHeadline: string;
   ctaSubheadline: string;
+  /** The three pricing cards (Mac checkout, iPhone, Dash Sync). Off for short answer pages. */
   showPayment?: boolean;
 }
 
-const prose =
-  'max-w-3xl mx-auto text-lg leading-relaxed text-gray-700 dark:text-gray-300 ' +
-  '[&_p]:mb-5 [&_p:last-child]:mb-0 [&_ul]:list-disc [&_ul]:pl-6 [&_ul]:mb-5 [&_ol]:list-decimal [&_ol]:pl-6 [&_ol]:mb-5 ' +
-  '[&_li]:mb-2 [&_strong]:font-semibold [&_strong]:text-gray-900 dark:[&_strong]:text-white ' +
-  '[&_a]:text-blue-600 dark:[&_a]:text-blue-400 [&_a]:underline [&_a]:underline-offset-2 ' +
-  '[&_h3]:text-xl [&_h3]:font-bold [&_h3]:text-gray-900 dark:[&_h3]:text-white [&_h3]:mt-8 [&_h3]:mb-3 ' +
-  '[&_code]:font-mono [&_code]:text-[0.9em] [&_code]:bg-gray-100 dark:[&_code]:bg-gray-800 [&_code]:px-1.5 [&_code]:py-0.5 [&_code]:rounded';
+/**
+ * Body copy: gray-600 at 18px, ink links with a grey underline, 24px h3s, mono code on the card grey,
+ * hairline tables. Every article and guide shares this so the pages carry only data.
+ */
+export const prose =
+  'max-w-3xl mx-auto text-lg leading-[1.7] text-gray-600 ' +
+  '[&_p]:mb-5 [&_p:last-child]:mb-0 [&_ul]:list-disc [&_ul]:pl-6 [&_ul]:mb-5 [&_ol]:list-decimal [&_ol]:pl-6 [&_ol]:mb-5 [&_li]:mb-2 ' +
+  '[&_strong]:font-semibold [&_strong]:text-gray-900 ' +
+  '[&_a]:text-gray-900 [&_a]:underline [&_a]:underline-offset-[3px] [&_a]:decoration-gray-400 [&_a:hover]:decoration-gray-900 ' +
+  '[&_h3]:text-2xl [&_h3]:font-semibold [&_h3]:tracking-[-0.02em] [&_h3]:text-gray-900 [&_h3]:mt-10 [&_h3]:mb-3 ' +
+  '[&_code]:font-mono [&_code]:text-[0.9em] [&_code]:bg-[#f5f5f7] [&_code]:border [&_code]:border-gray-200 [&_code]:px-1.5 [&_code]:py-0.5 [&_code]:rounded-md ' +
+  '[&_table]:w-full [&_table]:text-[15.5px] [&_table]:mb-5 [&_th]:text-left [&_th]:font-semibold [&_th]:text-gray-900 [&_th]:py-2 [&_th]:border-b [&_th]:border-gray-200 [&_td]:py-2 [&_td]:border-b [&_td]:border-gray-100';
 
 export default function ArticleLayout({
   badgeIcon,
   badgeText,
   headline,
-  highlightedWord,
   subheadline,
   updated,
   intro,
+  comparison,
   apps,
   appsHeading,
   sections = [],
@@ -105,168 +110,133 @@ export default function ArticleLayout({
   ctaSubheadline,
   showPayment = true,
 }: ArticleLayoutProps) {
-  const [openFaq, setOpenFaq] = useState<number | null>(null);
   const BadgeIcon = ICONS[badgeIcon] ?? Shield;
 
   return (
-    <main className="min-h-screen bg-white dark:bg-gray-950">
-      <Header />
+    <MotionConfig reducedMotion='user'>
+      <main className='min-h-screen bg-[#fbfbfc]'>
+        <Header />
 
-      <SEOHero
-        badge={{ icon: BadgeIcon, text: badgeText }}
-        headline={headline}
-        highlightedWord={highlightedWord}
-        subheadline={subheadline}
-        primaryCTA={{ text: 'Get Dash for Mac' }}
-        secondaryCTA={{ text: 'Read the guide', href: '#article' }}
-      />
+        <SEOHero
+          badge={{ icon: BadgeIcon, text: badgeText }}
+          headline={headline}
+          subheadline={subheadline}
+          primaryCTA={{ text: 'Get Dash for Mac' }}
+          secondaryCTA={{ text: 'Read on', href: '#article' }}
+          updated={updated}
+          field
+        />
 
-      <article id="article" className="py-20 bg-white dark:bg-gray-950">
-        <div className="container mx-auto px-6 lg:px-8">
-          <p className="max-w-3xl mx-auto text-sm text-gray-500 dark:text-gray-400 mb-8">
-            Updated {updated} · By the Dash team
-          </p>
-          <div className={prose}>{intro}</div>
-        </div>
-      </article>
-
-      {apps && apps.length > 0 && (
-        <section className="py-20 bg-gray-50 dark:bg-gray-900">
-          <div className="container mx-auto px-6 lg:px-8">
-            {appsHeading && (
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-12 text-center">
-                {appsHeading}
-              </h2>
-            )}
-            <ol className="max-w-4xl mx-auto space-y-6">
-              {apps.map((app, index) => (
-                <li
-                  key={app.name}
-                  className={`rounded-2xl border p-6 md:p-8 bg-white dark:bg-gray-950 ${
-                    app.isDash
-                      ? 'border-blue-300 dark:border-blue-700 shadow-lg shadow-blue-500/10'
-                      : 'border-gray-200 dark:border-gray-800'
-                  }`}
-                >
-                  <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1 mb-2">
-                    <span className="text-sm font-mono text-gray-400">{index + 1}.</span>
-                    <h3 className="text-2xl font-bold text-gray-900 dark:text-white">{app.name}</h3>
-                    {app.isDash && (
-                      <span className="text-xs font-medium px-2 py-0.5 rounded-full bg-blue-100 dark:bg-blue-900/40 text-blue-700 dark:text-blue-300">
-                        Our app
-                      </span>
-                    )}
-                  </div>
-                  <p className="text-gray-600 dark:text-gray-300 mb-5">{app.tagline}</p>
-                  <dl className="grid sm:grid-cols-3 gap-4 text-sm mb-5">
-                    <div>
-                      <dt className="text-gray-500 dark:text-gray-400 mb-0.5">Best for</dt>
-                      <dd className="text-gray-900 dark:text-white font-medium">{app.bestFor}</dd>
-                    </div>
-                    <div>
-                      <dt className="text-gray-500 dark:text-gray-400 mb-0.5">Price</dt>
-                      <dd className="text-gray-900 dark:text-white font-medium">{app.price}</dd>
-                    </div>
-                    <div>
-                      <dt className="text-gray-500 dark:text-gray-400 mb-0.5">Privacy</dt>
-                      <dd className="text-gray-900 dark:text-white font-medium">{app.privacy}</dd>
-                    </div>
-                  </dl>
-                  <div className="grid sm:grid-cols-2 gap-4 text-sm">
-                    <ul className="space-y-1.5">
-                      {app.pros.map((p) => (
-                        <li key={p} className="flex gap-2 text-gray-700 dark:text-gray-300">
-                          <Check className="w-4 h-4 mt-0.5 text-green-600 flex-shrink-0" />
-                          <span>{p}</span>
-                        </li>
-                      ))}
-                    </ul>
-                    <ul className="space-y-1.5">
-                      {app.cons.map((c) => (
-                        <li key={c} className="flex gap-2 text-gray-700 dark:text-gray-300">
-                          <X className="w-4 h-4 mt-0.5 text-gray-400 flex-shrink-0" />
-                          <span>{c}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </li>
-              ))}
-            </ol>
+        <article id='article' className='scroll-mt-24 pt-6 sm:pt-8'>
+          <div className='container mx-auto px-6 lg:px-8'>
+            <div className={prose}>{intro}</div>
           </div>
-        </section>
-      )}
+        </article>
 
-      {inlineCTA && <InlineCTA text={inlineCTA} />}
+        {comparison && (
+          <ComparisonTable
+            band={false}
+            id='comparison'
+            columns={comparison.columns}
+            rows={comparison.rows}
+            heading={comparison.heading ?? ''}
+            subheading={comparison.subheading ?? ''}
+          />
+        )}
 
-      {sections.map((section, index) => (
-        <section
-          key={section.heading}
-          id={section.id}
-          className={`py-16 ${index % 2 === 0 ? 'bg-white dark:bg-gray-950' : 'bg-gray-50 dark:bg-gray-900'}`}
-        >
-          <div className="container mx-auto px-6 lg:px-8">
-            <h2 className="max-w-3xl mx-auto text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-6">
-              {section.heading}
-            </h2>
-            <div className={prose}>{section.body}</div>
-          </div>
-        </section>
-      ))}
-
-      {showPayment && <PaymentSection />}
-
-      <section className="py-20 bg-white dark:bg-gray-950">
-        <div className="container mx-auto px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-10 text-center">
-            Frequently asked questions
-          </h2>
-          <div className="max-w-3xl mx-auto space-y-3">
-            {faqs.map((faq, index) => (
-              <div
-                key={faq.question}
-                className="rounded-xl bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-800 overflow-hidden"
-              >
-                <button
-                  onClick={() => setOpenFaq(openFaq === index ? null : index)}
-                  className="w-full px-6 py-5 text-left flex items-center justify-between hover:bg-gray-100 dark:hover:bg-gray-800/50 transition-colors"
-                  aria-expanded={openFaq === index}
-                >
-                  <span className="font-semibold text-gray-900 dark:text-white pr-4">{faq.question}</span>
-                  {openFaq === index ? (
-                    <Minus className="h-5 w-5 text-blue-500 flex-shrink-0" />
-                  ) : (
-                    <Plus className="h-5 w-5 text-gray-400 flex-shrink-0" />
-                  )}
-                </button>
-                <AnimatePresence>
-                  {openFaq === index && (
-                    <motion.div
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: 'auto', opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.25, ease: 'easeInOut' }}
-                      className="overflow-hidden"
+        {apps && apps.length > 0 && (
+          <section className='py-16 sm:py-20'>
+            <div className='container mx-auto px-6 lg:px-8'>
+              <div className='max-w-[880px] mx-auto flex flex-col gap-6'>
+                {appsHeading && (
+                  <h2 className='text-3xl sm:text-[40px] font-bold tracking-[-0.035em] leading-[1.05] text-gray-900'>{appsHeading}</h2>
+                )}
+                <ol className='flex flex-col gap-4'>
+                  {apps.map((app, index) => (
+                    <li
+                      key={app.name}
+                      className={`rounded-[20px] border p-6 sm:p-8 ${
+                        app.isDash ? 'bg-gradient-to-br from-white to-[#f3f4f6] border-[#d4d4d8]' : 'bg-[#f5f5f7] border-[#e5e7eb]'
+                      }`}
                     >
-                      <div className="px-6 pb-5 text-gray-600 dark:text-gray-400 leading-relaxed">{faq.answer}</div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
+                      <div className='flex flex-wrap items-baseline gap-x-3 gap-y-1 mb-2'>
+                        <span className='font-mono text-[13px] text-gray-400 tabular-nums'>{String(index + 1).padStart(2, '0')}</span>
+                        <h3 className='text-2xl font-bold tracking-[-0.02em] text-gray-900'>{app.name}</h3>
+                        {app.isDash && (
+                          <span className='text-xs font-semibold px-2 py-[3px] rounded-md bg-gray-900 text-white'>Our app</span>
+                        )}
+                      </div>
+                      <p className='text-gray-600 mb-5 leading-relaxed'>{app.tagline}</p>
+                      <dl className='grid sm:grid-cols-3 gap-4 text-sm mb-5'>
+                        <div>
+                          <dt className='text-gray-500 mb-0.5'>Best for</dt>
+                          <dd className='text-gray-900 font-medium'>{app.bestFor}</dd>
+                        </div>
+                        <div>
+                          <dt className='text-gray-500 mb-0.5'>Price</dt>
+                          <dd className='text-gray-900 font-medium'>{app.price}</dd>
+                        </div>
+                        <div>
+                          <dt className='text-gray-500 mb-0.5'>Privacy</dt>
+                          <dd className='text-gray-900 font-medium'>{app.privacy}</dd>
+                        </div>
+                      </dl>
+                      <div className='grid sm:grid-cols-2 gap-4 text-[14.5px]'>
+                        <ul className='space-y-1.5'>
+                          {app.pros.map((p) => (
+                            <li key={p} className='flex gap-2 text-gray-700'>
+                              <Check className='w-4 h-4 mt-0.5 text-[#1a7f4b] flex-shrink-0' aria-hidden='true' />
+                              <span>{p}</span>
+                            </li>
+                          ))}
+                        </ul>
+                        <ul className='space-y-1.5'>
+                          {app.cons.map((c) => (
+                            <li key={c} className='flex gap-2 text-gray-700'>
+                              <X className='w-4 h-4 mt-0.5 text-gray-400 flex-shrink-0' aria-hidden='true' />
+                              <span>{c}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    </li>
+                  ))}
+                </ol>
               </div>
-            ))}
-          </div>
+            </div>
+          </section>
+        )}
+
+        {inlineCTA && <InlineCTA text={inlineCTA} />}
+
+        {sections.map((section) => (
+          <section key={section.heading} id={section.id} className='scroll-mt-24 py-10 sm:py-12'>
+            <div className='container mx-auto px-6 lg:px-8'>
+              <h2 className='max-w-3xl mx-auto text-3xl sm:text-[40px] font-bold tracking-[-0.035em] leading-[1.05] text-gray-900 mb-5'>
+                {section.heading}
+              </h2>
+              <div className={prose}>{section.body}</div>
+            </div>
+          </section>
+        ))}
+
+        {showPayment && <PricingSection band={false} />}
+
+        <FAQSection faqs={faqs} heading='Frequently asked questions' subheading='' id='faq' />
+
+        <RelatedLinks heading='Keep reading' links={related} />
+
+        <CTASection headline={ctaHeadline} subheadline={ctaSubheadline} bits={false} />
+
+        <div className='sr-only'>
+          <Link href='/download'>Download Dash Notes</Link>
         </div>
-      </section>
 
-      <RelatedLinks heading="Keep reading" links={related} />
-
-      <CTABanner headline={ctaHeadline} subheadline={ctaSubheadline} />
-
-      <div className="sr-only">
-        <Link href="/download">Download Dash Notes</Link>
-      </div>
-
-      <Footer />
-    </main>
+        <div aria-hidden='true' className='relative h-[18px] mt-4'>
+          <BitsField className='absolute inset-0 w-full h-full' base={0.14} peak={0.3} period={13} cell={10.2} line={18} font={11} />
+        </div>
+        <Footer />
+      </main>
+    </MotionConfig>
   );
 }

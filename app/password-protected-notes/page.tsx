@@ -68,7 +68,6 @@ export default function PasswordProtectedNotesPage() {
         badgeIcon="Lock"
         badgeText="Password protection"
         headline="A Notes App With Password Protection That Actually Encrypts"
-        highlightedWord="Password Protection"
         subheadline="Most notes apps with a password only hide the note. Dash encrypts it with AES-256, unlocks with Face ID or Touch ID, locks itself when you walk away, and can show a decoy if someone makes you open it."
         updated="September 2026"
         intro={

@@ -141,7 +141,6 @@ export default function NotionAlternativesPage() {
         badgeIcon="Shield"
         badgeText="Alternatives"
         headline="Notion Alternatives That Keep Your Notes Private"
-        highlightedWord="Notion Alternatives"
         subheadline="Notion is a fine team workspace. It is a poor place for a journal, a password hint, a therapy note or a draft you are not ready to share. These eight apps give you the editor without the server."
         updated="September 2026"
         intro={
