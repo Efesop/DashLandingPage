@@ -9,6 +9,7 @@
 | Date | Shipped | Ranking keywords | Top-10 | Est. visits/mo | Ref. domains | Notes |
 |---|---|---|---|---|---|---|
 | 2026-09-08 | Research; technical fixes; 7 query pages; homepage v3; article template (`article-template` branch) | 13 | 1 | ≈13 | 40 | Baseline from DataForSEO Labs |
+| 2026-09-08 | **Migration 1** (`migrate/private-notes`): `/private-notes` rewritten on ArticleLayout with a Dash / Apple Notes / Notion / Evernote table; 4 of 24 legacy pages migrated (for-students, encrypted-notes, secure-journal, private-notes), 20 remain | — | — | — | — | Merged to main |
 | 2026-09-08 | **S5 content** (`seo/sprint-5`, pulled forward): `/simplenote-alternative` (Automattic ended active development in March 2026), `/craft-alternative`. Gated items (private-ai-notes, homepage H1) still wait for December data | — | — | — | — | Merged to main; record ranks at +14 days |
 | 2026-09-08 | **S4** (`seo/sprint-4`): `/apple-notes-alternative`, `/joplin-alternative`, `/bear-alternative`; Apple Notes export claims updated for macOS 26 Markdown export; Notion alternatives description trimmed | — | — | — | — | Merged to main; record ranks at +14 days |
 | 2026-09-08 | **S3** (`seo/sprint-3`): `/is-apple-notes-secure`, `/is-notion-private`, `/standard-notes-vs-notesnook`, `/standard-notes-alternative`; lock guide title trimmed and its Apple-security FAQs handed to the new page; verified prices set on the open-source page | — | — | — | — | Merged to main; record ranks at +14 days |

@@ -39,6 +39,7 @@ SYSTEM_FILES=(
   app/bear-alternative/page.tsx
   app/simplenote-alternative/page.tsx
   app/craft-alternative/page.tsx
+  app/private-notes/page.tsx
 )
 
 # Retired components: nothing may import them.

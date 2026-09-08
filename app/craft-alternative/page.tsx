@@ -4,7 +4,7 @@ import { articleJsonLd, faqJsonLd, itemListJsonLd, pageMetadata, type FAQ } from
 
 const TITLE = 'Craft Alternatives in 2026: Block Editors That Stay Local';
 const DESCRIPTION =
-  'Craft alternatives in 2026 for people who want a block editor without the cloud or the subscription: Dash, Obsidian, Anytype, Apple Notes, Bear and Notion compared.';
+  'Craft alternatives in 2026 for a block editor without the cloud or the subscription: Dash, Obsidian, Anytype, Apple Notes, Bear and Notion compared.';
 const PATH = '/craft-alternative';
 
 export const metadata: Metadata = pageMetadata({
