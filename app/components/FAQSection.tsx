@@ -55,10 +55,10 @@ export default function FAQSection() {
           viewport={{ once: true }}
           className='text-center mb-16'
         >
-          <h2 className='text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6'>
+          <h2 className='text-4xl md:text-5xl font-bold text-gray-900 mb-6'>
             Frequently asked questions
           </h2>
-          <p className='text-lg text-gray-600 dark:text-gray-300'>
+          <p className='text-lg text-gray-600'>
             Everything you need to know about Dash
           </p>
         </motion.div>
@@ -78,7 +78,7 @@ export default function FAQSection() {
                 onClick={() => setOpenFaq(openFaq === index ? null : index)}
                 className='w-full px-6 py-5 text-left flex items-center justify-between hover:bg-gray-50 transition-colors'
               >
-                <span className='font-semibold text-gray-900 dark:text-white pr-4'>
+                <span className='font-semibold text-gray-900 pr-4'>
                   {faq.question}
                 </span>
                 <div className='flex-shrink-0'>
@@ -98,7 +98,7 @@ export default function FAQSection() {
                     transition={{ duration: 0.3, ease: 'easeInOut' }}
                     className='overflow-hidden'
                   >
-                    <div className='px-6 pb-5 text-gray-600 dark:text-gray-400 leading-relaxed'>
+                    <div className='px-6 pb-5 text-gray-600 leading-relaxed'>
                       {faq.answer}
                     </div>
                   </motion.div>

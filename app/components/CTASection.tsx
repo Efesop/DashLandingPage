@@ -3,7 +3,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { APP_STORE_URL } from './HeroSection';
+import { APP_STORE_URL } from '../../lib/links';
 import BitsField from './BitsField';
 
 export default function CTASection() {

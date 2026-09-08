@@ -20,7 +20,7 @@ Server component: SoftwareApplication + FAQPage JSON-LD, then the sections below
 
 ## Shared
 - `PaymentSection.tsx` — checkout form. Without `embedded` it renders the full section used on every SEO page (header, side mockup, form). With `embedded` it renders only the card.
-- `components/seo/*` — `SEOHero`, `FeatureGrid`, `InlineCTA`, `CTABanner`, `RelatedLinks`, and `ArticleLayout` (the shared layout for the alternatives / roundup / guide pages added Sep 2026).
+- `components/seo/*` — `SEOHero`, `InlineCTA`, `CTABanner`, `RelatedLinks`, and `ArticleLayout` (the shared layout for the alternatives / roundup / guide pages added Sep 2026).
 - `lib/seo.ts` — `pageMetadata`, `articleJsonLd`, `faqJsonLd`, `itemListJsonLd`.
 
 ## Removed Sep 8 2026

@@ -23,10 +23,10 @@ export default function UseCaseRow() {
           viewport={{ once: true }}
           className='flex items-baseline justify-between gap-6'
         >
-          <h2 className='text-2xl sm:text-[32px] font-bold tracking-[-0.03em] leading-[1.08] text-gray-900 dark:text-white'>
+          <h2 className='text-2xl sm:text-[32px] font-bold tracking-[-0.03em] leading-[1.08] text-gray-900'>
             Who keeps their notes in Dash
           </h2>
-          <span className='text-[15px] text-gray-500 dark:text-gray-400 hidden sm:inline'>Guides for each</span>
+          <span className='text-[15px] text-gray-500 hidden sm:inline'>Guides for each</span>
         </motion.div>
         <div className='grid sm:grid-cols-2 lg:grid-cols-5 gap-3.5'>
           {useCases.map((u) => (
@@ -35,11 +35,11 @@ export default function UseCaseRow() {
               href={u.href}
               className='group rounded-2xl border border-gray-200 bg-white p-5 flex flex-col gap-1.5 hover:border-gray-400 transition-colors'
             >
-              <span className='font-semibold text-base text-gray-900 dark:text-white inline-flex items-center gap-1.5'>
+              <span className='font-semibold text-base text-gray-900 inline-flex items-center gap-1.5'>
                 {u.title}
-                <ArrowRight className='w-3.5 h-3.5 opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all text-blue-600 dark:text-blue-400' />
+                <ArrowRight className='w-3.5 h-3.5 opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all text-gray-700' />
               </span>
-              <span className='text-sm text-gray-500 dark:text-gray-400'>{u.blurb}</span>
+              <span className='text-sm text-gray-500'>{u.blurb}</span>
             </Link>
           ))}
         </div>

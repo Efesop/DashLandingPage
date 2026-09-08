@@ -75,7 +75,7 @@ export default function Footer() {
               {privacyFeatures.slice(0, 3).map((feature) => (
                 <div
                   key={feature.label}
-                  className='flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white border border-gray-200 text-xs'
+                  className='flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white border border-gray-200 text-xs'
                 >
                   <feature.icon className='w-3 h-3 text-gray-700' />
                   <span className='text-gray-700'>{feature.label}</span>

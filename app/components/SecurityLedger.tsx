@@ -27,11 +27,11 @@ export default function SecurityLedger() {
         >
           <BitsField className='absolute left-0 top-0 w-full h-[18px] -z-10' base={0.16} peak={0.34} period={9} cell={10.2} line={18} font={11} />
           <div className='flex flex-col gap-4'>
-            <span className='text-[13px] font-semibold uppercase tracking-[0.06em] text-gray-500 dark:text-gray-400'>Security you can read</span>
-            <h2 className='text-3xl sm:text-4xl lg:text-[40px] font-bold tracking-[-0.035em] leading-[1.08] text-gray-900 dark:text-white text-balance'>
+            <span className='text-[13px] font-semibold uppercase tracking-[0.06em] text-gray-500'>Security you can read</span>
+            <h2 className='text-3xl sm:text-4xl lg:text-[40px] font-bold tracking-[-0.035em] leading-[1.08] text-gray-900 text-balance'>
               The details are the promise.
             </h2>
-            <p className='text-[17px] text-gray-600 dark:text-gray-300 max-w-[44ch]'>
+            <p className='text-[17px] text-gray-600 max-w-[44ch]'>
               Every claim on this page is checkable in the source. We would rather show the algorithm than say
               &ldquo;military-grade&rdquo;.
             </p>
@@ -39,7 +39,7 @@ export default function SecurityLedger() {
               href='https://github.com/Efesop/rich-text-editor'
               target='_blank'
               rel='noopener noreferrer'
-              className='inline-flex items-center gap-2 w-fit px-4.5 py-3 rounded-[10px] border border-gray-300 dark:border-gray-700 text-[15px] font-medium text-gray-900 dark:text-white hover:bg-gray-50 dark:hover:bg-gray-900 transition-colors'
+              className='inline-flex items-center gap-2 w-fit px-4.5 py-3 rounded-[10px] border border-gray-300 text-[15px] font-medium text-gray-900 hover:bg-gray-50 transition-colors'
             >
               <Code className='w-4 h-4' />
               Read the source on GitHub
@@ -49,10 +49,10 @@ export default function SecurityLedger() {
             {rows.map(([label, value], i) => (
               <div
                 key={label}
-                className={`flex items-baseline justify-between gap-6 py-3.5 ${i < rows.length - 1 ? 'border-b border-gray-100 dark:border-gray-800' : ''}`}
+                className={`flex items-baseline justify-between gap-6 py-3.5 ${i < rows.length - 1 ? 'border-b border-gray-100' : ''}`}
               >
-                <dt className='text-gray-500 dark:text-gray-400'>{label}</dt>
-                <dd className='text-right text-gray-900 dark:text-white'>{value}</dd>
+                <dt className='text-gray-500'>{label}</dt>
+                <dd className='text-right text-gray-900'>{value}</dd>
               </div>
             ))}
           </dl>

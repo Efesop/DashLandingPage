@@ -18,8 +18,8 @@ function useTicker(intervalMs: number, modulo: number, active: boolean) {
 const card = 'rounded-[20px] border p-6 sm:p-7 flex flex-col gap-5';
 const panel =
   'bg-white rounded-xl border border-gray-900/[0.07] shadow-[0_12px_30px_-18px_rgba(0,0,0,0.3)]';
-const title = 'text-[22px] font-semibold tracking-[-0.02em] text-gray-900 dark:text-white';
-const body = 'text-[15px] text-gray-500 dark:text-gray-400';
+const title = 'text-[22px] font-semibold tracking-[-0.02em] text-gray-900';
+const body = 'text-[15px] text-gray-500';
 
 /* ── 1. Lock a note ── */
 function LockCard({ active }: { active: boolean }) {
@@ -30,8 +30,8 @@ function LockCard({ active }: { active: boolean }) {
   return (
     <div className={`${card} bg-[#f5f5f7] border-[#e5e7eb] lg:col-span-2 lg:grid lg:grid-cols-2 lg:items-center lg:gap-6 min-h-[340px]`}>
       <div className='flex flex-col gap-2.5'>
-        <h3 className='text-2xl font-semibold tracking-[-0.02em] text-gray-900 dark:text-white'>Lock a note in one click.</h3>
-        <p className='text-base text-gray-500 dark:text-gray-400'>
+        <h3 className='text-2xl font-semibold tracking-[-0.02em] text-gray-900'>Lock a note in one click.</h3>
+        <p className='text-base text-gray-500'>
           Each locked note is encrypted with AES-256-GCM and a key derived from its password. Open it with Touch ID on Mac,
           Face ID on iPhone. Or lock the whole app and let it lock itself when you walk away.
         </p>
@@ -40,21 +40,21 @@ function LockCard({ active }: { active: boolean }) {
         <div className='flex items-center gap-2.5'>
           <span
             className={`w-9 h-9 rounded-lg inline-flex items-center justify-center transition-colors duration-300 ${
-              locked ? 'bg-green-50 dark:bg-green-900/30 text-green-700 dark:text-green-400' : 'bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400'
+              locked ? 'bg-green-50 text-green-700' : 'bg-blue-50 text-blue-600'
             }`}
           >
             <Lock className='w-4 h-4' />
           </span>
           <div className='flex flex-col'>
-            <span className='font-semibold text-[15px] text-gray-900 dark:text-white'>Lock &ldquo;Interview notes, 4 Sep&rdquo;</span>
-            <span className='text-[12.5px] text-gray-500 dark:text-gray-400'>{locked ? 'Locked · AES-256-GCM' : 'Encrypted on this device'}</span>
+            <span className='font-semibold text-[15px] text-gray-900'>Lock &ldquo;Interview notes, 4 Sep&rdquo;</span>
+            <span className='text-[12.5px] text-gray-500'>{locked ? 'Locked · AES-256-GCM' : 'Encrypted on this device'}</span>
           </div>
         </div>
-        <div className='h-10 rounded-lg border border-gray-200 dark:border-gray-700 flex items-center px-3 font-mono text-[15px] text-gray-500 dark:text-gray-400 tracking-[0.2em]'>
+        <div className='h-10 rounded-lg border border-gray-200 flex items-center px-3 font-mono text-[15px] text-gray-500 tracking-[0.2em]'>
           {'•'.repeat(dots)}
-          {!locked && dots < 10 && <span className='w-px h-4 bg-gray-900 dark:bg-white ml-0.5 animate-pulse' aria-hidden='true' />}
+          {!locked && dots < 10 && <span className='w-px h-4 bg-gray-900 ml-0.5 animate-pulse' aria-hidden='true' />}
         </div>
-        <div className='flex items-center justify-between text-[13.5px] text-gray-600 dark:text-gray-300'>
+        <div className='flex items-center justify-between text-[13.5px] text-gray-600'>
           <span className='flex items-center gap-2'>
             <span className='relative inline-block w-8 h-[18px] rounded-full bg-blue-600'>
               <span className='absolute right-0.5 top-0.5 w-3.5 h-3.5 rounded-full bg-white' />
@@ -63,7 +63,7 @@ function LockCard({ active }: { active: boolean }) {
           </span>
           <span
             className={`px-3.5 py-2 rounded-lg font-medium transition-all duration-200 ${
-              locked ? 'bg-green-600 text-white' : pressed ? 'bg-gray-700 text-white scale-95' : 'bg-gray-900 dark:bg-white text-white dark:text-gray-900'
+              locked ? 'bg-green-600 text-white' : pressed ? 'bg-gray-700 text-white scale-95' : 'bg-gray-900 text-white'
             }`}
           >
             {locked ? (
@@ -98,7 +98,7 @@ function ThemesCard({ active }: { active: boolean }) {
         <p className={body}>Light, Dark, Night, Terminal. Follows the system setting if you like.</p>
       </div>
       <div className={`${panel} mt-auto p-3 flex flex-col gap-2`}>
-        <span className='px-1 text-[11px] font-semibold uppercase tracking-[0.06em] text-gray-400 dark:text-gray-500'>Appearance</span>
+        <span className='px-1 text-[11px] font-semibold uppercase tracking-[0.06em] text-gray-400'>Appearance</span>
         <div className='flex items-start justify-between gap-1 px-1'>
           {THEME_TILES.map((tile, i) => {
             const isActive = i === activeIndex && !matchSystem;
@@ -121,15 +121,15 @@ function ThemesCard({ active }: { active: boolean }) {
                     </span>
                   )}
                 </span>
-                <span className={`text-[12px] ${isActive ? 'font-semibold text-gray-900 dark:text-white' : 'text-gray-500 dark:text-gray-400'}`}>{tile.label}</span>
+                <span className={`text-[12px] ${isActive ? 'font-semibold text-gray-900' : 'text-gray-500'}`}>{tile.label}</span>
               </div>
             );
           })}
         </div>
-        <div className='flex items-center gap-3 h-[38px] px-2 rounded-lg text-[14px] text-gray-600 dark:text-gray-300'>
+        <div className='flex items-center gap-3 h-[38px] px-2 rounded-lg text-[14px] text-gray-600'>
           <Monitor className='h-4 w-4 flex-shrink-0 text-gray-400' />
           <span className='flex-1 text-left'>Match macOS appearance</span>
-          <span className={`relative inline-block w-[34px] h-5 rounded-full transition-colors duration-300 ${matchSystem ? 'bg-blue-600' : 'bg-gray-300 dark:bg-gray-700'}`}>
+          <span className={`relative inline-block w-[34px] h-5 rounded-full transition-colors duration-300 ${matchSystem ? 'bg-blue-600' : 'bg-gray-300'}`}>
             <span className={`absolute top-[2px] w-4 h-4 rounded-full bg-white shadow transition-all duration-300 ${matchSystem ? 'left-4' : 'left-[2px]'}`} />
           </span>
         </div>
@@ -150,26 +150,26 @@ function LinksCard({ active }: { active: boolean }) {
         <h3 className={title}>Type [[ to link notes.</h3>
         <p className={body}>Wiki-style links with autocomplete, plus folders and tags.</p>
       </div>
-      <div className={`${panel} mt-auto p-4 flex flex-col gap-2.5 text-[14.5px] text-gray-900 dark:text-white`}>
+      <div className={`${panel} mt-auto p-4 flex flex-col gap-2.5 text-[14.5px] text-gray-900`}>
         <div>
           Follow up on the{' '}
           {inserted ? (
-            <span className='text-blue-600 dark:text-blue-400 border-b border-dotted border-blue-600'>[[Planning minutes, March]]</span>
+            <span className='text-blue-600 border-b border-dotted border-blue-600'>[[Planning minutes, March]]</span>
           ) : (
             <>
-              <span className='text-blue-600 dark:text-blue-400'>{typed}</span>
-              <span className='inline-block w-px h-4 align-middle bg-gray-900 dark:bg-white ml-px animate-pulse' aria-hidden='true' />
+              <span className='text-blue-600'>{typed}</span>
+              <span className='inline-block w-px h-4 align-middle bg-gray-900 ml-px animate-pulse' aria-hidden='true' />
             </>
           )}
         </div>
         <div
-          className={`border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden text-[13.5px] transition-opacity duration-200 ${
+          className={`border border-gray-200 rounded-lg overflow-hidden text-[13.5px] transition-opacity duration-200 ${
             dropdown ? 'opacity-100' : 'opacity-0'
           }`}
         >
-          <div className='px-3 py-2 bg-blue-50 dark:bg-blue-900/30 text-gray-900 dark:text-white'>Planning minutes, March</div>
-          <div className='px-3 py-2 text-gray-500 dark:text-gray-400'>Planning appeal, draft letter</div>
-          <div className='px-3 py-2 text-gray-500 dark:text-gray-400'>Plans for the summer</div>
+          <div className='px-3 py-2 bg-blue-50 text-gray-900'>Planning minutes, March</div>
+          <div className='px-3 py-2 text-gray-500'>Planning appeal, draft letter</div>
+          <div className='px-3 py-2 text-gray-500'>Plans for the summer</div>
         </div>
       </div>
     </div>
@@ -200,17 +200,17 @@ function SelfDestructCard({ active }: { active: boolean }) {
       </div>
       <div className={`${panel} relative overflow-hidden mt-auto p-4 min-h-[150px] flex flex-col`}>
         {gone ? (
-          <div className='flex-1 flex flex-col items-center justify-center gap-2 text-gray-500 dark:text-gray-400 text-[13.5px]'>
+          <div className='flex-1 flex flex-col items-center justify-center gap-2 text-gray-500 text-[13.5px]'>
             <Trash2 className='w-5 h-5' />
             <span>Note deleted. Nothing to recover.</span>
           </div>
         ) : (
           <div className={`flex flex-col gap-3 transition-all duration-700 ${burning ? 'opacity-30 blur-[1px] translate-y-2' : ''}`}>
             <div className='flex items-center justify-between text-[14.5px]'>
-              <span className='font-medium text-gray-900 dark:text-white'>Door code for the studio</span>
+              <span className='font-medium text-gray-900'>Door code for the studio</span>
               <span
-                className={`inline-flex items-center gap-1 font-mono text-[11.5px] px-2 py-0.5 rounded-full tabular-nums transition-colors ${
-                  urgent ? 'bg-red-50 dark:bg-red-900/30 text-red-600 dark:text-red-400' : 'bg-amber-50 dark:bg-amber-900/30 text-amber-700 dark:text-amber-400'
+                className={`inline-flex items-center gap-1 font-mono text-[11.5px] px-2 py-0.5 rounded-md tabular-nums transition-colors ${
+                  urgent ? 'bg-red-50 text-red-600' : 'bg-amber-50 text-amber-700'
                 }`}
               >
                 <Clock className='w-3 h-3' />
@@ -218,11 +218,11 @@ function SelfDestructCard({ active }: { active: boolean }) {
               </span>
             </div>
             <div className='flex flex-col gap-2' aria-hidden='true'>
-              <span className='block h-2 rounded-full bg-gray-200 dark:bg-gray-700 w-11/12' />
-              <span className='block h-2 rounded-full bg-gray-200 dark:bg-gray-700 w-3/4' />
-              <span className='block h-2 rounded-full bg-gray-200 dark:bg-gray-700 w-5/6' />
+              <span className='block h-2 rounded-full bg-gray-200 w-11/12' />
+              <span className='block h-2 rounded-full bg-gray-200 w-3/4' />
+              <span className='block h-2 rounded-full bg-gray-200 w-5/6' />
             </div>
-            <span className='text-[12px] text-gray-500 dark:text-gray-400'>Deletes automatically when the timer reaches zero.</span>
+            <span className='text-[12px] text-gray-500'>Deletes automatically when the timer reaches zero.</span>
           </div>
         )}
         {burning && (
@@ -255,19 +255,19 @@ function DuressCard({ active }: { active: boolean }) {
       </div>
       <div className={`${panel} mt-auto p-4 flex flex-col gap-2.5 text-[13.5px]`}>
         <div className='flex items-center justify-between'>
-          <span className='text-gray-500 dark:text-gray-400'>Real password</span>
-          <span className='font-mono text-gray-900 dark:text-white'>•••••••••</span>
+          <span className='text-gray-500'>Real password</span>
+          <span className='font-mono text-gray-900'>•••••••••</span>
         </div>
-        <div className='h-px bg-gray-100 dark:bg-gray-800' />
+        <div className='h-px bg-gray-100' />
         <div className='flex items-center justify-between'>
-          <span className='text-gray-500 dark:text-gray-400'>Duress password</span>
-          <span className='font-mono text-gray-900 dark:text-white'>
+          <span className='text-gray-500'>Duress password</span>
+          <span className='font-mono text-gray-900'>
             {'•'.repeat(dots)}
-            {dots < 6 && <span className='inline-block w-px h-3.5 align-middle bg-gray-900 dark:bg-white ml-px animate-pulse' aria-hidden='true' />}
+            {dots < 6 && <span className='inline-block w-px h-3.5 align-middle bg-gray-900 ml-px animate-pulse' aria-hidden='true' />}
           </span>
         </div>
         <div
-          className={`flex items-center gap-2 px-2.5 py-2 rounded-lg bg-gray-50 dark:bg-gray-900 text-[12.5px] text-gray-600 dark:text-gray-300 transition-all duration-300 ${
+          className={`flex items-center gap-2 px-2.5 py-2 rounded-lg bg-gray-50 text-[12.5px] text-gray-600 transition-all duration-300 ${
             revealed ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-1'
           }`}
         >
@@ -328,12 +328,12 @@ function LocalAICard({ active }: { active: boolean }) {
         <p className={body}>Summarize, rewrite and ask questions with Ollama or LM Studio. Nothing leaves the machine.</p>
       </div>
       <div className={`${panel} mt-auto p-3.5 flex flex-col gap-2.5 text-[13.5px]`}>
-        <div className='self-end px-3 py-2 rounded-[10px] bg-gray-900 dark:bg-white text-white dark:text-gray-900'>Summarize this note</div>
-        <div className='px-3 py-2 rounded-[10px] bg-gray-50 dark:bg-gray-900 text-gray-700 dark:text-gray-200 min-h-[64px]'>
+        <div className='self-end px-3 py-2 rounded-[10px] bg-gray-900 text-white'>Summarize this note</div>
+        <div className='px-3 py-2 rounded-[10px] bg-gray-50 text-gray-700 min-h-[64px]'>
           {shown}
-          {shown.length < REPLY.length && <span className='inline-block w-px h-3.5 align-middle bg-gray-900 dark:bg-white ml-px animate-pulse' aria-hidden='true' />}
+          {shown.length < REPLY.length && <span className='inline-block w-px h-3.5 align-middle bg-gray-900 ml-px animate-pulse' aria-hidden='true' />}
         </div>
-        <span className='font-mono text-[11.5px] text-gray-500 dark:text-gray-400'>ollama · llama3 · localhost</span>
+        <span className='font-mono text-[11.5px] text-gray-500'>ollama · llama3 · localhost</span>
       </div>
     </div>
   );
@@ -354,10 +354,10 @@ export default function BentoFeatures() {
           viewport={{ once: true }}
           className='flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4 lg:gap-10'
         >
-          <h2 className='text-3xl sm:text-4xl lg:text-[44px] font-bold tracking-[-0.035em] leading-[1.05] text-gray-900 dark:text-white text-balance max-w-[18ch]'>
+          <h2 className='text-3xl sm:text-4xl lg:text-[44px] font-bold tracking-[-0.035em] leading-[1.05] text-gray-900 text-balance max-w-[18ch]'>
             Everything you want from a notes app. Nothing that needs a server.
           </h2>
-          <p className='text-[17px] text-gray-500 dark:text-gray-400 max-w-[34ch]'>
+          <p className='text-[17px] text-gray-500 max-w-[34ch]'>
             A real block editor with links, folders and tags, plus the things only a private app can offer.
           </p>
         </motion.div>
@@ -372,7 +372,7 @@ export default function BentoFeatures() {
           <LocalAICard active={active} />
         </div>
 
-        <p className='text-sm text-gray-500 dark:text-gray-400 flex items-center gap-2'>
+        <p className='text-sm text-gray-500 flex items-center gap-2'>
           <Fingerprint className='w-4 h-4' />
           Touch ID on Mac and Face ID on iPhone unlock the app or any locked note; a password is always the fallback.
         </p>

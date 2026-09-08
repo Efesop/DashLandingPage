@@ -5,11 +5,11 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { Lock, Clock, WifiOff, UserX, Smartphone, User, Code } from 'lucide-react';
 import BitsField from './BitsField';
+import { APP_STORE_URL } from '../../lib/links';
 import videojs from 'video.js';
 import type Player from 'video.js/dist/types/player';
 import 'video.js/dist/video-js.css';
 
-export const APP_STORE_URL = 'https://apps.apple.com/app/id6766192836';
 
 const scrollToPayment = (e: React.MouseEvent) => {
   e.preventDefault();
