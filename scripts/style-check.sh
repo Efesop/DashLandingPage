@@ -48,10 +48,12 @@ SYSTEM_FILES=(
   app/for-journalists/page.tsx
   app/for-researchers/page.tsx
   app/for-bitcoiners/page.tsx
+  app/offline-notes/page.tsx
+  app/share/page.tsx
 )
 
 # Retired components: nothing may import them.
-RETIRED='GradientText|DeviceMockup|BuyMeCoffeeButton|FeatureGrid'
+RETIRED='GradientText|DeviceMockup|BuyMeCoffeeButton|FeatureGrid|GlassCard|FloatingOrbs'
 
 echo "style-check: ${#SYSTEM_FILES[@]} system paths"
 
