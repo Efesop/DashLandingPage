@@ -9,6 +9,7 @@
 | Date | Shipped | Ranking keywords | Top-10 | Est. visits/mo | Ref. domains | Notes |
 |---|---|---|---|---|---|---|
 | 2026-09-08 | Research; technical fixes; 7 query pages; homepage v3; article template (`article-template` branch) | 13 | 1 | ≈13 | 40 | Baseline from DataForSEO Labs |
+| 2026-09-08 | **S3** (`seo/sprint-3`): `/is-apple-notes-secure`, `/is-notion-private`, `/standard-notes-vs-notesnook`, `/standard-notes-alternative`; lock guide title trimmed and its Apple-security FAQs handed to the new page; verified prices set on the open-source page | — | — | — | — | Merged to main; record ranks at +14 days |
 | 2026-09-08 | **S2** (`seo/sprint-2`): `/journal-app-mac`, `/day-one-alternative`; `/secure-journal` re-targeted to "Encrypted Diary & Journal App" and migrated with a Dash / Day One / Journey comparison table; Bear and Day One facts corrected on `/best-notes-app-for-mac` | — | — | — | — | Merged to main; record ranks at +14 days |
 | 2026-09-08 | **S1** (`seo/sprint-1`): `/therapist-notes-app`, `/open-source-notes-app`; `/for-students` re-titled and `/encrypted-notes` given an E2EE section, both migrated to ArticleLayout; `scripts/check-seo.mjs` | — | — | — | — | Merged to main; record ranks at +14 days |
 
@@ -46,11 +47,11 @@ Volume = US monthly searches; KD = DataForSEO difficulty 0–100. Bold = the pri
 |---|---|---|---|
 | Mac notes app | **mac note taking app** 1,300/30 · note taking app for mac 1,300/30 · macbook pro notes app 1,600/26 · **best app for taking notes mac** 1,000/7 · notes app for mac 1,000/30 · macos notes app 1,000/29 · best notes app for mac 320/16 · mac notes app 320/31 | 7,000+ | `/best-notes-app-for-mac` |
 | Password-protected notes | **notes app with password** 1,900/57 · **notes app password** 1,900/1 · password protected notes 170/21 · password protected notes app 170/57 · lock notes app 140/31 · notes app with lock 140/40 | 4,800 | `/password-protected-notes` |
-| Lock notes how-to | **how to lock notes app on iphone** 1,600/16 · how to put a lock on notes 210/0 · how to lock notes on mac 70/3 · is apple notes secure 70/3 · how secure is apple notes 50/0 · is apple notes encrypted 40/7 · are apple notes private 30/13 | 2,100 | `/guides/lock-notes-on-iphone-and-mac` |
+| Lock notes how-to | **how to lock notes app on iphone** 1,600/16 · how to put a lock on notes 210/0 · how to lock notes on mac 70/3 · is apple notes secure 70/3 · how secure is apple notes 50/0 · is apple notes encrypted 40/7 · are apple notes private 30/13 | 2,100 | `/guides/lock-notes-on-iphone-and-mac` (how-to); `/is-apple-notes-secure` (S3, the security questions) |
 | Duress password | **duress password** 1,600/4 · duress pin 210/0 | 1,800 | `/guides/duress-password` |
 | Obsidian alternative | **obsidian alternative** 1,000/0 · best obsidian alternative 40/0 · obsidian encryption 90/0 · is obsidian encrypted 40/12 | 1,200 | `/obsidian-alternatives` (+ `/vs-obsidian`) |
 | Evernote alternative | **evernote alternative** 880/9 · evernote alternative free 210/0 · best evernote alternative 140/16 | 1,200 | `/evernote-alternatives` (+ `/vs-evernote`) |
-| Notion alternative | **notion alternative** 720/2 · is notion private 90/9 · is notion encrypted 70/3 · notion alternative free 30/4 | 900 | `/notion-alternatives` (+ `/vs-notion`) |
+| Notion alternative | **notion alternative** 720/2 · is notion private 90/9 · is notion encrypted 70/3 · notion alternative free 30/4 | 900 | `/notion-alternatives` (+ `/vs-notion`); `/is-notion-private` (S3) |
 | Private / encrypted notes (category) | **privacy notes** 1,300/22 · **private notes** 880/20 · secure note taking app 480/47 · secure notes 320/40 · encrypted notes 260/63 · end to end encrypted note taking app 320/36 · encrypted note taking app 260/37 · encrypted notes app 170/35 · private notes app 110/37 · private note taking app 110/32 | 4,000 | `/` (category), `/private-notes`, `/encrypted-notes` |
 | Journal / diary on Mac | **journal app mac** 880/34 · journaling app mac 880/34 · diary app mac 880/39 · best journal app for mac 140/31 · best diary app for mac 140/26 · private journal 260/22 · encrypted diary (ranks #10) · private journal app 320/86 · private diary app 320/71 | 3,500 | `/journal-app-mac` (S2); `/secure-journal` re-targeted to the encrypted-diary cluster (S2) |
 | Privnote / self-destructing | privnote 5,400/4 (brand) · **privnote alternatives** 110/1 · privnote alternative 110/2 · one time note 50/18 · disappearing note 40/18 · self destructing notes 90/22 · self destructing message 320/20 | 6,000 (mostly brand) | `/privnote-alternatives`, `/guides/self-destructing-notes` |
@@ -59,8 +60,8 @@ Volume = US monthly searches; KD = DataForSEO difficulty 0–100. Bold = the pri
 | Students | **notes taking app for students** 1,000/27 | 1,000 | `/for-students` |
 | Therapists | **therapist notes app** 590/6 · note taking app for therapists 10/5 · hipaa compliant notes app 40/0 | 640 | `/therapist-notes-app` (S1) |
 | Open source | **open source note taking app** 590/32 · open source notes app 70/35 | 660 | `/open-source-notes-app` (S1) |
-| Other alternatives | apple notes alternative 70/0 · joplin alternative 70/9 · bear alternative 50/0 · day one alternative 30/13 · standard notes alternative 20/0 · notesnook alternative 20 · simplenote alternative 20/10 · craft alternative 20/7 | 300 | `/day-one-alternative` (S2); the rest S3–S5 |
-| Comparisons | notesnook vs standard notes 40/0 · standard notes vs notesnook 30/0 · obsidian vs standard notes 30/0 | 100 | *not built* |
+| Other alternatives | apple notes alternative 70/0 · joplin alternative 70/9 · bear alternative 50/0 · day one alternative 30/13 · standard notes alternative 20/0 · notesnook alternative 20 · simplenote alternative 20/10 · craft alternative 20/7 | 300 | `/day-one-alternative` (S2), `/standard-notes-alternative` (S3); the rest S4–S5 |
+| Comparisons | notesnook vs standard notes 40/0 · standard notes vs notesnook 30/0 · obsidian vs standard notes 30/0 | 100 | `/standard-notes-vs-notesnook` (S3) |
 | Offline | offline notes app 50/15 · offline note taking app 50/37 · notes app offline (ranks #22) | 150 | `/offline-notes` |
 
 Queries with **zero recorded volume** that still describe us and belong in copy (they convert even if nobody types them): notes app no account · notes app no subscription · one time purchase notes app · local first notes app · zero knowledge notes app · face id notes app · touch id notes app · e2ee notes · notes app no tracking · local ai notes app · ollama notes app · notes app for journalists.
@@ -76,7 +77,11 @@ Head terms we are **not** chasing: notes app 60,500/77 · app for taking notes 2
 | `/open-source-notes-app` | open source note taking app | Open Source Note Taking Apps in 2026: 6 Compared |
 | `/therapist-notes-app` | therapist notes app | Therapist Notes App: Private Session Notes on Mac & iPhone |
 | `/password-protected-notes` | notes app with password | Notes App With Password Protection for Mac & iPhone |
-| `/guides/lock-notes-on-iphone-and-mac` | how to lock notes app on iphone | How to Lock Notes on iPhone and Mac (and Is Apple Notes Secure?) |
+| `/guides/lock-notes-on-iphone-and-mac` | how to lock notes app on iphone | How to Lock Notes on iPhone and Mac: Apple Notes and Beyond |
+| `/is-apple-notes-secure` | is apple notes secure, is apple notes encrypted | Is Apple Notes Secure? Encryption, Locked Notes & iCloud |
+| `/is-notion-private` | is notion private, is notion encrypted | Is Notion Private? What Notion Can See in Your Notes |
+| `/standard-notes-vs-notesnook` | notesnook vs standard notes | Standard Notes vs Notesnook: Encryption, Price, Platforms |
+| `/standard-notes-alternative` | standard notes alternative | Standard Notes Alternatives (2026): Rich Text, Encrypted |
 | `/guides/duress-password` | duress password | Duress Password: What It Is & How to Set One Up |
 | `/obsidian-alternatives` | obsidian alternative | 8 Obsidian Alternatives in 2026 (Simpler, Encrypted or Free) |
 | `/notion-alternatives` | notion alternative | Notion Alternatives That Keep Your Notes Private (2026) |
@@ -105,10 +110,10 @@ Technical state (done Sep 8 2026): title template `%s | Dash Notes` in `app/layo
 1. ✅ S1 (Sep 8 2026) **`/therapist-notes-app`** — therapist notes app (590/6). Angle: private session notes that never touch a vendor's server, lock and duress protection. Must say plainly that Dash is not a HIPAA-covered service or an EHR; it is a private notebook.
 2. ✅ S1 (Sep 8 2026) **`/open-source-notes-app`** — open source note taking app (590/32). Listicle: Joplin, Standard Notes, Notesnook, Logseq, Trilium, Dash (MIT). Link the GitHub repo prominently.
 3. ✅ S2 (Sep 8 2026) **`/journal-app-mac`** — journal app mac / journaling app mac / diary app mac (2,600 across the three, KD 34–39). Listicle of Mac journaling apps with Dash's encrypted angle. Then re-title `/secure-journal` to "Encrypted Diary & Journal App for Mac and iPhone" so it keeps the "encrypted diary" ranking it already has instead of chasing "private journal app" (KD 86).
-4. **`/is-apple-notes-secure`** — is apple notes secure / how secure is apple notes / is apple notes encrypted / are apple notes private (190 total, KD ≤13). Short answer page; links to the lock guide and `/password-protected-notes`.
-5. **`/is-notion-private`** — is notion private / is notion encrypted (160, KD ≤9). Links to `/notion-alternatives`.
-6. **`/standard-notes-vs-notesnook`** — notesnook vs standard notes and the reverse (70, KD 0), with Dash as the third column.
-7. **Alternative batch** on one template (✅ `/day-one-alternative` shipped early in S2): `/apple-notes-alternative`, `/joplin-alternative`, `/bear-alternative`, `/day-one-alternative`, `/standard-notes-alternative`, `/simplenote-alternative`, `/craft-alternative`. Each is cheap (KD 0–13) and reuses the comparison table.
+4. ✅ S3 (Sep 8 2026) **`/is-apple-notes-secure`** — is apple notes secure / how secure is apple notes / is apple notes encrypted / are apple notes private (190 total, KD ≤13). Short answer page; links to the lock guide and `/password-protected-notes`.
+5. ✅ S3 (Sep 8 2026) **`/is-notion-private`** — is notion private / is notion encrypted (160, KD ≤9). Links to `/notion-alternatives`.
+6. ✅ S3 (Sep 8 2026) **`/standard-notes-vs-notesnook`** — notesnook vs standard notes and the reverse (70, KD 0), with Dash as the third column.
+7. **Alternative batch** on one template (✅ `/day-one-alternative` in S2, ✅ `/standard-notes-alternative` in S3): `/apple-notes-alternative`, `/joplin-alternative`, `/bear-alternative`, `/day-one-alternative`, `/standard-notes-alternative`, `/simplenote-alternative`, `/craft-alternative`. Each is cheap (KD 0–13) and reuses the comparison table.
 8. **`/private-ai-notes`** only if `/guides/local-ai` fails to move on "private ai assistant" within three months.
 
 ### B. Pages to redo

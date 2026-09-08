@@ -62,6 +62,7 @@ export default function Header() {
     { href: '/best-notes-app-for-mac', label: 'Best Notes Apps for Mac' },
     { href: '/open-source-notes-app', label: 'Open Source Notes Apps' },
     { href: '/journal-app-mac', label: 'Journal Apps for Mac' },
+    { href: '/standard-notes-vs-notesnook', label: 'Standard Notes vs Notesnook' },
     { href: '/obsidian-alternatives', label: 'Obsidian Alternatives' },
     { href: '/notion-alternatives', label: 'Notion Alternatives' },
     { href: '/evernote-alternatives', label: 'Evernote Alternatives' },
@@ -78,6 +79,8 @@ export default function Header() {
     { href: '/guides/seed-phrase-storage', label: 'Seed Phrase Storage' },
     { href: '/guides/local-ai', label: 'Local AI' },
     { href: '/guides/lock-notes-on-iphone-and-mac', label: 'Lock Notes on iPhone & Mac' },
+    { href: '/is-apple-notes-secure', label: 'Is Apple Notes Secure?' },
+    { href: '/is-notion-private', label: 'Is Notion Private?' },
   ];
 
   return (

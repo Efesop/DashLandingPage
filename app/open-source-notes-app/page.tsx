@@ -53,7 +53,7 @@ const apps: ArticleApp[] = [
     tagline:
       'End-to-end encrypted notes with a long security record, on every platform, with a free plan that covers plain-text notes and paid plans for the richer editors.',
     bestFor: 'Security-first users who want a trusted name',
-    price: 'Free plan; paid plans for rich editors and more',
+    price: 'Free (plain text); Productivity $90 a year; Professional $120 a year',
     privacy: 'End-to-end encrypted everywhere, by default',
     pros: ['Encrypted by default, not as an option', 'Mac, Windows, Linux, iOS, Android and web', 'AGPL-3.0, with published audits'],
     cons: ['The free editor is plain text', 'An account is required', 'Interface feels dated next to newer apps'],
@@ -63,7 +63,7 @@ const apps: ArticleApp[] = [
     tagline:
       'A polished, encrypted-by-default notes app. Everything is encrypted on your device with XChaCha20-Poly1305 and Argon2 before it syncs; client and server are both open source.',
     bestFor: 'A modern encrypted app that just works',
-    price: 'Free tier; Essential and Pro subscriptions',
+    price: 'Free; Essential $19.99 a year; Pro $69.99 a year',
     privacy: 'End-to-end encrypted by default',
     pros: ['Encryption on by default with a modern cipher', 'Web, desktop and mobile clients', 'GPL-3.0 client and server'],
     cons: ['An account is required', 'Free tier limits attachments (50 MB a month)', 'Notes are not local files'],
@@ -130,9 +130,9 @@ const related = [
     description: 'Notes apps without a subscription, compared.',
   },
   {
-    title: 'What AES-256 encryption is',
-    href: '/guides/encryption',
-    description: 'How Dash encrypts a note, in plain language.',
+    title: 'Standard Notes vs Notesnook',
+    href: '/standard-notes-vs-notesnook',
+    description: 'The two encrypted-by-default apps side by side.',
   },
 ];
 

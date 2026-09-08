@@ -2,9 +2,9 @@ import type { Metadata } from 'next';
 import ArticleLayout from '../../components/seo/ArticleLayout';
 import { articleJsonLd, faqJsonLd, pageMetadata, type FAQ } from '../../../lib/seo';
 
-const TITLE = 'How to Lock Notes on iPhone and Mac (and Is Apple Notes Secure?)';
+const TITLE = 'How to Lock Notes on iPhone and Mac: Apple Notes and Beyond';
 const DESCRIPTION =
-  'Step-by-step instructions to lock notes on iPhone and Mac in Apple Notes, what locking actually protects, whether Apple Notes is encrypted, and how a dedicated encrypted notes app compares.';
+  'How to lock notes on iPhone and Mac in Apple Notes, what a locked note protects, and what to use when you need to lock the whole app or every note.';
 const PATH = '/guides/lock-notes-on-iphone-and-mac';
 
 export const metadata: Metadata = pageMetadata({
@@ -15,16 +15,6 @@ export const metadata: Metadata = pageMetadata({
 });
 
 const faqs: FAQ[] = [
-  {
-    question: 'Is Apple Notes secure?',
-    answer:
-      'Reasonably, with a caveat. Notes you lock are end-to-end encrypted with a key derived from your passcode or note password, so Apple cannot read them. Ordinary, unlocked notes synced to iCloud are encrypted in transit and at rest, but Apple holds the keys unless you turn on Advanced Data Protection for iCloud. Apple Notes also has no auto-lock timer for the whole app and no duress password.',
-  },
-  {
-    question: 'Is Apple Notes encrypted?',
-    answer:
-      'Locked notes are end-to-end encrypted. Unlocked notes in iCloud are encrypted on Apple’s servers with keys Apple controls, unless Advanced Data Protection is enabled, which extends end-to-end encryption to most iCloud data including Notes.',
-  },
   {
     question: 'How do I lock a note on iPhone?',
     answer:
@@ -49,7 +39,7 @@ const faqs: FAQ[] = [
 
 const related = [
   { title: 'Notes app with password protection', href: '/password-protected-notes', description: 'Lock any note or the whole app with real encryption.' },
-  { title: 'What is AES-256 encryption?', href: '/guides/encryption', description: 'How Dash encrypts notes and why the details matter.' },
+  { title: 'Is Apple Notes secure?', href: '/is-apple-notes-secure', description: 'What Apple encrypts, what iCloud can read, and what Advanced Data Protection changes.' },
   { title: 'Duress password', href: '/guides/duress-password', description: 'A second password that protects you under coercion.' },
 ];
 

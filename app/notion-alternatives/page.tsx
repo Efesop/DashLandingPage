@@ -122,7 +122,7 @@ const faqs: FAQ[] = [
 const related = [
   { title: 'Dash vs Notion', href: '/vs-notion', description: 'Feature by feature: privacy, offline use, pricing.' },
   { title: 'Obsidian alternatives', href: '/obsidian-alternatives', description: 'Simpler, encrypted or free options if Obsidian is too much.' },
-  { title: 'Privacy-first note taking', href: '/guides/privacy-first-note-taking', description: 'What zero-knowledge design actually means for your notes.' },
+  { title: 'Is Notion private?', href: '/is-notion-private', description: 'What Notion encrypts, who holds the keys, and what its AI does with your pages.' },
 ];
 
 const jsonLd = [

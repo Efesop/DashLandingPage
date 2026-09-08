@@ -30,6 +30,10 @@ SYSTEM_FILES=(
   app/journal-app-mac/page.tsx
   app/secure-journal/page.tsx
   app/day-one-alternative/page.tsx
+  app/is-apple-notes-secure/page.tsx
+  app/is-notion-private/page.tsx
+  app/standard-notes-vs-notesnook/page.tsx
+  app/standard-notes-alternative/page.tsx
 )
 
 # Retired components: nothing may import them.
