@@ -17,12 +17,11 @@ const scrollToPayment = (e: React.MouseEvent) => {
 
 const AVATARS = ['bg-gray-200 text-gray-500', 'bg-gray-300 text-gray-600', 'bg-gray-400 text-white', 'bg-gray-500 text-white'];
 
-// Diagonal silver light streaks: a soft wide band, a bright highlight, and a faint darker band lower down.
-const STREAK_MAIN =
-  'linear-gradient(90deg, rgba(229,231,235,0) 0%, rgba(209,213,219,0.9) 35%, rgba(243,244,246,1) 50%, rgba(209,213,219,0.9) 65%, rgba(229,231,235,0) 100%)';
-const STREAK_HIGHLIGHT =
-  'linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.9) 40%, rgba(255,255,255,1) 50%, rgba(255,255,255,0.9) 60%, rgba(255,255,255,0) 100%)';
-const STREAK_LOW = 'linear-gradient(90deg, rgba(156,163,175,0) 0%, rgba(156,163,175,0.45) 45%, rgba(156,163,175,0) 100%)';
+// One diagonal silver streak on a white ground: a soft halo, the silver band itself, and a thin bright sheen line.
+const STREAK_HALO = 'linear-gradient(90deg, rgba(229,231,235,0) 0%, rgba(229,231,235,0.9) 50%, rgba(229,231,235,0) 100%)';
+const STREAK_BAND =
+  'linear-gradient(90deg, rgba(203,208,216,0) 0%, rgba(203,208,216,0.95) 35%, rgba(226,229,234,1) 50%, rgba(203,208,216,0.95) 65%, rgba(203,208,216,0) 100%)';
+const STREAK_SHEEN = 'linear-gradient(90deg, rgba(255,255,255,0) 10%, rgba(255,255,255,1) 50%, rgba(255,255,255,0) 90%)';
 
 export default function HeroSection() {
   const videoHostRef = useRef<HTMLDivElement>(null);
@@ -61,18 +60,18 @@ export default function HeroSection() {
       <section className='relative overflow-hidden bg-white'>
         <div
           aria-hidden='true'
-          className='absolute -left-[200px] -top-[60px] w-[1900px] h-[520px] -rotate-[14deg] blur-[36px] opacity-90'
-          style={{ backgroundImage: STREAK_MAIN }}
+          className='absolute -left-[200px] top-[40px] w-[1900px] h-[320px] -rotate-[14deg] blur-[50px] opacity-50'
+          style={{ backgroundImage: STREAK_HALO }}
         />
         <div
           aria-hidden='true'
-          className='absolute -left-[100px] top-[130px] w-[1800px] h-[120px] -rotate-[14deg] blur-[14px] opacity-90'
-          style={{ backgroundImage: STREAK_HIGHLIGHT }}
+          className='absolute -left-[100px] top-[150px] w-[1800px] h-[110px] -rotate-[14deg] blur-[12px] opacity-90'
+          style={{ backgroundImage: STREAK_BAND }}
         />
         <div
           aria-hidden='true'
-          className='absolute -left-[200px] top-[380px] w-[1900px] h-[240px] -rotate-[14deg] blur-[46px] opacity-60'
-          style={{ backgroundImage: STREAK_LOW }}
+          className='absolute -left-[100px] top-[196px] w-[1800px] h-[6px] -rotate-[14deg] blur-[2px] opacity-80'
+          style={{ backgroundImage: STREAK_SHEEN }}
         />
         <div aria-hidden='true' className='absolute inset-0 bg-gradient-to-b from-transparent via-[#fbfbfc]/60 to-[#fbfbfc]' />
 
