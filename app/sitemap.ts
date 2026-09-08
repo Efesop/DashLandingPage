@@ -20,6 +20,9 @@ const entries: Entry[] = [
   ['/is-notion-private', '2026-09-08', 'monthly', 0.7],
   ['/standard-notes-vs-notesnook', '2026-09-08', 'monthly', 0.7],
   ['/standard-notes-alternative', '2026-09-08', 'monthly', 0.6],
+  ['/apple-notes-alternative', '2026-09-08', 'monthly', 0.6],
+  ['/joplin-alternative', '2026-09-08', 'monthly', 0.6],
+  ['/bear-alternative', '2026-09-08', 'monthly', 0.6],
   ['/share', '2026-09-08', 'monthly', 0.7],
   ['/download', '2026-09-08', 'monthly', 0.9],
   // Roundups & alternatives

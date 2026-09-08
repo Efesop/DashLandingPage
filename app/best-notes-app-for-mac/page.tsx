@@ -30,7 +30,7 @@ const apps: ArticleApp[] = [
     price: 'Free',
     privacy: 'iCloud holds a key unless Advanced Data Protection is on',
     pros: ['Free and preinstalled', 'Handwriting and scanning on iPad and iPhone', 'Locked notes use end-to-end encryption'],
-    cons: ['Unlocked notes are readable by Apple unless you enable Advanced Data Protection', 'Export is limited to PDF and copy-paste', 'No Windows or Linux'],
+    cons: ['Unlocked notes are readable by Apple unless you enable Advanced Data Protection', 'Markdown export arrived only with macOS 26 and drops folder structure', 'No Windows or Linux'],
   },
   {
     name: 'Dash',

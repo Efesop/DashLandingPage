@@ -63,6 +63,7 @@ export default function Header() {
     { href: '/open-source-notes-app', label: 'Open Source Notes Apps' },
     { href: '/journal-app-mac', label: 'Journal Apps for Mac' },
     { href: '/standard-notes-vs-notesnook', label: 'Standard Notes vs Notesnook' },
+    { href: '/apple-notes-alternative', label: 'Apple Notes Alternatives' },
     { href: '/obsidian-alternatives', label: 'Obsidian Alternatives' },
     { href: '/notion-alternatives', label: 'Notion Alternatives' },
     { href: '/evernote-alternatives', label: 'Evernote Alternatives' },

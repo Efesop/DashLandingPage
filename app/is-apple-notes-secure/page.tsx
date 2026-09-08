@@ -175,7 +175,8 @@ export default function IsAppleNotesSecurePage() {
                   </li>
                   <li>
                     <strong>Account-bound.</strong> Notes live in an Apple Account; there is no account-free mode outside the
-                    local “On My Mac” folder, and export is limited to PDF and copy-paste.
+                    local “On My Mac” folder, and export (Markdown or PDF, since macOS 26) is per note and drops folder
+                    structure.
                   </li>
                 </ul>
               </>

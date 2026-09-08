@@ -34,6 +34,9 @@ SYSTEM_FILES=(
   app/is-notion-private/page.tsx
   app/standard-notes-vs-notesnook/page.tsx
   app/standard-notes-alternative/page.tsx
+  app/apple-notes-alternative/page.tsx
+  app/joplin-alternative/page.tsx
+  app/bear-alternative/page.tsx
 )
 
 # Retired components: nothing may import them.

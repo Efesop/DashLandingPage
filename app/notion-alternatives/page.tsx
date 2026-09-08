@@ -4,7 +4,7 @@ import { articleJsonLd, faqJsonLd, itemListJsonLd, pageMetadata, type FAQ } from
 
 const TITLE = 'Notion Alternatives That Keep Your Notes Private (2026)';
 const DESCRIPTION =
-  'The best Notion alternatives in 2026 for people who want notes that work offline, need no account, and cannot be read by the provider: Dash, Anytype, Obsidian, Craft, Joplin, Notesnook, Standard Notes and Apple Notes.';
+  'Notion alternatives that keep your notes private: eight apps compared on offline use, encryption, price and platforms, from Dash and Obsidian to Standard Notes.';
 const PATH = '/notion-alternatives';
 
 export const metadata: Metadata = pageMetadata({
