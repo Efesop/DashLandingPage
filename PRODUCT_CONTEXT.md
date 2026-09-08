@@ -217,7 +217,7 @@ Confident, straightforward, empowering, approachable. No fluff, no fear-mongerin
 
 ### Homepage (`app/page.tsx`) — rebuilt Sep 8 2026 (design canvas "Dash Notes Homepage")
 1. Header — "Dash Notes", nav (Features, Security, Use Cases / Compare / Guides dropdowns, Pricing, FAQ), "Free on iPhone" + black "Get Dash for Mac" (rounded rectangles, no pills)
-2. Hero — centered: eyebrow, H1 "Your notes are none of our business.", one-sentence description, two buttons, proof row (avatars are placeholders until real people are supplied; "100+ downloads · 122 Product Hunt upvotes · MIT"), then the full-width Mac window playing the demo video on a dotted panel with two live chips (encrypted, self-destruct countdown) and a trust strip. **Video still shows the pre-1.6 layout — re-record.**
+2. Hero — centered: eyebrow, H1 "Your notes are none of our business.", one-sentence description, two buttons, proof row (avatars are placeholders until real people are supplied; "100+ downloads · Open source (MIT) · Works offline"), then the full-width Mac window playing the demo video on a dotted panel with two live chips (encrypted, self-destruct countdown) and a trust strip. **Video still shows the pre-1.6 layout — re-record.**
 3. Bento (`BentoFeatures.tsx`) — seven animated cards: lock a note, four themes, [[links]], self-destructing notes, duress password, sync ledger (dark, what the relay sees), local AI. Animations pause off-screen and under prefers-reduced-motion.
 4. Comparison table — Dash / Notion / Evernote / Obsidian, 12 rows, Dash column tinted
 5. Security ledger — "The details are the promise." + mono spec rows + GitHub link

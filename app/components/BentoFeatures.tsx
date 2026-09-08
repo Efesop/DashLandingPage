@@ -2,7 +2,7 @@
 
 import React, { useEffect, useRef, useState } from 'react';
 import { motion, useInView, useReducedMotion } from 'framer-motion';
-import { Lock, Check, Eye, Fingerprint } from 'lucide-react';
+import { Lock, Check, Eye, Fingerprint, Monitor, Clock, Trash2 } from 'lucide-react';
 
 /* ── Shared ticker: counts 0..modulo-1 while the section is on screen and motion is allowed ── */
 function useTicker(intervalMs: number, modulo: number, active: boolean) {
@@ -80,33 +80,59 @@ function LockCard({ active }: { active: boolean }) {
   );
 }
 
-/* ── 2. Themes ── */
-const THEMES = [
-  { name: 'Light', bg: '#ffffff', fg: '#0d0d0d', border: '#e6e6e6', mono: false },
-  { name: 'Dark', bg: '#0d0d0d', fg: '#ececec', border: '#0d0d0d', mono: false },
-  { name: 'Night', bg: '#0c1017', fg: '#e0e6f0', border: '#1c2438', mono: false },
-  { name: 'Terminal', bg: '#0b100b', fg: '#4ade80', border: '#0b100b', mono: true },
+/* ── 2. Themes: the tiles are the ones in the Mac app's Settings popover (components/SettingsPopover.js) ── */
+const THEME_TILES = [
+  { value: 'light', label: 'Light', sidebar: '#f0f0f0', content: '#ffffff', text: '#171717', muted: '#a3a3a3', border: '#e5e5e5' },
+  { value: 'dark', label: 'Dark', sidebar: '#1a1a1a', content: '#0d0d0d', text: '#ececec', muted: '#6b6b6b', border: '#2e2e2e' },
+  { value: 'darkblue', label: 'Night', sidebar: '#111827', content: '#0c1017', text: '#e0e6f0', muted: '#5d6b88', border: '#1c2438' },
+  { value: 'fallout', label: 'Terminal', sidebar: '#141b14', content: '#0e120e', text: '#86efac', muted: '#16a34a', border: 'rgba(34,197,94,0.3)' },
 ];
 function ThemesCard({ active }: { active: boolean }) {
-  const t = useTicker(1400, 4, active);
+  const t = useTicker(1300, 6, active);
+  const activeIndex = t < 4 ? t : 0;
+  const matchSystem = t >= 4;
   return (
     <div className={`${card} min-h-[340px]`}>
       <div className='flex flex-col gap-1.5'>
         <h3 className={title}>Four themes, or match your Mac.</h3>
         <p className={body}>Light, Dark, Night, Terminal. Follows the system setting if you like.</p>
       </div>
-      <div className='mt-auto grid grid-cols-2 gap-2.5'>
-        {THEMES.map((theme, i) => (
-          <div
-            key={theme.name}
-            style={{ background: theme.bg, color: theme.fg, borderColor: theme.border }}
-            className={`h-[84px] rounded-[10px] border flex items-end p-2.5 text-xs transition-all duration-300 ${theme.mono ? 'font-mono' : ''} ${
-              i === t ? 'ring-2 ring-blue-500 ring-offset-2 ring-offset-gray-50 dark:ring-offset-gray-900 scale-[1.02]' : ''
-            }`}
-          >
-            {theme.name}
-          </div>
-        ))}
+      <div className={`${panel} mt-auto p-3 flex flex-col gap-2`}>
+        <span className='px-1 text-[11px] font-semibold uppercase tracking-[0.06em] text-gray-400 dark:text-gray-500'>Appearance</span>
+        <div className='flex items-start justify-between gap-1 px-1'>
+          {THEME_TILES.map((tile, i) => {
+            const isActive = i === activeIndex && !matchSystem;
+            return (
+              <div key={tile.value} className='flex flex-col items-center gap-1.5'>
+                <span
+                  className={`relative w-[68px] h-11 rounded-lg overflow-hidden flex transition-transform duration-300 ${
+                    isActive ? 'ring-2 ring-blue-500 scale-[1.03]' : 'border'
+                  }`}
+                  style={{ background: tile.content, borderColor: isActive ? undefined : tile.border }}
+                >
+                  <span className='block w-6 h-full' style={{ background: tile.sidebar }} />
+                  <span className='flex-1 px-1.5 py-2 flex flex-col gap-1'>
+                    <span className='block h-[3px] w-[20px] rounded-sm' style={{ background: tile.text }} />
+                    <span className='block h-[2px] w-[28px] rounded-sm' style={{ background: tile.muted }} />
+                  </span>
+                  {isActive && (
+                    <span className='absolute right-1 bottom-1 w-3.5 h-3.5 rounded-full bg-blue-600 flex items-center justify-center'>
+                      <Check className='h-2 w-2 text-white' strokeWidth={3.5} />
+                    </span>
+                  )}
+                </span>
+                <span className={`text-[12px] ${isActive ? 'font-semibold text-gray-900 dark:text-white' : 'text-gray-500 dark:text-gray-400'}`}>{tile.label}</span>
+              </div>
+            );
+          })}
+        </div>
+        <div className='flex items-center gap-3 h-[38px] px-2 rounded-lg text-[14px] text-gray-600 dark:text-gray-300'>
+          <Monitor className='h-4 w-4 flex-shrink-0 text-gray-400' />
+          <span className='flex-1 text-left'>Match macOS appearance</span>
+          <span className={`relative inline-block w-[34px] h-5 rounded-full transition-colors duration-300 ${matchSystem ? 'bg-blue-600' : 'bg-gray-300 dark:bg-gray-700'}`}>
+            <span className={`absolute top-[2px] w-4 h-4 rounded-full bg-white shadow transition-all duration-300 ${matchSystem ? 'left-4' : 'left-[2px]'}`} />
+          </span>
+        </div>
       </div>
     </div>
   );
@@ -150,40 +176,67 @@ function LinksCard({ active }: { active: boolean }) {
   );
 }
 
-/* ── 4. Self-destructing notes ── */
-const TIMERS = ['1h', '12h', '1d', '7d', '30d'];
+/* ── 4. Self-destructing notes: countdown → the note burns → gone ── */
+const FLAMES = [
+  { left: '4%', width: 14, height: 34, bg: 'linear-gradient(to top, #ef4444, #f97316, rgba(251,191,36,0.8))', delay: '0s' },
+  { left: '18%', width: 20, height: 50, bg: 'linear-gradient(to top, #dc2626, #ef4444, #f97316)', delay: '0.12s' },
+  { left: '36%', width: 24, height: 62, bg: 'linear-gradient(to top, #b91c1c, #ef4444, #fbbf24)', delay: '0.05s' },
+  { left: '56%', width: 18, height: 46, bg: 'linear-gradient(to top, #ef4444, #fb923c, rgba(251,191,36,0.8))', delay: '0.2s' },
+  { left: '74%', width: 22, height: 56, bg: 'linear-gradient(to top, #dc2626, #ef4444, #fbbf24)', delay: '0.08s' },
+  { left: '90%', width: 12, height: 30, bg: 'linear-gradient(to top, #dc2626, #f97316, #fde68a)', delay: '0.16s' },
+];
 function SelfDestructCard({ active }: { active: boolean }) {
-  const t = useTicker(1000, 100000, active);
-  const total = 6 * 3600 + 12 * 60 + 30 - t;
-  const h = Math.floor(total / 3600);
-  const m = Math.floor((total % 3600) / 60);
-  const s = total % 60;
-  const sel = Math.floor(t / 3) % TIMERS.length;
+  const t = useTicker(1000, 18, active);
+  const secondsLeft = Math.max(0, 10 - t);
+  const burning = t >= 10 && t < 14;
+  const gone = t >= 14;
+  const urgent = secondsLeft <= 3 && !gone;
   return (
     <div className={`${card} min-h-[320px]`}>
+      <style>{`@keyframes dash-flame { 0% { transform: scaleY(0.7) scaleX(0.9) translateY(4px); opacity: 0.75; } 50% { transform: scaleY(1.15) scaleX(0.85) translateY(-5px); opacity: 1; } 100% { transform: scaleY(0.85) scaleX(1.05) translateY(2px); opacity: 0.85; } }`}</style>
       <div className='flex flex-col gap-1.5'>
         <h3 className={title}>Notes that delete themselves.</h3>
-        <p className={body}>Set a timer from one hour to thirty days. A countdown shows what is left.</p>
+        <p className={body}>Set a timer from one hour to thirty days. When it runs out, the note is gone for good.</p>
       </div>
-      <div className={`${panel} mt-auto p-4 flex flex-col gap-3`}>
-        <div className='flex items-center justify-between text-[14.5px]'>
-          <span className='font-medium text-gray-900 dark:text-white'>Door code for the studio</span>
-          <span className='font-mono text-[11.5px] px-2 py-0.5 rounded-full bg-amber-50 dark:bg-amber-900/30 text-amber-700 dark:text-amber-400 tabular-nums'>
-            {h}h {m}m {String(s).padStart(2, '0')}s
-          </span>
-        </div>
-        <div className='flex gap-1.5 text-[12.5px]'>
-          {TIMERS.map((label, i) => (
-            <span
-              key={label}
-              className={`px-2.5 py-1.5 rounded-[7px] transition-colors duration-300 ${
-                i === sel ? 'bg-gray-900 dark:bg-white text-white dark:text-gray-900' : 'border border-gray-200 dark:border-gray-700 text-gray-600 dark:text-gray-300'
-              }`}
-            >
-              {label}
-            </span>
-          ))}
-        </div>
+      <div className={`${panel} relative overflow-hidden mt-auto p-4 min-h-[150px] flex flex-col`}>
+        {gone ? (
+          <div className='flex-1 flex flex-col items-center justify-center gap-2 text-gray-500 dark:text-gray-400 text-[13.5px]'>
+            <Trash2 className='w-5 h-5' />
+            <span>Note deleted. Nothing to recover.</span>
+          </div>
+        ) : (
+          <div className={`flex flex-col gap-3 transition-all duration-700 ${burning ? 'opacity-30 blur-[1px] translate-y-2' : ''}`}>
+            <div className='flex items-center justify-between text-[14.5px]'>
+              <span className='font-medium text-gray-900 dark:text-white'>Door code for the studio</span>
+              <span
+                className={`inline-flex items-center gap-1 font-mono text-[11.5px] px-2 py-0.5 rounded-full tabular-nums transition-colors ${
+                  urgent ? 'bg-red-50 dark:bg-red-900/30 text-red-600 dark:text-red-400' : 'bg-amber-50 dark:bg-amber-900/30 text-amber-700 dark:text-amber-400'
+                }`}
+              >
+                <Clock className='w-3 h-3' />
+                0:{String(secondsLeft).padStart(2, '0')}
+              </span>
+            </div>
+            <div className='flex flex-col gap-2' aria-hidden='true'>
+              <span className='block h-2 rounded-full bg-gray-200 dark:bg-gray-700 w-11/12' />
+              <span className='block h-2 rounded-full bg-gray-200 dark:bg-gray-700 w-3/4' />
+              <span className='block h-2 rounded-full bg-gray-200 dark:bg-gray-700 w-5/6' />
+            </div>
+            <span className='text-[12px] text-gray-500 dark:text-gray-400'>Deletes automatically when the timer reaches zero.</span>
+          </div>
+        )}
+        {burning && (
+          <div className='absolute inset-0 pointer-events-none' aria-hidden='true'>
+            <div className='absolute inset-x-0 bottom-0 h-full bg-gradient-to-t from-orange-500/60 via-red-500/25 to-transparent' />
+            {FLAMES.map((f, i) => (
+              <span
+                key={i}
+                className='absolute bottom-[-4px] rounded-[50%_50%_30%_30%] blur-[0.5px] origin-bottom'
+                style={{ left: f.left, width: f.width, height: f.height, background: f.bg, animation: `dash-flame 0.55s ease-in-out ${f.delay} infinite alternate` }}
+              />
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );

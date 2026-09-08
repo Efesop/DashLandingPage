@@ -59,7 +59,9 @@ export default function Footer() {
                 alt='Dash Logo'
                 width={40}
                 height={40}
-                className='h-10 w-10'
+                className='h-10 w-10 rounded-lg'
+                unoptimized
+                loading='eager'
               />
               <span className='text-2xl font-semibold text-white'>Dash Notes</span>
             </Link>

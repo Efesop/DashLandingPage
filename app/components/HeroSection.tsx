@@ -128,8 +128,7 @@ export default function HeroSection() {
               ))}
             </div>
             <span className='text-sm text-gray-600 dark:text-gray-400'>
-              <span className='font-semibold text-gray-900 dark:text-white'>100+ downloads</span> · 122 upvotes on Product Hunt · MIT
-              open source
+              <span className='font-semibold text-gray-900 dark:text-white'>100+ downloads</span> · Open source (MIT) · Works offline
             </span>
           </motion.div>
         </div>
