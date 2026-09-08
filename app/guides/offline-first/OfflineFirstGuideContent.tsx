@@ -108,7 +108,7 @@ export default function OfflineFirstGuideContent() {
       icon: Server,
       title: 'No Server Infrastructure',
       description:
-        'No servers to maintain, secure, or pay for. No accounts to create or manage.',
+        'No servers to maintain, secure, or pay for. No account to create or manage unless you opt into sync.',
     },
     {
       icon: Download,
@@ -135,9 +135,9 @@ export default function OfflineFirstGuideContent() {
         'Dash uses the best storage backend for each platform automatically. On desktop (Electron), it uses local JSON files on the filesystem. On mobile (PWA), it uses IndexedDB. On web browsers, it falls back to localStorage. The platform is auto-detected.',
     },
     {
-      question: "Why doesn't Dash sync between devices?",
+      question: 'Does Dash sync between devices?',
       answer:
-        'By design. No sync means no conflicts, no servers, no accounts, and no data in transit that could be intercepted. You can move data between devices using the export and import feature instead.',
+        'Only if you turn it on. Dash Sync is an optional subscription that encrypts everything on your device before upload, so the relay never sees plaintext and there is nothing readable in transit. Leave it off and Dash never touches a server; move data between devices with encrypted export and import instead.',
     },
     {
       question: 'What if I lose my device?',

@@ -4,13 +4,13 @@ import OfflineNotesContent from './OfflineNotesContent';
 export const metadata: Metadata = {
   title: 'Offline Notes App | Works Without Internet - Dash',
   description:
-    'Note-taking app that works 100% offline. No internet required, no servers, no cloud sync. Your notes are always accessible, anywhere.',
+    'Note-taking app that works 100% offline. No internet required, no account, and sync stays off unless you turn it on. Your notes are always accessible, anywhere.',
   keywords:
     'offline notes, offline note app, no internet notes, works offline, local notes app, notes without wifi, airplane mode notes',
   openGraph: {
     title: 'Offline Notes App | Works Without Internet - Dash',
     description:
-      'Note-taking app that works 100% offline. No internet required, no servers, no cloud sync.',
+      'Note-taking app that works 100% offline. No internet required, no account, sync optional.',
     url: 'https://dashnote.io/offline-notes',
     siteName: 'Dash',
     locale: 'en_US',
@@ -68,7 +68,7 @@ const faqJsonLd = {
       name: 'How does Dash work without internet?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Dash stores all your notes locally on your device. There is no telemetry, no analytics, and no cloud sync. Your notes never leave your device unless you choose to share them. Sharing and live collaboration are opt-in, end-to-end encrypted, and routed through a zero-knowledge relay.',
+        text: 'Dash stores all your notes locally on your device. There is no telemetry and no analytics, and nothing syncs unless you turn on Dash Sync. Your notes never leave your device unless you choose to share or sync them; both are opt-in, end-to-end encrypted, and routed through a zero-knowledge relay.',
       },
     },
     {
@@ -84,7 +84,7 @@ const faqJsonLd = {
       name: 'Can I sync notes between devices?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'While there is no cloud sync (by design), you can export notes as encrypted .dashpack files and import them on another device. This gives you control over when and how data moves between devices.',
+        text: 'Yes, if you want to. Dash Sync is an optional subscription that keeps notes in step across Mac, iPhone, iPad and the web, encrypted on your device before upload. Without it, export notes as encrypted .dashpack files and import them on another device. Either way you control when and how data moves.',
       },
     },
     {

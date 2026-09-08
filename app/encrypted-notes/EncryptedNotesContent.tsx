@@ -74,7 +74,7 @@ export default function EncryptedNotesContent() {
       icon: Eye,
       title: 'Zero-Knowledge Architecture',
       description:
-        'We have no servers, no accounts, no way to see your notes. Even if someone demanded your data, we have nothing to give.',
+        'By default there is no server and no account involved. Even with optional Dash Sync on, notes are encrypted before upload, so if someone demanded your data we would have nothing readable to give.',
     },
     {
       icon: Code,

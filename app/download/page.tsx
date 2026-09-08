@@ -4,7 +4,7 @@ import DownloadContent from './DownloadContent';
 export const metadata: Metadata = {
   title: 'Download Dash | Private Notes App for Mac',
   description:
-    'Get Dash for Mac as a native app with auto-updates, or use the free Progressive Web App in any browser. One-time purchase, no subscriptions.',
+    'Get Dash for Mac as a native app with auto-updates, get the free iPhone app on the App Store, or use the free Progressive Web App in any browser. One-time purchase for Mac, no subscription required.',
   keywords: [
     'download Dash',
     'Dash for Mac',

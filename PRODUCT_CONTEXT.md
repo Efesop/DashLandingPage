@@ -1,54 +1,51 @@
 # Dash - Product Context & Source of Truth
 
-This document provides the complete, accurate context about Dash for use by AI, developers, marketers, or anyone working on the landing page, marketing materials, or SEO content.
+This document is the accurate, current description of Dash for anyone (human or AI) working on the landing page, marketing copy, or SEO content. When this file and a page on dashnote.io disagree, this file wins — fix the page.
 
-**Last Updated**: March 2, 2026
-**Current Version**: v1.3.85+
-**Status**: Active development, Mac + Web versions available
+**Last Updated**: September 8, 2026
+**Current Version**: v1.6.3 (Mac + web, released Sep 8 2026). iOS App Store build is 1.5.6 (build 77); 1.6.1 (build 78) is built and awaiting upload.
+**Status**: Shipping on macOS, iOS (App Store), and the web (PWA). Windows and Linux are not shipped.
+
+The app's own docs are the deeper source: `FEATURES.md`, `CHANGELOG.md`, `SYNC.md`, and `guides/` in the sibling repo `/Users/ollie/rich-text-editor` (public on GitHub).
 
 ---
 
 ## Product Overview
 
-Dash is a **privacy-first, offline note-taking application** designed for people who want complete control over their data without relying on cloud services, accounts, or internet connectivity.
+Dash is a **privacy-first, offline-first note-taking app**. Everything is stored on your device by default, protected by AES-256 encryption, with no account and no telemetry. Since v1.5 (2026) an **optional, end-to-end-encrypted Dash Sync subscription** keeps notes in step across Mac, iPhone, iPad, and the web — the relay only ever stores ciphertext it cannot read. Sync is off unless the user turns it on.
 
 ### One-Liners
 - "Own your notes for real!"
-- "Your notes, your device, your privacy. No cloud, no tracking, no compromises."
-- "The only notes app that puts you in complete control."
+- "Your notes, your device, your privacy."
+- "Offline by default. Encrypted if you sync."
 
 ### Elevator Pitch
-Dash is a beautiful, privacy-first note-taking app that keeps your thoughts offline and encrypted by default. Unlike Notion, Evernote, or Google Keep, your data stays on your device — protected by AES-256-GCM encryption with PBKDF2-SHA256 key derivation (600k iterations). Optional E2E encrypted sharing and live collaboration let you work with others without compromising privacy. Built for people who value their privacy above all else — no accounts, no tracking, no compromises. Trusted by journalists, lawyers, and professionals who need true privacy.
+Dash is a beautiful, privacy-first notes app that keeps your thoughts on your device and encrypted by default. Unlike Notion, Evernote, or Google Keep, nothing leaves your Mac, iPhone, or browser unless you decide it should — and when you do (encrypted sharing, or the optional Dash Sync subscription) it leaves as ciphertext that our servers cannot read. No account is needed for note-taking. Trusted by journalists, lawyers, writers, and privacy-minded professionals.
 
 ---
 
 ## Target Audience
 
 ### Primary Users (Privacy-Focused)
-- **Privacy-Conscious Individuals** - People who value their digital privacy and want complete control over their data
-- **Security-Minded Users** - People who distrust cloud services and prefer local-first software
-- **Data Ownership Advocates** - Users who believe in owning their data, not renting it from big tech companies
-- **Offline-First Advocates** - People who want tools that work without internet dependency
-- **Privacy Enthusiasts** - Users actively seeking alternatives to mainstream note apps due to privacy concerns
+- Privacy-conscious individuals who want control over their data
+- Security-minded users who distrust cloud-first software
+- Data-ownership and local-first advocates
+- Offline-first users (travellers, low-connectivity areas)
 
 ### Secondary Users (Professional Use Cases)
-- **Journalists** - Handle sensitive sources and information, need offline, encrypted note-taking
-- **Lawyers & Legal Professionals** - Client confidentiality, attorney-client privilege protection
-- **Activists & Organizers** - Protect sensitive planning and information from surveillance
-- **Healthcare Professionals** - Patient information protection (when used carefully)
-- **Students** - Need reliable, distraction-free note-taking with data privacy
-- **Writers & Authors** - Want a clean, focused writing environment with full data control
-- **Developers** - Appreciate open-source, self-hostable solutions
-- **Digital Minimalists** - Prefer simple tools that do one thing well
-- **Remote Workers** - Work in areas with limited/no internet (remote locations, flights, etc.)
+- Journalists (sources, investigations)
+- Lawyers and legal professionals (client confidentiality)
+- Activists and organizers
+- Students and researchers
+- Writers and authors
+- Bitcoiners (seed phrase storage, opsec notes)
+- Developers (open source, auditable)
 
 ### User Pain Points We Solve
 - "I don't trust my notes in someone else's cloud"
-- "I want a note app that truly respects my privacy"
 - "I need my notes to work without internet"
 - "I want to encrypt specific sensitive notes"
-- "I'm tired of subscription-based note apps that mine my data"
-- "I want to own my data, not rent access to it"
+- "I want my notes on my phone and my Mac without handing them to a company"
 - "I don't want to create an account just to take notes"
 - "I need a tool that doesn't track or profile me"
 
@@ -60,472 +57,270 @@ Dash is a beautiful, privacy-first note-taking app that keeps your thoughts offl
 
 | Feature | Description | Benefit |
 |---------|-------------|---------|
-| **Offline by Default** | No internet required for core functionality | Your notes never leave your device unless you choose to share |
-| **AES-256 Encryption** | AES-256-GCM with PBKDF2-SHA256 (600k iterations) | Protect sensitive notes with passwords |
-| **No Account Required** | Use immediately, no sign-up | Zero personal data collected |
-| **No Tracking** | Zero analytics or telemetry | Complete privacy, no profiling |
-| **Local Storage** | Data stored in user directory | You control where your data lives |
-| **Zero-Knowledge Design** | Even we can't read your notes | Data encrypted before touching storage |
-| **Touch ID / Biometric Lock** | Unlock app or individual pages with fingerprint | Fast, secure access without typing passwords |
-| **Auto-Lock** | Configurable timeout (1/5/15/30 min) + Cmd+Shift+L instant lock | Automatic protection when you step away |
-| **Self-Destructing Notes** | Auto-delete after 1h/1d/7d/30d with countdown | Sensitive info disappears automatically |
-| **Decoy Password** | Secondary password shows decoy notes under coercion | Plausible deniability, data hidden not deleted |
-| **Encrypted Sharing** | Share notes via E2E encrypted links (AES-256-GCM) | Zero-knowledge relay, auto-deleted after 30 days |
-| **Live Collaboration** | Real-time E2E encrypted editing sessions | WebSocket relay, encryption key in URL fragment |
-| **EXIF Stripping** | Auto-removes GPS, camera info from pasted images | Prevents metadata leaks from photos |
-| **Image Privacy** | EXIF metadata stripped on paste | No accidental location or device info exposure |
-| **Local AI** | Connect to Ollama, LM Studio, or any local AI server for writing assistance | AI-powered summarize, rewrite, chat — entirely on-device, no cloud |
+| **Offline by Default** | Full functionality with no internet and no account | Notes never leave the device unless you share or sync |
+| **AES-256-GCM Encryption** | Page-level password protection; PBKDF2-SHA256 key derivation (600k iterations) | Locked notes are unreadable without the password |
+| **App Lock & Auto-Lock** | Whole-app lock with configurable idle timeout (1/5/15/30 min, custom, never); instant lock with Cmd+Shift+L on Mac | Protection when you step away |
+| **Touch ID / Face ID** | Biometric unlock on macOS (Touch ID) and iOS (Face ID / Touch ID), for the app and for individual locked pages | Fast, secure access |
+| **Decoy Password (Duress)** | Secondary password shows decoy notes; real data stays encrypted on disk (hide mode only — wipe mode is disabled) | Plausible deniability |
+| **Self-Destructing Notes** | Auto-delete after 1h / 12h / 1d / 7d / 30d or custom, with a live countdown badge | Sensitive info disappears on schedule |
+| **Seed Phrase Storage** | Numbered 12/24-word grid with BIP-39 validation, multi-word paste, clipboard auto-clear | Safe place for wallet recovery phrases |
+| **Encrypted Sharing** | Read-only E2E encrypted share links; key in the URL fragment; optional relay storage auto-deleted after 30 days; EXIF stripped from images | Share without exposing content to any server |
+| **Dash Sync (optional)** | E2E encrypted multi-device sync of notes, folders, tags, attachments, version history; relay stores ciphertext only | Same notes on Mac, iPhone, iPad, web |
+| **Trash & Auto-Backup** | 30-day recoverable Trash; scheduled encrypted `.dashpack` backups (both independent of sync) | Recover from mistakes |
+| **Local AI** | Ollama, LM Studio, LocalAI, Jan, or any OpenAI-compatible localhost server; summarize / rewrite / continue / explain / chat | AI help with nothing sent to the cloud |
+| **No Telemetry** | Zero analytics; the only network calls are the desktop update check, opt-in sharing, opt-in sync, and any local-AI endpoint you configure | No profiling |
+| **Open Source** | MIT, public GitHub repo | Auditable |
 
 ### 📝 Note Taking
 
-| Feature | Description | Benefit |
-|---------|-------------|---------|
-| **Rich Text Editor** | Headers, lists, checklists, quotes, code blocks, tables, images | Full formatting without complexity |
-| **Multiple Block Types** | Paragraphs, headers, lists, code, tables, images, embeds | Flexible content creation |
-| **Code Blocks** | Syntax-highlighted code with language support | Developer-friendly note-taking |
-| **Tables** | Insert and edit tables within notes | Organize structured data |
-| **Image Support** | Embed images in notes | Visual note-taking |
-| **Focus Mode** | Distraction-free writing (Cmd+Shift+F) | Deep concentration mode |
-| **Live Word Count** | Real-time character/word counting | Track writing progress |
-| **Auto-Save** | Changes saved automatically | Never lose work |
-| **Multi-Block Selection** | Select multiple blocks and convert types with floating toolbar | Batch formatting changes |
-| **Page Linking** | Wiki-style [[ links between notes | Build a connected knowledge base |
-
-### 📤 Export & Portability
-
-| Feature | Description | Benefit |
-|---------|-------------|---------|
-| **PDF Export** | Professional PDF output | Share or print notes |
-| **Markdown Export** | Standard .md format | Use notes in any tool |
-| **Word/DOCX Export** | Microsoft Word format | Professional documents |
-| **Encrypted Bundles** | .dashpack format | Securely share between devices |
-| **JSON/XML Export** | Raw data formats | Developer-friendly backups |
+| Feature | Description |
+|---------|-------------|
+| **Block Editor** | Editor.js: paragraphs, H2–H4, bullet / numbered / checklist items, quotes, code (20 languages), tables, images, embeds (YouTube, Vimeo, GitHub, Twitter), delimiters, seed phrase block, file attachments |
+| **Attachments** | Images (JPEG, PNG, GIF, WebP) and PDFs up to 10 MB, stored on device, magic-bytes validated |
+| **Version History** | Up to 10 versions per page, restore as a new page; locked pages never capture versions |
+| **Page Linking** | Type `[[` for wiki-style links; clickable, theme-aware |
+| **Multi-Block Selection** | Drag-select blocks and convert them in one go |
+| **Focus Mode** | Cmd+Shift+F: typewriter scrolling, paragraph dimming, session stats |
+| **Quick Switcher** | Cmd+P fuzzy jump to any note |
+| **Undo / Redo** | Cmd+Z / Cmd+Shift+Z, rebuilt in 2026 |
+| **Auto-Save** | 300 ms debounce with a save indicator |
+| **Import / Export** | PDF, Markdown, Plain text, DOCX, RTF, JSON, XML, CSV; encrypted `.dashpack` bundles; import JSON / Markdown / TXT / DOCX / CSV |
 
 ### 🗂️ Organization
+- Folders (with emoji icons), color-coded tags, drag-and-drop reordering
+- Sort: custom, newest, oldest, A–Z, Z–A, by tag
+- Full-text search (Fuse.js) combined with tag filters; on iPhone, filter chips for All / a tag / Locked
 
-| Feature | Description | Benefit |
-|---------|-------------|---------|
-| **Folders** | Nested organization | Keep notes structured |
-| **Color-Coded Tags** | Visual categorization | Quick identification |
-| **Quick Switcher** | Cmd+P to jump to any note instantly | Keyboard-first navigation |
-| **Fuzzy Search** | Find-as-you-type | Instant results |
-| **Smart Filtering** | Filter by folder, tag, or search | Find anything fast |
+### 🎨 Design & UX (v1.6, September 2026)
+- **Four themes**, labelled **Light, Dark, Night, Terminal** (internal ids `light`, `dark`, `darkblue`, `fallout`; "Night" was previously called "Dark Blue" and "Terminal" was "Fallout"). There is no "Solarized" theme.
+- **Match system appearance** — follow the macOS / iOS light-dark setting, using the user's preferred dark theme.
+- **Mac layout** — page title sits in the document with tags, date and word count beneath it; the toolbar lives in the title bar (Lock page, Self-destruct, Export, Settings gear, ⋯ menu); Settings popover holds themes, App lock, Dash Sync, Backups, Trash, Keyboard shortcuts, updates; sidebar has FOLDERS / NOTES sections.
+- **iPhone layout** — full-width Notes screen with large title, search, filter chips, sections, and a thumb-zone New note button; **swipe left to trash, swipe right to lock**; Appearance sheet (header sun/moon) and Settings sheet (footer).
+- **Update card** on Mac (Later / Download) with a dot on the ⋯ menu.
 
-### 🎨 Design & UX
-
-| Feature | Description | Benefit |
-|---------|-------------|---------|
-| **Light Theme** | Clean, bright interface | Comfortable daytime use |
-| **Dark Theme** | Easy on the eyes | Late night writing |
-| **Fallout Theme** | Retro terminal aesthetic | Unique, fun experience |
-| **Solarized Theme** | Warm, balanced color palette | 4th theme option |
-| **Responsive Design** | Works on any screen | Desktop to mobile |
-| **Minimal Interface** | Distraction-free | Focus on writing |
+> ⚠️ All screenshots, videos and mockups on dashnote.io were captured before v1.6 and show the old layout (header bar, sidebar-footer settings, theme names "Dark Blue" / "Fallout"). Re-capture before using them as accurate product imagery.
 
 ---
 
 ## Platform Support
 
-### Current Platforms (Available Now)
+| Platform | Type | Status | Notes |
+|----------|------|--------|-------|
+| **macOS** | Native Electron app (DMG, Apple Silicon + Intel), signed & notarized, auto-updates | ✅ Shipping | $14.99 one-time. Best experience. |
+| **iOS (iPhone / iPad)** | Native Capacitor app on the App Store (`io.dashnote.app`, App Store ID 6766192836) | ✅ Shipping | Free download. Face ID / Touch ID. Dash Sync via Apple In-App Purchase. |
+| **Web (PWA)** | https://efesop.github.io/rich-text-editor/ — installable, IndexedDB storage | ✅ Shipping | Free. Android users use this. |
+| **Windows / Linux** | Electron build targets exist in the code | ❌ Not shipped | Do not promise them. The release pipeline builds macOS only. |
 
-| Platform | Type | Status | Best Experience |
-|----------|------|--------|-----------------|
-| **macOS** | Native Electron App | ✅ **PRIMARY** | 🏆 **BEST** - Full features, auto-updates, native performance |
-| **Web (PWA)** | Progressive Web App | ✅ Available | Good - Works on any browser, installable |
-
-### Platform Details
-
-#### macOS (Primary Platform)
-- **Download Format**: DMG (ARM64 for Apple Silicon, Intel available)
-- **Auto-updates**: Yes
-- **Installation**: Drag and drop
-- **Performance**: Native, optimized
-- **GitHub**: [Releases page](https://github.com/Efesop/rich-text-editor/releases)
-
-#### Web (PWA)
-- **Access**: [https://efesop.github.io/rich-text-editor/](https://efesop.github.io/rich-text-editor/)
-- **Installation**: Install from browser (Safari, Chrome, Firefox)
-- **Storage**: IndexedDB (browser storage)
-- **Works on**: iOS, Android, any modern browser
-- **Note**: Less performant than native Mac app, but fully functional
-
-### Platforms NOT Currently Supported
-- ❌ Windows native app (not yet available)
-- ❌ Linux native app (not yet available)
-- ❌ iOS native app (use Web PWA instead)
-- ❌ Android native app (use Web PWA instead)
+Storage: macOS = JSON files in `~/Library/Application Support/Dash/`; iOS = on-device app storage (sync vault key in the Keychain); PWA = IndexedDB.
 
 ---
 
 ## Pricing & Business Model
 
-### Current Pricing
-- **Price**: $14.99 USD
-- **Type**: One-time payment
-- **License**: Lifetime access
-- **Includes**:
-  - Full access to Dash
-  - Lifetime license (no subscriptions)
-  - Free updates and new features
-  - Priority customer support
-- **Payment**: Stripe checkout
-- **Platforms**: Mac download provided after purchase
+| Product | Price | Rail | Notes |
+|---------|-------|------|-------|
+| **Dash for Mac** | **$14.99 one-time**, lifetime updates | Stripe card checkout or Bitcoin Lightning (Voltage) on dashnote.io | Desktop license only — does **not** include sync |
+| **Dash for iPhone** | Free | App Store | Works fully offline without a subscription |
+| **Dash on the web (PWA)** | Free | — | Same as iOS |
+| **Dash Sync** | **$4.99 / month** or **$47.99 / year** (~20% off), **7-day free trial** | iOS: Apple In-App Purchase (RevenueCat). Mac / web: Stripe via dashnote.io/subscribe | One subscription unlocks sync on every device. Required for sync on every platform. Manage at dashnote.io/payment/manage (Stripe) or iOS Settings → Subscriptions. |
+
+- Identity for sync is a **passwordless magic-link email** (6-digit code). The relay only ever sees the email → entitlement mapping, never notes.
+- Mac buyers are not grandfathered into sync (sync did not exist when Mac was sold as a one-time purchase); the app is fully usable without it.
+- Purchase recovery: dashnote.io/payment/recovery.
+- **Messaging rule**: "no subscription required" is true; "no subscriptions" is not. Say the app is a one-time purchase and that the optional sync add-on is the only subscription.
 
 ### Open Source Context
-- **Status**: Open source ([GitHub repo](https://github.com/Efesop/rich-text-editor))
-- **License**: Code is publicly available
-- **Building from source**: Technically possible (free), but we sell for convenience
-- **Marketing approach**: Focus on paid version, don't emphasize "free" messaging
-- **Why buy?**: Convenience, support development, automatic updates, priority support
+- MIT licensed, public repo: https://github.com/Efesop/rich-text-editor
+- We sell the Mac app for convenience, signed builds, auto-updates and support. Mention open source for trust; don't lead with "free".
 
 ---
 
 ## Competitive Positioning
 
-### How Dash Compares
-
 | Feature | Dash | Notion | Evernote | Obsidian |
 |---------|------|--------|----------|----------|
-| 100% Offline | ✅ | ❌ | ❌ | ✅ |
-| No Account Required | ✅ | ❌ | ❌ | ✅ |
-| Zero Tracking | ✅ | ❌ | ❌ | ✅ |
-| AES-256-GCM Encryption | ✅ | ❌ | ❌ | ❌ |
-| No Monthly Subscription | ✅ | ❌ | ❌ | ⚠️ |
-| Free to Sync | ✅ | ❌ | ❌ | ❌ |
-| Rich Text Editor | ✅ | ✅ | ✅ | ⚠️ |
-| No Cloud Dependencies | ✅ | ❌ | ❌ | ✅ |
-| Biometric Lock | ✅ | ❌ | ✅ | ❌ |
-| Self-Destructing Notes | ✅ | ❌ | ❌ | ❌ |
-| Decoy Password | ✅ | ❌ | ❌ | ❌ |
-| Encrypted Sharing | ✅ | ❌ | ❌ | ❌ |
-| Live Collaboration (E2E) | ✅ | ❌ | ❌ | ❌ |
-| Local AI (on-device) | ✅ | ❌ | ❌ | ❌ |
-| Cross-Platform | ✅ | ✅ | ✅ | ✅ |
+| Works 100% offline | ✅ | ❌ | ❌ | ✅ |
+| No account required | ✅ (local use) | ❌ | ❌ | ✅ |
+| Zero tracking | ✅ | ❌ | ❌ | ✅ |
+| AES-256-GCM page encryption | ✅ | ❌ | ❌ | ❌ |
+| No subscription required | ✅ | ❌ | ❌ | ✅ (core app) |
+| End-to-end encrypted sync | ✅ (optional) | ❌ | ❌ | ✅ (Obsidian Sync, paid) |
+| Biometric lock | ✅ | ❌ | ✅ | ❌ |
+| Self-destructing notes | ✅ | ❌ | ❌ | ❌ |
+| Decoy password | ✅ | ❌ | ❌ | ❌ |
+| Encrypted sharing links | ✅ | ❌ | ❌ | ❌ |
+| Local (on-device) AI | ✅ | ❌ | ❌ | plugins |
+| Native iPhone app | ✅ | ✅ | ✅ | ✅ |
 
 ### Key Differentiators
-1. **True Privacy** - Not "privacy-focused" marketing, actually offline-first
-2. **No Vendor Lock-In** - Export everything in standard formats
-3. **One-Time Purchase** - No subscriptions, lifetime access
-4. **Open Source** - Audit the code yourself (but we sell for convenience)
-5. **Beautiful Design** - Privacy doesn't mean ugly
-6. **AES-256-GCM Encryption** - With PBKDF2-SHA256 (600k iterations)
-7. **Encrypted Sharing** - E2E encrypted share links with zero-knowledge relay
-8. **Live Collaboration** - Real-time E2E encrypted editing sessions
-9. **Local AI** - AI writing assistance that runs entirely on-device via Ollama, LM Studio, or any OpenAI-compatible local server
+1. **Offline and encrypted by default** — privacy by architecture, not policy
+2. **Sync you can actually trust** — E2E encrypted, ciphertext-only relay, optional
+3. **One-time purchase for the app** — the only subscription is the optional sync add-on
+4. **Security features nobody else has** — decoy password, self-destruct, seed phrase storage
+5. **Open source** — auditable
+6. **Local AI** — on-device via Ollama / LM Studio
+7. **Beautiful, focused design** — v1.6 layout on Mac and iPhone
+
+### Not shipped — do not market
+- **Live collaboration / live sessions**: built but gated off (`LIVE_SESSIONS_ENABLED = false`). No page, FAQ, comparison row, or privacy-policy section should describe it as available.
+- **Windows / Linux desktop apps**.
+- **Android native app** (Android = PWA).
 
 ---
 
 ## Technical Details
 
-### Tech Stack
-- **Frontend**: Next.js 14, React 18
-- **Editor**: Editor.js
-- **Desktop**: Electron (macOS)
-- **Mobile**: Progressive Web App (PWA)
-- **Styling**: Tailwind CSS, Radix UI
-- **Encryption**: AES-256-GCM
-- **State Management**: Zustand
-- **Payment**: Stripe
+### Tech Stack (the app)
+- Next.js 13, React 18, Editor.js 2.30, Tailwind, Zustand, @dnd-kit, Fuse.js
+- Desktop: Electron 32 (macOS). Mobile: Capacitor 8 (iOS). Web: next-pwa
+- Crypto: WebCrypto AES-256-GCM, PBKDF2-SHA256 (600,000 iterations), bcryptjs for password hashes
+- Sync + identity + entitlement relay: Deno Deploy (`server/` in the app repo). Primary host `dash-relay.efesop.deno.net`; `dashnote.io/relay` is a same-origin proxy (Vercel rewrite on this site) for networks that block `*.deno.net`. Diagnostic page: dashnote.io/sync-check.
+- Payments: Stripe (Mac one-time + sync subscription, customer portal), Voltage (Lightning), RevenueCat (iOS IAP). Transactional email: Resend.
 
-### Data Storage
+### Security Facts (safe to quote)
+- AES-256-GCM authenticated encryption; PBKDF2-SHA256 with 600,000 iterations
+- Keys derived and stored on device only; sync vault key never leaves the user's devices
+- DOMPurify sanitization; Electron sandbox; rate-limited unlock attempts
+- Local AI is restricted to localhost / 127.0.0.1 endpoints
+- Relay stores ciphertext, timestamps and IPs for abuse prevention, and (for sync subscribers) email + subscription status
 
-| Platform | Method | Location |
-|----------|--------|----------|
-| macOS | JSON files | `~/Library/Application Support/Dash/` |
-| Web PWA | IndexedDB | Browser storage |
-
-### Security Features
-- **Encryption**: AES-256-GCM encryption for password-protected pages
-- **Key Derivation**: PBKDF2-SHA256 (600,000 iterations)
-- **Biometric Authentication**: Touch ID support for app unlock and individual page lock
-- **Auto-Lock**: Configurable inactivity timeout (1/5/15/30 min) + Cmd+Shift+L instant lock
-- **Self-Destructing Notes**: Auto-delete after configurable time (1h/1d/7d/30d)
-- **Random Generation**: Cryptographically secure
-- **XSS Protection**: DOMPurify sanitization
-- **Network Isolation**: No network requests by default (sharing/collaboration opt-in, E2E encrypted)
-- **AI Localhost Enforcement**: Hard localhost-only restriction for AI connections — no data sent to external servers
-- **Encrypted Sharing**: AES-256-GCM, zero-knowledge relay, 30-day auto-delete
-- **Live Sessions**: E2E encrypted WebSocket relay, random 256-bit key per session
-- **EXIF Stripping**: Automatic removal of GPS, camera info from pasted images
-- **Electron Security**: Sandbox enabled
-- **Rate Limiting**: Password attempt protection
+### Words to avoid
+- "military-grade encryption" (say AES-256-GCM)
+- "zero network requests" (say offline by default; sharing, sync and updates are opt-in / explicit)
+- "no servers to subpoena" (say notes stay on your device by default and leave only as ciphertext)
+- "no subscriptions" (say no subscription required; sync is optional)
+- "no cloud sync" (say sync is optional and end-to-end encrypted)
 
 ---
 
 ## Brand Voice & Messaging
 
 ### Tone
-- **Confident** - We know privacy matters
-- **Straightforward** - No marketing fluff
-- **Empowering** - You own your data
-- **Approachable** - Not intimidating or overly technical
+Confident, straightforward, empowering, approachable. No fluff, no fear-mongering.
 
-### Key Messages (Priority Order)
-
-**PRIMARY (Use these most)**
+### Key Messages
 1. "Your notes, your device, your privacy"
 2. "Own your notes for real"
-3. "The only notes app that puts you in complete control"
-4. "No cloud. No tracking. No compromises."
-5. "100% offline. 100% private."
-
-**SECONDARY (Use sparingly)**
-6. "Beautiful notes, brutal privacy"
-7. "Privacy shouldn't require a subscription"
-8. "The note app built for privacy advocates"
+3. "Offline by default. Encrypted if you sync."
+4. "No account needed. No tracking. No compromises."
+5. "One-time purchase for the app — sync is the only add-on"
 
 ### Words to Use
-✅ Privacy, Secure, Encrypted, Offline, Local, Own, Control, AES-256
-✅ Beautiful, Clean, Minimal, Focused, Distraction-free
-✅ Cross-platform, Portable, Export, Sync (device-to-device)
-✅ One-time payment, Lifetime access, No subscription
+✅ Privacy, Encrypted, Offline, Local, Own, Control, AES-256, End-to-end, Zero-knowledge, One-time purchase, Optional sync, Mac, iPhone
 
 ### Words to Avoid
-❌ Cloud (in a positive context), Server, Account, Sign up
-❌ Track, Analytics, Telemetry, Data collection
-❌ Cloud AI, AI-powered (generic) — use "Local AI" to distinguish on-device processing
-❌ Free, Free forever (even though it's open source - focus on paid version)
+❌ "Cloud" as a positive, "Account" / "Sign up" as requirements, Tracking, Analytics, Telemetry, "Free forever" (web/iOS are free, but lead with the Mac purchase), "Live collaboration", "Windows app"
 
 ---
 
-## Landing Page Structure (Current Implementation)
+## Landing Page Structure (dashnote.io, September 2026)
 
-### Homepage Sections (in order)
-1. **Header** - Navigation with dropdowns (Use Cases, Compare), "Get Dash" CTA button
-2. **Hero Section** - Centered layout, video demo with browser chrome, trust badges, "Get Dash for Mac" CTA
-3. **Feature Showcase** - Dark section highlighting encryption, offline, zero tracking
-4. **Core Features** - Rich text editing, quick switcher, organization, focus mode, import/export with live demo
-5. **Local AI Section** - On-device AI with Ollama/LM Studio, guided actions, chat mode, localhost enforcement
-6. **Security Section** - Technical security details, AES-256 specs, auto-lock, Touch ID
-6. **Biometric Lock Section** - Touch ID/biometric showcase with animated lock/unlock mockup
-7. **Benefits Section** - "No Cloud, No Worries" - works anywhere, lightning fast, stress-free
-8. **Comparison Table** - vs Notion, Evernote, Obsidian (includes biometric lock, self-destructing notes)
-9. **Payment Section** - $14.99 purchase, Stripe checkout
-10. **FAQ Section** - 7 common questions including Touch ID/biometric
-11. **CTA Section** - Final call-to-action with trust indicators
-12. **Footer** - Privacy features, use case links, comparison links, social links
+### Homepage (`app/page.tsx`)
+1. Header — nav (Features, Security, Pricing, FAQ), Use Cases / Compare / Guides dropdowns, "Get Dash" CTA
+2. Hero — "Own Your Notes / For Real", video demo (pre-1.6 layout), trust pills
+3. Feature Showcase — encryption, offline, zero tracking, self-destruct, no account, one-time purchase
+4. Core Features — page linking, rich text, quick switcher, folders & tags, focus mode, import/export
+5. Local AI
+6. Security — specs table
+7. Biometric Lock
+8. Benefits
+9. Comparison Table — vs Notion / Evernote / Obsidian
+10. Payment — $14.99 Mac purchase (card or Bitcoin), link to /subscribe for Dash Sync
+11. FAQ — 7 questions; **answers must match the FAQPage JSON-LD in `page.tsx`**
+12. CTA, Footer
 
-### Key CTAs
-- **Primary**: "Get Dash for Mac" (scrolls to payment section)
-- **Secondary**: "Buy Now" ($14.99 Stripe checkout)
-- **Tertiary**: "Already purchased? Recover your downloads"
+### Other routes
+- `/download` — Mac card, web card, platform availability table (macOS, iPhone/iPad App Store link, Web PWA, Android via PWA, Windows/Linux not yet)
+- `/subscribe` — Dash Sync plans (monthly / yearly, 7-day trial) → Stripe Checkout
+- `/payment/success`, `/payment/cancel`, `/payment/recovery` (re-download), `/payment/manage` (Stripe Billing Portal), `/payment/portal-return`
+- `/share` — encrypted sharing explainer (live collaboration removed Sep 2026)
+- `/sync-check` — phone-side connectivity diagnostic for the sync relay
+- `/changelog` — links to GitHub Releases
+- `/privacy-policy`, `/terms`
+- SEO pages: `/private-notes`, `/encrypted-notes`, `/offline-notes`, `/secure-journal`
+- Use cases: `/for-journalists`, `/for-writers`, `/for-students`, `/for-researchers`, `/for-bitcoiners`
+- Comparisons: `/vs-notion`, `/vs-evernote`, `/vs-obsidian`, `/vs-google-keep`
+- Guides: `/guides/{encryption,self-destructing-notes,offline-first,privacy-first-note-taking,app-lock,duress-password,page-linking,seed-phrase-storage,local-ai}` (reference content in the app repo's `guides/` folder)
 
----
-
-## SEO & Content Strategy
-
-### Recommended Additional Pages (Priority Order)
-
-#### Privacy-Focused (HIGH PRIORITY)
-1. `/privacy` - Our privacy philosophy in depth
-2. `/security` - Technical security details
-3. `/private-notes` - SEO page for "private note taking"
-4. `/encrypted-notes` - SEO page for "encrypted note taking"
-5. `/offline-notes` - SEO page for "offline note taking"
-6. `/open-source` - Why we're open source (lower priority, mention but don't overemphasize "free")
-
-#### Comparison Pages
-7. `/vs-notion` - Dash vs Notion comparison (privacy angle)
-8. `/vs-evernote` - Dash vs Evernote comparison (privacy angle)
-9. `/vs-apple-notes` - Dash vs Apple Notes comparison (privacy angle)
-10. `/vs-obsidian` - Dash vs Obsidian comparison
-
-#### Use Cases (SECONDARY)
-11. `/for-journalists` - Use case for journalists
-12. `/for-lawyers` - Use case for lawyers
-13. `/for-privacy-advocates` - Use case for privacy-focused users
-14. `/for-students` - Use case for students
-15. `/for-writers` - Use case for writers
-
-#### Other
-16. `/features` - Full feature breakdown
-17. `/changelog` - Version history
-18. `/roadmap` - Future plans
-
-### Blog Post Ideas (Priority Order)
-
-**Privacy-Focused (PRIMARY)**
-1. "Why Your Notes Shouldn't Live in the Cloud"
-2. "The True Cost of 'Free' Note-Taking Apps"
-3. "How to Keep Your Notes Private in 2026"
-4. "Privacy-First Note Taking: Why It Matters"
-5. "Comparing Note-Taking Apps: A Privacy Perspective"
-6. "The Case for Local-First Software"
-7. "What Your Note App Knows About You"
-
-**Technical (SECONDARY)**
-8. "How We Built a Truly Offline Note App"
-9. "Understanding AES-256 Encryption"
-10. "Open Source Note Taking: Building vs. Buying"
-
----
-
-## User Journey
-
-### Awareness → Consideration → Decision → Retention
-
-#### 1. Awareness
-- User searches "private note taking app" or "offline notes app"
-- Lands on SEO page, comparison page, or homepage
-- Sees Mac + Web availability
-
-#### 2. Consideration
-- Reads features, sees screenshots/video
-- Compares to current tool (Notion, Evernote, etc.)
-- Checks if it works on their platform (Mac is best)
-- Sees $14.99 one-time payment (no subscription)
-
-#### 3. Decision
-- Clicks "Get Dash for Mac"
-- Completes $14.99 Stripe checkout
-- Receives secure download link via email
-
-#### 4. Retention
-- Auto-updates keep app fresh (Mac)
-- Export features prevent lock-in
-- Lifetime license, no recurring costs
-- Word of mouth referrals
+### API routes (`app/api/`)
+`create-checkout-session` (mac-license | sync-monthly | sync-yearly), `verify-payment`, `webhook` (Stripe → relay entitlements), `customer-portal`, `download-recovery`, `generate-download-token`, `secure-download`, `latest-release`, `voltage/{create-invoice,verify-payment,webhook}`. The `/relay/*` rewrite in `next.config.js` proxies to the Deno relay.
 
 ---
 
 ## Downloads & Links
 
-### Official Links
-- **Landing Page**: https://dashnote.io (this site)
-- **Web App (PWA)**: https://efesop.github.io/rich-text-editor/
-- **GitHub Releases**: https://github.com/Efesop/rich-text-editor/releases
-- **Source Code**: https://github.com/Efesop/rich-text-editor
-- **Creator Twitter**: https://twitter.com/efesopoulos
-- **Buy Me Coffee**: https://buymeacoffee.com/efez
-
-### Payment & Recovery
-- **Purchase**: https://dashnote.io (payment section, $14.99 via Stripe)
-- **Recovery**: https://dashnote.io/payment/recovery (re-download if purchased)
-- **Success Page**: https://dashnote.io/payment/success (after purchase)
+- Landing page: https://dashnote.io
+- Mac purchase: https://dashnote.io (#payment-section) · recovery: https://dashnote.io/payment/recovery
+- Dash Sync: https://dashnote.io/subscribe · manage: https://dashnote.io/payment/manage
+- iOS App Store: https://apps.apple.com/app/id6766192836
+- Web app (PWA): https://efesop.github.io/rich-text-editor/
+- GitHub: https://github.com/Efesop/rich-text-editor · releases: https://github.com/Efesop/rich-text-editor/releases
+- Twitter/X: https://twitter.com/efesopoulos
+- Support: support@dashnote.io
 
 ---
 
-## Frequently Asked Questions (Order by Priority)
+## Frequently Asked Questions (canonical answers)
 
-### 1. How is Dash different from other notes apps?
-Dash is the only notes app that keeps everything 100% on your device. No cloud servers, no data collection, no corporate surveillance. Your notes are encrypted and completely private.
-
-### 2. How much is Dash?
-Dash is a one-time purchase of $14.99 with no subscriptions or hidden costs. You get lifetime access, free updates, and priority support.
-
-### 3. What platforms does Dash work on?
-Dash works best on **Mac** (native app with auto-updates). We also have a **Web version (PWA)** that works on any browser, including iOS and Android devices. Mac is recommended for the best experience.
-
-### 4. How secure is the encryption?
-Dash uses AES-256-GCM encryption, the same standard used by banks and governments. Your notes are encrypted locally on your device with PBKDF2-SHA256 key derivation (600,000 iterations) before being saved, ensuring complete privacy.
-
-### 5. What happens if I lose my device?
-Since your notes are stored locally, losing your device means losing your notes. We recommend regularly exporting your notes as encrypted backups (.dashpack files) to external storage for safekeeping.
-
-### 6. Can I sync between devices?
-Dash doesn't offer cloud sync to maintain your privacy. However, you can export your notes as encrypted files (.dashpack) and import them on other devices manually. This keeps your data under your control.
-
-### 7. Why don't you offer cloud storage?
-Cloud storage requires sending your data to external servers, which compromises privacy. Dash's core principle is keeping your data exclusively on your device where you have complete control.
-
-### 8. Is Dash open source? (Lower priority - don't overemphasize)
-Yes, Dash is open source. The full source code is available on [GitHub](https://github.com/Efesop/rich-text-editor) for anyone to audit. We sell Dash for convenience, support, and automatic updates, but you can build it yourself if you prefer.
-
-### 9. Can I try Dash before buying?
-Yes! You can use the [Web version (PWA)](https://efesop.github.io/rich-text-editor/) for free to try Dash. For the best experience with automatic updates and native performance, we recommend the Mac app ($14.99 one-time).
-
-### 10. What if I need to download Dash again?
-If you've already purchased Dash, you can [recover your download link](https://dashnote.io/payment/recovery) at any time. Your purchase includes lifetime access.
+1. **How is Dash different?** Everything stays on your device by default — no cloud servers, no data collection. If you turn on optional Dash Sync, notes are encrypted before they leave your device, so even our relay cannot read them.
+2. **How much is Dash?** Mac app $14.99 one-time with lifetime updates. iPhone and web are free. The only subscription is optional Dash Sync: $4.99/month or $47.99/year, 7-day free trial.
+3. **Can I sync between devices?** Yes — Dash Sync (E2E encrypted, optional subscription), or manual encrypted `.dashpack` export/import with no subscription.
+4. **Why is sync a subscription?** The relay costs money to run; we charge where the cost lives instead of raising the app price. Sync is off by default.
+5. **How secure is the encryption?** AES-256-GCM with PBKDF2-SHA256 (600k iterations), performed on your device.
+6. **What if I lose my device?** Without Dash Sync or exported backups, the notes on that device are gone. Use scheduled encrypted backups or sync.
+7. **Touch ID / Face ID?** Yes — Touch ID on Mac, Face ID / Touch ID on iPhone, for the app and for individual locked pages.
+8. **Is it open source?** Yes, MIT, on GitHub.
+9. **Which platforms?** Mac (paid), iPhone/iPad (free, App Store), web PWA (free). Windows/Linux not yet.
 
 ---
 
 ## Metadata & SEO
 
-### Homepage Metadata (Current)
-- **Title**: "Dash - Own Your Notes For Real | Private, Encrypted Notes App"
-- **Description**: "AES-256 encrypted notes app that keeps your data offline and private by default. No cloud, no tracking, no accounts needed. E2E encrypted sharing and live collaboration when you need it."
-- **Keywords**: private notes app, encrypted notes, offline notes, secure note taking, privacy notes, no cloud notes, local storage notes, AES-256 encryption, privacy-first app, encrypted sharing
-- **OG Image**: https://dashnote.io/og-image.png
-- **Creator**: @efesopoulos
-
-### Schema.org Structured Data
-```json
-{
-  "@context": "https://schema.org",
-  "@type": "SoftwareApplication",
-  "name": "Dash",
-  "applicationCategory": "ProductivityApplication",
-  "description": "Private notes app that keeps your data 100% offline and secure",
-  "operatingSystem": ["macOS"],
-  "offers": {
-    "@type": "Offer",
-    "price": "14.99",
-    "priceCurrency": "USD"
-  },
-  "author": {
-    "@type": "Person",
-    "name": "Efez Sopoulos",
-    "url": "https://twitter.com/efesopoulos"
-  }
-}
-```
+- Homepage title: "Dash - Own Your Notes For Real | Private, Encrypted Notes App"
+- Homepage description (current): "AES-256 encrypted notes app that keeps your data 100% offline and private. No cloud, no tracking, no accounts needed." — accurate for the default; consider adding "optional end-to-end encrypted sync".
+- SoftwareApplication JSON-LD: `operatingSystem: ["macOS", "iOS", "Web"]`, offer $14.99 USD.
+- OG image: `/images/Dashfeature1.png` (pre-1.6 layout).
 
 ---
 
-## Version History (Recent)
+## Version History (recent)
 
-### v1.3.85 (Current)
-- Fixed pages leaving folders after editing
-- Fixed folder data persistence
-- Redesigned modals with modern styling
-- Full theme support for all modals
-- Improved accessibility
+| Version | Date | Highlights |
+|---------|------|-----------|
+| **1.6.3** | Sep 8 2026 | Mac update card positioning hotfix |
+| **1.6.2** | Sep 8 2026 | Clickable desktop menus fix, flush sticky table headers, expanded-folder cue |
+| **1.6.1** | Sep 7 2026 | iPhone: full-width Notes screen, swipe to trash / lock, Appearance + Settings sheets, match iOS appearance (iOS build 78, not yet on the App Store) |
+| **1.6.0** | Sep 7 2026 | Mac: title in the document, title-bar toolbar with Settings gear + ⋯ menu, Settings popover, match macOS appearance, themes relabelled Light / Dark / Night / Terminal, new update card, lighter tables and headings |
+| **1.5.6 / 1.5.5** | Sep 6 2026 | Sync reachable on phones that block `*.deno.net` (relay name fallback, `dashnote.io/relay` proxy); `/sync-check` page |
+| **1.5.4 – 1.5.1** | Sep 6 2026 | Mac release pipeline fixes; paused-sync state on expired subscription; sign-in loop fix |
+| **1.5.0** | 2026 (iOS approved Jul 20; Mac DMG Sep 6) | **Dash Sync** subscription (E2E encrypted), magic-link sign-in, native iOS App Store app, Capacitor 8, entitlement gate on every platform |
+| 1.4.0 | 2026 | Sync alpha, scheduled encrypted auto-backups, Trash |
+| 1.3.x | Mar 2026 | Local AI, rebuilt undo/redo, page linking, seed phrase storage, decoy app, version history, attachments, micro-animations |
 
-### v1.3.82
-- Previous stable release
+Full notes: `CHANGELOG.md` in the app repo and GitHub Releases.
 
 ---
 
 ## Marketing Guidelines
 
-### Do's ✅
-- Emphasize privacy, security, offline-first
-- Show the $14.99 price clearly (one-time, lifetime)
-- Focus on Mac as the best platform (but mention Web)
-- Compare to cloud-based competitors (Notion, Evernote)
-- Use security technical details (AES-256-GCM, PBKDF2-SHA256, 600k iterations)
-- Mention open source for credibility/trust (but don't emphasize "free")
-- Target professionals who need privacy (journalists, lawyers, activists)
+### Do ✅
+- Lead with privacy, encryption, offline-by-default
+- Show $14.99 one-time for Mac clearly; show Dash Sync pricing and the 7-day trial wherever sync is mentioned
+- Say the iPhone app is native and on the App Store; Android uses the PWA
+- Quote real specs (AES-256-GCM, PBKDF2-SHA256 600k)
+- Keep FAQ visible text and FAQPage JSON-LD identical
+- Re-capture screenshots/video on the v1.6 layout before using them as product imagery
 
-### Don'ts ❌
-- Don't say "free" or "free forever" (even though it's open source)
-- Don't promise Windows/Linux native apps (not available yet)
-- Don't call mobile apps "native" (they're PWAs)
-- Don't overemphasize open source (mention it, but focus on paid convenience)
-- Don't use cloud/AI/tracking in positive contexts
-- Don't promise features that don't exist yet
-- Don't say "military-grade encryption" — lead with actual specs (AES-256-GCM)
-- Don't say "zero network requests" — say "offline by default" (sharing/collab are opt-in)
-- Don't say "no servers to subpoena" — say "notes stay on your device by default"
+### Don't ❌
+- Don't say "no subscriptions", "no cloud sync", "never syncs", or "zero network requests" — say sync is optional and E2E encrypted
+- Don't market live collaboration / live sessions (gated off)
+- Don't promise Windows / Linux apps
+- Don't call the mobile app a PWA-only experience — iOS is native now
+- Don't use the old theme names "Dark Blue" / "Fallout" or invent a "Solarized" theme
+- Don't say "military-grade" or "no servers to subpoena"
 
 ---
 
-## Contact & Support
+**Document Version**: 2.0 (rewritten Sep 8 2026 to match v1.6.3; v1.1 described v1.3.85)
 
-- **Creator**: Efez Sopoulos
-- **Twitter/X**: [@efesopoulos](https://twitter.com/efesopoulos)
-- **Support Email**: support@dashnote.io (if available)
-- **Buy Me Coffee**: https://buymeacoffee.com/efez
-
----
-
-**Document Version**: 1.1
-**Last Updated**: March 2, 2026
-**Next Review**: When significant product changes occur
-
-This document should be updated whenever:
-- New platforms are supported
-- Pricing changes
-- Major features are added
-- Marketing strategy shifts
-- Product positioning evolves
+Update this file whenever platforms, pricing, major features, or positioning change.

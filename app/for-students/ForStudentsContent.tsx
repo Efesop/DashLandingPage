@@ -122,12 +122,12 @@ export default function ForStudentsContent() {
     {
       question: 'What about syncing between my laptop and phone?',
       answer:
-        "Dash doesn't have cloud sync because that requires storing your data on servers. You can export encrypted .dashpack files to move notes between devices when needed. This keeps you in control.",
+        'Two options. Dash Sync (optional, $4.99/month with a 7-day free trial) keeps notes in step between your laptop and phone, encrypted on your device before upload so the server never sees them. Or skip the subscription and export encrypted .dashpack files to move notes between devices when needed.',
     },
     {
       question: 'Is this available on iOS/Android?',
       answer:
-        'Dash is available as a Progressive Web App (PWA) that works in mobile browsers. The native Mac app provides the best experience. All versions maintain the same privacy standards.',
+        'Yes. Dash is a native iPhone app on the App Store (free download), and on Android it runs as a Progressive Web App in the browser. All versions keep the same privacy standards.',
     },
     {
       question: 'Why not just use Apple Notes or Google Keep?',
@@ -358,7 +358,7 @@ export default function ForStudentsContent() {
               $14.99 Once. <span className="text-blue-600 dark:text-blue-400">Forever.</span>
             </h2>
             <p className="text-lg text-gray-600 dark:text-gray-300 mb-8">
-              Less than two months of Spotify. Less than one textbook chapter. Lifetime access to private, encrypted notes without subscriptions draining your budget.
+              Less than two months of Spotify. Less than one textbook chapter. Lifetime access to private, encrypted notes — no subscription required.
             </p>
           </motion.div>
         </div>

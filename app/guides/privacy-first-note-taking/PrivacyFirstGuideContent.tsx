@@ -35,7 +35,7 @@ export default function PrivacyFirstGuideContent() {
       icon: ShieldCheck,
       title: 'Privacy-First (Zero-Knowledge)',
       description:
-        'The developer cannot access user data even if they wanted to. No accounts, no servers processing data, no telemetry. Privacy guaranteed by architecture.',
+        'The developer cannot access user data even if they wanted to. No account needed, no servers processing your notes, no telemetry. Privacy guaranteed by architecture.',
     },
     {
       icon: Eye,
@@ -92,34 +92,34 @@ export default function PrivacyFirstGuideContent() {
     {
       icon: Search,
       title: 'No Third-Party Scripts',
-      description: 'No tracking pixels, no fingerprinting, no ad networks, no external JavaScript. Your notes never leave your device unless you opt in to sharing or live collaboration, which are end-to-end encrypted.',
+      description: 'No tracking pixels, no fingerprinting, no ad networks, no external JavaScript. Your notes never leave your device unless you opt in to sharing or Dash Sync, which are end-to-end encrypted.',
     },
   ];
 
   const howDashImplements = [
     {
       icon: Server,
-      title: 'No Server',
+      title: 'No Server by Default',
       description:
-        'Dash has no backend server. No infrastructure receives, processes, or stores your data. There is nothing to breach.',
+        'Local note-taking involves no backend at all. The only server is the optional Dash Sync relay, which stores ciphertext it cannot read — there is nothing readable to breach.',
     },
     {
       icon: UserX,
-      title: 'No Accounts',
+      title: 'No Account Needed',
       description:
-        'No sign-up, no login, no email, no identity. You download and use it. That\u2019s it.',
+        'No sign-up, no login, no email for local use. You download and use it. That\u2019s it.',
     },
     {
       icon: EyeOff,
       title: 'No Telemetry',
       description:
-        'Zero analytics packages in the dependencies. The only network activity is checking for app updates on desktop, plus opt-in encrypted sharing and live collaboration through a zero-knowledge relay.',
+        'Zero analytics packages in the dependencies. The only network activity is checking for app updates on desktop, plus opt-in encrypted sharing and Dash Sync through a zero-knowledge relay.',
     },
     {
       icon: WifiOff,
       title: 'Local-Only Storage',
       description:
-        'All data stays on your device. Desktop: local JSON files. Mobile: IndexedDB. No cloud sync, no backup service.',
+        'All data stays on your device. Desktop: local JSON files. Mobile: IndexedDB. Cloud sync is opt-in and end-to-end encrypted; scheduled encrypted backups stay local.',
     },
     {
       icon: Lock,
@@ -139,7 +139,7 @@ export default function PrivacyFirstGuideContent() {
     {
       question: 'What does privacy-first mean?',
       answer:
-        'Privacy-first is a design philosophy where user privacy is the primary constraint. The app is built so the developer cannot access user data even if they wanted to \u2014 no accounts, no servers processing data, no telemetry. Privacy is guaranteed by architecture, not by policy.',
+        'Privacy-first is a design philosophy where user privacy is the primary constraint. The app is built so the developer cannot access user data even if they wanted to \u2014 no account needed, no servers processing your notes, no telemetry. Privacy is guaranteed by architecture, not by policy.',
     },
     {
       question: 'How is privacy-first different from privacy-focused?',
@@ -149,12 +149,12 @@ export default function PrivacyFirstGuideContent() {
     {
       question: 'Does Dash collect any analytics or telemetry?',
       answer:
-        'No. Dash has zero analytics \u2014 no Segment, Amplitude, Google Analytics, Mixpanel, Sentry, or any telemetry service. Your notes never leave your device unless you opt in to sharing or live collaboration, which are end-to-end encrypted through a zero-knowledge relay. The desktop app also checks for updates. This is verifiable in the open-source code.',
+        'No. Dash has zero analytics \u2014 no Segment, Amplitude, Google Analytics, Mixpanel, Sentry, or any telemetry service. Your notes never leave your device unless you opt in to sharing or Dash Sync, which are end-to-end encrypted through a zero-knowledge relay. The desktop app also checks for updates. This is verifiable in the open-source code.',
     },
     {
       question: 'What data does Dash store about me?',
       answer:
-        'None. Dash has no server, no accounts, no sign-up process, and no way to identify you. Your notes exist only on your device. There is no cloud copy, no backup service, and no server-side record.',
+        'For local use, none: no account, no sign-up, and no way to identify you. Your notes exist only on your device. If you subscribe to Dash Sync, the relay holds your sign-in email, your subscription status, and encrypted vault data it cannot read — never your notes in plaintext.',
     },
     {
       question: 'How does Dash comply with privacy regulations?',

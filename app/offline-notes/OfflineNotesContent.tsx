@@ -66,7 +66,7 @@ export default function OfflineNotesContent() {
       icon: CloudOff,
       title: 'Your Notes Stay on Your Device',
       description:
-        'Your notes never leave your device unless you choose to share them. No telemetry, no analytics. Sharing and live collaboration are opt-in and end-to-end encrypted.',
+        'Your notes never leave your device unless you choose to share or sync them. No telemetry, no analytics. Sharing and Dash Sync are opt-in and end-to-end encrypted.',
     },
     {
       icon: HardDrive,
@@ -76,9 +76,9 @@ export default function OfflineNotesContent() {
     },
     {
       icon: Server,
-      title: 'No Cloud Sync',
+      title: 'Sync Is Opt-In',
       description:
-        'There are no servers to sync with. No accounts, no cloud storage, no third-party dependencies.',
+        'Dash never syncs unless you turn on Dash Sync. When you do, notes are encrypted on your device first, so the relay only ever stores ciphertext it cannot read.',
     },
     {
       icon: Globe,
@@ -112,7 +112,7 @@ export default function OfflineNotesContent() {
     {
       icon: Palette,
       title: 'Themes Work',
-      description: 'Light, dark, and Fallout themes all work offline.',
+      description: 'Light, Dark, Night and Terminal themes all work offline.',
     },
     {
       icon: Lock,
@@ -144,7 +144,7 @@ export default function OfflineNotesContent() {
     {
       question: 'How does Dash work without internet?',
       answer:
-        'Dash stores all your notes locally on your device. There is no telemetry, no analytics, and no cloud sync. Your notes never leave your device unless you choose to share them. Sharing and live collaboration are opt-in, end-to-end encrypted, and routed through a zero-knowledge relay.',
+        'Dash stores all your notes locally on your device. There is no telemetry and no analytics, and nothing syncs unless you turn on Dash Sync. Your notes never leave your device unless you choose to share or sync them; both are opt-in, end-to-end encrypted, and routed through a zero-knowledge relay.',
     },
     {
       question: 'Where are my notes stored?',
@@ -154,7 +154,7 @@ export default function OfflineNotesContent() {
     {
       question: 'Can I sync notes between devices?',
       answer:
-        'While there is no cloud sync (by design), you can export notes as encrypted .dashpack files and import them on another device. This gives you control over when and how data moves between devices.',
+        'Yes, if you want to. Dash Sync is an optional subscription that keeps notes in step across Mac, iPhone, iPad and the web, encrypted on your device before upload. Without it, export notes as encrypted .dashpack files and import them on another device. Either way you control when and how data moves.',
     },
     {
       question: 'What happens if I lose my device?',

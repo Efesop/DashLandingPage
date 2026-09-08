@@ -55,7 +55,7 @@ const faqJsonLd = {
       name: 'Is it safe to store seed phrases digitally?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'In Dash, yes. Your seed phrase is stored locally on your device with no cloud sync or network requests. When combined with page encryption (AES-256-GCM), the data on disk is unreadable without your password.',
+        text: 'In Dash, yes. Your seed phrase is stored locally and makes no network requests; it is never uploaded unless you turn on Dash Sync, and even then it is encrypted on your device first. Combined with page encryption (AES-256-GCM), the data on disk is unreadable without your password.',
       },
     },
     {

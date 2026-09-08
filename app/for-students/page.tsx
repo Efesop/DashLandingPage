@@ -4,7 +4,7 @@ import ForStudentsContent from './ForStudentsContent';
 export const metadata: Metadata = {
   title: 'Private Notes for Students | No Tracking, No Data Mining - Dash',
   description:
-    'Your study notes should not train AI models or feed ads. Private, encrypted notes for students who value their privacy. One-time $14.99, no subscriptions.',
+    'Your study notes should not train AI models or feed ads. Private, encrypted notes for students who value their privacy. One-time $14.99 for Mac, no subscription required.',
   keywords: [
     'private notes for students',
     'secure study notes',
@@ -65,8 +65,8 @@ const jsonLd = {
     'No AI training on your content',
     'AES-256 encryption',
     'Offline functionality',
-    'One-time payment',
-    'No subscriptions',
+    'One-time payment for Mac',
+    'No subscription required',
   ],
 };
 
@@ -103,7 +103,7 @@ const faqJsonLd = {
       name: 'What about syncing between my laptop and phone?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: "Dash doesn't have cloud sync because that requires storing your data on servers. You can export encrypted .dashpack files to move notes between devices when needed. This keeps you in control.",
+        text: 'Two options. Dash Sync (optional, $4.99/month with a 7-day free trial) keeps notes in step between your laptop and phone, encrypted on your device before upload so the server never sees them. Or skip the subscription and export encrypted .dashpack files to move notes between devices when needed.',
       },
     },
     {
@@ -111,7 +111,7 @@ const faqJsonLd = {
       name: 'Is this available on iOS/Android?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Dash is available as a Progressive Web App (PWA) that works in mobile browsers. The native Mac app provides the best experience. All versions maintain the same privacy standards.',
+        text: 'Yes. Dash is a native iPhone app on the App Store (free download), and on Android it runs as a Progressive Web App in the browser. All versions keep the same privacy standards.',
       },
     },
     {

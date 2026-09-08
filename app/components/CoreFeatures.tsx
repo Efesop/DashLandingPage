@@ -410,7 +410,7 @@ export default function CoreFeatures() {
           viewport={{ once: true }}
           className="mt-10 text-center text-xs text-gray-400 dark:text-gray-500 max-w-2xl mx-auto leading-relaxed"
         >
-          Dash combines the power of wiki-style page linking, rich text editing, and smart organization — all running locally on your Mac with no cloud dependency. Available for macOS, one-time purchase at $14.99.
+          Dash combines the power of wiki-style page linking, rich text editing, and smart organization — all running locally on your Mac, iPhone or browser with no cloud dependency. Mac app $14.99 one-time; iPhone app free on the App Store.
         </motion.p>
         <motion.div
           initial={{ opacity: 0, y: 10 }}

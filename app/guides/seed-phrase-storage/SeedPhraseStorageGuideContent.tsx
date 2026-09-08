@@ -122,7 +122,7 @@ export default function SeedPhraseStorageGuideContent() {
     {
       question: 'Is it safe to store seed phrases digitally?',
       answer:
-        'In Dash, yes. Your seed phrase is stored locally with no cloud sync or network requests. Combined with page encryption (AES-256-GCM), the data on disk is unreadable without your password.',
+        'In Dash, yes. Your seed phrase is stored locally and makes no network requests; it is never uploaded unless you turn on Dash Sync, and even then it is encrypted on your device first. Combined with page encryption (AES-256-GCM), the data on disk is unreadable without your password.',
     },
     {
       question: 'What is BIP-39 validation?',

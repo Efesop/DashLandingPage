@@ -95,7 +95,7 @@ const faqJsonLd = {
       name: 'What if I write on multiple devices?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: "Dash doesn't have cloud sync because that would require storing your data on servers. Instead, export encrypted .dashpack files to move between devices. You control the transfer.",
+        text: 'Turn on Dash Sync, an optional subscription that keeps your manuscript in step across Mac, iPhone, iPad and the web — encrypted on your device before upload, so the server never sees a word. Prefer no subscription? Export encrypted .dashpack files to move between devices. You control the transfer.',
       },
     },
     {

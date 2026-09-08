@@ -65,7 +65,7 @@ const faqJsonLd = {
       name: 'What does privacy-first mean?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Privacy-first is a design philosophy where user privacy is the primary constraint shaping every decision. The app is built so the developer cannot access user data even if they wanted to \u2014 no accounts, no servers processing data, no telemetry.',
+        text: 'Privacy-first is a design philosophy where user privacy is the primary constraint shaping every decision. The app is built so the developer cannot access user data even if they wanted to \u2014 no account needed, no servers processing your notes, no telemetry.',
       },
     },
     {
@@ -81,7 +81,7 @@ const faqJsonLd = {
       name: 'Does Dash collect any analytics or telemetry?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'No. Dash has zero analytics \u2014 no Segment, Amplitude, Google Analytics, Mixpanel, Sentry, or any telemetry service. The app makes zero network requests during normal operation. This is verifiable in the open-source code.',
+        text: 'No. Dash has zero analytics \u2014 no Segment, Amplitude, Google Analytics, Mixpanel, Sentry, or any telemetry service. During normal local use the app makes no network requests apart from the desktop update check; sharing and Dash Sync are opt-in and end-to-end encrypted. This is verifiable in the open-source code.',
       },
     },
     {
@@ -89,7 +89,7 @@ const faqJsonLd = {
       name: 'What data does Dash store about me?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'None. Dash has no server, no accounts, no sign-up process, and no way to identify you. Your notes exist only on your device. There is no cloud copy, no backup service, and no server-side record of your data.',
+        text: 'For local use, none: no account, no sign-up, and no way to identify you. Your notes exist only on your device. If you subscribe to Dash Sync, the relay holds your sign-in email, your subscription status, and encrypted vault data it cannot read — never your notes in plaintext.',
       },
     },
     {

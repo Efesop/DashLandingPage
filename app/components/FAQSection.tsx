@@ -11,12 +11,12 @@ export default function FAQSection() {
     {
       question: 'How is Dash different from other notes apps?',
       answer:
-        'Dash is the only notes app that keeps everything 100% on your device. No cloud servers, no data collection, no corporate surveillance. Your notes are encrypted and completely private.',
+        'Dash keeps everything on your device by default. No cloud servers, no data collection, no corporate surveillance. If you turn on the optional Dash Sync, your notes are encrypted before they leave your device, so even our relay cannot read them.',
     },
     {
       question: 'How much is Dash?',
       answer:
-        'Dash is a one-time purchase with no subscriptions or hidden costs. We believe privacy is a fundamental right, not a premium feature.',
+        'The Mac app is a one-time $14.99 purchase with lifetime updates. The iPhone app and the web app are free. The only subscription is optional Dash Sync — end-to-end encrypted sync across your devices for $4.99/month or $47.99/year with a 7-day free trial. Notes, encryption, and everything else work without it.',
     },
     {
       question: 'How secure is the encryption?',
@@ -31,17 +31,17 @@ export default function FAQSection() {
     {
       question: 'Can I sync between devices?',
       answer:
-        "Dash doesn't offer cloud sync to maintain your privacy. However, you can export your notes as encrypted files and import them on other devices manually.",
+        'Yes, two ways. Dash Sync is an optional subscription that keeps notes, folders, tags, attachments and version history in step across Mac, iPhone, iPad and the web. Everything is encrypted on your device before upload, so the relay only ever stores ciphertext it cannot read. Or, with no subscription, export an encrypted .dashpack file from one device and import it on another.',
     },
     {
-      question: "Why don't you offer cloud storage?",
+      question: 'Why is sync a subscription?',
       answer:
-        "Cloud storage requires sending your data to external servers, which compromises privacy. Dash's core principle is keeping your data exclusively on your device where you have complete control.",
+        'Running the sync relay costs real money, so we charge for it where the cost lives instead of raising the price of the app for everyone. Sync is off by default: without it Dash never talks to a server, and with it the server only ever sees encrypted blobs.',
     },
     {
       question: 'Does Dash support Touch ID or biometric unlock?',
       answer:
-        'Yes! On macOS, Dash supports Touch ID to unlock the app or individual locked pages. You can also set auto-lock timers (1, 5, 15, or 30 minutes) or lock instantly with Cmd+Shift+L. A master password is available as a fallback.',
+        'Yes. On macOS, Dash supports Touch ID, and on iPhone Face ID (or Touch ID), to unlock the app or individual locked pages. You can also set auto-lock timers (1, 5, 15, or 30 minutes) or lock instantly with Cmd+Shift+L on Mac. A master password is available as a fallback.',
     },
   ];
 

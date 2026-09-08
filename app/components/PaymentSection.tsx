@@ -195,7 +195,7 @@ export default function PaymentSection() {
   };
 
   const benefits = [
-    'Full access to Dash on Mac, Windows, Linux',
+    'Full access to Dash for Mac (Apple Silicon and Intel)',
     'Local-first — your notes stay on your device',
     'Free updates and new features',
     'Optional cross-device sync available separately',
@@ -317,7 +317,7 @@ export default function PaymentSection() {
                       </span>
                     </div>
                     <p className='text-gray-500 dark:text-gray-400 mt-2'>
-                      Lifetime access • No subscriptions
+                      Lifetime access • No subscription required
                     </p>
                   </div>
 

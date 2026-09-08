@@ -11,10 +11,7 @@ import {
   QrCode,
   Clock,
   Eye,
-  Wifi,
   Globe,
-  MousePointer2,
-  UserCheck,
   Minus,
   Plus,
 } from 'lucide-react';
@@ -76,33 +73,6 @@ export default function ShareContent() {
     },
   ];
 
-  const collaborationFeatures = [
-    {
-      icon: Wifi,
-      title: 'Real-Time E2E Encrypted Editing',
-      description:
-        'WebSocket relay broadcasts encrypted binary messages between participants. A random 256-bit key is generated per session — the relay cannot read your content.',
-    },
-    {
-      icon: Clock,
-      title: 'Session Controls',
-      description:
-        'Duration options (1h, 6h, 24h, 1 week, unlimited) and optional session password for access control. You decide who can join and for how long.',
-    },
-    {
-      icon: MousePointer2,
-      title: 'Live Cursors & Presence',
-      description:
-        'See where other participants are editing in real-time. Typing indicators and participant avatars keep everyone in sync.',
-    },
-    {
-      icon: UserCheck,
-      title: 'Edit Request System',
-      description:
-        'Guests can request edit access. The host approves or dismisses via the notification panel — full control over who can modify the note.',
-    },
-  ];
-
   const extraFeatures = [
     {
       icon: Key,
@@ -120,7 +90,7 @@ export default function ShareContent() {
       icon: Link,
       title: 'Deep Link Support',
       description:
-        'Recipients with Dash installed can import directly via the dashnotes:// protocol. One tap to open and decrypt.',
+        'Recipients with Dash installed can open the note directly via the dash:// protocol. One tap to open and decrypt.',
     },
     {
       icon: Globe,
@@ -140,11 +110,6 @@ export default function ShareContent() {
       question: 'Can the relay server read my shared notes?',
       answer:
         'No. The relay server operates on a zero-knowledge basis. Your notes are encrypted before they are uploaded, and the encryption key is stored in the URL fragment which is never sent to the server. The relay only handles encrypted blobs it cannot read.',
-    },
-    {
-      question: 'How do live collaboration sessions work?',
-      answer:
-        'Live collaboration uses an E2E encrypted WebSocket connection. A random 256-bit key is generated for each session and shared via the URL fragment. All messages are encrypted binary data that the relay server cannot read. Participants see live cursors, typing indicators, and presence information.',
     },
     {
       question: 'How long are shared notes stored?',
@@ -167,7 +132,7 @@ export default function ShareContent() {
         badge={{ icon: Share2, text: 'Encrypted Sharing' }}
         headline="Share Notes Without Giving Up Privacy"
         highlightedWord="Privacy"
-        subheadline="End-to-end encrypted sharing and live collaboration. Your notes are encrypted before they leave your device — the relay server can never read your content."
+        subheadline="End-to-end encrypted sharing. Your notes are encrypted before they leave your device — the relay server can never read your content."
         primaryCTA={{ text: 'Get Dash for Mac' }}
         secondaryCTA={{ text: 'See how it works', href: '#how-sharing-works' }}
       >
@@ -318,49 +283,6 @@ export default function ShareContent() {
 
       <InlineCTA text="Share notes without compromising privacy" />
 
-      {/* Live Collaboration */}
-      <section className="py-24 bg-white dark:bg-gray-950">
-        <div className="container mx-auto px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-6">
-              Live <span className="text-blue-600 dark:text-blue-400">Collaboration</span>
-            </h2>
-            <p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-              Real-time collaborative editing with end-to-end encryption. The relay server never sees your content.
-            </p>
-          </motion.div>
-
-          <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-            {collaborationFeatures.map((feature, index) => (
-              <motion.div
-                key={feature.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-              >
-                <GlassCard variant="light" hover={false} className="p-8 h-full">
-                  <div className="w-14 h-14 bg-blue-100 dark:bg-blue-900/30 rounded-2xl flex items-center justify-center mb-6">
-                    <feature.icon className="w-7 h-7 text-blue-600 dark:text-blue-400" />
-                  </div>
-                  <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">
-                    {feature.title}
-                  </h3>
-                  <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
-                    {feature.description}
-                  </p>
-                </GlassCard>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Technical Specifications */}
       <section className="py-24 bg-gray-50 dark:bg-gray-900">
         <div className="container mx-auto px-6 lg:px-8">
@@ -374,7 +296,7 @@ export default function ShareContent() {
               Technical <span className="text-blue-600 dark:text-blue-400">Specifications</span>
             </h2>
             <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-              Full transparency on how encrypted sharing and live collaboration work under the hood
+              Full transparency on how encrypted sharing works under the hood
             </p>
           </motion.div>
 
@@ -388,7 +310,7 @@ export default function ShareContent() {
               <div className="bg-gradient-to-r from-blue-600 to-indigo-600 px-6 py-4">
                 <div className="flex items-center gap-3">
                   <Shield className="w-6 h-6 text-white" />
-                  <h3 className="text-lg font-semibold text-white">Sharing & Collaboration Specs</h3>
+                  <h3 className="text-lg font-semibold text-white">Sharing Specs</h3>
                 </div>
               </div>
 
@@ -396,11 +318,10 @@ export default function ShareContent() {
                 <div className="grid md:grid-cols-2 gap-6">
                   {[
                     { label: 'Sharing Encryption', value: 'AES-256-GCM', detail: 'Authenticated encryption with associated data' },
-                    { label: 'Session Encryption', value: 'AES-256-GCM', detail: 'Random 256-bit key per session' },
                     { label: 'Key Exchange', value: 'URL Fragment', detail: 'Key in # fragment — never sent to server' },
-                    { label: 'Relay Server', value: 'dash-relay.efesop.deno.dev', detail: 'Zero-knowledge, handles only encrypted blobs' },
+                    { label: 'Relay Server', value: 'dash-relay.efesop.deno.net', detail: 'Zero-knowledge, handles only encrypted blobs' },
                     { label: 'Data Retention', value: '30 days', detail: 'Auto-deleted, or never stored if in URL fragment' },
-                    { label: 'Protocol', value: 'WebSocket / HTTPS', detail: 'WebSocket for sessions, HTTPS for sharing' },
+                    { label: 'Protocol', value: 'HTTPS', detail: 'Encrypted blob upload and fetch' },
                   ].map((spec) => (
                     <div
                       key={spec.label}
@@ -532,7 +453,7 @@ export default function ShareContent() {
       {/* CTA Banner */}
       <CTABanner
         headline="Privacy-first sharing, built in"
-        subheadline="E2E encrypted sharing and live collaboration. $14.99 one-time purchase."
+        subheadline="E2E encrypted sharing. $14.99 one-time purchase."
         buttonText="Get Dash for Mac"
       />
 

@@ -4,7 +4,7 @@ import SecureJournalContent from './SecureJournalContent';
 export const metadata: Metadata = {
   title: 'Private Journal App | Encrypted Diary That Stays Yours - Dash',
   description:
-    'Your private thoughts deserve real privacy. AES-256 encrypted journal that never syncs to the cloud. No subscription, no tracking, truly private.',
+    'Your private thoughts deserve real privacy. AES-256 encrypted journal that stays on your device unless you choose to sync it. No subscription required, no tracking, truly private.',
   keywords: [
     'private journal app',
     'encrypted diary',
@@ -59,7 +59,7 @@ const jsonLd = {
   featureList: [
     'Private journaling',
     'AES-256 encryption',
-    'No cloud sync',
+    'Sync optional, end-to-end encrypted',
     'Offline diary',
     'One-time payment',
     'Zero tracking',
@@ -75,7 +75,7 @@ const faqJsonLd = {
       name: 'How is this different from Day One or Journey?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Day One and Journey are excellent journal apps, but they sync to the cloud and require subscriptions ($35-50/year) for encryption. Dash stores everything locally with built-in encryption for a one-time $14.99. No cloud means no breach risk and no recurring fees.',
+        text: 'Day One and Journey are excellent journal apps, but they sync to the cloud and require subscriptions ($35-50/year) for encryption. Dash stores everything locally with built-in encryption for a one-time $14.99, and sync is optional and end-to-end encrypted rather than the default. Nothing leaves your device unless you decide it should.',
       },
     },
     {
@@ -83,7 +83,7 @@ const faqJsonLd = {
       name: 'Can I add photos to my journal entries?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Currently, Dash focuses on text-based journaling with rich formatting. Photos and attachments are on the roadmap. For now, you can embed images using Markdown syntax if using the web version.',
+        text: 'Yes. Add images inline, or attach photos (JPEG, PNG, GIF, WebP) and PDFs to any entry from the + block menu or by drag-and-drop — up to 10 MB per file, stored on your device alongside the entry.',
       },
     },
     {
@@ -91,7 +91,7 @@ const faqJsonLd = {
       name: 'What if I want to journal on multiple devices?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: "Dash doesn't have cloud sync because that would require storing your private thoughts on servers. Export encrypted .dashpack files to transfer between devices. You control exactly when and how your journal moves.",
+        text: 'Dash Sync is optional: turn it on and your journal stays in step across devices, encrypted on your device before upload so the server only ever holds ciphertext. Or keep it fully offline and export encrypted .dashpack files to transfer between devices. You control exactly when and how your journal moves.',
       },
     },
     {

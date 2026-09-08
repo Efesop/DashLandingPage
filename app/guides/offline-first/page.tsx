@@ -86,10 +86,10 @@ const faqJsonLd = {
     },
     {
       '@type': 'Question',
-      name: 'Why doesn\u2019t Dash sync between devices?',
+      name: 'Does Dash sync between devices?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'By design. No sync means no sync conflicts, no server infrastructure to secure, no account required, and no data ever transmitted over a network. For moving data between devices, Dash provides export/import in multiple formats.',
+        text: 'Only if you turn it on. Dash Sync is an optional subscription that encrypts everything on your device before upload, so the relay never sees plaintext and there is nothing readable in transit. Leave it off and Dash never touches a server; move data between devices with encrypted export and import instead.',
       },
     },
     {

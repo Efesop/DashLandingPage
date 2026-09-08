@@ -19,37 +19,27 @@ import PaymentSection from '../components/PaymentSection';
 import SEOHero from '../components/seo/SEOHero';
 
 export default function DownloadContent() {
-  const platforms = [
+  type Platform = {
+    name: string;
+    status: 'available' | 'unavailable' | 'pwa';
+    note: string;
+    primary: boolean;
+    href?: string;
+  };
+
+  const platforms: Platform[] = [
+    { name: 'macOS', status: 'available', note: 'Recommended', primary: true },
     {
-      name: 'macOS',
-      status: 'available' as const,
-      note: 'Recommended',
-      primary: true,
-    },
-    {
-      name: 'Web PWA',
-      status: 'available' as const,
-      note: 'Any browser',
+      name: 'iPhone / iPad',
+      status: 'available',
+      note: 'App Store',
       primary: false,
+      href: 'https://apps.apple.com/app/id6766192836',
     },
-    {
-      name: 'Windows',
-      status: 'unavailable' as const,
-      note: 'Not yet available',
-      primary: false,
-    },
-    {
-      name: 'Linux',
-      status: 'unavailable' as const,
-      note: 'Not yet available',
-      primary: false,
-    },
-    {
-      name: 'iOS / Android',
-      status: 'pwa' as const,
-      note: 'Use Web PWA',
-      primary: false,
-    },
+    { name: 'Web PWA', status: 'available', note: 'Any browser', primary: false },
+    { name: 'Android', status: 'pwa', note: 'Use Web PWA', primary: false },
+    { name: 'Windows', status: 'unavailable', note: 'Not yet available', primary: false },
+    { name: 'Linux', status: 'unavailable', note: 'Not yet available', primary: false },
   ];
 
   return (
@@ -142,7 +132,7 @@ export default function DownloadContent() {
                 Works in any browser
               </p>
               <p className="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">
-                Use Dash as a Progressive Web App directly in your browser. Free and works on any platform. The Mac app is recommended for the best experience.
+                Use Dash as a Progressive Web App directly in your browser. Free and works on any platform, including Android. On iPhone, get the native app from the App Store; on Mac, the desktop app is the best experience.
               </p>
               <ul className="space-y-2 mb-8">
                 {[
@@ -185,7 +175,7 @@ export default function DownloadContent() {
               Platform <span className="text-blue-600 dark:text-blue-400">Availability</span>
             </h2>
             <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-              Dash is available on Mac and the web today, with more platforms coming soon.
+              Dash is available on Mac, iPhone and the web today. Windows and Linux are not shipped yet.
             </p>
           </motion.div>
 
@@ -196,7 +186,7 @@ export default function DownloadContent() {
                 const isPwa = platform.status === 'pwa';
                 const IconComponent = platform.name === 'macOS' ? Monitor :
                   platform.name === 'Web PWA' ? Globe :
-                  platform.name === 'iOS / Android' ? Smartphone : Monitor;
+                  platform.name === 'iPhone / iPad' || platform.name === 'Android' ? Smartphone : Monitor;
 
                 return (
                   <motion.div
@@ -239,7 +229,18 @@ export default function DownloadContent() {
                             : 'text-gray-400 dark:text-gray-500'
                         }`}
                       >
-                        {platform.note}
+                        {platform.href ? (
+                          <Link
+                            href={platform.href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="underline underline-offset-2 hover:opacity-80"
+                          >
+                            {platform.note}
+                          </Link>
+                        ) : (
+                          platform.note
+                        )}
                       </span>
                     </div>
                   </motion.div>

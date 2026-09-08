@@ -1,36 +1,44 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Dash landing page — dashnote.io
 
-## Getting Started
+Marketing site, checkout, and support pages for [Dash](https://dashnote.io), the privacy-first, offline-first notes app. The app itself lives in the sibling repo [Efesop/rich-text-editor](https://github.com/Efesop/rich-text-editor).
 
-First, run the development server:
+**Read [PRODUCT_CONTEXT.md](./PRODUCT_CONTEXT.md) before writing or editing any copy.** It is the source of truth for what Dash does, what it costs, and which claims are off-limits (for example: sync is optional and end-to-end encrypted, live collaboration is not shipped, Windows/Linux are not shipped).
+
+## Stack
+
+Next.js (App Router) + React + Tailwind CSS + framer-motion, deployed on Vercel (auto-deploys on push to `main`).
+
+## Routes
+
+| Area | Routes |
+|------|--------|
+| Marketing | `/` (homepage), `/download`, `/share`, `/changelog`, `/privacy-policy`, `/terms` |
+| Purchase | `/subscribe` (Dash Sync plans → Stripe Checkout), `/payment/success`, `/payment/cancel`, `/payment/recovery` (re-download the Mac app), `/payment/manage` (Stripe Billing Portal), `/payment/portal-return` |
+| Support | `/sync-check` (phone-side diagnostic for the sync relay) |
+| SEO | `/private-notes`, `/encrypted-notes`, `/offline-notes`, `/secure-journal`, `/for-*` use cases, `/vs-*` comparisons, `/guides/*` |
+| API | `app/api/` — `create-checkout-session`, `verify-payment`, `webhook` (Stripe → relay entitlements), `customer-portal`, `download-recovery`, `generate-download-token`, `secure-download`, `latest-release`, `voltage/*` (Bitcoin Lightning) |
+
+`next.config.js` also rewrites `/relay/*` to the Dash Sync relay on Deno Deploy so phones that block `*.deno.net` can still sync.
+
+## Development
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+cp env.example .env.local   # fill in Stripe, Voltage, relay and download secrets
+npm run dev                 # http://localhost:3000
+npm run build               # production build (runs type-check + lint)
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Editing rules
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- Every product claim must match the current app. Check `PRODUCT_CONTEXT.md` and the app repo's `FEATURES.md` / `CHANGELOG.md`.
+- FAQ answers rendered on a page must be identical to that page's FAQPage JSON-LD (Google requires it).
+- Pricing: Mac $14.99 one-time; Dash Sync $4.99/mo or $47.99/yr with a 7-day trial; iPhone and web are free. Say "no subscription required", never "no subscriptions".
+- Screenshots and video currently show the pre-v1.6 app layout; re-capture before relying on them.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Other docs
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- [PRODUCT_CONTEXT.md](./PRODUCT_CONTEXT.md) — product facts, positioning, do/don't list
+- [COMPONENT_STRUCTURE.md](./COMPONENT_STRUCTURE.md) — homepage component map
+- [MOCKUP_DESIGN_GUIDE.md](./MOCKUP_DESIGN_GUIDE.md) — visual style rules for mockups and sections
+- [docs/voltage-payments.md](./docs/voltage-payments.md) — Bitcoin Lightning checkout setup

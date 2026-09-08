@@ -143,7 +143,7 @@ export default function CTABanner({
             </div>
             <div className="flex items-center gap-2">
               <div className="w-1.5 h-1.5 rounded-full bg-green-400" />
-              <span className="text-sm">No subscription</span>
+              <span className="text-sm">No subscription required</span>
             </div>
           </motion.div>
         </motion.div>

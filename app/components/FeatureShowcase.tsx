@@ -469,7 +469,7 @@ const features = [
   {
     icon: BadgeCheck,
     title: 'One-Time Purchase',
-    description: 'Pay once, use forever. No subscriptions, no hidden costs, no premium tiers.',
+    description: 'Pay once for the Mac app and use it forever. No subscription needed for your notes — optional Dash Sync is the only add-on.',
     Visual: PurchaseVisual,
   },
 ];
@@ -600,7 +600,7 @@ export default function FeatureShowcase() {
             ))}
           </div>
           <p className="text-xs text-[#5d6b88] max-w-2xl mx-auto leading-relaxed mb-6">
-            Dash is a private, encrypted notes app for macOS. AES-256 encryption, offline storage, and zero data collection — starting at $14.99, one-time purchase with no subscriptions.
+            Dash is a private, encrypted notes app for Mac, iPhone and the web. AES-256 encryption, offline storage, and zero data collection — $14.99 one-time for Mac, free on iPhone and in the browser, with optional end-to-end encrypted sync.
           </p>
           <a
             href="#payment-section"

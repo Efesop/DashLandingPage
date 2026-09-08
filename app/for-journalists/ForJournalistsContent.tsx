@@ -68,7 +68,7 @@ export default function ForJournalistsContent() {
       icon: WifiOff,
       title: 'Offline by Default',
       description:
-        'Dash works entirely offline by default. Your notes stay on your device unless you explicitly share them. Sharing and live collaboration are opt-in and end-to-end encrypted.',
+        'Dash works entirely offline by default. Your notes stay on your device unless you explicitly share or sync them. Sharing and Dash Sync are opt-in and end-to-end encrypted.',
     },
     {
       icon: Server,
@@ -404,7 +404,7 @@ export default function ForJournalistsContent() {
                     { label: 'Encryption Algorithm', value: 'AES-256-GCM', detail: 'Authenticated encryption with associated data' },
                     { label: 'Key Derivation Function', value: 'PBKDF2-SHA256', detail: '600,000 iterations for password stretching' },
                     { label: 'Random Number Generation', value: 'crypto.getRandomValues', detail: 'Cryptographically secure PRNG' },
-                    { label: 'Storage Location', value: '~/Library/Application Support/Dash/', detail: 'Local device only, no cloud sync' },
+                    { label: 'Storage Location', value: '~/Library/Application Support/Dash/', detail: 'Local device only unless you enable Dash Sync (end-to-end encrypted)' },
                     { label: 'Network Requests', value: 'None by default', detail: 'Sharing opt-in, E2E encrypted via zero-knowledge relay' },
                     { label: 'Source Code', value: 'Open Source (GitHub)', detail: 'Fully auditable by security researchers' },
                   ].map((spec) => (

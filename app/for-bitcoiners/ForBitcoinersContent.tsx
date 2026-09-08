@@ -40,13 +40,13 @@ export default function ForBitcoinersContent() {
       icon: Eye,
       title: 'True Privacy Alignment',
       description:
-        "You already value privacy - that's why you use Bitcoin. Dash shares those values: no accounts, no tracking, no cloud, no data collection. Your notes, your device, your control.",
+        "You already value privacy - that's why you use Bitcoin. Dash shares those values: no account needed, no tracking, no cloud by default, no data collection. Your notes, your device, your control.",
     },
     {
       icon: FileKey,
       title: 'Zero Trust Architecture',
       description:
-        "Your notes never touch any server. No cloud sync, no backup services, no third-party access. Just your encrypted files on your device. Verify the code yourself - it's open source.",
+        "By default your notes never touch any server. Sync is off unless you turn it on, and even then the relay only ever holds ciphertext it cannot read. Just your encrypted files on your device. Verify the code yourself - it's open source.",
     },
   ];
 
@@ -109,7 +109,7 @@ export default function ForBitcoinersContent() {
     { feature: 'Open Source', dash: true, others: false },
     { feature: 'Local-Only Storage', dash: true, others: false },
     { feature: 'AES-256-GCM Encryption', dash: true, others: false },
-    { feature: 'One-Time Purchase (No Subscriptions)', dash: true, others: false },
+    { feature: 'One-Time Purchase (Sync Optional)', dash: true, others: false },
   ];
 
   const faqs = [

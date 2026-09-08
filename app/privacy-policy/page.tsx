@@ -5,7 +5,7 @@ import Footer from '../components/Footer';
 export const metadata: Metadata = {
   title: 'Privacy Policy | Dash - Private Notes App',
   description:
-    'Dash privacy policy. We collect zero user data. No accounts, no analytics, no telemetry. Your notes stay on your device.',
+    'Dash privacy policy. No analytics, no telemetry, no account for local use. Your notes stay on your device unless you choose end-to-end encrypted sharing or sync.',
   alternates: {
     canonical: 'https://dashnote.io/privacy-policy',
   },
@@ -25,7 +25,7 @@ export default function PrivacyPolicyPage() {
                 Privacy Policy
               </h1>
               <p className="text-gray-500 dark:text-gray-400">
-                Last updated: March 10, 2026
+                Last updated: September 8, 2026
               </p>
             </div>
 
@@ -36,11 +36,12 @@ export default function PrivacyPolicyPage() {
                   Our Approach
                 </h2>
                 <p>
-                  Dash is a privacy-first, offline note-taking app. We collect
-                  zero user data. This isn&apos;t just policy &mdash;
-                  it&apos;s architecture. Dash is designed from the ground up so
-                  that your notes never leave your device unless you explicitly
-                  choose to share them.
+                  Dash is a privacy-first, offline note-taking app. The app
+                  itself collects no data about you. This isn&apos;t just
+                  policy &mdash; it&apos;s architecture. Dash is designed from
+                  the ground up so that your notes never leave your device
+                  unless you explicitly choose to share or sync them, and then
+                  only in encrypted form.
                 </p>
               </div>
 
@@ -51,14 +52,23 @@ export default function PrivacyPolicyPage() {
                 </h2>
                 <p className="mb-4">
                   <strong className="text-gray-900 dark:text-white">
-                    None.
+                    For local note-taking: none.
                   </strong>
                 </p>
+                <p className="mb-4">
+                  No account. No usage analytics. No telemetry. No crash
+                  reports. No cookies. No tracking pixels. The app does not
+                  collect, transmit, or store any personal data on its own.
+                </p>
                 <p>
-                  No accounts. No email addresses. No usage analytics. No
-                  telemetry. No crash reports. No cookies. No tracking pixels.
-                  Dash does not collect, transmit, or store any personal data
-                  whatsoever.
+                  <strong className="text-gray-900 dark:text-white">
+                    If you subscribe to Dash Sync:
+                  </strong>{' '}
+                  your email address (used for the passwordless sign-in code
+                  and to check your subscription), your subscription status,
+                  and end-to-end encrypted vault data that our relay cannot
+                  read. Details are in the Optional Network Features and
+                  Third-Party Services sections below.
                 </p>
               </div>
 
@@ -69,7 +79,8 @@ export default function PrivacyPolicyPage() {
                 </h2>
                 <p className="mb-4">
                   All notes are stored locally on your device. Dash never syncs
-                  your data to any cloud server.
+                  your data to any server unless you turn on Dash Sync, and
+                  then only as ciphertext encrypted on your device.
                 </p>
                 <ul className="list-disc list-inside space-y-2 ml-2">
                   <li>
@@ -80,6 +91,13 @@ export default function PrivacyPolicyPage() {
                     <code className="text-sm bg-gray-100 dark:bg-gray-800 px-2 py-0.5 rounded">
                       ~/Library/Application Support/Dash/
                     </code>
+                  </li>
+                  <li>
+                    <strong className="text-gray-900 dark:text-white">
+                      iOS app:
+                    </strong>{' '}
+                    On-device app storage (if you enable Dash Sync, the vault
+                    key is kept in the iOS Keychain)
                   </li>
                   <li>
                     <strong className="text-gray-900 dark:text-white">
@@ -96,8 +114,8 @@ export default function PrivacyPolicyPage() {
                   Optional Network Features
                 </h2>
                 <p className="mb-6">
-                  Two features use a zero-knowledge relay server when you
-                  explicitly choose to use them:
+                  Two optional features use a zero-knowledge relay server when
+                  you explicitly choose to use them:
                 </p>
 
                 <div className="space-y-6">
@@ -115,12 +133,15 @@ export default function PrivacyPolicyPage() {
 
                   <div className="pl-4 border-l-2 border-blue-500/30">
                     <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
-                      Live Collaboration
+                      Dash Sync (optional subscription)
                     </h3>
                     <p>
-                      The WebSocket relay forwards encrypted binary messages
-                      between participants. The relay never sees plaintext
-                      content.
+                      Notes, folders, tags, attachments and version history
+                      are encrypted on your device with a vault key that never
+                      leaves your devices. The relay stores only ciphertext,
+                      plus the sign-in email and subscription status needed to
+                      verify your entitlement. Deleted notes sync as encrypted
+                      tombstones and are purged after 30 days.
                     </p>
                   </div>
 

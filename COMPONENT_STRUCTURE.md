@@ -2,7 +2,7 @@
 
 The page has been refactored from a single large `page.tsx` file (~1300 lines) into modular, maintainable components.
 
-**Last Updated**: March 2, 2026
+**Last Updated**: September 8, 2026
 
 ## Main Page (`app/page.tsx`)
 - **Responsibility**: State management, data fetching, JSON-LD structured data, and component composition
@@ -61,7 +61,7 @@ The page has been refactored from a single large `page.tsx` file (~1300 lines) i
 
 ### 10. **FAQSection.tsx**
 - **Purpose**: Frequently asked questions
-- **Features**: 7 expandable FAQ items with animations (includes Touch ID/biometric question)
+- **Features**: 7 expandable FAQ items with animations (pricing incl. Dash Sync, sync, Touch ID / Face ID). The answers must stay identical to the FAQPage JSON-LD in `page.tsx`
 - **Props**: None (manages its own accordion state)
 - **Section ID**: `faq`
 

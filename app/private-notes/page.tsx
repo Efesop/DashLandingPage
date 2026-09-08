@@ -75,7 +75,7 @@ const faqJsonLd = {
       name: 'What makes Dash more private than other note apps?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Unlike cloud-based apps like Notion or Evernote, Dash stores everything locally on your device. There are no servers, no accounts, and no internet connection required. Your notes physically cannot be accessed by anyone but you.',
+        text: 'Unlike cloud-based apps like Notion or Evernote, Dash stores everything locally on your device. No account or internet connection is required, and sync is off unless you turn it on. Your notes physically cannot be accessed by anyone but you.',
       },
     },
     {
@@ -91,7 +91,7 @@ const faqJsonLd = {
       name: 'Can Dash read my notes?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'No. Dash is designed with zero-knowledge architecture. Your notes never leave your device, and encrypted notes can only be decrypted with your password. We have no servers, no accounts, and no way to access your data.',
+        text: 'No. Dash is designed with zero-knowledge architecture. Your notes never leave your device unless you share or sync them, and then only as ciphertext encrypted with keys that stay on your devices. We have no way to read your data.',
       },
     },
     {

@@ -60,7 +60,7 @@ export default function SecureJournalContent() {
     {
       icon: WifiOff,
       title: '100% Offline',
-      description: 'No cloud sync, no internet required. Write anywhere, anytime.',
+      description: 'No internet required. Write anywhere, anytime. Sync is optional and end-to-end encrypted.',
     },
     {
       icon: Database,
@@ -116,17 +116,17 @@ export default function SecureJournalContent() {
     {
       question: 'How is this different from Day One or Journey?',
       answer:
-        'Day One and Journey are excellent journal apps, but they sync to the cloud and require subscriptions ($35-50/year) for encryption. Dash stores everything locally with built-in encryption for a one-time $14.99. No cloud means no breach risk and no recurring fees.',
+        'Day One and Journey are excellent journal apps, but they sync to the cloud and require subscriptions ($35-50/year) for encryption. Dash stores everything locally with built-in encryption for a one-time $14.99, and sync is optional and end-to-end encrypted rather than the default. Nothing leaves your device unless you decide it should.',
     },
     {
       question: 'Can I add photos to my journal entries?',
       answer:
-        'Currently, Dash focuses on text-based journaling with rich formatting. Photos and attachments are on the roadmap. For now, you can embed images using Markdown syntax if using the web version.',
+        'Yes. Add images inline, or attach photos (JPEG, PNG, GIF, WebP) and PDFs to any entry from the + block menu or by drag-and-drop — up to 10 MB per file, stored on your device alongside the entry.',
     },
     {
       question: 'What if I want to journal on multiple devices?',
       answer:
-        "Dash doesn't have cloud sync because that would require storing your private thoughts on servers. Export encrypted .dashpack files to transfer between devices. You control exactly when and how your journal moves.",
+        'Dash Sync is optional: turn it on and your journal stays in step across devices, encrypted on your device before upload so the server only ever holds ciphertext. Or keep it fully offline and export encrypted .dashpack files to transfer between devices. You control exactly when and how your journal moves.',
     },
     {
       question: 'Can my therapist or partner read my journal?',

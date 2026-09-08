@@ -9,7 +9,7 @@ export default function Footer() {
   const privacyFeatures = [
     { icon: Shield, label: '100% Offline' },
     { icon: Eye, label: 'No Tracking' },
-    { icon: Lock, label: 'No Accounts' },
+    { icon: Lock, label: 'No Account Needed' },
     { icon: Database, label: 'AES-256 Encrypted' },
     { icon: Zap, label: 'Zero Knowledge' },
   ];

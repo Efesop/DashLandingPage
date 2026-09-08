@@ -52,7 +52,7 @@ export default function PrivateNotesContent() {
       icon: WifiOff,
       title: '100% Offline',
       description:
-        'Dash works entirely offline by default \u2014 your notes never leave your device unless you explicitly share them. Sharing and live collaboration are opt-in and end-to-end encrypted.',
+        'Dash works entirely offline by default \u2014 your notes never leave your device unless you explicitly share or sync them. Sharing and Dash Sync are opt-in and end-to-end encrypted.',
     },
     {
       icon: Lock,
@@ -64,7 +64,7 @@ export default function PrivateNotesContent() {
       icon: Eye,
       title: 'Zero-Knowledge Design',
       description:
-        'We never see your notes. There are no servers, no accounts, no way for anyone - including us - to access your data.',
+        'We never see your notes. By default no server or account is involved, and with optional sync on the relay only holds ciphertext - no way for anyone, including us, to read your data.',
     },
     {
       icon: Database,
@@ -90,7 +90,7 @@ export default function PrivateNotesContent() {
     {
       question: 'What makes Dash more private than other note apps?',
       answer:
-        'Unlike cloud-based apps like Notion or Evernote, Dash stores everything locally on your device. There are no servers, no accounts, and no internet connection required. Your notes physically cannot be accessed by anyone but you.',
+        'Unlike cloud-based apps like Notion or Evernote, Dash stores everything locally on your device. No account or internet connection is required, and sync is off unless you turn it on. Your notes physically cannot be accessed by anyone but you.',
     },
     {
       question: 'How does the encryption work?',
@@ -100,7 +100,7 @@ export default function PrivateNotesContent() {
     {
       question: 'Can Dash read my notes?',
       answer:
-        'No. Dash is designed with zero-knowledge architecture. Your notes never leave your device, and encrypted notes can only be decrypted with your password. We have no servers, no accounts, and no way to access your data.',
+        'No. Dash is designed with zero-knowledge architecture. Your notes never leave your device unless you share or sync them, and then only as ciphertext encrypted with keys that stay on your devices. We have no way to read your data.',
     },
     {
       question: 'What happens if I lose my device?',
@@ -527,7 +527,7 @@ export default function PrivateNotesContent() {
                     <div className="text-center">
                       <Smartphone className="w-8 h-8 text-blue-400 mx-auto mb-2" />
                       <p className="text-white text-xs font-medium">iPhone</p>
-                      <p className="text-[10px] text-gray-400">PWA</p>
+                      <p className="text-[10px] text-gray-400">App Store</p>
                     </div>
                   </div>
                 </div>
@@ -579,8 +579,8 @@ export default function PrivateNotesContent() {
                     <CheckCircle className="w-4 h-4 text-blue-600 dark:text-blue-400" />
                   </div>
                   <div>
-                    <p className="font-medium text-gray-900 dark:text-white">PWA for Mobile</p>
-                    <p className="text-sm text-gray-600 dark:text-gray-400">Access notes on iPhone or Android via browser</p>
+                    <p className="font-medium text-gray-900 dark:text-white">iPhone App &amp; PWA</p>
+                    <p className="text-sm text-gray-600 dark:text-gray-400">Native iPhone app on the App Store; Android via the browser</p>
                   </div>
                 </li>
                 <li className="flex items-start gap-3">
