@@ -39,7 +39,7 @@ export default function SecurityLedger() {
               href='https://github.com/Efesop/rich-text-editor'
               target='_blank'
               rel='noopener noreferrer'
-              className='inline-flex items-center gap-2 w-fit px-4.5 py-3 rounded-[10px] border border-gray-300 text-[15px] font-medium text-gray-900 hover:bg-gray-50 transition-colors'
+              className='inline-flex items-center gap-2 w-fit px-5 py-3 rounded-[10px] border border-gray-300 text-[15px] font-medium text-gray-900 hover:bg-gray-50 transition-colors'
             >
               <Code className='w-4 h-4' />
               Read the source on GitHub
