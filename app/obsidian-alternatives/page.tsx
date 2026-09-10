@@ -121,7 +121,7 @@ const faqs: FAQ[] = [
 
 const related = [
   { title: 'Best notes apps for Mac', href: '/best-notes-app-for-mac', description: 'Eight Mac note-taking apps compared on privacy, offline use and price.' },
-  { title: 'Dash vs Obsidian', href: '/vs-obsidian', description: 'A head-to-head on encryption, linking and mobile.' },
+  { title: 'Dash vs Obsidian', href: '/obsidian-alternatives', description: 'A head-to-head on encryption, linking and mobile.' },
   { title: 'Page linking in Dash', href: '/guides/page-linking', description: 'How wiki-style [[links]] work in Dash.' },
 ];
 
@@ -156,10 +156,49 @@ export default function ObsidianAlternativesPage() {
             </p>
           </>
         }
+        comparison={{
+          heading: 'Dash and Obsidian at a glance',
+          subheading: 'Obsidian pricing checked on 8 September 2026.',
+          columns: [
+            { key: 'dash', label: 'Dash', highlight: true },
+            { key: 'obsidian', label: 'Obsidian' },
+          ],
+          rows: [
+            { feature: 'Works fully offline', values: { dash: true, obsidian: true } },
+            { feature: 'Works without an account', values: { dash: true, obsidian: true } },
+            { feature: 'Notes encrypted at rest on your disk', values: { dash: 'Locked notes', obsidian: false } },
+            { feature: 'End-to-end encrypted sync', values: { dash: true, obsidian: true } },
+            { feature: 'Lock the whole app with Touch ID', values: { dash: true, obsidian: false } },
+            { feature: 'Wiki-style [[links]]', values: { dash: true, obsidian: true } },
+            { feature: 'Graph view and plugins', values: { dash: false, obsidian: true } },
+            { feature: 'Notes as plain files you own', values: { dash: 'Export', obsidian: true } },
+            { feature: 'Open source app', values: { dash: true, obsidian: false } },
+            { feature: 'Price', values: { dash: '$14.99 once', obsidian: 'Free; Sync $4/mo' } },
+          ],
+        }}
         apps={apps}
         appsHeading="The best Obsidian alternatives in 2026"
         inlineCTA="Links, folders and encryption without plugins — try Dash"
         sections={[
+          {
+            id: 'encryption-nuance',
+            heading: 'The encryption question, precisely',
+            body: (
+              <>
+                <p>
+                  Obsidian Sync is genuinely end-to-end encrypted: notes are encrypted before they reach Obsidian&rsquo;s
+                  servers, so the company cannot read them, for $4 a month billed yearly. That part is well built, and often
+                  misdescribed elsewhere.
+                </p>
+                <p>
+                  What stays unprotected is the vault itself. Your Markdown files sit in the clear on your disk, in your
+                  backups, and in any folder you happen to sync with something else. Full-disk encryption helps when the
+                  machine is off and does nothing while you are logged in. That gap is what an app with per-note encryption
+                  closes, and it is why people who otherwise like Obsidian go looking.
+                </p>
+              </>
+            ),
+          },
           {
             heading: 'What to look for in an Obsidian replacement',
             body: (

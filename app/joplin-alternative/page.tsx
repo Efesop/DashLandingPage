@@ -17,7 +17,6 @@ export const metadata: Metadata = pageMetadata({
     'apps like joplin',
     'joplin replacement',
     'open source notes app alternative',
-    'encrypted notes app',
   ],
 });
 

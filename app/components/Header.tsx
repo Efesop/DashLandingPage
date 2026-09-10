@@ -55,9 +55,6 @@ export default function Header() {
   ];
 
   const comparisons = [
-    { href: '/vs-notion', label: 'Dash vs Notion' },
-    { href: '/vs-evernote', label: 'Dash vs Evernote' },
-    { href: '/vs-obsidian', label: 'Dash vs Obsidian' },
     { href: '/vs-google-keep', label: 'Dash vs Google Keep' },
     { href: '/best-notes-app-for-mac', label: 'Best Notes Apps for Mac' },
     { href: '/open-source-notes-app', label: 'Open Source Notes Apps' },

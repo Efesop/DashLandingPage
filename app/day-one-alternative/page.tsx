@@ -17,7 +17,6 @@ export const metadata: Metadata = pageMetadata({
     'apps like day one',
     'journal app without subscription',
     'day one alternative mac',
-    'private journal app',
   ],
 });
 

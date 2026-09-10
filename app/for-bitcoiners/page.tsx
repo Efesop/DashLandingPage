@@ -14,8 +14,6 @@ export const metadata: Metadata = pageMetadata({
   keywords: [
     'notes app for bitcoiners',
     'private notes app bitcoin',
-    'seed phrase storage',
-    'crypto seed phrase storage',
     'encrypted notes no account',
     'self custody notes app',
   ],

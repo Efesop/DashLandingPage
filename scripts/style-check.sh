@@ -40,9 +40,6 @@ SYSTEM_FILES=(
   app/simplenote-alternative/page.tsx
   app/craft-alternative/page.tsx
   app/private-notes/page.tsx
-  app/vs-notion/page.tsx
-  app/vs-evernote/page.tsx
-  app/vs-obsidian/page.tsx
   app/vs-google-keep/page.tsx
   app/for-writers/page.tsx
   app/for-journalists/page.tsx

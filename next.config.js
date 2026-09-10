@@ -15,6 +15,21 @@ const nextConfig = {
   async redirects() {
     return [
       {
+        source: '/vs-notion',
+        destination: '/notion-alternatives',
+        permanent: true,
+      },
+      {
+        source: '/vs-evernote',
+        destination: '/evernote-alternatives',
+        permanent: true,
+      },
+      {
+        source: '/vs-obsidian',
+        destination: '/obsidian-alternatives',
+        permanent: true,
+      },
+      {
         source: '/:path*',
         has: [{ type: 'host', value: 'www.dashnote.io' }],
         destination: 'https://dashnote.io/:path*',

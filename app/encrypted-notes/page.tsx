@@ -18,7 +18,6 @@ export const metadata: Metadata = pageMetadata({
     'encrypted note taking app',
     'AES-256 notes',
     'secure notes app',
-    'password protected notes',
     'encrypted notes mac',
     'encrypted notes iphone',
   ],

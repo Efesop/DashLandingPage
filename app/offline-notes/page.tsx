@@ -16,7 +16,6 @@ export const metadata: Metadata = pageMetadata({
     'offline note taking app',
     'notes app without internet',
     'local first notes app',
-    'notes app no account',
     'offline notes app mac',
     'best offline notes app',
   ],

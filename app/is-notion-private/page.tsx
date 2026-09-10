@@ -53,7 +53,7 @@ const related = [
   },
   {
     title: 'Dash vs Notion',
-    href: '/vs-notion',
+    href: '/notion-alternatives',
     description: 'Feature by feature: privacy, offline use, pricing.',
   },
   {

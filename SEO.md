@@ -9,6 +9,7 @@
 | Date | Shipped | Ranking keywords | Top-10 | Est. visits/mo | Ref. domains | Notes |
 |---|---|---|---|---|---|---|
 | 2026-09-08 | Research; technical fixes; 7 query pages; homepage v3; article template (`article-template` branch) | 13 | 1 | ≈13 | 40 | Baseline from DataForSEO Labs |
+| 2026-09-09 | **Consolidation** (`seo/consolidate-vs-pages`): deleted `/vs-notion`, `/vs-evernote`, `/vs-obsidian` and 301-redirected each to its `*-alternatives` listicle after folding in their comparison tables and unique context; pruned 29 duplicated keywords down to one owner each. 46 indexable routes | — | — | — | — | Merged to main |
 | 2026-09-08 | **Migration 6** (`migrate/download-subscribe`): /download and /subscribe restyled in place (transactional pages, not rewritten); /subscribe gains its own metadata via a layout. **All 24 legacy pages are now migrated or restyled; no *Content.tsx files remain.** Full-site sweep: 49 routes, 0 errors | — | — | — | — | Merged to main |
 | 2026-09-08 | **Migration 5** (`migrate/guides`): all nine guide bodies rewritten on ArticleLayout. `AIOrb` deleted. 23 of 24 legacy pages migrated; only /download remains | — | — | — | — | Merged to main |
 | 2026-09-08 | **Migration 4** (`migrate/offline-share`): `/offline-notes` and `/share` rewritten on ArticleLayout; `/share` now describes the real mechanism (payload encrypted on device, key in the URL fragment, optional 30-day relay blob, EXIF stripped, attachments named not sent). `GlassCard` and the glassmorphism CSS deleted. 14 of 24 legacy pages migrated | — | — | — | — | Merged to main |
@@ -100,7 +101,7 @@ Head terms we are **not** chasing: notes app 60,500/77 · app for taking notes 2
 | `/notion-alternatives` | notion alternative | Notion Alternatives That Keep Your Notes Private (2026) |
 | `/evernote-alternatives` | evernote alternative | Evernote Alternatives Without a Subscription (2026) |
 | `/privnote-alternatives` | privnote alternatives | Privnote Alternatives: Self-Destructing, Encrypted Notes (2026) |
-| `/vs-notion` `/vs-evernote` `/vs-obsidian` `/vs-google-keep` | "X alternative" (secondary) | Notion Alternative: Private, Offline Notes (Dash vs Notion) · Evernote Alternative: Private Notes, No Subscription · Obsidian Alternative with Built-In Encryption · Google Keep Alternative Without Google Tracking |
+| `/vs-google-keep` | google keep alternative | Google Keep Alternative Without Google Tracking |
 | `/private-notes` | private notes, privacy notes | Private Notes App: Notes That Stay on Your Device |
 | `/encrypted-notes` | encrypted notes app, end to end encrypted note taking app | Encrypted Notes App with AES-256 for Mac & iPhone |
 | `/offline-notes` | offline notes app | Offline Notes App That Works Without Internet |

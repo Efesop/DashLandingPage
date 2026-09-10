@@ -42,9 +42,6 @@ const entries: Entry[] = [
   ['/therapist-notes-app', '2026-09-08', 'monthly', 0.8],
   ['/for-researchers', '2026-09-08', 'monthly', 0.7],
   // Comparisons
-  ['/vs-notion', '2026-09-08', 'monthly', 0.7],
-  ['/vs-evernote', '2026-09-08', 'monthly', 0.7],
-  ['/vs-obsidian', '2026-09-08', 'monthly', 0.7],
   ['/vs-google-keep', '2026-09-08', 'monthly', 0.7],
   // Guides
   ['/guides', '2026-09-08', 'monthly', 0.7],

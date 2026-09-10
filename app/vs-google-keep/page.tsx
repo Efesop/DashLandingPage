@@ -17,7 +17,6 @@ export const metadata: Metadata = pageMetadata({
     'notes without google',
     'private google keep alternative',
     'google keep privacy',
-    'notes app no tracking',
     'google keep replacement',
   ],
 });

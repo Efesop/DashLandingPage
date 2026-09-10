@@ -15,9 +15,7 @@ export const metadata: Metadata = pageMetadata({
     'offline first',
     'offline first apps',
     'local first software',
-    'offline notes app',
     'offline capable vs offline first',
-    'notes app without internet',
   ],
 });
 

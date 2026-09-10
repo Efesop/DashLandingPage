@@ -11,7 +11,7 @@ export const metadata: Metadata = pageMetadata({
   title: TITLE,
   description: DESCRIPTION,
   path: PATH,
-  keywords: ['how to lock notes on iphone', 'how to lock notes app on iphone', 'how to lock notes on mac', 'how to put a lock on notes', 'is apple notes secure', 'is apple notes encrypted', 'apple notes password', 'lock apple notes'],
+  keywords: ['how to lock notes on iphone', 'how to lock notes app on iphone', 'how to lock notes on mac', 'how to put a lock on notes', 'lock apple notes'],
 });
 
 const faqs: FAQ[] = [

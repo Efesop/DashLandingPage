@@ -15,7 +15,6 @@ export const metadata: Metadata = pageMetadata({
     'standard notes vs notesnook',
     'notesnook vs standard notes',
     'notesnook alternative',
-    'standard notes alternative',
     'encrypted notes app comparison',
     'obsidian vs standard notes',
   ],

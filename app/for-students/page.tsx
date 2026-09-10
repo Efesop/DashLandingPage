@@ -17,7 +17,6 @@ export const metadata: Metadata = pageMetadata({
     'private notes for students',
     'student note taking privacy',
     'offline notes app for students',
-    'notes app no account',
     'encrypted notes student',
   ],
 });

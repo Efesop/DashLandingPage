@@ -120,7 +120,7 @@ const faqs: FAQ[] = [
 ];
 
 const related = [
-  { title: 'Dash vs Evernote', href: '/vs-evernote', description: 'A head-to-head on price, privacy and features.' },
+  { title: 'Dash vs Evernote', href: '/evernote-alternatives', description: 'A head-to-head on price, privacy and features.' },
   { title: 'Best notes apps for Mac', href: '/best-notes-app-for-mac', description: 'Eight Mac note-taking apps compared.' },
   { title: 'Offline notes app', href: '/offline-notes', description: 'Why notes that live on your device are worth the switch.' },
 ];
@@ -157,10 +157,46 @@ export default function EvernoteAlternativesPage() {
             </p>
           </>
         }
+        comparison={{
+          heading: 'Dash and Evernote at a glance',
+          subheading: 'Evernote plans checked on 8 September 2026.',
+          columns: [
+            { key: 'dash', label: 'Dash', highlight: true },
+            { key: 'evernote', label: 'Evernote' },
+          ],
+          rows: [
+            { feature: 'Works fully offline', values: { dash: true, evernote: 'Paid plans' } },
+            { feature: 'Works without an account', values: { dash: true, evernote: false } },
+            { feature: 'Provider cannot read your notes', values: { dash: true, evernote: false } },
+            { feature: 'Unlimited notes without paying', values: { dash: true, evernote: false } },
+            { feature: 'Lock individual notes', values: { dash: true, evernote: false } },
+            { feature: 'Self-destructing notes', values: { dash: true, evernote: false } },
+            { feature: 'Web clipper', values: { dash: false, evernote: true } },
+            { feature: 'Open source', values: { dash: true, evernote: false } },
+            { feature: 'Price', values: { dash: '$14.99 once', evernote: 'From $99 a year' } },
+          ],
+        }}
         apps={apps}
         appsHeading="The best Evernote alternatives in 2026"
         inlineCTA="Pay once, keep your notes forever — Dash for Mac, $14.99"
         sections={[
+          {
+            id: 'what-changed',
+            heading: 'What changed at Evernote',
+            body: (
+              <>
+                <p>
+                  Since the Bending Spoons acquisition the free plan has been cut to 50 notes in a single notebook, syncing
+                  on one device. Starter costs $99 a year, or $14.99 a month billed monthly, and Advanced is $249.99 a year.
+                  The old Personal and Professional tiers are gone.
+                </p>
+                <p>
+                  Whatever you make of the prices, the pattern is what sends people looking: notes written for free now sit
+                  behind a recurring charge, on a service whose terms changed after they had committed years of writing to it.
+                </p>
+              </>
+            ),
+          },
           {
             heading: 'Moving from Evernote: a five-minute plan',
             body: (

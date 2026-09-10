@@ -15,7 +15,6 @@ export const metadata: Metadata = {
     'privacy-first design',
     'AES-256 encryption',
     'note taking security',
-    'app lock notes',
     'biometric notes app',
   ],
   openGraph: {

@@ -16,7 +16,6 @@ export const metadata: Metadata = pageMetadata({
     'standard notes alternatives',
     'apps like standard notes',
     'encrypted notes app free rich text',
-    'standard notes vs notesnook',
     'encrypted notes app no account',
   ],
 });

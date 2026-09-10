@@ -15,8 +15,6 @@ export const metadata: Metadata = pageMetadata({
     'self destructing notes',
     'self destructing note',
     'notes that auto delete',
-    'disappearing note',
-    'burn after reading note',
     'temporary notes app',
   ],
 });

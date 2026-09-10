@@ -17,7 +17,6 @@ export const metadata: Metadata = pageMetadata({
     'share encrypted note link',
     'send a private note',
     'encrypted share link',
-    'one time note',
   ],
 });
 

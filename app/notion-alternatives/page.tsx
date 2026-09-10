@@ -120,7 +120,7 @@ const faqs: FAQ[] = [
 ];
 
 const related = [
-  { title: 'Dash vs Notion', href: '/vs-notion', description: 'Feature by feature: privacy, offline use, pricing.' },
+  { title: 'Dash vs Notion', href: '/notion-alternatives', description: 'Feature by feature: privacy, offline use, pricing.' },
   { title: 'Obsidian alternatives', href: '/obsidian-alternatives', description: 'Simpler, encrypted or free options if Obsidian is too much.' },
   { title: 'Is Notion private?', href: '/is-notion-private', description: 'What Notion encrypts, who holds the keys, and what its AI does with your pages.' },
 ];
@@ -157,10 +157,48 @@ export default function NotionAlternativesPage() {
             </p>
           </>
         }
+        comparison={{
+          heading: 'Dash and Notion at a glance',
+          subheading: 'Checked against Notion&rsquo;s own security and pricing pages on 8 September 2026.',
+          columns: [
+            { key: 'dash', label: 'Dash', highlight: true },
+            { key: 'notion', label: 'Notion' },
+          ],
+          rows: [
+            { feature: 'Works fully offline', values: { dash: true, notion: 'Partial' } },
+            { feature: 'Works without an account', values: { dash: true, notion: false } },
+            { feature: 'Provider cannot read your content', values: { dash: true, notion: false } },
+            { feature: 'End-to-end encrypted sync', values: { dash: true, notion: false } },
+            { feature: 'Lock individual notes', values: { dash: true, notion: false } },
+            { feature: 'Wiki-style [[links]]', values: { dash: true, notion: true } },
+            { feature: 'Databases and shared workspaces', values: { dash: false, notion: true } },
+            { feature: 'Real-time collaboration', values: { dash: false, notion: true } },
+            { feature: 'Open source', values: { dash: true, notion: false } },
+            { feature: 'Price', values: { dash: '$14.99 once', notion: 'Free tier; per user' } },
+          ],
+        }}
         apps={apps}
         appsHeading="The best private Notion alternatives in 2026"
         inlineCTA="A block editor that never phones home — try Dash"
         sections={[
+          {
+            id: 'key-custody',
+            heading: 'Who holds the keys',
+            body: (
+              <>
+                <p>
+                  Notion encrypts data in transit with TLS and at rest with AES-256 on Amazon Web Services, and it holds the
+                  keys. Your password logs you in; it does not encrypt your pages. So Notion can decrypt your content, and it
+                  is policy rather than architecture that limits staff access to troubleshooting and recovery.
+                </p>
+                <p>
+                  There is no end-to-end encryption on any Notion plan, and there cannot easily be one while it offers
+                  server-side search, AI and real-time collaboration. That is a fair trade for a team wiki and a poor one for
+                  a journal or a password hint, which is the whole reason this page exists.
+                </p>
+              </>
+            ),
+          },
           {
             heading: 'What you give up, and what you get back',
             body: (
