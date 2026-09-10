@@ -48,7 +48,7 @@ interface LightningInvoice {
   expirationInSec: number;
 }
 
-export default function PaymentSection({ embedded = false }: { embedded?: boolean } = {}) {
+export default function PaymentSection({ embedded = false, bare = false }: { embedded?: boolean; bare?: boolean } = {}) {
   const [isProcessing, setIsProcessing] = useState(false);
   const [isBitcoinProcessing, setIsBitcoinProcessing] = useState(false);
   const [bitcoinError, setBitcoinError] = useState<string | null>(null);
@@ -202,22 +202,24 @@ export default function PaymentSection({ embedded = false }: { embedded?: boolea
   ];
 
   const checkoutCard = (
-    <div className='bg-white dark:bg-gray-900 rounded-[20px] shadow-xl border border-gray-200 dark:border-gray-700 overflow-hidden h-full'>
-      <form onSubmit={handlePayment} className='p-6 sm:p-8'>
+    <div
+      className={
+        bare
+          ? 'h-full'
+          : 'bg-white rounded-[20px] shadow-xl border border-gray-200 overflow-hidden h-full'
+      }
+    >
+      <form onSubmit={handlePayment} className={bare ? '' : 'p-6 sm:p-8'}>
         {/* Price header */}
-        <div className='text-center mb-8'>
-          <p className='text-sm text-gray-500 dark:text-gray-400 mb-2'>
-            One-time purchase
-          </p>
-          <div className='flex items-baseline justify-center gap-1'>
-            <span className='text-5xl sm:text-6xl font-bold text-gray-900 dark:text-white'>
-              $14
+        <div className={bare ? 'mb-6' : 'text-center mb-8'}>
+          {!bare && <p className='text-sm text-gray-500 mb-2'>One-time purchase</p>}
+          <div className={`flex items-baseline gap-2 ${bare ? '' : 'justify-center'}`}>
+            <span className={`font-bold tracking-[-0.04em] text-gray-900 ${bare ? 'text-[46px] leading-none' : 'text-5xl sm:text-6xl'}`}>
+              $14.99
             </span>
-            <span className='text-2xl font-bold text-gray-400'>
-              .99
-            </span>
+            <span className='text-base text-gray-500'>{bare ? 'once' : ''}</span>
           </div>
-          <p className='text-gray-500 dark:text-gray-400 mt-2'>
+          <p className={`text-gray-500 mt-2 ${bare ? 'text-[15px]' : ''}`}>
             Lifetime access • No subscription required
           </p>
         </div>
@@ -231,12 +233,12 @@ export default function PaymentSection({ embedded = false }: { embedded?: boolea
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 + index * 0.05 }}
-              className='flex items-center gap-3'
+              className={bare ? 'flex items-start gap-2.5' : 'flex items-center gap-3'}
             >
-              <div className='flex-shrink-0 w-5 h-5 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center'>
-                <Check className='w-3 h-3 text-green-600 dark:text-green-400' />
+              <div className={bare ? 'flex-shrink-0 mt-0.5' : 'flex-shrink-0 w-5 h-5 rounded-full bg-green-100 flex items-center justify-center'}>
+                <Check className={bare ? 'w-4 h-4 text-[#1a7f4b]' : 'w-3 h-3 text-green-600'} />
               </div>
-              <span className='text-sm text-gray-700 dark:text-gray-300'>
+              <span className='text-sm text-gray-700'>
                 {benefit}
               </span>
             </motion.div>
@@ -247,7 +249,7 @@ export default function PaymentSection({ embedded = false }: { embedded?: boolea
         <Button
           type='submit'
           disabled={isProcessing || isBitcoinProcessing || !!lightningInvoice}
-          className='w-full h-12 bg-blue-600 hover:bg-blue-700 text-white text-lg font-semibold rounded-lg shadow-lg shadow-blue-500/20 transition-colors duration-200'
+          className='w-full h-12 bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white text-base font-semibold rounded-[10px] shadow-[0_10px_30px_-10px_rgba(37,99,235,0.6)] transition-colors duration-200'
         >
           {isProcessing ? (
             <>
@@ -267,9 +269,9 @@ export default function PaymentSection({ embedded = false }: { embedded?: boolea
           <>
             {/* Divider */}
             <div className='flex items-center gap-4 my-4'>
-              <div className='flex-1 h-px bg-gray-200 dark:bg-gray-700' />
-              <span className='text-sm text-gray-500 dark:text-gray-400'>or</span>
-              <div className='flex-1 h-px bg-gray-200 dark:bg-gray-700' />
+              <div className='flex-1 h-px bg-gray-200' />
+              <span className='text-sm text-gray-500'>or</span>
+              <div className='flex-1 h-px bg-gray-200' />
             </div>
 
             {/* Bitcoin payment button */}
@@ -277,7 +279,7 @@ export default function PaymentSection({ embedded = false }: { embedded?: boolea
               type='button'
               onClick={handleBitcoinPayment}
               disabled={isProcessing || isBitcoinProcessing || !!lightningInvoice}
-              className='w-full h-12 bg-orange-500 hover:bg-orange-600 text-white text-lg font-semibold rounded-lg shadow-lg shadow-orange-500/20 transition-colors duration-200'
+              className='w-full h-12 bg-orange-500 hover:bg-orange-600 text-white text-base font-semibold rounded-[10px] shadow-[0_10px_30px_-10px_rgba(249,115,22,0.5)] transition-colors duration-200'
             >
               {isBitcoinProcessing ? (
                 <>
@@ -299,19 +301,19 @@ export default function PaymentSection({ embedded = false }: { embedded?: boolea
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: 10 }}
-                  className='mt-4 p-4 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg'
+                  className='mt-4 p-4 bg-gray-50 border border-gray-200 rounded-lg'
                 >
                   {/* Header with timer */}
                   <div className='flex items-center justify-between mb-3'>
                     <div className='flex items-center gap-2'>
                       <Zap className='w-4 h-4 text-yellow-500' />
-                      <span className='text-sm font-medium text-gray-700 dark:text-gray-300'>
+                      <span className='text-sm font-medium text-gray-700'>
                         Lightning Invoice
                       </span>
                     </div>
                     <div className='flex items-center gap-2'>
                       <span className='text-xs text-gray-500'>Expires in</span>
-                      <span className={`text-sm font-mono font-medium ${timeLeft < 60 ? 'text-red-500' : 'text-gray-700 dark:text-gray-300'}`}>
+                      <span className={`text-sm font-mono font-medium ${timeLeft < 60 ? 'text-red-500' : 'text-gray-700'}`}>
                         {formatTime(timeLeft)}
                       </span>
                     </div>
@@ -319,18 +321,18 @@ export default function PaymentSection({ embedded = false }: { embedded?: boolea
 
                   {/* Amount */}
                   <div className='text-center mb-3'>
-                    <span className='text-2xl font-bold text-gray-900 dark:text-white'>
+                    <span className='text-2xl font-bold text-gray-900'>
                       ${lightningInvoice.amountUsd.toFixed(2)} USD
                     </span>
-                    <p className='text-sm text-gray-500 dark:text-gray-400'>
+                    <p className='text-sm text-gray-500'>
                       ≈ {lightningInvoice.amountSats.toLocaleString()} sats
                     </p>
                   </div>
 
                   {/* Invoice string (truncated) */}
                   <div className='mb-3'>
-                    <div className='bg-white dark:bg-gray-900 p-2 rounded border border-gray-200 dark:border-gray-600'>
-                      <code className='text-xs text-gray-600 dark:text-gray-400 break-all'>
+                    <div className='bg-white p-2 rounded border border-gray-200'>
+                      <code className='text-xs text-gray-600 break-all'>
                         {lightningInvoice.lnInvoice.slice(0, 50)}...
                       </code>
                     </div>
@@ -370,7 +372,7 @@ export default function PaymentSection({ embedded = false }: { embedded?: boolea
                   <button
                     type='button'
                     onClick={() => setLightningInvoice(null)}
-                    className='mt-3 w-full text-center text-sm text-gray-500 hover:text-gray-700 dark:hover:text-gray-300'
+                    className='mt-3 w-full text-center text-sm text-gray-500 hover:text-gray-700'
                   >
                     Cancel and try again
                   </button>
@@ -385,11 +387,11 @@ export default function PaymentSection({ embedded = false }: { embedded?: boolea
                   initial={{ opacity: 0, y: -10 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -10 }}
-                  className='mt-3 p-3 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg'
+                  className='mt-3 p-3 bg-red-50 border border-red-200 rounded-lg'
                 >
                   <div className='flex items-start gap-2'>
                     <X className='w-4 h-4 text-red-500 mt-0.5 flex-shrink-0' />
-                    <p className='text-sm text-red-600 dark:text-red-400'>
+                    <p className='text-sm text-red-600'>
                       {bitcoinError}
                     </p>
                   </div>
@@ -399,10 +401,10 @@ export default function PaymentSection({ embedded = false }: { embedded?: boolea
 
             {/* Bitcoin info badge */}
             {!lightningInvoice && (
-              <div className='mt-3 p-3 bg-orange-50 dark:bg-orange-900/20 border border-orange-200 dark:border-orange-800 rounded-lg'>
+              <div className='mt-3 p-3 bg-orange-50 border border-orange-200 rounded-lg'>
                 <div className='flex items-center gap-2'>
                   <Zap className='w-4 h-4 text-orange-500' />
-                  <p className='text-xs text-orange-700 dark:text-orange-300'>
+                  <p className='text-xs text-orange-700'>
                     Lightning Network - instant, private, near-zero fees
                   </p>
                 </div>
@@ -412,7 +414,7 @@ export default function PaymentSection({ embedded = false }: { embedded?: boolea
         )}
 
         {/* Trust badges */}
-        <div className='flex items-center justify-center gap-6 mt-6 pt-6 border-t border-gray-100 dark:border-gray-800'>
+        <div className='flex items-center justify-center gap-6 mt-6 pt-6 border-t border-gray-100'>
           <div className='flex items-center gap-1.5 text-xs text-gray-500'>
             <Shield className='w-4 h-4 text-green-500' />
             <span>Secure checkout</span>
@@ -427,11 +429,7 @@ export default function PaymentSection({ embedded = false }: { embedded?: boolea
   );
 
   if (embedded) {
-    return (
-      <div id='payment-section' className='scroll-mt-24'>
-        {checkoutCard}
-      </div>
-    );
+    return bare ? checkoutCard : <div id='payment-section' className='scroll-mt-24'>{checkoutCard}</div>;
   }
 
   return (
@@ -496,7 +494,7 @@ export default function PaymentSection({ embedded = false }: { embedded?: boolea
                 className='hidden xl:block absolute right-full top-1/2 -translate-y-1/2 mr-12'
               >
                 <div className='relative w-56'>
-                <div className='bg-white dark:bg-gray-800 rounded-xl p-4 shadow-lg border border-gray-200 dark:border-gray-700'>
+                <div className='bg-white rounded-xl p-4 shadow-lg border border-gray-200'>
                   <div className='flex items-center gap-3 mb-4'>
                     <Image
                       src='/images/Dash256.png'
@@ -506,24 +504,24 @@ export default function PaymentSection({ embedded = false }: { embedded?: boolea
                       className='rounded-lg'
                     />
                     <div>
-                      <p className='font-semibold text-gray-900 dark:text-white'>
+                      <p className='font-semibold text-gray-900'>
                         Dash
                       </p>
                       <p className='text-xs text-gray-500'>Private Notes App</p>
                     </div>
                   </div>
                   <div className='space-y-2'>
-                    <div className='h-2 bg-gray-100 dark:bg-gray-700 rounded-full w-full' />
-                    <div className='h-2 bg-gray-100 dark:bg-gray-700 rounded-full w-3/4' />
-                    <div className='h-2 bg-gray-100 dark:bg-gray-700 rounded-full w-5/6' />
+                    <div className='h-2 bg-gray-100 rounded-full w-full' />
+                    <div className='h-2 bg-gray-100 rounded-full w-3/4' />
+                    <div className='h-2 bg-gray-100 rounded-full w-5/6' />
                   </div>
                 </div>
 
                 {/* Floating badge */}
-                <div className='absolute -top-3 -right-3 bg-white dark:bg-gray-800 px-3 py-1.5 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700'>
+                <div className='absolute -top-3 -right-3 bg-white px-3 py-1.5 rounded-lg shadow-lg border border-gray-200'>
                   <div className='flex items-center gap-1.5'>
                     <Zap className='w-3 h-3 text-gray-700' />
-                    <span className='text-xs font-medium text-gray-700 dark:text-gray-300'>
+                    <span className='text-xs font-medium text-gray-700'>
                       Instant Download
                     </span>
                   </div>
