@@ -11,12 +11,27 @@
 // distinguishes by `metadata.product_type` on incoming events.
 
 import { NextRequest, NextResponse } from 'next/server';
+import type Stripe from 'stripe';
 import stripe from '../../../lib/stripe';
 import { DASH_PRICE, STRIPE_PRICES, SYNC_TRIAL_DAYS } from '../../../lib/stripe';
 
 export const dynamic = 'force-dynamic';
 
 type ProductType = 'mac-license' | 'sync-monthly' | 'sync-yearly';
+
+/**
+ * The Stripe account is shared with Linkjolt, so Checkout's header showed
+ * Linkjolt's name and icon to Dash buyers. branding_settings overrides them for
+ * the sessions this route creates only: Linkjolt's own checkouts, receipts and
+ * card statements keep the account's name. stripe-node 18 predates the
+ * parameter, hence the cast.
+ */
+const DASH_BRANDING = {
+  branding_settings: {
+    display_name: 'Dash Notes',
+    icon: { type: 'url', url: 'https://dashnote.io/images/Dash256.png' },
+  },
+} as Partial<Stripe.Checkout.SessionCreateParams>;
 
 /**
  * Public origin for Stripe redirect URLs. Uses NEXT_PUBLIC_BASE_URL when it
@@ -78,6 +93,7 @@ export async function POST(request: NextRequest) {
         billing_address_collection: 'auto',
         allow_promotion_codes: true,
         expires_at: Math.floor(Date.now() / 1000) + 30 * 60,
+        ...DASH_BRANDING,
       });
       return NextResponse.json({ sessionId: session.id, url: session.url });
     }
@@ -114,6 +130,7 @@ export async function POST(request: NextRequest) {
       billing_address_collection: 'auto',
       allow_promotion_codes: true,
       // Note: NO expires_at on subscriptions — Stripe handles trial + dunning.
+      ...DASH_BRANDING,
     });
     return NextResponse.json({ sessionId: session.id, url: session.url });
   } catch (error) {
