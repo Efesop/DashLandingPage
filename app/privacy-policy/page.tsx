@@ -25,7 +25,7 @@ export default function PrivacyPolicyPage() {
                 Privacy Policy
               </h1>
               <p className="text-gray-500 dark:text-gray-400">
-                Last updated: September 8, 2026
+                Last updated: October 19, 2026
               </p>
             </div>
 
@@ -174,7 +174,12 @@ export default function PrivacyPolicyPage() {
                     see your card details. For active sync subscribers, our
                     server stores your email, your Stripe customer/subscription
                     IDs, and your subscription status so we can verify the
-                    sync entitlement on each device.
+                    sync entitlement on each device. When you start a checkout
+                    on dashnote.io, we also pass Stripe the address of the
+                    page you bought from (for example /private-notes) and, if
+                    the link you followed had one, a short campaign tag (for
+                    example ?ref=hn). We use this only to see which pages lead
+                    to purchases. No cookies or analytics are used for it.
                   </li>
                   <li>
                     <strong className="text-gray-900 dark:text-white">

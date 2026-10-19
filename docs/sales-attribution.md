@@ -16,6 +16,8 @@ The checkout route (`app/api/create-checkout-session/route.ts`) drops any value 
 
 Existing metadata is unchanged: the webhook still branches on `session.mode` and `metadata.product_type`.
 
+The privacy policy's Stripe entry (`app/privacy-policy/page.tsx`) tells buyers about this. Change it if what gets recorded changes.
+
 ## The `?ref=` convention
 
 Add `?ref=<tag>` to links posted outside the site, so sales from them are tagged:
