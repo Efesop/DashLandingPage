@@ -16,6 +16,7 @@ import {
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from './ui/button';
+import SubscribeLink from './SubscribeLink';
 import { createCheckoutSession, handlePaymentError } from '../../lib/payment';
 import { CheckoutSessionRequest } from '../../types/payment';
 
@@ -460,12 +461,9 @@ export default function PaymentSection({ embedded = false, bare = false }: { emb
             </p>
 
             <div className='mt-6 flex flex-wrap gap-4 justify-center text-sm'>
-              <Link
-                href='/subscribe'
-                className='text-gray-700 underline underline-offset-[3px] decoration-gray-400 hover:decoration-gray-900 transition-colors'
-              >
+              <SubscribeLink className='text-gray-700 underline underline-offset-[3px] decoration-gray-400 hover:decoration-gray-900 transition-colors'>
                 Want sync? See Dash Sync
-              </Link>
+              </SubscribeLink>
               <span className='text-gray-300'>·</span>
               <Link
                 href='/payment/recovery'

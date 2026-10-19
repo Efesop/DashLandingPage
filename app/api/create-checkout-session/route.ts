@@ -34,6 +34,24 @@ const DASH_BRANDING = {
 } as Partial<Stripe.Checkout.SessionCreateParams>;
 
 /**
+ * Which dashnote.io page the buy button was on, for page-level sale
+ * attribution (docs/sales-attribution.md). Sent by lib/attribution.ts and
+ * stored as checkout metadata only. A value that doesn't match exactly is
+ * dropped, never stored or cleaned up.
+ */
+const PAGE_PATH = /^\/[a-z0-9/_-]{0,100}$/;
+const REF = /^[a-z0-9_-]{1,40}$/;
+
+function checkoutSourceMetadata(body: any): Record<string, string> {
+  const metadata: Record<string, string> = {};
+  if (typeof body?.sourcePage === 'string' && PAGE_PATH.test(body.sourcePage)) metadata.source_page = body.sourcePage;
+  if (typeof body?.fromPage === 'string' && PAGE_PATH.test(body.fromPage)) metadata.from_page = body.fromPage;
+  const ref = typeof body?.ref === 'string' ? body.ref.trim().toLowerCase() : '';
+  if (REF.test(ref)) metadata.ref = ref;
+  return metadata;
+}
+
+/**
  * Public origin for Stripe redirect URLs. Uses NEXT_PUBLIC_BASE_URL when it
  * is set to a real host, otherwise the request's own public host (Vercel
  * forwards it in x-forwarded-host). Before this, a missing env var sent
@@ -63,6 +81,7 @@ export async function POST(request: NextRequest) {
     const cancelUrl: string | undefined = body?.cancelUrl;
     const baseUrl = resolveBaseUrl(request);
     const customerEmail: string | undefined = typeof body?.email === 'string' ? body.email.trim().toLowerCase() : undefined;
+    const source = checkoutSourceMetadata(body);
 
     // ── Mac one-time desktop license ──────────────────────────────────
     if (productType === 'mac-license') {
@@ -89,7 +108,11 @@ export async function POST(request: NextRequest) {
         metadata: {
           product_type: 'mac-license',
           license_type: 'desktop',
+          ...source,
         },
+        // Also on the payment, which the Dashboard search can filter by
+        // metadata (checkout sessions it can't).
+        ...(Object.keys(source).length ? { payment_intent_data: { metadata: source } } : {}),
         billing_address_collection: 'auto',
         allow_promotion_codes: true,
         expires_at: Math.floor(Date.now() / 1000) + 30 * 60,
@@ -115,6 +138,7 @@ export async function POST(request: NextRequest) {
         metadata: {
           product_type: 'sync-sub',
           plan: productType === 'sync-yearly' ? 'yearly' : 'monthly',
+          ...source,
         },
       },
       // Capturing the email early so the webhook can resolve the user
@@ -126,6 +150,7 @@ export async function POST(request: NextRequest) {
       metadata: {
         product_type: 'sync-sub',
         plan: productType === 'sync-yearly' ? 'yearly' : 'monthly',
+        ...source,
       },
       billing_address_collection: 'auto',
       allow_promotion_codes: true,

@@ -6,6 +6,7 @@ import { motion } from 'framer-motion';
 import { Check, Cloud, Laptop, Lock, Shield, Smartphone } from 'lucide-react';
 import BitsField from './BitsField';
 import PaymentSection from './PaymentSection';
+import SubscribeLink from './SubscribeLink';
 import { APP_STORE_URL } from '../../lib/links';
 
 const EDGE_MASK = 'linear-gradient(90deg, #000 0%, transparent 18%, transparent 82%, #000 100%)';
@@ -127,12 +128,9 @@ export default function PricingSection({ band = true }: { band?: boolean }) {
                 </div>
                 <div className='text-[13px] text-gray-500'>or $47.99 / year · 7-day trial</div>
               </div>
-              <Link
-                href='/subscribe'
-                className='px-5 py-3 rounded-[10px] border border-gray-300 bg-white text-gray-900 font-semibold text-[15px] hover:bg-gray-50 transition-colors'
-              >
+              <SubscribeLink className='px-5 py-3 rounded-[10px] border border-gray-300 bg-white text-gray-900 font-semibold text-[15px] hover:bg-gray-50 transition-colors'>
                 Start free trial
-              </Link>
+              </SubscribeLink>
             </div>
           </div>
 

@@ -1,6 +1,7 @@
 import { CheckoutSessionRequest, CheckoutSessionResponse, PaymentError } from '../types/payment'
+import { checkoutSource } from './attribution'
 
-// Create checkout session
+// Create checkout session, tagged with the page the buy button is on
 export async function createCheckoutSession(
   request: CheckoutSessionRequest
 ): Promise<CheckoutSessionResponse> {
@@ -10,7 +11,7 @@ export async function createCheckoutSession(
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(request),
+      body: JSON.stringify({ ...request, ...checkoutSource() }),
     })
 
     if (!response.ok) {

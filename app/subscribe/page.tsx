@@ -14,6 +14,7 @@ import { motion } from 'framer-motion';
 import { Button } from '../components/ui/button';
 import { Check, Cloud, Shield, ArrowLeft, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
+import { checkoutSource } from '../../lib/attribution';
 
 type Plan = 'sync-monthly' | 'sync-yearly';
 
@@ -34,6 +35,8 @@ export default function SubscribePage() {
           // The server derives a fallback from its own host, but never rely on it.
           successUrl: `${window.location.origin}/payment/success?type=sync&session_id={CHECKOUT_SESSION_ID}`,
           cancelUrl: `${window.location.origin}/payment/cancel?type=sync`,
+          // Which page sent the buyer here (?from=, ?ref=): docs/sales-attribution.md
+          ...checkoutSource(),
         }),
       });
       const data = await res.json();
