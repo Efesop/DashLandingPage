@@ -101,7 +101,7 @@ const faqs: FAQ[] = [
   {
     question: 'Can I import my Standard Notes notes?',
     answer:
-      'Export a decrypted backup from Standard Notes; it produces plain text and JSON. Obsidian and Joplin read plain text or Markdown directly, Notesnook imports from other apps through its app, and Dash accepts pasted text while you keep the backup as an archive.',
+      'Export a decrypted backup from Standard Notes; it produces plain text and JSON. Dash imports that backup directly, with plain, Markdown, rich text, code and Super notes, nested tags and links between notes. Obsidian and Joplin read plain text or Markdown, and Notesnook imports from other apps through its app.',
   },
   {
     question: 'Is Standard Notes still free?',
@@ -134,6 +134,7 @@ const jsonLd = [
     headline: TITLE,
     description: DESCRIPTION,
     datePublished: '2026-09-08',
+    dateModified: '2026-10-19',
   }),
   itemListJsonLd('Standard Notes alternatives', apps.map((a) => a.name)),
   faqJsonLd(faqs),
@@ -150,7 +151,7 @@ export default function StandardNotesAlternativePage() {
         badgeText='Alternatives'
         headline='Standard Notes Alternatives'
         subheadline='Six encrypted or local-first apps for people who want rich text without the yearly plan, or notes without an account at all.'
-        updated='September 2026'
+        updated='October 2026'
         intro={
           <>
             <p>
@@ -218,8 +219,8 @@ export default function StandardNotesAlternativePage() {
                     list.
                   </li>
                   <li>
-                    <strong>Or start fresh.</strong> In Dash, paste the notes you use and keep the backup as an archive,
-                    ideally inside an encrypted .dashpack export on a drive you control.
+                    <strong>Into Dash.</strong> Choose Import notes and pick the decrypted backup. 2FA notes are left out unless you
+                    choose to include them, and an encrypted backup is recognised with steps to make a decrypted one.
                   </li>
                 </ol>
               </>

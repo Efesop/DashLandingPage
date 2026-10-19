@@ -18,7 +18,7 @@ const apps: ArticleApp[] = [
   {
     name: 'Dash',
     tagline:
-      'Rich notes with folders and tags, attachments, version history and export to every common format. Stored on your device, encrypted, with no subscription needed for notes.',
+      'Rich notes with folders and tags, attachments, version history and export to every common format, plus an importer that reads Evernote .enex files directly. Stored on your device, encrypted, with no subscription needed for notes.',
     bestFor: 'Evernote refugees who want a one-time purchase and real privacy',
     price: '$14.99 one-time on Mac; free on iPhone and the web',
     privacy: 'Encrypted on-device; optional end-to-end encrypted sync',
@@ -105,7 +105,7 @@ const faqs: FAQ[] = [
   {
     question: 'How do I move my notes out of Evernote?',
     answer:
-      'Export from Evernote as .enex or as HTML/Markdown. Joplin, Notesnook and Bear import .enex directly. Dash imports Markdown, plain text, DOCX, CSV and JSON, so export Evernote notes to Markdown or HTML first, then import.',
+      'Export from Evernote as .enex or as HTML/Markdown. Joplin, Notesnook and Bear import .enex directly, and so does Dash: Import notes keeps photos, attachments, to-dos and code blocks, leaves encrypted sections encrypted, and turns notebook names into tags.',
   },
   {
     question: 'Which Evernote alternative is the most private?',
@@ -126,7 +126,7 @@ const related = [
 ];
 
 const jsonLd = [
-  articleJsonLd({ url: `https://dashnote.io${PATH}`, headline: TITLE, description: DESCRIPTION, datePublished: '2026-09-08' }),
+  articleJsonLd({ url: `https://dashnote.io${PATH}`, headline: TITLE, description: DESCRIPTION, datePublished: '2026-09-08', dateModified: '2026-10-19' }),
   itemListJsonLd('Evernote alternatives', apps.map((a) => a.name)),
   faqJsonLd(faqs),
 ];
@@ -142,7 +142,7 @@ export default function EvernoteAlternativesPage() {
         badgeText="Alternatives"
         headline="Evernote Alternatives Without the Subscription"
         subheadline="Evernote raised prices, cut its free plan and still cannot promise that nobody but you can read your notes. These eight apps fix at least one of those problems, and the first fixes all three."
-        updated="September 2026"
+        updated="October 2026"
         intro={
           <>
             <p>
@@ -203,7 +203,7 @@ export default function EvernoteAlternativesPage() {
               <>
                 <ol>
                   <li>Export each notebook from Evernote (.enex, or HTML/Markdown if the app you are moving to prefers it).</li>
-                  <li>Import into the new app. Joplin, Notesnook and Bear read .enex directly; Dash reads Markdown, text, DOCX, CSV and JSON.</li>
+                  <li>Import into the new app. Joplin, Notesnook, Bear and Dash all read .enex directly; Dash shows a preview of what will come across before it writes anything, and the import can be undone.</li>
                   <li>Recreate your top-level notebooks as folders and your most-used tags. Do not migrate every tag; most were never used twice.</li>
                   <li>Lock anything sensitive. In Dash that is one click per note, or one setting for the whole app.</li>
                   <li>Cancel Evernote only after a week of using the new app for real.</li>

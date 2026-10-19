@@ -74,7 +74,7 @@ const faqs: FAQ[] = [
   {
     question: 'Can I move notes between them?',
     answer:
-      'Yes. Standard Notes exports a decrypted backup and plain files; Notesnook imports from a range of apps and formats and exports to Markdown, HTML and PDF. Expect to lose some formatting either way. Dash exports Markdown, PDF and DOCX and an encrypted .dashpack backup.',
+      'Yes. Standard Notes exports a decrypted backup and plain files; Notesnook imports from a range of apps and formats and exports to Markdown, HTML and PDF. Expect to lose some formatting either way. Dash imports a decrypted Standard Notes backup and Notesnook’s Markdown export directly, and exports Markdown, PDF, DOCX and an encrypted .dashpack backup.',
   },
 ];
 
@@ -102,6 +102,7 @@ const jsonLd = [
     headline: TITLE,
     description: DESCRIPTION,
     datePublished: '2026-09-08',
+    dateModified: '2026-10-19',
   }),
   itemListJsonLd('Standard Notes vs Notesnook', apps.map((a) => a.name)),
   faqJsonLd(faqs),
@@ -118,7 +119,7 @@ export default function StandardNotesVsNotesnookPage() {
         badgeText='Comparison'
         headline='Standard Notes vs Notesnook'
         subheadline='Two end-to-end encrypted notes apps compared on encryption, free tiers, prices and platforms, with Dash as the option that needs no account.'
-        updated='September 2026'
+        updated='October 2026'
         intro={
           <>
             <p>

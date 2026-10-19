@@ -100,7 +100,7 @@ const faqs: FAQ[] = [
   {
     question: 'Can I import my Craft documents?',
     answer:
-      'Craft exports documents as Markdown, PDF, DOCX or TextBundle. Obsidian and Bear open Markdown directly, Apple Notes imports Markdown since macOS 26, Notion and Anytype import Markdown through their apps. In Dash, paste in the documents you use and keep the export as an archive.',
+      'Craft exports documents as Markdown, PDF, DOCX or TextBundle. Obsidian and Bear open Markdown directly, Apple Notes imports Markdown since macOS 26, Notion and Anytype import Markdown through their apps. Dash imports a folder or zip of Markdown files, one note per document.',
   },
   {
     question: 'Does Craft work offline?',
@@ -133,6 +133,7 @@ const jsonLd = [
     headline: TITLE,
     description: DESCRIPTION,
     datePublished: '2026-09-08',
+    dateModified: '2026-10-19',
   }),
   itemListJsonLd('Craft alternatives', apps.map((a) => a.name)),
   faqJsonLd(faqs),
@@ -149,7 +150,7 @@ export default function CraftAlternativePage() {
         badgeText='Alternatives'
         headline='Craft Alternatives'
         subheadline='Six block editors and document apps for people who want Craft’s polish with documents that stay on their device, or a licence they buy once.'
-        updated='September 2026'
+        updated='October 2026'
         intro={
           <>
             <p>
@@ -218,8 +219,8 @@ export default function CraftAlternativePage() {
                     26; Notion and Anytype import through their apps.
                   </li>
                   <li>
-                    <strong>Or start fresh.</strong> In Dash, paste in the documents you use and keep the export as an
-                    encrypted .dashpack archive on a drive you control.
+                    <strong>Into Dash.</strong> Choose Import notes in the ⋯ menu and pick the Markdown export. A preview shows
+                    what will come across before anything is written, and the import can be undone.
                   </li>
                 </ol>
               </>
