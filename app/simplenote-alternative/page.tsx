@@ -100,7 +100,7 @@ const faqs: FAQ[] = [
   {
     question: 'Can I import my Simplenote notes?',
     answer:
-      'Simplenote exports everything as a JSON file or as one text file per note from its settings. Bear and Joplin import text and Markdown files; Apple Notes imports Markdown since macOS 26; Notesnook and UpNote import through their apps. In Dash, paste in the notes you use and keep the export as an archive.',
+      'Simplenote exports everything as a JSON file or as one text file per note from its settings. Bear and Joplin import text and Markdown files; Apple Notes imports Markdown since macOS 26; Notesnook and UpNote import through their apps. Dash imports the folder of text files, one note per file.',
   },
   {
     question: 'Is Simplenote encrypted?',
@@ -133,6 +133,7 @@ const jsonLd = [
     headline: TITLE,
     description: DESCRIPTION,
     datePublished: '2026-09-08',
+    dateModified: '2026-10-19',
   }),
   itemListJsonLd('Simplenote alternatives', apps.map((a) => a.name)),
   faqJsonLd(faqs),
@@ -149,7 +150,7 @@ export default function SimplenoteAlternativePage() {
         badgeText='Alternatives'
         headline='Simplenote Alternatives'
         subheadline='Six notes apps that keep Simplenote’s simplicity, add the privacy it never had, and are still being developed.'
-        updated='September 2026'
+        updated='October 2026'
         intro={
           <>
             <p>
@@ -220,8 +221,8 @@ export default function SimplenoteAlternativePage() {
                     macOS 26, Notesnook and UpNote import through their apps.
                   </li>
                   <li>
-                    <strong>Or start fresh.</strong> In Dash, paste in the notes you use and keep the export as an encrypted
-                    .dashpack archive on a drive you control.
+                    <strong>Into Dash.</strong> Choose Import notes and pick the folder or zip of text files; a preview shows what
+                    will come across before anything is written.
                   </li>
                 </ol>
               </>

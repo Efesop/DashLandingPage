@@ -18,11 +18,11 @@ const apps: ArticleApp[] = [
   {
     name: 'Dash',
     tagline:
-      'Wiki-style [[links]], folders and tags like Obsidian, but with encryption, Touch ID and Face ID built in. Works offline on Mac and iPhone with no plugins to configure.',
+      'Wiki-style [[links]] with backlinks, folders and tags like Obsidian, but with encryption, Touch ID and Face ID built in. Imports an Obsidian vault directly and works offline on Mac and iPhone with no plugins to configure.',
     bestFor: 'Obsidian users who want privacy without the tinkering',
     price: '$14.99 one-time on Mac; free on iPhone and the web',
     privacy: 'Encrypted on-device; optional end-to-end encrypted sync',
-    pros: ['Lock any note or the whole app with AES-256', 'Page links, focus mode, local AI, self-destructing notes', 'Open source (MIT); exports to Markdown, PDF, DOCX'],
+    pros: ['Lock any note or the whole app with AES-256', 'Page links and backlinks, local AI, self-destructing notes', 'Open source (MIT); exports to Markdown, PDF, DOCX'],
     cons: ['Not plain Markdown files on disk', 'No graph view', 'No Windows or Linux app yet'],
     isDash: true,
   },
@@ -115,7 +115,7 @@ const faqs: FAQ[] = [
   {
     question: 'Can I import my Obsidian vault?',
     answer:
-      'Most of the apps above import Markdown files, since Obsidian stores notes as plain .md files. Dash imports Markdown, plain text, DOCX, CSV and JSON, and links written as [[Page Name]] resolve to pages with matching titles.',
+      'Most of the apps above import Markdown files, since Obsidian stores notes as plain .md files. Dash imports a vault folder or zip directly (Import notes in the ⋯ menu), keeping [[wikilinks]] between notes, embedded photos and files, callouts, highlights, front matter and #tags; canvases and bases are listed as not imported.',
   },
 ];
 
@@ -126,7 +126,7 @@ const related = [
 ];
 
 const jsonLd = [
-  articleJsonLd({ url: `https://dashnote.io${PATH}`, headline: TITLE, description: DESCRIPTION, datePublished: '2026-09-08' }),
+  articleJsonLd({ url: `https://dashnote.io${PATH}`, headline: TITLE, description: DESCRIPTION, datePublished: '2026-09-08', dateModified: '2026-10-19' }),
   itemListJsonLd('Obsidian alternatives', apps.map((a) => a.name)),
   faqJsonLd(faqs),
 ];
@@ -142,7 +142,7 @@ export default function ObsidianAlternativesPage() {
         badgeText="Alternatives"
         headline="8 Obsidian Alternatives Worth Switching To"
         subheadline="Obsidian is brilliant if you enjoy building your tools. If you would rather write than configure, need encryption without plugins, or want a mobile app that just works, one of these fits better."
-        updated="September 2026"
+        updated="October 2026"
         intro={
           <>
             <p>

@@ -99,7 +99,7 @@ const faqs: FAQ[] = [
   {
     question: 'Can I import my Joplin notes?',
     answer:
-      'Export from Joplin as Markdown (with or without front matter) or as a JEX archive. Obsidian and Logseq open the Markdown folder directly; Bear imports Markdown files; Notesnook and Standard Notes import through their apps. In Dash, paste in what you use and keep the export as an encrypted archive.',
+      'Export from Joplin as Markdown (with or without front matter) or as a JEX archive. Obsidian and Logseq open the Markdown folder directly; Bear imports Markdown files; Notesnook and Standard Notes import through their apps. Dash imports the Markdown export as a folder or zip, one note per file; keep the JEX archive as a full backup.',
   },
   {
     question: 'Is Joplin still free?',
@@ -132,6 +132,7 @@ const jsonLd = [
     headline: TITLE,
     description: DESCRIPTION,
     datePublished: '2026-09-08',
+    dateModified: '2026-10-19',
   }),
   itemListJsonLd('Joplin alternatives', apps.map((a) => a.name)),
   faqJsonLd(faqs),
@@ -148,7 +149,7 @@ export default function JoplinAlternativePage() {
         badgeText='Alternatives'
         headline='Joplin Alternatives'
         subheadline='Six apps that keep Joplin’s principles, open code and real encryption, in a nicer package, and how to move your notes.'
-        updated='September 2026'
+        updated='October 2026'
         intro={
           <>
             <p>
@@ -218,8 +219,8 @@ export default function JoplinAlternativePage() {
                     Markdown files. Notesnook and Standard Notes import through their apps.
                   </li>
                   <li>
-                    <strong>Or start fresh.</strong> In Dash, paste in the notes you use and keep the JEX archive, ideally
-                    inside an encrypted .dashpack export on a drive you control.
+                    <strong>Into Dash.</strong> Choose Import notes and pick the Markdown export; a preview shows what will come
+                    across first. Keep the JEX archive as a full backup on a drive you control.
                   </li>
                 </ol>
               </>

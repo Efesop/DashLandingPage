@@ -105,7 +105,7 @@ const faqs: FAQ[] = [
   {
     question: 'Can I import Apple Notes into these apps?',
     answer:
-      'Obsidian opens an exported Markdown folder as a vault. Joplin and Bear import Markdown files. Notesnook imports through its app. Dash accepts pasted text; keep the export as an archive alongside.',
+      'Obsidian opens an exported Markdown folder as a vault. Joplin and Bear import Markdown files. Notesnook imports through its app. Dash imports a folder or zip of Markdown files, one note per file, so the same export comes across.',
   },
 ];
 
@@ -133,6 +133,7 @@ const jsonLd = [
     headline: TITLE,
     description: DESCRIPTION,
     datePublished: '2026-09-08',
+    dateModified: '2026-10-19',
   }),
   itemListJsonLd('Apple Notes alternatives', apps.map((a) => a.name)),
   faqJsonLd(faqs),
@@ -149,7 +150,7 @@ export default function AppleNotesAlternativePage() {
         badgeText='Alternatives'
         headline='Apple Notes Alternatives'
         subheadline='Six notes apps for people who want encryption, export, an app lock, or a notes app that runs beyond Apple devices, and how to get your notes out.'
-        updated='September 2026'
+        updated='October 2026'
         intro={
           <>
             <p>
@@ -222,8 +223,8 @@ export default function AppleNotesAlternativePage() {
                   </li>
                   <li>
                     <strong>Import.</strong> Obsidian opens the folder as a vault; Bear and Joplin import Markdown files;
-                    Notesnook imports through its app. In Dash, paste in the notes you use and keep the export as an encrypted
-                    .dashpack archive.
+                    Notesnook imports through its app. In Dash, choose Import notes and pick the exported folder; a preview shows
+                    what will come across before anything is written.
                   </li>
                 </ol>
               </>

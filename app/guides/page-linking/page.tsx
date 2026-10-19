@@ -2,9 +2,9 @@ import type { Metadata } from 'next';
 import ArticleLayout from '../../components/seo/ArticleLayout';
 import { articleJsonLd, faqJsonLd, pageMetadata, type FAQ } from '../../../lib/seo';
 
-const TITLE = 'Page Linking: Wiki-Style Links Between Notes';
+const TITLE = 'Page Linking: Wiki-Style Links and Backlinks in Notes';
 const DESCRIPTION =
-  'Wiki-style [[links]] connect notes to each other instead of filing them away. How page linking works in Dash, and when it beats folders and tags.';
+  'Wiki-style [[links]] and backlinks connect notes to each other instead of filing them away. How page linking works in Dash, and when it beats folders and tags.';
 const PATH = '/guides/page-linking';
 
 export const metadata: Metadata = pageMetadata({
@@ -25,12 +25,17 @@ const faqs: FAQ[] = [
   {
     question: 'How do I create a page link in Dash?',
     answer:
-      'Type two square brackets and start typing a page name. Dash suggests matching pages as you type; pick one and the link is made. If no page of that name exists yet, Dash can create it, so you can link to a note before you have written it.',
+      'Type two square brackets and start typing a page name. Dash suggests matching pages as you type; pick one and the link is made. You can also select some text and click the page-link button in the toolbar to turn it into a link. The page has to exist first: create it, then link to it.',
   },
   {
     question: 'Do links break when I rename a page?',
     answer:
-      'No. Links resolve by page identity rather than by the text of the title, so renaming a page updates the links pointing at it instead of breaking them.',
+      'No. A link points at the page itself rather than at its title, so it keeps opening the right page after a rename. The link text keeps the old title until you edit it.',
+  },
+  {
+    question: 'Does Dash show backlinks?',
+    answer:
+      'Yes. At the foot of every note, Dash lists the notes that link to it, with up to three snippets of the text around each link, and a chip in the status bar opens the same list without scrolling. Locked notes never show a snippet.',
   },
   {
     question: 'Can I link to a locked page?',
@@ -45,7 +50,7 @@ const faqs: FAQ[] = [
   {
     question: 'How does this compare to Obsidian?',
     answer:
-      'Obsidian goes much further: a graph view, block-level references, and plugins that build on the link structure. Dash covers the part most people actually use, [[links]] and the pages they connect, without any setup, and adds encryption Obsidian leaves to plugins or full-disk encryption.',
+      'Obsidian goes much further: a graph view, block-level references, and plugins that build on the link structure. Dash covers the part most people actually use, [[links]] and backlinks, without any setup, and adds encryption Obsidian leaves to plugins or full-disk encryption. Dash can import an Obsidian vault with its links intact.',
   },
 ];
 
@@ -73,7 +78,7 @@ const jsonLd = [
     headline: TITLE,
     description: DESCRIPTION,
     datePublished: '2025-11-20',
-    dateModified: '2026-09-08',
+    dateModified: '2026-10-19',
   }),
   faqJsonLd(faqs),
 ];
@@ -89,7 +94,7 @@ export default function PageLinkingGuidePage() {
         badgeText='Guide'
         headline='Linking Notes Instead of Filing Them'
         subheadline='Folders make you decide where something belongs. Links let a note belong to everything it touches.'
-        updated='September 2026'
+        updated='October 2026'
         showPayment={false}
         intro={
           <>
@@ -112,13 +117,30 @@ export default function PageLinkingGuidePage() {
               <>
                 <p>
                   Type <code>[[</code> and start typing a page name. Dash suggests matches as you type; choose one and the
-                  link is created inline. If the page does not exist yet, Dash offers to create it, which means you can link
-                  to a note you have not written and fill it in later. Links resolve by page identity, so renaming a page
-                  keeps every link to it intact.
+                  link is created inline. Or select some words and click the page-link button in the toolbar. Links point at
+                  the page itself, not its title, so renaming a page never breaks a link to it (the link text keeps the old
+                  name until you change it).
                 </p>
                 <p>
                   Because everything is local, the suggestions appear instantly and the links work offline. There is nothing
                   to index on a server and nothing to wait for.
+                </p>
+              </>
+            ),
+          },
+          {
+            id: 'backlinks',
+            heading: 'Backlinks: the notes that point here',
+            body: (
+              <>
+                <p>
+                  A link has two ends, and Dash shows both. At the foot of every note is a list of the notes that link to it,
+                  each with up to three snippets of the text around the link, so you can see why a note mentioned this one
+                  without opening it. A chip in the status bar opens the same list from anywhere in a long note.
+                </p>
+                <p>
+                  Locked notes stay locked here too. While a note is locked it contributes nothing, and once you unlock it
+                  the list shows its title only, never a snippet of what it says.
                 </p>
               </>
             ),
@@ -165,8 +187,8 @@ export default function PageLinkingGuidePage() {
                   them.
                 </p>
                 <p>
-                  <strong>Work:</strong> a page per meeting, links to people and projects. Six months later the project page
-                  is a trail of every conversation that touched it, assembled without any filing.
+                  <strong>Work:</strong> a page per meeting, links to people and projects. Six months later the project page’s
+                  backlinks are a trail of every conversation that touched it, assembled without any filing.
                 </p>
                 <p>
                   <strong>Research:</strong> a page per interview, links to themes. A memo about a theme sits next to links

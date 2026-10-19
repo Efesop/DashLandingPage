@@ -25,7 +25,7 @@ export default function LandingPage() {
             url: 'https://dashnote.io',
             applicationCategory: 'ProductivityApplication',
             applicationSubCategory: 'Note-taking',
-            softwareVersion: '1.6.3',
+            softwareVersion: '1.6.14',
             downloadUrl: 'https://dashnote.io/download',
             installUrl: 'https://apps.apple.com/app/id6766192836',
             screenshot: 'https://dashnote.io/images/Dashfeature1.png',

@@ -18,7 +18,7 @@ const apps: ArticleApp[] = [
   {
     name: 'Dash',
     tagline:
-      'A block editor with headings, lists, checklists, tables, code and embeds, but every note stays on your device, encrypted. No account, no server, unless you turn on end-to-end encrypted sync.',
+      'A block editor with headings, nested lists, checklists, callouts, toggles, tables, code and embeds that imports your Notion export, but every note stays on your device, encrypted. No account, no server, unless you turn on end-to-end encrypted sync.',
     bestFor: 'Personal notes you would never put on someone else’s server',
     price: '$14.99 one-time on Mac; free on iPhone and the web',
     privacy: 'Offline by default; provider cannot read notes',
@@ -115,7 +115,7 @@ const faqs: FAQ[] = [
   {
     question: 'Can I export my Notion workspace into these apps?',
     answer:
-      'Notion exports pages as Markdown and CSV. Dash imports Markdown, plain text, DOCX, CSV and JSON; Obsidian, Joplin, Notesnook and Standard Notes all import Markdown too. Databases translate best into Anytype or Obsidian.',
+      'Notion exports a workspace as HTML, or as Markdown and CSV. Dash imports the HTML export zip directly, with subpages, page links, callouts, toggles, to-dos, tables and files (it does not read the Markdown export); Obsidian, Joplin, Notesnook and Standard Notes import the Markdown. Databases translate best into Anytype or Obsidian.',
   },
 ];
 
@@ -126,7 +126,7 @@ const related = [
 ];
 
 const jsonLd = [
-  articleJsonLd({ url: `https://dashnote.io${PATH}`, headline: TITLE, description: DESCRIPTION, datePublished: '2026-09-08' }),
+  articleJsonLd({ url: `https://dashnote.io${PATH}`, headline: TITLE, description: DESCRIPTION, datePublished: '2026-09-08', dateModified: '2026-10-19' }),
   itemListJsonLd('Notion alternatives', apps.map((a) => a.name)),
   faqJsonLd(faqs),
 ];
@@ -142,7 +142,7 @@ export default function NotionAlternativesPage() {
         badgeText="Alternatives"
         headline="Notion Alternatives That Keep Your Notes Private"
         subheadline="Notion is a fine team workspace. It is a poor place for a journal, a password hint, a therapy note or a draft you are not ready to share. These eight apps give you the editor without the server."
-        updated="September 2026"
+        updated="October 2026"
         intro={
           <>
             <p>

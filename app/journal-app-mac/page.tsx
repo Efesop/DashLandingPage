@@ -148,6 +148,7 @@ const jsonLd = [
     headline: TITLE,
     description: DESCRIPTION,
     datePublished: '2026-09-08',
+    dateModified: '2026-10-19',
   }),
   itemListJsonLd('Journal apps for Mac', apps.map((a) => a.name)),
   faqJsonLd(faqs),
@@ -164,7 +165,7 @@ export default function JournalAppMacPage() {
         badgeText='Journaling on Mac'
         headline='The Best Journal Apps for Mac in 2026'
         subheadline='Seven journaling and diary apps for the Mac, compared on who can read your entries, whether they work offline, and what they cost.'
-        updated='September 2026'
+        updated='October 2026'
         intro={
           <>
             <p>
@@ -253,8 +254,8 @@ export default function JournalAppMacPage() {
                 <p>
                   Day One exports a whole journal as JSON, Markdown or PDF from its settings. Keep that export as the archive
                   of the old journal. Diarium and Journey import Day One exports directly; Obsidian reads the Markdown files as
-                  they are. In Dash, start the new journal from today and paste in the entries you want at hand, keeping the
-                  full archive as an encrypted backup. Our <a href='/day-one-alternative'>Day One alternatives</a> page goes
+                  they are. Dash imports the Markdown export as a folder of notes, one per entry; keep the JSON export as the full
+                  record. Our <a href='/day-one-alternative'>Day One alternatives</a> page goes
                   through the options.
                 </p>
               </>

@@ -2,8 +2,8 @@
 
 This document is the accurate, current description of Dash for anyone (human or AI) working on the landing page, marketing copy, or SEO content. When this file and a page on dashnote.io disagree, this file wins — fix the page.
 
-**Last Updated**: September 8, 2026
-**Current Version**: v1.6.3 (Mac + web, released Sep 8 2026). iOS App Store build is 1.5.6 (build 77); 1.6.1 (build 78) is built and awaiting upload.
+**Last Updated**: October 19, 2026
+**Current Version**: v1.6.14 on every platform: Mac + web released Sep 15 2026; the iOS App Store also shows 1.6.14 (build 83), released Sep 15 2026.
 **Status**: Shipping on macOS, iOS (App Store), and the web (PWA). Windows and Linux are not shipped.
 
 The app's own docs are the deeper source: `FEATURES.md`, `CHANGELOG.md`, `SYNC.md`, and `guides/` in the sibling repo `/Users/ollie/rich-text-editor` (public on GitHub).
@@ -59,13 +59,13 @@ Dash is a beautiful, privacy-first notes app that keeps your thoughts on your de
 |---------|-------------|---------|
 | **Offline by Default** | Full functionality with no internet and no account | Notes never leave the device unless you share or sync |
 | **AES-256-GCM Encryption** | Page-level password protection; PBKDF2-SHA256 key derivation (600k iterations) | Locked notes are unreadable without the password |
-| **App Lock & Auto-Lock** | Whole-app lock with configurable idle timeout (1/5/15/30 min, custom, never); instant lock with Cmd+Shift+L on Mac | Protection when you step away |
+| **App Lock & Auto-Lock** | Whole-app lock with configurable idle timeout (1/5/15/30 min, custom, never); instant lock with Cmd+Shift+L on Mac. Since v1.6.13 the lock screen is the dashnote.io binary field in the theme's colours; wrong passwords trigger growing waits (1 s after 3, 5 s after 5, 15 s after 7, 30 s after 9) | Protection when you step away |
 | **Touch ID / Face ID** | Biometric unlock on macOS (Touch ID) and iOS (Face ID / Touch ID), for the app and for individual locked pages | Fast, secure access |
 | **Decoy Password (Duress)** | Secondary password shows decoy notes; real data stays encrypted on disk (hide mode only — wipe mode is disabled) | Plausible deniability |
 | **Self-Destructing Notes** | Auto-delete after 1h / 12h / 1d / 7d / 30d or custom, with a live countdown badge | Sensitive info disappears on schedule |
 | **Seed Phrase Storage** | Numbered 12/24-word grid with BIP-39 validation, multi-word paste, clipboard auto-clear | Safe place for wallet recovery phrases |
 | **Encrypted Sharing** | Read-only E2E encrypted share links; key in the URL fragment; optional relay storage auto-deleted after 30 days; EXIF stripped from images | Share without exposing content to any server |
-| **Dash Sync (optional)** | E2E encrypted multi-device sync of notes, folders, tags, attachments, version history; relay stores ciphertext only | Same notes on Mac, iPhone, iPad, web |
+| **Dash Sync (optional)** | E2E encrypted multi-device sync of notes, folders, tags, pins, attachments, version history; relay stores ciphertext only; 500 MB of sync storage per vault, attachments up to 10 MB | Same notes on Mac, iPhone, iPad, web |
 | **Trash & Auto-Backup** | 30-day recoverable Trash; scheduled encrypted `.dashpack` backups (both independent of sync) | Recover from mistakes |
 | **Local AI** | Ollama, LM Studio, LocalAI, Jan, or any OpenAI-compatible localhost server; summarize / rewrite / continue / explain / chat | AI help with nothing sent to the cloud |
 | **No Telemetry** | Zero analytics; the only network calls are the desktop update check, opt-in sharing, opt-in sync, and any local-AI endpoint you configure | No profiling |
@@ -75,19 +75,23 @@ Dash is a beautiful, privacy-first notes app that keeps your thoughts on your de
 
 | Feature | Description |
 |---------|-------------|
-| **Block Editor** | Editor.js: paragraphs, H2–H4, bullet / numbered / checklist items, quotes, code (20 languages), tables, images, embeds (YouTube, Vimeo, GitHub, Twitter), delimiters, seed phrase block, file attachments |
-| **Attachments** | Images (JPEG, PNG, GIF, WebP) and PDFs up to 10 MB, stored on device, magic-bytes validated |
+| **Block Editor** | Editor.js: paragraphs, three heading levels, bullet / numbered / checklist items nested up to 8 levels (Tab / Shift+Tab), quotes, callouts (info, tip, done, warning, danger), toggles, code (20 languages), tables, images, embeds (YouTube, Vimeo, GitHub, Twitter), delimiters, seed phrase block, file attachments |
+| **Markdown Shortcuts** | Type `#`/`##`/`###` for headings, `-` or `1.` for lists, `[ ]` for a checklist, `>` for a quote, three backticks for code, `---` for a divider, `[!info]` / `[!warning]` etc. for a callout, `[!toggle]` for a toggle; `**bold**`, `*italic*` and inline code wrap as you type. Pasted Markdown converts the same way. Notes are not stored as Markdown files |
+| **Attachments** | Images (JPEG, PNG, GIF, WebP) and PDFs up to 10 MB, stored on device, magic-bytes validated. Photos pasted into a note are stored as attachments too, with location and camera data removed (v1.6.9) |
 | **Version History** | Up to 10 versions per page, restore as a new page; locked pages never capture versions |
-| **Page Linking** | Type `[[` for wiki-style links; clickable, theme-aware |
+| **Page Linking & Backlinks** | Type `[[` for wiki-style links; clickable, theme-aware. Each note lists the notes that link to it at its foot and in a status-bar chip (v1.6.5). A locked note contributes nothing while locked and only its title once unlocked, never a snippet. No graph view |
 | **Multi-Block Selection** | Drag-select blocks and convert them in one go |
 | **Focus Mode** | Cmd+Shift+F: typewriter scrolling, paragraph dimming, session stats |
 | **Quick Switcher** | Cmd+P fuzzy jump to any note |
 | **Undo / Redo** | Cmd+Z / Cmd+Shift+Z, rebuilt in 2026 |
 | **Auto-Save** | 300 ms debounce with a save indicator |
-| **Import / Export** | PDF, Markdown, Plain text, DOCX, RTF, JSON, XML, CSV; encrypted `.dashpack` bundles; import JSON / Markdown / TXT / DOCX / CSV |
+| **Export** | PDF (keeps every script, including CJK, Arabic and Hebrew, and emoji), Markdown, plain text, DOCX, RTF, JSON, XML, CSV, each optionally encrypted with a passphrase; encrypted `.dashpack` bundles with attachments |
+| **Import notes (v1.6.10)** | From **Evernote** (.enex, encrypted sections stay encrypted), **Notion** (HTML export zip), **Obsidian** (vault folder or zip, with [[wikilinks]], photos, callouts, front matter, tags), **Notesnook** (Markdown + Frontmatter zip), **Standard Notes** (decrypted backup) and any folder or zip of **Markdown or text files**; plus `.dashpack` bundles. A preview shows what will come across before anything is written; each import gets its own folder, a report of what was left out, and Undo. **There is no import from JSON, DOCX or CSV**, and no direct Apple Notes, Bear or Joplin importer (use their Markdown export) |
 
 ### 🗂️ Organization
 - Folders (with emoji icons), color-coded tags, drag-and-drop reordering
+- **Pinned notes** (v1.6.11): a Pinned section at the top of the sidebar and the iPhone list; pins sync
+- **Templates** (v1.6.11): naming a new note offers Meeting notes, Daily journal, To-do list, Project plan, Weekly review and your own; `{{date}}`, `{{time}}`, `{{weekday}}`, `{{title}}` fill in
 - Sort: custom, newest, oldest, A–Z, Z–A, by tag
 - Full-text search (Fuse.js) combined with tag filters; on iPhone, filter chips for All / a tag / Locked
 
@@ -97,6 +101,8 @@ Dash is a beautiful, privacy-first notes app that keeps your thoughts on your de
 - **Mac layout** — page title sits in the document with tags, date and word count beneath it; the toolbar lives in the title bar (Lock page, Self-destruct, Export, Settings gear, ⋯ menu); Settings popover holds themes, App lock, Dash Sync, Backups, Trash, Keyboard shortcuts, updates; sidebar has FOLDERS / NOTES sections.
 - **iPhone layout** — full-width Notes screen with large title, search, filter chips, sections, and a thumb-zone New note button; **swipe left to trash, swipe right to lock**; Appearance sheet (header sun/moon) and Settings sheet (footer).
 - **Update card** on Mac (Later / Download) with a dot on the ⋯ menu.
+- **Lock screen** (v1.6.13–1.6.14) — the binary field from dashnote.io in the theme's own colours, password field with its own unlock arrow, Touch ID / Face ID underneath; a wrong password shakes and scrambles the field, unlocking decrypts it outward. Holds still with Reduce Motion.
+- **Self-destruct animation** (v1.6.11) — when the open note self-destructs, its text turns into binary that crumbles away.
 
 > ⚠️ All screenshots, videos and mockups on dashnote.io were captured before v1.6 and show the old layout (header bar, sidebar-footer settings, theme names "Dark Blue" / "Fallout"). Re-capture before using them as accurate product imagery.
 
@@ -243,7 +249,7 @@ Palette: white and silver, ink `#0d0d0d`, Dash blue only on the primary button a
 - Guides: `/guides/{encryption,self-destructing-notes,offline-first,privacy-first-note-taking,app-lock,duress-password,page-linking,seed-phrase-storage,local-ai}` (reference content in the app repo's `guides/` folder)
 
 ### API routes (`app/api/`)
-`create-checkout-session` (mac-license | sync-monthly | sync-yearly), `verify-payment`, `webhook` (Stripe → relay entitlements), `customer-portal`, `download-recovery`, `generate-download-token`, `secure-download`, `latest-release`, `voltage/{create-invoice,verify-payment,webhook}`. The `/relay/*` rewrite in `next.config.js` proxies to the Deno relay.
+`create-checkout-session` (mac-license | sync-monthly | sync-yearly; since Oct 2026 records the buying page, `from_page` and any `?ref=` tag in Stripe metadata, with no cookies or analytics — see [docs/sales-attribution.md](./docs/sales-attribution.md)), `verify-payment`, `webhook` (Stripe → relay entitlements), `customer-portal`, `download-recovery`, `generate-download-token`, `secure-download`, `latest-release`, `voltage/{create-invoice,verify-payment,webhook}`. The `/relay/*` rewrite in `next.config.js` proxies to the Deno relay.
 
 ---
 
@@ -271,6 +277,7 @@ Palette: white and silver, ink `#0d0d0d`, Dash blue only on the primary button a
 7. **Touch ID / Face ID?** Yes — Touch ID on Mac, Face ID / Touch ID on iPhone, for the app and for individual locked pages.
 8. **Is it open source?** Yes, MIT, on GitHub.
 9. **Which platforms?** Mac (paid), iPhone/iPad (free, App Store), web PWA (free). Windows/Linux not yet.
+10. **Can I bring my notes from another app?** Yes — Import notes takes Evernote, Notion, Obsidian, Notesnook and Standard Notes exports and any folder of Markdown or text files, with a preview first and Undo after. Apple Notes, Bear and Joplin come in through their Markdown export.
 
 ---
 
@@ -290,6 +297,17 @@ The keyword research, page-to-query map, build queue and measurement plan are in
 
 | Version | Date | Highlights |
 |---------|------|-----------|
+| **1.6.14** | Sep 15 2026 | Smoother unlock animation on the lock screen (iOS build 83) |
+| **1.6.13** | Sep 14 2026 | New lock screen (binary field); wrong passwords are caught again and trigger growing waits (the check had been skipped since an earlier release) |
+| **1.6.12** | Sep 13 2026 | List fixes: `/` in an empty list item opens the block menu; Japanese, Chinese and Korean input in lists |
+| **1.6.11** | Sep 12 2026 | Pinned notes, templates, PDF export in every script, self-destruct animation, Trash fixes |
+| **1.6.10** | Sep 11 2026 | **Import notes** from Evernote, Notion, Obsidian, Notesnook, Standard Notes and Markdown folders |
+| **1.6.9** | Sep 11 2026 | Nested lists (8 levels), photos stored as attachments, exports keep callouts / toggles / nesting |
+| **1.6.8** | Sep 10 2026 | Sync fixes: large notes and attachments sync in chunks, retrying transfer queue, 500 MB sync storage meter |
+| **1.6.7** | Sep 10 2026 | Hotfix: saves no longer flatten callouts and toggles |
+| **1.6.6** | Sep 10 2026 | Markdown shortcuts as you type, callout and toggle blocks |
+| **1.6.5** | Sep 10 2026 | Backlinks: the notes that link to the current page |
+| **1.6.4** | Sep 8 2026 | Terminal theme fixes |
 | **1.6.3** | Sep 8 2026 | Mac update card positioning hotfix |
 | **1.6.2** | Sep 8 2026 | Clickable desktop menus fix, flush sticky table headers, expanded-folder cue |
 | **1.6.1** | Sep 7 2026 | iPhone: full-width Notes screen, swipe to trash / lock, Appearance + Settings sheets, match iOS appearance (iOS build 78, not yet on the App Store) |
@@ -324,6 +342,6 @@ Full notes: `CHANGELOG.md` in the app repo and GitHub Releases.
 
 ---
 
-**Document Version**: 2.1 (Sep 8 2026: homepage v3 Steel/Cipher, DESIGN.md + SEO.md added; 2.0 rewrote the file for v1.6.3; v1.1 described v1.3.85)
+**Document Version**: 2.2 (Oct 19 2026: product facts brought to v1.6.14 — importers, backlinks, Markdown shortcuts, callouts/toggles, nested lists, pins, templates, lock screen, sync storage; 2.1 Sep 8 2026: homepage v3 Steel/Cipher, DESIGN.md + SEO.md added; 2.0 rewrote the file for v1.6.3; v1.1 described v1.3.85)
 
 Update this file whenever platforms, pricing, major features, or positioning change.

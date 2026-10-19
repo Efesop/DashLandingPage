@@ -100,7 +100,7 @@ const faqs: FAQ[] = [
   {
     question: 'Can I import my Bear notes?',
     answer:
-      'Bear exports notes as Markdown, TextBundle, PDF, HTML or DOCX (some formats need Pro). Obsidian opens a Markdown folder as a vault; iA Writer opens the files directly; Apple Notes imports Markdown since macOS 26; Notesnook imports through its app. In Dash, paste in the notes you use and keep the export as an archive.',
+      'Bear exports notes as Markdown, TextBundle, PDF, HTML or DOCX (some formats need Pro). Obsidian opens a Markdown folder as a vault; iA Writer opens the files directly; Apple Notes imports Markdown since macOS 26; Notesnook imports through its app. Dash imports a folder or zip of Markdown files, so export as Markdown rather than TextBundle for Dash.',
   },
   {
     question: 'Does Bear encrypt notes?',
@@ -133,6 +133,7 @@ const jsonLd = [
     headline: TITLE,
     description: DESCRIPTION,
     datePublished: '2026-09-08',
+    dateModified: '2026-10-19',
   }),
   itemListJsonLd('Bear alternatives', apps.map((a) => a.name)),
   faqJsonLd(faqs),
@@ -149,7 +150,7 @@ export default function BearAlternativePage() {
         badgeText='Alternatives'
         headline='Bear Alternatives'
         subheadline='Six notes apps for people who want Bear’s polish without the subscription, encryption they do not rent, or an app that runs beyond Apple devices.'
-        updated='September 2026'
+        updated='October 2026'
         intro={
           <>
             <p>
@@ -217,8 +218,8 @@ export default function BearAlternativePage() {
                   </li>
                   <li>
                     <strong>Import.</strong> Obsidian and iA Writer open the Markdown folder as it is. Apple Notes imports
-                    Markdown since macOS 26. Notesnook imports through its app. In Dash, paste in the notes you use and keep
-                    the export as an encrypted .dashpack archive.
+                    Markdown since macOS 26. Notesnook imports through its app. In Dash, choose Import notes and pick the
+                    Markdown export; a preview shows what will come across before anything is written.
                   </li>
                 </ol>
               </>

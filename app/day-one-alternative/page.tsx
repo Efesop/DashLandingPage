@@ -99,7 +99,7 @@ const faqs: FAQ[] = [
   {
     question: 'Can I import my Day One journal?',
     answer:
-      'Export the journal from Day One as JSON, Markdown or PDF. Diarium and Journey import Day One exports directly. Obsidian reads the Markdown files as they are. In Dash, keep the export as an encrypted archive and paste in the entries you want at hand; Dash does not read Day One’s format directly.',
+      'Export the journal from Day One as JSON, Markdown or PDF. Diarium and Journey import Day One exports directly. Obsidian reads the Markdown files as they are. Dash imports the Markdown export as a folder of notes, one per entry; it does not read Day One’s JSON, so keep that as the complete record.',
   },
   {
     question: 'Is Day One end-to-end encrypted?',
@@ -132,6 +132,7 @@ const jsonLd = [
     headline: TITLE,
     description: DESCRIPTION,
     datePublished: '2026-09-08',
+    dateModified: '2026-10-19',
   }),
   itemListJsonLd('Day One alternatives', apps.map((a) => a.name)),
   faqJsonLd(faqs),
@@ -148,7 +149,7 @@ export default function DayOneAlternativePage() {
         badgeText='Alternatives'
         headline='Day One Alternatives for a Private Journal'
         subheadline='Six journals for people who want their entries on their own device, without a subscription or an account, and how to move a Day One journal across.'
-        updated='September 2026'
+        updated='October 2026'
         intro={
           <>
             <p>
@@ -219,9 +220,8 @@ export default function DayOneAlternativePage() {
                     opens the Markdown folder as a vault with no import at all.
                   </li>
                   <li>
-                    <strong>Or start fresh with an archive.</strong> In Dash, begin the new journal from today, paste in the
-                    handful of entries you return to, and keep the full export as an encrypted .dashpack backup on your own
-                    drive.
+                    <strong>Into Dash.</strong> Choose Import notes and pick the Markdown export folder: each entry becomes a note.
+                    Keep the JSON export, which has the full metadata, on a drive you control.
                   </li>
                 </ol>
               </>
