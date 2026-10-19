@@ -33,6 +33,9 @@ SYSTEM_FILES=(
   app/is-apple-notes-secure/page.tsx
   app/is-notion-private/page.tsx
   app/standard-notes-vs-notesnook/page.tsx
+  app/joplin-vs-obsidian/page.tsx
+  app/obsidian-vs-apple-notes/page.tsx
+  app/guides/lock-notes-on-iphone-and-mac/page.tsx
   app/standard-notes-alternative/page.tsx
   app/apple-notes-alternative/page.tsx
   app/joplin-alternative/page.tsx

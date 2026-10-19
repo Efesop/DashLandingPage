@@ -38,6 +38,8 @@ export default function Footer() {
     { href: '/journal-app-mac', label: 'Journal Apps for Mac' },
     { href: '/day-one-alternative', label: 'Day One Alternatives' },
     { href: '/standard-notes-vs-notesnook', label: 'Standard Notes vs Notesnook' },
+    { href: '/joplin-vs-obsidian', label: 'Joplin vs Obsidian' },
+    { href: '/obsidian-vs-apple-notes', label: 'Obsidian vs Apple Notes' },
     { href: '/standard-notes-alternative', label: 'Standard Notes Alternatives' },
     { href: '/apple-notes-alternative', label: 'Apple Notes Alternatives' },
     { href: '/joplin-alternative', label: 'Joplin Alternatives' },

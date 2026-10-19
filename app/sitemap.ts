@@ -11,12 +11,12 @@ const entries: Entry[] = [
   // Product & keyword pages
   ['/private-notes', '2026-09-08', 'monthly', 0.9],
   ['/encrypted-notes', '2026-09-08', 'monthly', 0.9],
-  ['/offline-notes', '2026-09-08', 'monthly', 0.9],
+  ['/offline-notes', '2026-10-19', 'monthly', 0.9],
   ['/password-protected-notes', '2026-09-08', 'monthly', 0.9],
   ['/secure-journal', '2026-09-08', 'monthly', 0.8],
   ['/journal-app-mac', '2026-09-08', 'monthly', 0.8],
   ['/day-one-alternative', '2026-09-08', 'monthly', 0.6],
-  ['/is-apple-notes-secure', '2026-09-08', 'monthly', 0.7],
+  ['/is-apple-notes-secure', '2026-10-19', 'monthly', 0.7],
   ['/is-notion-private', '2026-09-08', 'monthly', 0.7],
   ['/standard-notes-vs-notesnook', '2026-09-08', 'monthly', 0.7],
   ['/standard-notes-alternative', '2026-09-08', 'monthly', 0.6],
@@ -43,9 +43,11 @@ const entries: Entry[] = [
   ['/for-researchers', '2026-09-08', 'monthly', 0.7],
   // Comparisons
   ['/vs-google-keep', '2026-09-08', 'monthly', 0.7],
+  ['/joplin-vs-obsidian', '2026-10-19', 'monthly', 0.7],
+  ['/obsidian-vs-apple-notes', '2026-10-19', 'monthly', 0.7],
   // Guides
   ['/guides', '2026-09-08', 'monthly', 0.7],
-  ['/guides/lock-notes-on-iphone-and-mac', '2026-09-08', 'monthly', 0.8],
+  ['/guides/lock-notes-on-iphone-and-mac', '2026-10-19', 'monthly', 0.8],
   ['/guides/duress-password', '2026-09-08', 'monthly', 0.8],
   ['/guides/seed-phrase-storage', '2026-09-08', 'monthly', 0.8],
   ['/guides/local-ai', '2026-09-08', 'monthly', 0.8],
