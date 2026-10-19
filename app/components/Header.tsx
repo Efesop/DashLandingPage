@@ -60,6 +60,8 @@ export default function Header() {
     { href: '/open-source-notes-app', label: 'Open Source Notes Apps' },
     { href: '/journal-app-mac', label: 'Journal Apps for Mac' },
     { href: '/standard-notes-vs-notesnook', label: 'Standard Notes vs Notesnook' },
+    { href: '/joplin-vs-obsidian', label: 'Joplin vs Obsidian' },
+    { href: '/obsidian-vs-apple-notes', label: 'Obsidian vs Apple Notes' },
     { href: '/apple-notes-alternative', label: 'Apple Notes Alternatives' },
     { href: '/obsidian-alternatives', label: 'Obsidian Alternatives' },
     { href: '/notion-alternatives', label: 'Notion Alternatives' },

@@ -2,9 +2,9 @@ import type { Metadata } from 'next';
 import ArticleLayout from '../components/seo/ArticleLayout';
 import { articleJsonLd, faqJsonLd, pageMetadata, type FAQ } from '../../lib/seo';
 
-const TITLE = 'Is Apple Notes Secure? Encryption, Locked Notes & iCloud';
+const TITLE = 'Is Apple Notes Secure and Encrypted? What Apple Can Read';
 const DESCRIPTION =
-  'Is Apple Notes secure? What Apple encrypts, what iCloud can read, how locked notes and Advanced Data Protection work, and when to use an encrypted notes app.';
+  'Apple Notes is encrypted, but Apple holds the keys to most notes. Only locked notes, or every note with Advanced Data Protection on, are private from Apple.';
 const PATH = '/is-apple-notes-secure';
 
 export const metadata: Metadata = pageMetadata({
@@ -13,16 +13,26 @@ export const metadata: Metadata = pageMetadata({
   path: PATH,
   keywords: [
     'is apple notes secure',
+    'are apple notes secure',
     'how secure is apple notes',
     'is apple notes encrypted',
+    'is apple notes private',
     'are apple notes private',
+    'is apple notes safe',
     'apple notes encryption',
     'apple notes end to end encrypted',
     'apple notes password',
   ],
 });
 
+// facts re-checked 2026-10-19: Apple Platform Security guide (Notes, Advanced Data Protection), support.apple.com/102537 (locked notes),
+// support.apple.com/guide/iphone/iph00f208d05 (Require Face ID on an app, iOS 18 and later)
 const faqs: FAQ[] = [
+  {
+    question: 'Is Apple Notes secure?',
+    answer:
+      'Against outsiders, yes: notes sync over an encrypted connection and are stored encrypted on Apple’s servers. Against Apple, only partly: with the default settings Apple holds the keys to your unlocked notes. Locked notes, and every note once you turn on Advanced Data Protection, are end-to-end encrypted, so Apple cannot read them.',
+  },
   {
     question: 'Is Apple Notes end-to-end encrypted?',
     answer:
@@ -37,6 +47,11 @@ const faqs: FAQ[] = [
     question: 'Are locked notes in Apple Notes secure?',
     answer:
       'Yes, for the content. Apple derives a key from your password with PBKDF2 and SHA-256 and encrypts the note and its attachments with AES-GCM, so the body is unreadable without the password or Face ID and Touch ID on your device. The title, the note’s existence and its dates are not hidden, and a locked note cannot be shared or searched by content.',
+  },
+  {
+    question: 'Is Apple Notes private?',
+    answer:
+      'Private from other people, yes. Private from Apple, only for the notes you lock, or for all of them with Advanced Data Protection on. Notes in an On My iPhone or On My Mac account never reach iCloud at all. With the default settings, Apple can decrypt iCloud notes when served a valid legal request.',
   },
   {
     question: 'Is Apple Notes safe for passwords?',
@@ -69,6 +84,7 @@ const jsonLd = [
     headline: TITLE,
     description: DESCRIPTION,
     datePublished: '2026-09-08',
+    dateModified: '2026-10-19',
   }),
   faqJsonLd(faqs),
 ];
@@ -84,7 +100,7 @@ export default function IsAppleNotesSecurePage() {
         badgeText='Short answer'
         headline='Is Apple Notes Secure?'
         subheadline='Secure enough for most notes. Private from Apple only for the notes you lock, or for everything if you turn on Advanced Data Protection.'
-        updated='September 2026'
+        updated='October 2026'
         showPayment={false}
         intro={
           <>
@@ -159,8 +175,9 @@ export default function IsAppleNotesSecurePage() {
               <>
                 <ul>
                   <li>
-                    <strong>No lock on the app.</strong> Anyone who unlocks the Mac or phone sees every unlocked note. There is
-                    no app-level password or auto-lock timer.
+                    <strong>No lock on the app on a Mac.</strong> Anyone who unlocks the Mac sees every unlocked note. On iPhone
+                    and iPad, iOS 18 can require Face ID to open Notes, but that lock is per device and leaves the notes
+                    themselves unencrypted.
                   </li>
                   <li>
                     <strong>Locked notes are limited.</strong> They cannot be shared, their content is not searchable, and the
