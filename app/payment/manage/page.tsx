@@ -1,11 +1,12 @@
 'use client';
 
-// Subscription self-service entry. User enters their email, we open a
-// real Stripe Billing Portal session (cancel / change plan / update
-// card). Distinct from /payment/recovery, which is for Mac DMG download
-// recovery via the original $14.99 one-time purchase.
+// Subscription self-service entry. User enters their email; if it has a
+// Dash Sync subscription we email it a link that opens the Stripe Billing
+// Portal (cancel / change plan / update card). Distinct from
+// /payment/recovery, which is for Mac DMG download recovery via the
+// original $14.99 one-time purchase.
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Button } from '../../components/ui/button';
 import { Input } from '../../components/ui/input';
@@ -16,11 +17,21 @@ export default function ManageSubscriptionPage() {
   const [email, setEmail] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [sent, setSent] = useState<string | null>(null);
+
+  // /api/customer-portal/open sends people back here when a link has
+  // expired or the portal couldn't open.
+  useEffect(() => {
+    const link = new URLSearchParams(window.location.search).get('link');
+    if (link === 'expired') setError('That link has expired. Enter your email for a new one.');
+    if (link === 'error') setError("We couldn't open the portal. Enter your email for a new link.");
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
     setError(null);
+    setSent(null);
     try {
       const res = await fetch('/api/customer-portal', {
         method: 'POST',
@@ -28,11 +39,11 @@ export default function ManageSubscriptionPage() {
         body: JSON.stringify({ email }),
       });
       const data = await res.json();
-      if (!res.ok || !data.url) {
-        setError(data.error || 'No subscription found for this email.');
+      if (!res.ok) {
+        setError(data.error || 'Something went wrong. Please try again.');
         return;
       }
-      window.location.href = data.url;
+      setSent(data.message);
     } catch (err) {
       setError('Network error. Please try again.');
     } finally {
@@ -63,14 +74,20 @@ export default function ManageSubscriptionPage() {
             Manage subscription
           </h1>
           <p className='text-gray-600 dark:text-gray-300 text-center mb-8'>
-            Enter the email you used to subscribe and we'll open the Stripe
-            self-service portal where you can cancel, change plan, or update
-            your card.
+            Enter the email you used to subscribe and we'll email you a link
+            to the Stripe self-service portal, where you can cancel, change
+            plan, or update your card.
           </p>
 
           {error && (
             <div className='mb-4 p-3 bg-red-50 dark:bg-red-950/30 border border-red-200 dark:border-red-900 rounded-lg text-sm text-red-800 dark:text-red-200'>
               {error}
+            </div>
+          )}
+
+          {sent && (
+            <div className='mb-4 p-3 bg-green-50 dark:bg-green-950/30 border border-green-200 dark:border-green-900 rounded-lg text-sm text-green-800 dark:text-green-200'>
+              {sent}
             </div>
           )}
 
@@ -91,7 +108,7 @@ export default function ManageSubscriptionPage() {
               disabled={loading || !email}
               className='w-full bg-blue-600 hover:bg-blue-700 text-white py-3'
             >
-              {loading ? 'Loading…' : 'Open portal'}
+              {loading ? 'Sending…' : 'Email me a link'}
             </Button>
           </form>
 

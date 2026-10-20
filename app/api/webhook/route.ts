@@ -20,12 +20,18 @@
 //
 // Webhook signature is verified BEFORE any handler runs. Failures
 // inside a handler bubble up as 500s so Stripe will retry automatically.
+//
+// The Stripe account is shared with LinkJolt and this endpoint receives its
+// events too, so every handler first checks the object is a Dash product
+// (lib/dashProducts.ts) and ignores anything else. Before this check, LinkJolt
+// subscriptions were granted Dash Sync.
 
 import { NextRequest, NextResponse } from 'next/server';
 import type Stripe from 'stripe';
 import stripe from '../../../lib/stripe';
 import { grantMacEntitlement } from '../../../lib/entitlement';
 import { grantSyncEntitlement, revokeSyncEntitlement } from '../../../lib/syncEntitlement';
+import { isDashMacCheckout, isDashSyncCheckout, isDashSyncSubscription } from '../../../lib/dashProducts';
 
 export const dynamic = 'force-dynamic';
 
@@ -100,8 +106,16 @@ export async function POST(request: NextRequest) {
 
 // ── Handlers ─────────────────────────────────────────────────────────
 
+function ignoreNonDash(event: Stripe.Event) {
+  console.log(`[webhook] ignored non-Dash ${event.type} ${(event.data.object as any).id}`);
+}
+
 async function handleCheckoutCompleted(event: Stripe.Event) {
   const session = event.data.object as Stripe.Checkout.Session;
+  if (!isDashMacCheckout(session) && !isDashSyncCheckout(session)) {
+    ignoreNonDash(event);
+    return;
+  }
   const email = session.customer_details?.email || session.customer_email || undefined;
   if (!email) {
     console.error('[webhook] checkout.session.completed without email, session=', session.id);
@@ -142,9 +156,10 @@ async function handleCheckoutCompleted(event: Stripe.Event) {
 
 async function handleSubscriptionUpsert(event: Stripe.Event) {
   const sub = event.data.object as Stripe.Subscription;
-  // Ignore non-Dash subscriptions if you ever add other products.
-  const meta = sub.metadata || {};
-  if (meta.product_type && meta.product_type !== 'sync-sub') return;
+  if (!isDashSyncSubscription(sub)) {
+    ignoreNonDash(event);
+    return;
+  }
 
   const email = await resolveCustomerEmail(sub.customer);
   if (!email) {
@@ -162,6 +177,10 @@ async function handleSubscriptionUpsert(event: Stripe.Event) {
 
 async function handleSubscriptionDeleted(event: Stripe.Event) {
   const sub = event.data.object as Stripe.Subscription;
+  if (!isDashSyncSubscription(sub)) {
+    ignoreNonDash(event);
+    return;
+  }
   const email = await resolveCustomerEmail(sub.customer);
   if (!email) {
     console.error('[webhook] subscription deleted without email, sub=', sub.id);
@@ -176,6 +195,10 @@ async function handleInvoicePaid(event: Stripe.Event) {
   if (!subId) return; // one-time charge invoice (not a sync renewal)
   if (!stripe) throw new Error('stripe not configured');
   const sub = await stripe.subscriptions.retrieve(subId);
+  if (!isDashSyncSubscription(sub)) {
+    ignoreNonDash(event);
+    return;
+  }
   const email = invoice.customer_email || (await resolveCustomerEmail(sub.customer));
   if (!email) {
     console.error('[webhook] invoice.paid without email, invoice=', invoice.id);
@@ -203,6 +226,10 @@ async function handleChargeRefunded(event: Stripe.Event) {
   const subId = (invoice as any).subscription as string | undefined;
   if (!subId) return;
   const sub = await stripe.subscriptions.retrieve(subId);
+  if (!isDashSyncSubscription(sub)) {
+    ignoreNonDash(event);
+    return;
+  }
   const email = invoice.customer_email || (await resolveCustomerEmail(sub.customer));
   if (!email) return;
   await revokeSyncEntitlement({ email, stripeSubscriptionId: sub.id });
