@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { Suspense, useEffect, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import { CheckCircle, Download, Mail, Shield, Loader2 } from 'lucide-react';
@@ -10,7 +10,29 @@ import { Button } from '../../components/ui/button';
 // Force dynamic rendering for this page
 export const dynamic = 'force-dynamic';
 
+function Verifying() {
+  return (
+    <div className='min-h-screen bg-gradient-to-b from-green-50 to-white dark:from-green-950/20 dark:to-gray-950 flex items-center justify-center'>
+      <div className='text-center'>
+        <Loader2 className='w-12 h-12 animate-spin text-blue-600 mx-auto mb-4' />
+        <p className='text-lg text-gray-600 dark:text-gray-300'>
+          Verifying your payment...
+        </p>
+      </div>
+    </div>
+  );
+}
+
+// useSearchParams needs a Suspense boundary for the static build (Next.js 14.1+)
 export default function PaymentSuccess() {
+  return (
+    <Suspense fallback={<Verifying />}>
+      <PaymentSuccessContent />
+    </Suspense>
+  );
+}
+
+function PaymentSuccessContent() {
   const searchParams = useSearchParams();
   const [isLoading, setIsLoading] = useState(true);
   const [paymentDetails, setPaymentDetails] = useState<any>(null);
@@ -129,16 +151,7 @@ export default function PaymentSuccess() {
   }, [searchParams]);
 
   if (isLoading) {
-    return (
-      <div className='min-h-screen bg-gradient-to-b from-green-50 to-white dark:from-green-950/20 dark:to-gray-950 flex items-center justify-center'>
-        <div className='text-center'>
-          <Loader2 className='w-12 h-12 animate-spin text-blue-600 mx-auto mb-4' />
-          <p className='text-lg text-gray-600 dark:text-gray-300'>
-            Verifying your payment...
-          </p>
-        </div>
-      </div>
-    );
+    return <Verifying />;
   }
 
   if (error) {
