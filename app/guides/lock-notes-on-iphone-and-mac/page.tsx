@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import ArticleLayout from '../../components/seo/ArticleLayout';
 import { articleJsonLd, faqJsonLd, pageMetadata, type FAQ } from '../../../lib/seo';
 
-const TITLE = 'How to Lock Notes on Mac, MacBook and iPhone (2026)';
+const TITLE = 'How to Lock a Note on Mac or MacBook (Touch ID + iPhone)';
 const DESCRIPTION =
   "How to lock notes on a Mac or MacBook in Apple Notes, with Touch ID, plus the iPhone steps, why some notes won't lock, and how to lock the whole app.";
 const PATH = '/guides/lock-notes-on-iphone-and-mac';

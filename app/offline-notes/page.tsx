@@ -2,9 +2,9 @@ import type { Metadata } from 'next';
 import ArticleLayout from '../components/seo/ArticleLayout';
 import { articleJsonLd, faqJsonLd, pageMetadata, type FAQ } from '../../lib/seo';
 
-const TITLE = 'Does the Notes App Work Without Wi-Fi? Yes. Here’s How';
+const TITLE = 'Notes App Without Wi-Fi: What Works Offline, What Doesn’t';
 const DESCRIPTION =
-  'Yes: Apple Notes works without Wi-Fi and syncs when you reconnect. What works offline, what waits for a connection, and an offline notes app with no account.';
+  'Does Notes need Wi-Fi? Not to write. What works offline in Apple Notes on iPhone and Mac, what waits for a connection, and a notes app that never needs one.';
 const PATH = '/offline-notes';
 
 export const metadata: Metadata = pageMetadata({

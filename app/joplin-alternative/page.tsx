@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import ArticleLayout, { type ArticleApp } from '../components/seo/ArticleLayout';
 import { articleJsonLd, faqJsonLd, itemListJsonLd, pageMetadata, type FAQ } from '../../lib/seo';
 
-const TITLE = 'Joplin Alternatives in 2026: Nicer Apps, Same Privacy';
+const TITLE = '6 Best Joplin Alternatives in 2026: Nicer Apps, Same Privacy';
 const DESCRIPTION =
   'Joplin alternatives in 2026 with the same privacy and a nicer app: Dash, Notesnook, Standard Notes, Obsidian, Logseq and Bear compared, with export steps.';
 const PATH = '/joplin-alternative';
